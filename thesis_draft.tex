@@ -1,0 +1,168 @@
+\documentclass[honours]{UNSWthesis}
+\linespread{1}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{latexsym,amsmath}
+\usepackage{graphicx}
+
+%% define some macros
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\g}{\mathfrak{g}}
+
+%% new environments
+
+\newcounter{Item}[section]
+%\newenvironment{proof}{\noindent {\bf Proof.}\ }{\qed}
+\newenvironment{Definition}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Definition \thesection.\theItem.}\ }
+                           {\medskip}
+\newenvironment{Notation}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Notation \thesection.\theItem.}\ }
+                           {\medskip}
+\newenvironment{Theorem}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Theorem \thesection.\theItem.}\ %
+                            \begingroup \sl}
+                           {\endgroup\medskip}
+\newenvironment{Proposition}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Proposition \thesection.\theItem.}\ %
+                            \begingroup \sl}
+                           {\endgroup\medskip}
+\newenvironment{Corollary}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Corollary \thesection.\theItem.}\ %
+                            \begingroup \sl}
+                           {\endgroup\medskip}
+\newenvironment{Lemma}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Lemma \thesection.\theItem.}\ %
+                            \begingroup \sl}
+                           {\endgroup\medskip}
+\newenvironment{Conjecture}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Conjecture \thesection.\theItem.}\ %
+                            \begingroup \sl}
+                           {\endgroup\medskip}
+\newenvironment{Example}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Example \thesection.\theItem.}\ }
+                           {\qed}
+\newenvironment{Remark}{\smallskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Remark \thesection.\theItem.}\ }
+                           {\qed}
+\newenvironment{Question}{\smallskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Question \thesection.\theItem.}\ }
+                           {\par}
+\newenvironment{theoremlist}{\begin{list}{}
+                        {\setlength{\parsep}{0pt}
+                        \setlength{\topsep}{\smallskipamount}} }
+                        {\end{list}}
+
+\title{Rigidity of Coset-preserving Maps on Nilpotent Lie Groups}
+
+\authornameonly{Richard Tierney}
+
+\author{\Authornameonly\\{\bigskip}Supervisor: Professor Michael Cowling}
+
+\begin{document}
+\maketitle
+
+\prefacesection{Acknowledgements}
+{\noindent}Many thanks go to...
+
+\prefacesection{Introduction}
+
+Lie Groups are to be found in many different applications of mathematics as well as being central to many of the ideas in quantum physics. It is therefore very useful to know whether different Lie groups linked by a certain map are acutally essentially the same thing. This is the idea of a rigidity theorem. If there is a map between two nilpotent Lie groups that preserves the cosets of subgroups (structures arising from the group law on a Lie group), just how similar are the two Lie groups? In this paper, the extra assumption of bijectivity will help to show the kind of similarity that exists. If a map is bijective then no information is 'lost' about the structures of the domain and codomain, when either the map or its inverse is applied. 
+This thesis is an attempt to demonstrate rigorously the extension of the rigidity theorem for the Heisenberg Group to all the nilpotent Lie groups. The proof involves arguments from a geometrical as well as algebraic perspective. 
+
+\chapter{Lie Groups, Lie Algebras and Homomorphisms}
+This chapter outlines the basics of the theory of Lie Groups and their relationship to Lie Algebras. It gives some examples of matrix Lie groups including the Heisenberg Group, and explains the use of the Baker-Campbell-Hausdorff Formula in transferring between a Lie Group and its corresponding Lie Algebra. 
+
+\section{Introduction}
+The theory of Lie Groups has evolved from the combination of several different disciplines in mathematics. Lie Group Theory combines the following ingredients: Group Theory from Algebra, Manifold Theory from Differential Geometry, and basic ideas from Topology. All of the Lie Groups mentioned in this paper will be matrix Lie groups. That is, they are matrix groups that are also $C^2$-manifolds. The idea of a rigidity theory in this context is to use structures that arise from the group law within the manifold to show that a weak similarity of these matrix Lie groups implies a strong similarity between them. This paper will prove the theorem for nilpotent matrix Lie groups (and solvable matrix Lie groups??).
+
+\section{Lie Groups}
+\Definition{Lie Group}
+A Lie group $\G $ is a $C^{\infty}$ manifold which is also a group, for which the group operations of multiplication and taking inverses are continuous. ie the maps
+
+\begin{eqnarray*}
+\sigma : & \G \times \G & \longrightarrow \G  \\
+& (g,h) & \longmapsto gh
+\end{eqnarray*}
+and
+
+\begin{eqnarray*}
+\tau : & \G  & \longrightarrow \G  \\
+& g & \longmapsto g^{-1}
+\end{eqnarray*}
+
+are continuous with respect to the topology on $\G$.
+
+\Example{Circle $S^{1} = \{ e^{i\theta}\; \big| 0 \leq \theta < 2\pi \}$}. As a manifold, $S^{1}$ has a single coordinate patch given by:
+
+\begin{eqnarray*}
+p_{1} : & S^{1}  & \longrightarrow \R  \\
+& e^{i\theta} & \longmapsto \theta
+\end{eqnarray*}
+
+The group multiplication on $S^{1}$ is given by 
+\[ (e^{i\theta}, e^{i\phi}) \longmapsto e^{i\theta}e^{i\phi} = e^{i(\theta + \phi)} \]
+
+An important aspect of this particular coordinate patch (even though in this case only one is required), is that it is 
+also the tangent space of the manifold at the identity element of the group. [add picture]. In general this object is 
+very useful for the study of Lie groups and takes on a structure of its own called a Lie algebra. 
+
+\Definition{Matrix Lie Group}
+A matrix Lie group is any subgroup $\G$ of $GL_{n}(\C)$ with the property that if there is a sequence $A_{m}$ of
+matrices in $\G$ that converges to some matrix $A \in M_{n}(\C)$ then either $A \in \G $ or $A$ is not invertible.
+This is equivalent to $G$ being a closed subset of $GL_{n}(\C)$.
+
+\subsection*{Examples}
+SLn(R), O(n), SO(n), SU(2)
+
+
+\Example{Heisenberg Group}.
+This example forms the cornerstone of the result in this thesis.
+\paragraph
+{\noindent}The Heisenberg group is the set of real three-tuples with non-commutative multiplication given by
+\[
+(x,y,z). (x\prime, y\prime, z\prime) := (x+x\prime, y+y\prime, z+z\prime + xy\prime)
+\]
+Inversion is given by 
+\[ (x,y,z)^{-1}= (-x, -y, -z+xy) \].
+As a matrix Lie group, the Heisenberg group can be represented as the group of all $ 3\times 3 $ upper triangular real unipotent
+matrices:
+\[
+ \G= \left\{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \bigg| x,y, z \in \R \right\} 
+\]
+
+
+
+\section{Lie Algebras}
+
+\section{The Baker-Campbell-Hausdorff Formula}
+
+
+
+
+
+\end{document}
