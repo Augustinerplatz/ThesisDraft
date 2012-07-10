@@ -87,7 +87,7 @@
 \maketitle
 
 \prefacesection{Acknowledgements}
-{\noindent}Many thanks go to...
+{\noindent}Many thanks go to Michael Cowling, Georgia Tsambos,...
 
 \prefacesection{Introduction}
 
@@ -101,7 +101,7 @@ This chapter outlines the basics of the theory of Lie Groups and their relations
 The theory of Lie Groups has evolved from the combination of several different disciplines in mathematics. Lie Group Theory combines the following ingredients: Group Theory from Algebra, Manifold Theory from Differential Geometry, and basic ideas from Topology. All of the Lie Groups mentioned in this paper will be matrix Lie groups. That is, they are matrix groups that are also $C^2$-manifolds. The idea of a rigidity theory in this context is to use structures that arise from the group law within the manifold to show that a weak similarity of these matrix Lie groups implies a strong similarity between them. This paper will prove the theorem for nilpotent matrix Lie groups (and solvable matrix Lie groups??).
 
 \section{Lie Groups}
-\Definition{Lie Group}
+\begin{Definition}\label{Lie Group}
 A Lie group $\G $ is a $C^{\infty}$ manifold which is also a group, for which the group operations of multiplication and taking inverses are continuous. ie the maps
 
 \begin{eqnarray*}
@@ -116,8 +116,10 @@ and
 \end{eqnarray*}
 
 are continuous with respect to the topology on $\G$.
+\end{Definition}
 
-\Example{Circle $S^{1} = \{ e^{i\theta}\; \big| 0 \leq \theta < 2\pi \}$}. As a manifold, $S^{1}$ has a single coordinate patch given by:
+\begin{Example}\label{Circle}
+The circle $S^{1} = \{ e^{i\theta}\; \big| 0 \leq \theta < 2\pi \}$ is a Lie group. As a manifold, $S^{1}$ has a single coordinate patch given by:
 
 \begin{eqnarray*}
 p_{1} : & S^{1}  & \longrightarrow \R  \\
@@ -126,38 +128,116 @@ p_{1} : & S^{1}  & \longrightarrow \R  \\
 
 The group multiplication on $S^{1}$ is given by 
 \[ (e^{i\theta}, e^{i\phi}) \longmapsto e^{i\theta}e^{i\phi} = e^{i(\theta + \phi)} \]
+\end{Example}
 
 An important aspect of this particular coordinate patch (even though in this case only one is required), is that it is 
 also the tangent space of the manifold at the identity element of the group. [add picture]. In general this object is 
 very useful for the study of Lie groups and takes on a structure of its own called a Lie algebra. 
 
-\Definition{Matrix Lie Group}
+\begin{Definition}\label{Matrix Lie Group}
 A matrix Lie group is any subgroup $\G$ of $GL_{n}(\C)$ with the property that if there is a sequence $A_{m}$ of
 matrices in $\G$ that converges to some matrix $A \in M_{n}(\C)$ then either $A \in \G $ or $A$ is not invertible.
 This is equivalent to $G$ being a closed subset of $GL_{n}(\C)$.
+\end{Definition}
 
 \subsection*{Examples}
 SLn(R), O(n), SO(n), SU(2)
 
 
-\Example{Heisenberg Group}.
-This example forms the cornerstone of the result in this thesis.
+\begin{Example}\label{Heisenberg Group}.
+The Heisenberg group, defined as follows, is a Lie group. This example forms the cornerstone of the result in this thesis.
 \paragraph
 {\noindent}The Heisenberg group is the set of real three-tuples with non-commutative multiplication given by
 \[
 (x,y,z). (x\prime, y\prime, z\prime) := (x+x\prime, y+y\prime, z+z\prime + xy\prime)
 \]
 Inversion is given by 
-\[ (x,y,z)^{-1}= (-x, -y, -z+xy) \].
+\[ (x,y,z)^{-1}= (-x, -y, -z+xy) \]
 As a matrix Lie group, the Heisenberg group can be represented as the group of all $ 3\times 3 $ upper triangular real unipotent
 matrices:
 \[
  \G= \left\{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \bigg| x,y, z \in \R \right\} 
 \]
+\end{Example}
 
+Many of the important examples of matrix Lie groups are noncommutative groups. This makes the study of their structure in many 
+cases fairly complex. However, as with the example of the circle, studying the Lie group can be made simpler by studying what is called its Lie algebra. The structure of the Lie algebra determines the local structure of its Lie group.
 
 
 \section{Lie Algebras}
+\begin{Definition}\label{Lie Algebra}
+A Lie algebra is a vector space $\mathcal{A}$ endowed with a map
+\[ [\cdotp,\cdotp]:\; \mathcal{A} \times \mathcal{A} \longrightarrow \mathcal{A} \]
+with the following properties:
+\begin{enumerate}
+ \item $[\cdotp, \cdotp]$ is bilinear
+ \item $[X,Y]=-[Y,X]$ for all $X$, $Y$ $\in \mathcal{A}$
+ \item $[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$ for all $X$, $Y$, $Z$ $\in \mathcal{A}$
+\end{enumerate}
+
+\end{Definition}
+
+The Lie algebra $\g$ of a Lie group $\G$ is the tangent space to $G$ at the identity $e$. This can be seen clearly in 
+the example of the circle. The circle is parametrised as before by a the curve
+\[ g: [0,2\pi) \longrightarrow \C \]
+\[ g(\theta)= e^{i\theta}\]
+Differentiating gives
+\[g\prime (\theta)= ie^{i\theta}\]
+At the identity, $1=e^{0}$,
+\[ g\prime (0) = i \]
+so the tangent space $s$ is the real vector space with basis $\{i\}$. 
+In this case the operation $[\cdotp, \cdotp]$ is trivial, as with the Lie algebra of any abelian Lie group.
+Without going into rigorous detail, it can be seen that the group operation on $S^1$ corresponds to addition of 
+vectors in $s$. If corresponding elements are taken very close to the identity the results of these two operations 
+come very close together. (more detail of manifold theory???)
+(picture required)
+
+In the case of matrix Lie groups, tangent space at the identity takes a very clear form. The relationship between a 
+matrix Lie group and its Lie algebra is determined by the exponential mapping on matrices. 
+
+\begin{Definition}\label{Lie Algebra of a Matrix Lie Group}
+The Lie algebra of an $n \times n$ matrix Lie group $\G$ is
+\[
+\g = \{ X \in M_{n}(\C) \big| \exp{X} \in \G \}
+\]
+The bracket operation on $\g$, given by $[X,Y]=XY-YX$, satisfies the axioms for $\g$ to be a Lie algebra. 
+\end{Definition}
+
+(Propose that this definition really does correspond to the tangent bundle at the identity... proof??)
+
+Note that the exponential map from $\g$ to $\G$ is injective but not necessarily surjective. The image of $\g$
+under the exponential map is precisely the connected component of $\G$ containing the identity $e$. (proof)
+
+\begin{Proposition}\label{Lie algebra of Heisenberg group}
+The Lie algebra of the Heisenberg group $\G = \left\{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \bigg| x,y, z \in \R \right\}$, is 
+\[
+\g= \left\{ \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix} \bigg| x,y,z \in \R \right\}
+\]
+and the exponential map $\exp$: $\g \longrightarrow \G$ is a bijection.
+\end{Proposition}
+
+\begin{proof}
+It will be shown that $im(\exp) \in \G$, $\G \in im(\exp)$ and that $\exp$ is injective. 
+Let $x$, $y$ and $z$ be real numbers and note the following: 
+\[
+\begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix}^2=\begin{bmatrix} 0 & 0 & xy \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}
+\]
+\[
+\begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix}^3=\begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}
+\]
+Now,
+\begin{eqnarray*}
+ \exp \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix} &=& \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} + \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix}+ \frac{1}{2}\begin{bmatrix} 0 & 0 & xy \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix} \\
+&=& \begin{bmatrix} 1 & x & z+\frac{1}{2}xy \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \\
+&\in & \G
+\end{eqnarray*} so $ im(\exp) \in \G$.
+Now suppose $a,b,c \in \R$ so $\begin{bmatrix} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{bmatrix} \in \G$. Then 
+\[ 
+\exp  \begin{bmatrix} 0 & a & c-\frac{1}{2}ab \\ 0 & 0 & b \\ 0 & 0 & 0 \end{bmatrix} = \begin{bmatrix} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{bmatrix}
+\]
+so $\G \in im(\exp)$
+\end{proof}
+
 
 \section{The Baker-Campbell-Hausdorff Formula}
 
