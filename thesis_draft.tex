@@ -11,7 +11,9 @@
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\G}{\mathcal{G}}
+%\newcommand{\H}{\mathcal{H}}
 \newcommand{\g}{\mathfrak{g}}
+
 
 %% new environments
 
@@ -102,7 +104,7 @@ The theory of Lie Groups has evolved from the combination of several different d
 
 \section{Lie Groups}
 \begin{Definition}\label{Lie Group}
-A Lie group $\G $ is a $C^{\infty}$ manifold which is also a group, for which the group operations of multiplication and taking inverses are continuous. ie the maps
+A Lie group $\G $ is a $\mathrm{C}^{\infty}$ manifold which is also a group, for which the group operations of multiplication and taking inverses are continuous. ie the maps
 
 \begin{eqnarray*}
 \sigma : & \G \times \G & \longrightarrow \G  \\
@@ -118,15 +120,20 @@ and
 are continuous with respect to the topology on $\G$.
 \end{Definition}
 
+\begin{Example}\label{Rn}
+$(\R^{n}, +)$ is a Lie group with one single cooridate patch defined by the identity map on $\R^(n)$. Addition, and multiplication by $-1$ are continuous maps.
+
+\end{Example}
+
 \begin{Example}\label{Circle}
-The circle $S^{1} = \{ e^{i\theta}\; \big| 0 \leq \theta < 2\pi \}$ is a Lie group. As a manifold, $S^{1}$ has a single coordinate patch given by:
+The circle $\mathrm{S}^{1} = \{ e^{i\theta}\; \big| 0 \leq \theta < 2\pi \}$ is a Lie group. As a manifold, $\mathrm{S}^{1}$ has a single coordinate patch given by:
 
 \begin{eqnarray*}
-p_{1} : & S^{1}  & \longrightarrow \R  \\
+p_{1} : & \mathrm{S}^{1}  & \longrightarrow \R  \\
 & e^{i\theta} & \longmapsto \theta
 \end{eqnarray*}
 
-The group multiplication on $S^{1}$ is given by 
+The group multiplication on $\mathrm{S}^{1}$ is given by 
 \[ (e^{i\theta}, e^{i\phi}) \longmapsto e^{i\theta}e^{i\phi} = e^{i(\theta + \phi)} \]
 \end{Example}
 
@@ -134,14 +141,20 @@ An important aspect of this particular coordinate patch (even though in this cas
 also the tangent space of the manifold at the identity element of the group. [add picture]. In general this object is 
 very useful for the study of Lie groups and takes on a structure of its own called a Lie algebra. 
 
+%\begin{figure}
+%\includegraphics{imagename.eps}
+%\caption{Lovely caption}
+%\label{fig:somethin-you-will-remember}
+%\end{figure}
+
 \begin{Definition}\label{Matrix Lie Group}
-A matrix Lie group is any subgroup $\G$ of $GL_{n}(\C)$ with the property that if there is a sequence $A_{m}$ of
-matrices in $\G$ that converges to some matrix $A \in M_{n}(\C)$ then either $A \in \G $ or $A$ is not invertible.
-This is equivalent to $G$ being a closed subset of $GL_{n}(\C)$.
+A matrix Lie group is any subgroup $\G$ of $\mathrm{GL}(n,\C)$ with the property that if there is a sequence $A_{m}$ of
+matrices in $\G$ that converges to some matrix $A \in \mathrm{M}(n,\C)$ then either $A \in \G $ or $A$ is not invertible.
+This is equivalent to $G$ being a closed subset of $\mathrm{GL}(n,\C)$.
 \end{Definition}
 
 \subsection*{Examples}
-SLn(R), O(n), SO(n), SU(2)
+\[\mathrm{SL}(n,\R), \mathrm{O}(n), \mathrm{SO}(n), \mathrm{SU}(2) \]
 
 
 \begin{Example}\label{Heisenberg Group}.
@@ -149,7 +162,7 @@ The Heisenberg group, defined as follows, is a Lie group. This example forms the
 \paragraph
 {\noindent}The Heisenberg group is the set of real three-tuples with non-commutative multiplication given by
 \[
-(x,y,z). (x\prime, y\prime, z\prime) := (x+x\prime, y+y\prime, z+z\prime + xy\prime)
+(x,y,z). (x', y', z') := (x+x', y+y', z+z' + xy')
 \]
 Inversion is given by 
 \[ (x,y,z)^{-1}= (-x, -y, -z+xy) \]
@@ -174,7 +187,7 @@ with the following properties:
  \item $[X,Y]=-[Y,X]$ for all $X$, $Y$ $\in \mathcal{A}$
  \item $[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$ for all $X$, $Y$, $Z$ $\in \mathcal{A}$
 \end{enumerate}
-
+This map is often called the \emph{Lie bracket} or the \emph{bracket operation}.
 \end{Definition}
 
 The Lie algebra $\g$ of a Lie group $\G$ is the tangent space to $G$ at the identity $e$. This can be seen clearly in 
@@ -182,9 +195,9 @@ the example of the circle. The circle is parametrised as before by a the curve
 \[ g: [0,2\pi) \longrightarrow \C \]
 \[ g(\theta)= e^{i\theta}\]
 Differentiating gives
-\[g\prime (\theta)= ie^{i\theta}\]
+\[g' (\theta)= ie^{i\theta}\]
 At the identity, $1=e^{0}$,
-\[ g\prime (0) = i \]
+\[ g' (0) = i \]
 so the tangent space $s$ is the real vector space with basis $\{i\}$. 
 In this case the operation $[\cdotp, \cdotp]$ is trivial, as with the Lie algebra of any abelian Lie group.
 Without going into rigorous detail, it can be seen that the group operation on $S^1$ corresponds to addition of 
@@ -206,10 +219,10 @@ The bracket operation on $\g$, given by $[X,Y]=XY-YX$, satisfies the axioms for 
 (Propose that this definition really does correspond to the tangent bundle at the identity... proof??)
 
 Note that the exponential map from $\g$ to $\G$ is injective but not necessarily surjective. The image of $\g$
-under the exponential map is precisely the connected component of $\G$ containing the identity $e$. (proof)
+under the exponential map is precisely the connected component of $\G$ containing the identity $e$. (proof). In the case that $\G$ is connected, the inverse of the map $\exp : \g \longrightarrow \G $ is called the matrix logarithm map, $\log : \G \longrightarrow \g $.
 
 \begin{Proposition}\label{Lie algebra of Heisenberg group}
-The Lie algebra of the Heisenberg group $\G = \left\{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \bigg| x,y, z \in \R \right\}$, is 
+The Lie algebra of the Heisenberg group, $$\G = \left\{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \bigg| x,y, z \in \R \right\}$$ is 
 \[
 \g= \left\{ \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix} \bigg| x,y,z \in \R \right\}
 \]
@@ -235,14 +248,263 @@ Now suppose $a,b,c \in \R$ so $\begin{bmatrix} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 &
 \[ 
 \exp  \begin{bmatrix} 0 & a & c-\frac{1}{2}ab \\ 0 & 0 & b \\ 0 & 0 & 0 \end{bmatrix} = \begin{bmatrix} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{bmatrix}
 \]
-so $\G \in im(\exp)$
+so $\G \in im(\exp)$.
+\bigskip
+Suppose that $A=\begin{bmatrix} 0 & a & c \\ 0 & 0 & b \\ 0 & 0 & 0 \end{bmatrix}$ and $A'=\begin{bmatrix} 0 & a' & c' \\ 0 & 0 & b' \\ 0 & 0 & 0 \end{bmatrix}$ are in $\g$ and that $\exp{A}=\exp{A'}$. Then 
+\[
+\begin{bmatrix} 0 & a & c+\frac{1}{2}ab \\ 0 & 0 & b \\ 0 & 0 & 0 \end{bmatrix} =\begin{bmatrix} 0 & a' & c' +\frac{1}{2}a' b' \\ 0 & 0 & b' \\ 0 & 0 & 0 \end{bmatrix}
+\] 
+and hence
+\begin{eqnarray*}
+a &=& a' \\
+b &=& b' \\
+c &=& c'
+\end{eqnarray*}
+so $A=A'$.
 \end{proof}
 
+\subsection*{Notation}
+For the purpose of simplifying the notation of matrices in the Heisenberg group and in its Lie algebra, vector notation will sometimes be used. As defined above, an element of the Heisenberg group $\G$ will be denoted either by $ \begin{bmatrix} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{bmatrix} $ or equivalently $[a,b,c]$. Similarly, elements of the Lie algebra of the Heisenberg group will be denoted either by $\begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix}$ or $(x,y,z)$, or in some cases $\begin{bmatrix} x \\ y \\ z \end{bmatrix}$.
+
+In this notation, the bracket operation on two elements of $\g$ is given by 
+\begin{eqnarray*}
+[(x,y,z), (x',y',z')] &=& \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix} \begin{bmatrix} 0 & x' & z' \\ 0 & 0 & y' \\ 0 & 0 & 0 \end{bmatrix} - \begin{bmatrix} 0 & x' & z' \\ 0 & 0 & y' \\ 0 & 0 & 0 \end{bmatrix} \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix} \\
+&=& \begin{bmatrix} 0 & 0 & xy' \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix} -\begin{bmatrix} 0 & 0 & x'y \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix} \\
+&=& (0,0,xy'-x'y)
+\end{eqnarray*}
+
+\section{Homomorphisms}
+
+\begin{Definition}\label{Lie Group Homomorphism}
+Let $\G$ and $\mathcal{H}$ be Lie groups and $f:\G \longrightarrow \mathcal{H} $ be a function. $f$ is called a Lie group homomorphism if and only if 
+\[ f(xy)=f(x)f(y) \; \; \; \text{(i.e. $f$ is a group homomorphism)} \]
+and $f$ is continuous with respect to the topologies on $\G$ and $\mathcal{H}$. 
+
+\end{Definition}
+
+\begin{Example}\label{canonical quotient of centre}
+Let $\G$ be the Heisenberg group. Let 
+\begin{eqnarray*}
+\pi : &\G& \longrightarrow (\R^{2},+) \\
+&[a,b,c]& \longmapsto (a,b)
+\end{eqnarray*}
+
+Then 
+
+\begin{eqnarray*}
+\pi([a,b,c][a',b',c']) &=& \pi[a+a',b+b',c+c'+ab'] \\
+&=&(a+a',b+b') \\
+&=& (a,b)+(a',b') \\
+&=& \pi[a,b,c] + \pi[a',b',c']
+\end{eqnarray*}
+
+So $\pi$ is a group homomorphism. Also, since the topology on $\G$ is inherited from the topology on $\R^{3}$, $\pi$ acts topologically as a projection from $\R^{3}$ onto $\R^{2}$ so is continuous. Hence $\pi$ is a Lie group homomorphism.
+\end{Example}
+
+\begin{Definition}\label{Lie Algebra Homomorphism}
+Let $\g$ and $\mathfrak{h}$ be Lie algebras. A linear transformation $T: \g \longrightarrow \mathfrak{h}$ is a Lie algebra homomorphism if in addition to the linearity properties, $T$ preserves the Lie bracket, i.e. 
+\[
+T[A,B] = [T(A), T(B)] \; \;\;\;\;\;\;\;\; \forall A,B \in \g
+\]
+\end{Definition}
+
+\begin{Theorem}\label{Homomorphisms Correspondence}
+Let $\G$ and $\mathcal{H}$ be matrix Lie groups with corresponding Lie algebras $\g$ and $\mathfrak{h}$ respectively. Suppose that $\Phi: \G \longrightarrow \mathcal{H}$ is a Lie group homomorphism. Then there exists a unique Lie algebra homomorphism $\phi: \g \longrightarrow \mathfrak{h}$ such that 
+\[
+\Phi(e^{X}) = e^{\phi(X)} \;\;\;\;\;\;\; \forall X \in \g
+\]
+
+Now let $\G$ and $\mathcal{H}$ be matrix Lie groups, $\g$ and $\mathfrak{h}$ be their Lie algebras and let $\G$ be connected. Then if $\phi: \g \longrightarrow \mathfrak{h}$ is a Lie algebra homomorphism, there exists a unique Lie group homomorphism $\Phi: \G \longrightarrow \mathcal{H}$ defined by
+\[
+\Phi(A) = e^{\phi(\log{A})} \;\;\;\;\;\;\; \forall A \in \G
+\]
+\end{Theorem}
+
+\begin{Example}
+Let $\G$ be the Heisenberg group and $\g$ its Lie algebra. Let $\mathcal{H}=\mathrm{GL}(1,\R)$. The Lie algebra of $\mathcal{H}$ is $\mathfrak{h}=\mathrm{M}_{1}(\R)$. Define 
+\begin{eqnarray*}
+\Phi :& \G &\longrightarrow  \mathcal{H} \\
+&[x,y,z] &\longmapsto  e^{x}
+\end{eqnarray*}
+This is a Lie group homomorphism. It is continuous since the map $x \mapsto e^{x}$ is continuous and 
+
+\begin{eqnarray*}
+\Phi ([x,y,z][x',y',z']) &=& \Phi [x+x',y+y', z+z'+xy'] \\
+&=& e^{x+x'} \\
+&=& e^{x}e^{x'} \\
+&=& \Phi [x,y,z] \Phi [x',y',z']
+\end{eqnarray*}
+
+Now
+\[
+\Phi [x,y,z] = \Phi (\exp{(x,y,z-\frac{1}{2}xy))}=e^{x}
+\]
+So there is a unique map $\phi: \g \longrightarrow \mathfrak{h}$ defined by $\phi(x,y,z)=x$ such that
+\[
+\Phi(e^{X}) = e^{\phi(X)} \;\;\;\;\;\;\;\; \forall X \in \g
+\]
+ It is a linear map of vector spaces since it projects onto one of the dimensions. Also for $(x,y,z)$ and $(x',y',z')$ in $\g$, 
+\[ \phi [(x,y,z), (x',y',z')]=\phi (0,0,xy'-x'y)=0
+\]
+and
+\begin{eqnarray*}
+[\phi(x,y,z),\phi(x',y',z')]=[x,x']=xx'-x'x &=& 0 \\
+&=&  \phi [(x,y,z), (x',y',z')]
+\end{eqnarray*}
+Hence $\phi$ is a Lie algebra homomorphism.
+\end{Example}
 
 \section{The Baker-Campbell-Hausdorff Formula}
 
+Since we wish to simplify the study of Lie group homomorphisms by studying properties of the corresponding Lie algebra homomorphisms, we need a way to relate the operations on these objects directly. In the case of the unit circle $\mathrm{S}^{1}$, the properties of the exponential function on real numbers give the simple correspondence between addition on the real line, and multiplication of elements of the unit circle in the complex plane. For noncommutative groups this simple relationship does not hold. However, there is a more complicated way of relating the structure of Lie algebras to their corresponding Lie groups. 
 
+\paragraph{Heisenberg Group}
+The Lie algebra of the Heisenberg group has noncommutative multiplication, however for any $X$, $Y$ $\in \g$, $X$ and $Y$ each commutes with $[X,Y]$. In other words
+\[
+[X,[X,Y]]=[Y,[X,Y]]=0
+\]
+\begin{proof}
+Let $X=(x,y,z)$ and $Y=(x',y',z')$ be elements of $\g$. 
+\begin{eqnarray*}
+[X,[X,Y]] &=& [X, (0,0,xy'-x'y)] \\
+&=&[(x,y,z),(0,0,xy'-x'y)] \\
+&=& 0
+\end{eqnarray*}
 
+and
+\begin{eqnarray*}
+[Y,[X,Y]] &=& [Y, (0,0,xy'-x'y)] \\
+&=&[(x',y',z'),(0,0,xy'-x'y)] \\
+&=& 0
+\end{eqnarray*}
+\end{proof}
 
+We require some tools in order to explain the formula for the Heisenberg group. 
+
+\begin{Definition}\label{Two Adjoint Mappings}
+Let $X$ and $Y$ be elements of $\mathrm{M}_{n}(\C)$. Define the following maps: 
+\begin{eqnarray*}
+\mathrm{Ad}_{Y}:& \mathrm{M}_{n}(\C) & \longrightarrow \mathrm{M}_{n}(\C) \\
+&X& \longmapsto YXY^{-1}
+\end{eqnarray*}
+
+and
+\begin{eqnarray*}
+\mathrm{ad}_{Y}:& \mathrm{M}_{n}(\C) & \longrightarrow \mathrm{M}_{n}(\C) \\
+&X& \longmapsto [Y,X]=YX - XY
+\end{eqnarray*}
+
+\end{Definition}
+
+\begin{Definition}
+Define also the operator $e^{\mathrm{ad}_{Y}}$ given by the following power series:
+\[
+e^{\mathrm{ad}_{Y}}(X)= \mathrm{id}(X) + \mathrm{ad}_{Y}(X) + \frac{1}{2!}( \mathrm{ad}_{Y}^{2})(X) + \frac{1}{3!}( \mathrm{ad}_{Y}^{3})(X) + \cdots
+\]
+\end{Definition}
+
+\begin{Lemma}
+\[
+\mathrm{Ad}_{e^{Y}}(X)=e^{\mathrm{ad}_{Y}}(X)
+\]
+\end{Lemma}
+
+\begin{Theorem}
+Let $\G$ be a matrix Lie group with Lie algebra $\g$. If the commutivity property above holds in $\g$ then for $X$ and $Y$ in $\g$, 
+\[
+e^{X}e^{Y}=e^{X+Y+\frac{1}{2}[X,Y]}
+\]
+\end{Theorem}
+
+\begin{proof}
+To prove the formula, it will be shown that two apparently differential functions are both the unique solution to a certain differential equation, and therefore must be identical. 
+Let $X$ and $Y$ be elements of $\g$. Consider the differential equations in the real variable $t$ defined by 
+\begin{eqnarray*}
+A(t)&=& e^{tX}e^{tY}e^{-\frac{t^{2}}{2}[X,Y]} \\
+B(t) &=& e^{t(X+Y)}
+\end{eqnarray*}
+
+\begin{Lemma}\label{commute matrices}
+Let $M$ and $N$ be $n \times n$ matrices. If $M$ commutes with $N$, then $M$ also commutes with $e^{N}$. 
+\end{Lemma}
+ 
+
+\begin{proof}
+Suppose $MN^{k}=N^{k}M$ for some positive integer $k$. Then 
+\begin{eqnarray*}
+MN^{k+1} &=& MN^{k}N \\
+&=& N^{k}MN \\
+&=& N^{k}NM \\
+&=& N^{k+1}M
+\end{eqnarray*}
+So since $MN=NM$, the mathematical induction hypothesis indicates that $MN^{K}=N^{K}M$ for all positive integers $K$.
+Now, 
+\begin{eqnarray*}
+Me^{N} &=& M(I+N+\frac{N^{2}}{2!}+\frac{N^3}{3!}+\cdots) \\
+&=& M+MN+\frac{1}{2!}MN^{2}+\frac{1}{3!}MN^{3} + \cdots \\
+&=& M+NM+\frac{1}{2!}N^{2}M+\frac{1}{3!}N^{3}M + \cdots \\
+&=& (I+N+\frac{N^{2}}{2!}+\frac{N^3}{3!}+\cdots)M \\
+&=& e^{N}M
+\end{eqnarray*}
+\end{proof}
+\begin{Lemma}
+\[
+Xe^{tY}=e^{tY}(X+t[X,Y])
+\]
+\end{Lemma}
+\begin{proof}
+\begin{eqnarray*}
+Xe^{tY} &=& e^{tY}e^{-tY}Xe^{tY} \\
+&=& e^{tY}\mathrm{Ad}_{e^{-tY}}(X) \\
+&=& e^{tY}e^{-t\mathrm{ad}_{Y}}(X) \\
+&=& e^{tY}(X-t[Y,X]+\frac{t^{2}}{2}[Y,[Y,X]]-\frac{t^{3}}{3!}[Y,[Y,[Y,X]]]+\cdots \\
+&=& e^{tY}(X - t[Y,X])\\
+&=& e^{tY}(X + t[X,Y])
+\end{eqnarray*}
+since $[Y,[Y,X]]=0$.
+\end{proof}
+
+$A(t)$ and $B(t)$ are both now differentiated as follows:
+
+\begin{eqnarray*}
+A'(t) &=& e^{tX}Xe^{tY}e^{-\frac{t^2}{2}[X,Y]}+e^{tX}e^{tY}Ye^{-\frac{t^2}{2}[X,Y]}+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(-t[X,Y]) \\
+&=& e^{tX}Xe^{tY}e^{-\frac{t^2}{2}[X,Y]}+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}Y+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(-t[X,Y]) \\
+& & (\text{since $Y$ commutes with $[X,Y]$ and by Lemma 1.5.5})\\
+&=&e^{tX}e^{tY}(X+t[X,Y])e^{-\frac{t^2}{2}[X,Y]}+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}Y+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(-t[X,Y]) \\
+&=& e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(X+t[X,Y])+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}Y+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(-t[X,Y]) \\
+& & (\text{since $X$ and $[X,Y]$ each commute with $[X,Y]$})\\
+&=& e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(X+t[X,Y]+Y-t[X,Y]) \\
+&=& e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(X+Y) \\
+&=& A(t)(X+Y)
+\end{eqnarray*}
+
+\begin{eqnarray*}
+B'(t) &=& e^{t(X+Y)}(X+Y) \\
+&=& B(t)(X+Y)
+\end{eqnarray*}
+
+It is also necessary for the above differential equations to have the same initial conditions, if the uniqueness theorem is to be applied. 
+\[
+A(0)=e^{0}e^{0}e^{0}=I^{3}=I
+\]
+and 
+\[
+B(0)=e^{0}=I
+\]
+So $A(t)$ and $B(t)$ satisfy the same differential equation with the same initial conditions. By the basic uniqueness theorems for differential equations this implies $A(t)=B(t), \forall t \in \R$. Substituting the value $t=1$ gives 
+\begin{eqnarray*}
+e^{X}e^{Y}e^{-\frac{1}{2}[X,Y]} &=&e^{X+Y} \\
+e^{X}e^{Y} &=& e^{X+Y}e^{\frac{1}{2}[X,Y]} \\
+&=& e^{X+Y+\frac{1}{2}[X,Y]} \\
+& & (\text{since $(X+Y)$ commutes with $\frac{1}{2}[X,Y]$})
+\end{eqnarray*}
+This completes the proof of the Baker-Campbell-Hausdorff Formula for the Heisenberg group. 
+\end{proof}
+
+There is a more general formula for any noncommutative Lie group $\G$, however there is an infinite series of commutator terms, say $S$ such that for all $X$ and $Y$ in $\G$,
+\[
+e^{X}e^{Y}=e^{X+Y+S}
+\]
+The series formula will be stated but not proved in this thesis. A full proof is given in ...
 
 \end{document}
