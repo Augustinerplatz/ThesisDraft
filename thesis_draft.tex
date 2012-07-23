@@ -94,14 +94,14 @@
 
 \prefacesection{Introduction}
 
-Lie Groups are to be found in many different applications of mathematics as well as being central to many of the ideas in quantum physics. It is therefore very useful to know whether different Lie groups linked by a certain map are similar in structure. This is the idea of a rigidity theorem. If there is a map between two nilpotent Lie groups that preserves the cosets of subgroups (structures arising from the group law on a Lie group), just how similar are the two Lie groups? In this paper, the extra assumption of bijectivity will help to show the kind of similarity that exists. If a map is bijective then no information is 'lost' about the structures of the domain and codomain, when either the map or its inverse is applied. 
+Lie Groups are to be found in many different applications of mathematics as well as being central to many of the ideas in quantum physics. It is therefore very useful to know whether different Lie groups linked by a certain map are similar in structure, or whether a particular map identifies two Lie groups in a useful or sensible way. This is the idea of a rigidity theorem. If there is a map between two nilpotent Lie groups that preserves the cosets of subgroups (structures arising from the group law on a Lie group), just how much structure of the respective Lie groups does the map preserve? In this paper, the extra assumption of bijectivity will help to show the kind of similarity that exists. If a map is bijective then no information is 'lost' about the structures of the domain and codomain, when either the map or its inverse is applied. 
 This thesis is an attempt to demonstrate rigorously the extension of the rigidity theorem for the Heisenberg Group to all the nilpotent Lie groups. The proof involves arguments from a geometrical as well as algebraic perspective. 
 
 \chapter{Lie Groups, Lie Algebras and Homomorphisms}
 This chapter outlines the basics of the theory of Lie Groups and their relationship to Lie Algebras. It gives some examples of matrix Lie groups including the Heisenberg Group, and explains the use of the Baker-Campbell-Hausdorff Formula in transferring between a Lie Group and its corresponding Lie Algebra. 
 
 \section{Introduction}
-The theory of Lie Groups has evolved from the combination of several different disciplines in mathematics. Lie Group Theory combines the following ingredients: Group Theory from Algebra, Manifold Theory from Differential Geometry, and basic ideas from Topology. All of the Lie Groups mentioned in this paper will be matrix Lie groups. That is, they are matrix groups that are also $C^2$-manifolds. The idea of a rigidity theory in this context is to use structures that arise from the group law within the manifold to show that a weak similarity of these matrix Lie groups implies a strong similarity between them. This paper will prove the theorem for nilpotent matrix Lie groups (and solvable matrix Lie groups??).
+The theory of Lie Groups has evolved from the combination of several different disciplines in mathematics. Lie Group Theory combines the following ingredients: Group Theory from Algebra, Manifold Theory from Differential Geometry, and basic ideas from Topology. All of the Lie Groups mentioned in this paper will be matrix Lie groups. That is, they are matrix groups that are also $C^2$-manifolds. The idea of a rigidity theory in this context is to use structures that arise from the group law within the manifold to show that a weak similarity of these matrix Lie groups implies a strong similarity between them. This paper will prove the theorem for upper-triangular nilpotent matrix Lie groups (and solvable matrix Lie groups??).
 
 \section{Lie Groups}
 \begin{Definition}\label{Lie Group}
@@ -172,6 +172,7 @@ matrices:
 \[
  \G= \left\{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \bigg| x,y, z \in \R \right\} 
 \]
+It is a closed subset of $\mathrm{GL}(n,\C)$ and is clearly closed under the operations of inversion and multiplication. Hence $\G$ is a matrix Lie group.
 \end{Example}
 
 Many of the important examples of matrix Lie groups are noncommutative groups. This makes the study of their structure in many 
@@ -201,9 +202,8 @@ At the identity, $1=e^{0}$,
 \[ g' (0) = i \]
 so the tangent space $s$ is the real vector space with basis $\{i\}$. 
 In this case the operation $[\cdotp, \cdotp]$ is trivial, as with the Lie algebra of any abelian Lie group.
-Without going into rigorous detail, it can be seen that the group operation on $S^1$ corresponds to addition of 
-vectors in $s$. If corresponding elements are taken very close to the identity the results of these two operations 
-come very close together. (more detail of manifold theory???)
+Without going into rigorous detail, it can be seen that the group operation on $S^{1}$ corresponds to addition of 
+vectors in $s$. Also, the close we move towards the identity in $S^{1}$ the more it resembles flat space. Multiplying two elements together becomes almost equivalent to adding their imaginary components.
 (picture required)
 
 In the case of matrix Lie groups, tangent space at the identity takes a very clear form. The relationship between a 
@@ -217,10 +217,11 @@ The Lie algebra of an $n \times n$ matrix Lie group $\G$ is
 The bracket operation on $\g$, given by $[X,Y]=XY-YX$, satisfies the axioms for $\g$ to be a Lie algebra. 
 \end{Definition}
 
-(Propose that this definition really does correspond to the tangent bundle at the identity... proof??)
+\begin{Proposition}
+This definition corresponds to the definition of a Lie algebra as the tangent space to the manifold $\G$ at the identity. (proof?)
+\end{Proposition}
 
-Note that the exponential map from $\g$ to $\G$ is injective but not necessarily surjective. The image of $\g$
-under the exponential map is precisely the connected component of $\G$ containing the identity $e$. (proof). In the case that $\G$ is connected, the inverse of the map $\exp : \g \longrightarrow \G $ is called the matrix logarithm map, $\log : \G \longrightarrow \g $.
+Note that the exponential map from $\g$ to $\G$ is injective but not necessarily surjective. The image of $\g$ under the exponential map is precisely the connected component of $\G$ containing the identity $e$. (proof). In the case that $\G$ is connected, the inverse of the map $\exp : \g \longrightarrow \G $ is called the matrix logarithm map, $\log : \G \longrightarrow \g $.
 
 \begin{Proposition}\label{Lie algebra of Heisenberg group}
 The Lie algebra of the Heisenberg group, $$\G = \left\{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \bigg| x,y, z \in \R \right\}$$ is 
@@ -250,7 +251,7 @@ Now suppose $a,b,c \in \R$ so $\begin{bmatrix} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 &
 \exp  \begin{bmatrix} 0 & a & c-\frac{1}{2}ab \\ 0 & 0 & b \\ 0 & 0 & 0 \end{bmatrix} = \begin{bmatrix} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{bmatrix}
 \]
 so $\G \in im(\exp)$.
-\bigskip
+
 Suppose that $A=\begin{bmatrix} 0 & a & c \\ 0 & 0 & b \\ 0 & 0 & 0 \end{bmatrix}$ and $A'=\begin{bmatrix} 0 & a' & c' \\ 0 & 0 & b' \\ 0 & 0 & 0 \end{bmatrix}$ are in $\g$ and that $\exp{A}=\exp{A'}$. Then 
 \[
 \begin{bmatrix} 0 & a & c+\frac{1}{2}ab \\ 0 & 0 & b \\ 0 & 0 & 0 \end{bmatrix} =\begin{bmatrix} 0 & a' & c' +\frac{1}{2}a' b' \\ 0 & 0 & b' \\ 0 & 0 & 0 \end{bmatrix}
@@ -277,21 +278,25 @@ In this notation, the bracket operation on two elements of $\g$ is given by
 \section{Subgroups and Subalgebras}
 
 \begin{Definition}\label{Lie subgroup}
-Let $\G$ be a Lie group. A subset $\mathcal{H}$ of $\G$ is called a Lie subgroup if it is a subgroup and also a Lie group.
+Let $\G$ be a Lie group. A subset $\mathcal{H}$ of $\G$ is called a Lie subgroup if it is a subgroup and also a Lie group. So topologically $\mathcal{H}$ must be a closed subset of $\mathrm{GL}(n,\C)$, and algebraically $\mathcal{H}$ must be closed under operations of multiplication and taking inverses. 
 \end{Definition}
 
 \begin{Definition}\label{Lie subalgebra}
+Let $\g$ be a Lie algebra. Then a vector subspace $\mathfrak{h}$ of $\g$ is called a Lie subalgebra of $\g$ if it is also closed under the Lie bracket, so if $X$ and $Y$ are in $\mathfrak{h}$
+\[
+[X,Y] \in \mathfrak{h}
+\]
 
-N.B. In this paper, the term "subalgebra" will be interchangeable with "Lie subalgebra"
+N.B. In this paper, the term "subalgebra" will be interchangeable with "Lie subalgebra" since no other types of algebras will be mentioned.
 \end{Definition}
 
 \section{Homomorphisms}
 
 \begin{Definition}\label{Lie Group Homomorphism}
-Let $\G$ and $\mathcal{H}$ be Lie groups and $f:\G \longrightarrow \mathcal{H} $ be a function. $f$ is called a Lie group homomorphism if and only if 
+Let $\G$ and $\mathcal{H}$ be Lie groups and $f:\G \longrightarrow \mathcal{H} $ be a function. $f$ is called a \emph{Lie group homomorphism} if and only if 
 \[ f(xy)=f(x)f(y) \; \; \; \text{(i.e. $f$ is a group homomorphism)} \]
 and $f$ is continuous with respect to the topologies on $\G$ and $\mathcal{H}$. 
-
+If moreover, $f$ is a bijection, $f$ is called a \emph{Lie group isomorphism}
 \end{Definition}
 
 \begin{Example}\label{canonical quotient of centre}
@@ -318,6 +323,15 @@ Let $\g$ and $\mathfrak{h}$ be Lie algebras. A linear transformation $T: \g \lon
 \[
 T[A,B] = [T(A), T(B)] \; \;\;\;\;\;\;\;\; \forall A,B \in \g
 \]
+\end{Definition}
+
+
+\begin{Definition}\label{Lie group anti-homomorphism}
+Let $\G$ and $\mathcal{H}$ be Lie groups. Then a function $f: \G \longrightarrow \mathcal{H}$ is called a \emph{Lie group anti-homomorphism} if it is continuous with respect to the topologies on $\G$ and $\mathcal{H}$ and
+\[
+f(xy)=f(y)f(x) \;\;\;\;\; \forall x,y \in \G
+\]
+If on top of this $f$ is a bijection, then it is called a \emph{Lie group anti-isomorphism}.
 \end{Definition}
 
 \begin{Theorem}\label{Homomorphisms Correspondence}
