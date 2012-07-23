@@ -10,6 +10,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
 \newcommand{\G}{\mathcal{G}}
 %\newcommand{\H}{\mathcal{H}}
 \newcommand{\g}{\mathfrak{g}}
@@ -273,6 +274,16 @@ In this notation, the bracket operation on two elements of $\g$ is given by
 &=& (0,0,xy'-x'y)
 \end{eqnarray*}
 
+\section{Subgroups and Subalgebras}
+
+\begin{Definition}\label{Lie subgroup}
+Let $\G$ be a Lie group. A subset $\mathcal{H}$ of $\G$ is called a Lie subgroup if it is a subgroup and also a Lie group.
+\end{Definition}
+
+\begin{Definition}\label{Lie subalgebra}
+
+\end{Definition}
+
 \section{Homomorphisms}
 
 \begin{Definition}\label{Lie Group Homomorphism}
@@ -506,5 +517,241 @@ There is a more general formula for any noncommutative Lie group $\G$, however t
 e^{X}e^{Y}=e^{X+Y+S}
 \]
 The series formula will be stated but not proved in this thesis. A full proof is given in ...
+
+\chapter{Case for the Heisenberg Group}
+For this chapter the following notation will be used:
+\begin{Notation}
+$$\G=\text{the Heisenberg group}$$
+$$\g=\text{the Lie algebra of the Heisenberg group}$$
+\end{Notation}
+
+\section{Aim}
+The aim of this chapter is to prove a rigidity theorem for coset-preserving bijective maps on the Heisenberg group. The ideas and methods used in this theorem are foundational for the proof of the theorem for higher dimensional Lie groups.
+
+\begin{Theorem}\label{preserve closed cosets}
+Suppose that $\Phi: \G \longrightarrow \G$ is bijective and sends every coset of any Lie subgroup of $\G$ to some coset of some Lie subgroup of $\G$. Then the induced map $\phi: \g \longrightarrow \g$ has the form
+\[
+\phi(x,y,z)=A
+\begin{bmatrix}
+x \\ y \\ z
+\end{bmatrix}+\bf{b}
+\]
+where $A=\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & g
+\end{bmatrix}$ and $\bf{b} \in \g$
+\end{Theorem}
+
+\begin{Theorem}
+Suppose that $\Phi: \G \longrightarrow \G$ is bijective and sends every coset of \emph{any} subgroup of $\G$ to some coset of some subgroup of $\G$. Then $\Phi=\tau_{o}\varphi$ where $\varphi:\G \longrightarrow \G$ is either an isomorphism or an anti-isomorphism and $\tau: \G \longrightarrow \G$ is a translation. That is, for any $x \in \G$
+\[
+\tau(x)=xy
+\]
+where $y$ is a fixed element of $\G$
+\end{Theorem}
+
+\section{Proof that it is an affine map}
+\begin{Lemma}
+Suppose $\phi: \R^{2} \longrightarrow \R^{2}$ sends $0$ to $0$, sends lines to lines and is bijective. Then $\phi$ is linear. 
+\end{Lemma}
+
+\begin{proof}
+Construct a map based on the following assumptions. Let $\phi': \R^{2} \longrightarrow \R^{2}$ be linear and
+\begin{eqnarray*}
+\phi'(\phi(1,0))&=& (1,0)\\
+\phi'(\phi(0,1)) &=& (0,1)
+\end{eqnarray*}
+This map $\phi'$ is well-defined and unique since bijectivity of $\phi$ implies $\phi(1,0) \neq \phi(0,1)$ so every element of $\R^{2}$ can be written as a linear combination of $\phi(1,0)$ and $\phi(0,1)$. 
+Now define a map $\psi: \R^{2} \longrightarrow \R^{2}$ by $\psi= \phi'_{o}\phi$
+Note that $\psi$ is bijective so sends parallel lines to parallel lines. In particular $\psi$ sends the x-axis to itself and also the y-axis to itself.
+A geometrical construction will demonstrate that
+\begin{equation}
+\psi(x_{1}+x_{2},0)=\psi(x_{1},0)+\psi(x_{2},0)
+\end{equation}
+
+and 
+\begin{equation}
+\psi(x_{1}x_{2},0)=P_{x}(\psi(x_{1},0))P_{x}(\psi(x_{2},0))
+\end{equation}
+
+
+where 
+\begin{eqnarray*}
+P: &R^{2}& \longrightarrow \R \\
+&(x,y)& \longmapsto x
+\end{eqnarray*}
+
+Proof of the addition property:
+Consider the diagram. Let $P=(1,0)$ and $Q=(0,1)$. $A$ is the point $(x_{1},0)$ and $B$ is the point $(x_{2},0)$. Then construct lines $L_{1}$, $L_{2}$, $L_{3}$ and $L_{4}$ as shown so that $$A'=(0,x_{1})$$ $$B'=(x_{2}, x_{1})$$ and $$C=(x_{1}+x_{2},0)$$. Now the map $\psi$ sends the x and y axes to themselves, sends parallel lines to parallel lines and $\psi(P)=P$ and $\psi(Q)=Q$. So the parallelogram $AA'B'C$ is mapped to a new parallelogram $\psi(A)\psi(A')\psi(B')\psi(C)$ where the sloping sides must have gradient $-1$, since they are parallel to $PQ$. Suppose $\psi(A)=(x_{1}',0)$ and $\psi(B)=(x_{2}',0)$. Then by the properties of the parallelogram, 
+\[
+\psi(A')=(0,x_{1}')
+\]
+\[
+\psi(B')=(x_{2}',x_{1}')
+\]
+and 
+\[
+\psi(C)=(x_{1}'+x_{2}',0)
+\]
+Hence $\psi(x_{1}+x_{2},0)=\psi(x_{1},0)+\psi(x_{2},0)$.
+
+Now consider this diagram showing the construction of $C=(x_{1}x_{2},0)$ by starting with $A=(x_{1},0)$ and $B=(x_{2},0)$. Construct the line of gradient $-1$ through $A$ so that $A'=(0,x_{1})$. Then construct a horizontal through $A'$ and a vertical through $P$ to meet in $D=(1,x_{1})$. Construct a line $L$ through $O$ and $C$, $y=x_{1}x$ and a vertical line through $B$ to meet in $E=(x_{2}, x_{1}x{2})$. Then construct a horizontal line through $E$ to meet the y-axis in $B'=(0,x_{1}x_{2})$. Construct a line of gradient $-1$ through $B'$ which meets the x-axis at $C$. 
+
+Now consider the same diagram under the map $\psi$. Let $\psi(A)=(x_{1}',0)$ and $\psi(B)=(x_{2}',0) $. Lines of gradient $-1$ are mapped to lines of gradient $-1$ since $P$ and $Q$ are fixed. So 
+\[
+\psi(A')=(0,x_{1}')
+\]
+Horizontals are mapped to horizontals and verticals are mapped to verticals so
+\[
+\psi(D)=(1,x_{1}')
+\]
+Hence the line $L$ is mapped to the line $\psi(L)$ which is given by $y=x_{1}'x$. Again, the vertical line through $B$ is mapped to a vertical line through $\psi(B)$ so 
+\[
+E=(x_{2}',x_{1}'x_{2}')
+\]
+and the by the preservation of horizontals, 
+\[
+\psi(B)=(0,x_{1}'x_{2}')
+\]
+and by the preservation of lines of gradient $-1$
+
+
+\[
+\psi(C)=(x_{1}'x_{2}',0)
+\]
+
+Hence 
+\begin{equation*}
+\psi(x_{1}x_{2},0)=P_{x}(\psi(x_{1},0))P_{x}(\psi(x_{2},0))
+\end{equation*}
+
+Consider the induced map $f:\R \longrightarrow \R$ defined by
+\[
+f(x)=P_{x}(\psi(x,0))
+\]
+Then by the equations (how do I refer to their labels???) above, $f$ is bijective and has the following properties:
+\begin{eqnarray*}
+f(0) &=& 0 \\
+f(1) &=& 1 \\
+f(x+y)&=& f(x)+f(y) \\
+f(xy) &=& f(x)f(y)
+\end{eqnarray*} 
+Now let $n \in \Z$. Then 
+\begin{eqnarray*}
+f(n) &=& f(1+1+ \cdots +1) \\
+&=&f(1)+f(1) + \cdots +f(1) \\
+&=& 1+1+ \cdots +1 \\
+&=& n
+\end{eqnarray*}
+Also 
+\begin{eqnarray*}
+1 &=&f(1) \\
+ &=& f(n.\frac{1}{n}) \\
+&=& f(n)f(\frac{1}{n}) \\
+&=& nf(\frac{1}{n})
+\end{eqnarray*}
+Hence 
+\[
+f(\frac{1}{n})=\frac{1}{n}
+\]
+Now let $m$ and $n$ be integers. So 
+\begin{eqnarray*}
+f(\frac{m}{n})&=&f(m.\frac{1}{n})\\
+&=& f(m)f(\frac{1}{n}) \\
+&=& m\frac{1}{n} \\
+&=& \frac{m}{n}
+\end{eqnarray*}
+So $f$ restricted to $\Q$ is the identity. In fact, $f$ is continuous because [...] require a proof. Hence since every real number is a limit of a sequence of rational numbers, and $f$ is continuous, $f$ is the identity map $\R \longrightarrow \R$. 
+
+The same properties can be shown for the map $\psi$ on the y-axis. And then since every point in the plane is a projection of point on the x and y axes by horizontal and vertical lines, $\psi(x,y)=(x,y)$ for all $(x,y) \in \R^{2}$. Hence $\phi'_{o}\phi=\psi=\text{id}$ so $\phi=\phi'^{-1}$, which is a linear map. 
+\end{proof}
+
+\begin{Proposition}
+Let $\Phi: \R^{3} \longrightarrow \R^{3}$ be such that $\Phi$ is bijective, sends lines to lines and vertical planes to vertical planes. Then $\Phi$ is an affine map, i.e. $$\Phi ( \lambda \mathbf{v_{1}}+(1-\lambda) \mathbf{v_{2}})= \lambda \Phi (\mathbf{v_{1}})+(1-\lambda) \Phi(\mathbf{v_{2}})$$
+\end{Proposition}  
+
+\begin{proof}
+Let there be a line $L$ in $\R^{3}$ given by $$\lambda \mathbf{v_{1}} + (1-\lambda) \mathbf{v_{2}} $$ where the vector $\mathbf{v_{1}}-\mathbf{v_{2}} \notin \text{span} \{ \mathbf{e_{3}} \}$. 
+Now define a vertical plane $\Pi: \lambda \mathbf{v_{1}} + (1-\lambda) \mathbf{v_{2}} + \mu\mathbf{e_{3}}$. $Phi$ sends vertical planes to vertical planes so define the plane $\Sigma = \Phi(\Pi)$. Then 
+\[
+\mathbf{v_{1}} \in \Pi
+\]
+\[
+\mathbf{v_{2}} \in \Pi
+\]
+so 
+\[
+\Phi(\mathbf{v_{1}}) \in \Sigma
+\]
+and 
+\[
+\Phi(\mathbf{v_{2}}) \in \Sigma
+\]
+Hence the line joining these to points is also in $\Sigma$, in other words
+\[
+\gamma \Phi(\mathbf{v_{1}}) + (1-\gamma)\Phi(\mathbf{v_{2}}) \in \Sigma
+\]
+Also $\Sigma$ is vertical, and since $\mathbf{v_{1}}-\mathbf{v_{2}} \notin \text{span}\{ \mathbf{e_{3}}\}$, the plane $\Sigma$ is defined by 
+\[
+\Sigma = \{ \gamma \Phi(\mathbf{v_{1}}) + (1-\gamma)\Phi(\mathbf{v_{2}}) + \delta\mathbf{e_{3}} \; \;|\;\; \gamma,\delta \in \R \}
+\]
+Now each plane $\Pi$ and $\Sigma$ can be given the structure of a two dimensional vector space in the following sense:
+Let $O_{\Pi}=\mathbf{v_{2}}$ and $O_{\Sigma}= \Phi(\mathbf{v_{2}})$. Then elements of $\Pi$ can all be expressed as 
+\[
+(\alpha_{1}, \alpha_{2})_{\Pi}:= \alpha_{1}\mathbf{v_{1}}+(1-\alpha_{1})\mathbf{v_{2}} + \alpha_{2}\mathbf{e_{3}}
+\]
+so that $O_{\Pi}=(0,0)$. 
+Elements of $\Sigma$ can similarly be expressed as
+\[
+(\beta_{1}, \beta_{2})_{\Sigma}= \beta_{1}\Phi(\mathbf{v_{1}})+(1-\beta_{1})\Phi(\mathbf{v_{2}}) + \beta_{2}\mathbf{e_{3}}
+\]
+Thus $\Pi$ and $\Sigma$ have the structure of two-dimensional vector spaces, isomorphic to $\R^2$. Then by the Lemma 2.2.1, since $\Phi(O_{\Pi}=O_{\Sigma}$, and $\Phi$ is bijective and sends lines to lines, $\Phi:\Pi \longrightarrow \Sigma$ is linear. In other words, 
+\[
+\Phi[(\alpha_{1},\alpha_{2})_{\Pi}+\lambda(\alpha_{1}',\alpha_{2}')_{\Pi}]=\Phi(\alpha_{1},\alpha_{2})_{\Pi} + \lambda \Phi(\alpha_{1}',\alpha_{2}')_{\Pi}
+\]
+Note also that 
+\begin{eqnarray*}
+\Phi(1,0)_{\Pi}&=&\Phi(\mathbf{v_{1}}) \\
+&=& (1,0)_{\Sigma}
+\end{eqnarray*}
+So:
+\begin{eqnarray*}
+\lambda(\mathbf{v_{1}})+(1-\lambda)(\mathbf{v_{2}}) &=& (\lambda,0)_{\Pi} \\
+&=&\lambda(1,0)_{\Pi} \\
+&=& \Phi[\lambda(1,0)_{\Pi}] \\
+&=& \lambda\Phi(1,0)_{\Pi} \\
+&=& \lambda(1,0)_{\Sigma} \\
+&=&(\lambda,0)_{\Sigma} \\
+&=& \lambda\Phi(\mathbf{v_{1}})+(1-\lambda)\Phi(\mathbf{v_{2}})
+\end{eqnarray*}
+Hence $\Phi$ is affine on $\R^{3}$ (except for the case when v1-v2 is vertical).
+\end{proof}
+
+\begin{Proposition}
+Let $\Phi$ be an affine map from $\R^{n}$ to $\R^{n}$. So $\Phi$ preserves affine combinations. Then the map $\phi$ defined by 
+\[
+\phi(x)=\Phi(x)-\Phi(0)
+\]
+is a linear map.
+
+\begin{proof}
+Let $\lambda \in \R$ and $x$ and $y \in \R^{n}$. Then 
+\begin{eqnarray*}
+\phi(\lambda x) &=& \Phi(\lambda x) - \Phi(0) \\
+&=& \Phi(\lambda x +(1-\lambda)0)-\Phi(0) \\
+&=& \lambda \Phi(x)+(1-\lambda)\Phi(0) -\Phi(0)
+\end{eqnarray*}
+\end{proof} 
+
+\end{Proposition}
+
+\section{Restriction obtained from preservation of connected cosets}
+
+\section{Restriction obtained from preservation of discrete cosets}
+
+\section{Summary}
+
+\chapter{Case of all upper triangular nilpotent Lie groups}
 
 \end{document}
