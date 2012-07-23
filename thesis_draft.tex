@@ -282,6 +282,7 @@ Let $\G$ be a Lie group. A subset $\mathcal{H}$ of $\G$ is called a Lie subgroup
 
 \begin{Definition}\label{Lie subalgebra}
 
+N.B. In this paper, the term "subalgebra" will be interchangeable with "Lie subalgebra"
 \end{Definition}
 
 \section{Homomorphisms}
@@ -667,8 +668,15 @@ So $f$ restricted to $\Q$ is the identity. In fact, $f$ is continuous because [.
 The same properties can be shown for the map $\psi$ on the y-axis. And then since every point in the plane is a projection of point on the x and y axes by horizontal and vertical lines, $\psi(x,y)=(x,y)$ for all $(x,y) \in \R^{2}$. Hence $\phi'_{o}\phi=\psi=\text{id}$ so $\phi=\phi'^{-1}$, which is a linear map. 
 \end{proof}
 
+\begin{Definition}\label{affine map}
+A map $\Phi: \R^{n} \longrightarrow \R^{n}$ is \emph{affine} if for all $\mathbf{v_{1}},\mathbf{v_{2}} \in \R^{n}$ and all $\lambda \in \R$ 
+\[
+\Phi [ \lambda \mathbf{v_{1}}+(1-\lambda) \mathbf{v_{2}}]= \lambda \Phi (\mathbf{v_{1}})+(1-\lambda) \Phi(\mathbf{v_{2}})
+\]
+\end{Definition}
+
 \begin{Proposition}
-Let $\Phi: \R^{3} \longrightarrow \R^{3}$ be such that $\Phi$ is bijective, sends lines to lines and vertical planes to vertical planes. Then $\Phi$ is an affine map, i.e. $$\Phi ( \lambda \mathbf{v_{1}}+(1-\lambda) \mathbf{v_{2}})= \lambda \Phi (\mathbf{v_{1}})+(1-\lambda) \Phi(\mathbf{v_{2}})$$
+Let $\Phi: \R^{3} \longrightarrow \R^{3}$ be such that $\Phi$ is bijective, sends lines to lines and vertical planes to vertical planes. Then $\Phi$ is an affine map. 
 \end{Proposition}  
 
 \begin{proof}
@@ -734,19 +742,130 @@ Let $\Phi$ be an affine map from $\R^{n}$ to $\R^{n}$. So $\Phi$ preserves affin
 \phi(x)=\Phi(x)-\Phi(0)
 \]
 is a linear map.
+\end{Proposition}
 
 \begin{proof}
 Let $\lambda \in \R$ and $x$ and $y \in \R^{n}$. Then 
 \begin{eqnarray*}
 \phi(\lambda x) &=& \Phi(\lambda x) - \Phi(0) \\
 &=& \Phi(\lambda x +(1-\lambda)0)-\Phi(0) \\
-&=& \lambda \Phi(x)+(1-\lambda)\Phi(0) -\Phi(0)
+&=& \lambda \Phi(x)+(1-\lambda)\Phi(0) -\Phi(0) \\
+&=& \lambda \Phi(x)-\lambda\Phi(0) \\
+&=& \lambda (\Phi(x)-\Phi(0)) \\
+&=& \lambda \phi(x) 
 \end{eqnarray*}
+
+and
+
+\begin{eqnarray*}
+\phi(x+y) &=& \Phi(x+y)-\Phi(0) \\
+&=& \Phi(\lambda x' + (1-\lambda)y') -\Phi(0) \\
+&=& \lambda \Phi( x') + (1-\lambda)\Phi(y') -\Phi(0) \\
+&=& \lambda \Phi(\frac{1}{\lambda} x) + (1-\lambda)\Phi(\frac{1}{1-\lambda} y') -\Phi(0) \\
+&=& \lambda (\Phi(\frac{1}{\lambda} x) -\Phi(0)) + (1-\lambda)(\Phi(\frac{1}{1-\lambda} y')-\Phi(0))  \\
+&=& \lambda (\phi(\frac{1}{\lambda} x) ) + (1-\lambda)(\phi(\frac{1}{1-\lambda} y'))  \\
+&=& \lambda \frac{1}{\lambda} \phi( x)  + (1-\lambda)\frac{1}{1-\lambda} \phi( y')  \\
+&=& \phi(x)+\phi(y)
+\end{eqnarray*}
+Hence $\phi$ is a linear map.
 \end{proof} 
 
-\end{Proposition}
+
 
 \section{Restriction obtained from preservation of connected cosets}
+This section completes the proof of Theorem 2.1.1. 
+Suppose that $\Phi: \G \longrightarrow \G$ is bijective and sends every coset of any Lie subgroup of $\G$ to some coset of some Lie subgroup of $\G$. Suppose $\phi$ is the corresponding induced map $\g \longrightarrow \g$. 
+
+Now consider the map $A:\g \longrightarrow \g$ defined by 
+\[
+A(x):= \phi(x)-\phi(0)
+\]
+Then since $A(0)=)$, A must send subalgebras of $\g$ to subalgebras of $\g$ bijectively (since every subalgebra contains $0$). What are these subalgebras?
+
+A subalgebra of $\g$ is a vector subspace which is closed under the Lie bracket. 
+\subsection{one-dimensional subalgebras}
+\begin{Proposition}
+All one-dimensional subspaces of $\g$ are subalgebras.
+\end{Proposition}
+
+\begin{proof}
+All one-dimensional subspaces are lines through the origin. Let $S$ be a one-dimensional subspace of $\g$. Then 
+\[
+S= \text{span}(X)
+\]
+for some $X=(x,y,z) \in \g$. Let $\lambda X$ and $\mu X$ be elements of $S$. Then 
+\begin{eqnarray*}
+[\lambda X,\mu X] &=& [(\lambda x, \lambda y, \lambda z), (\mu x, \mu y, \mu z)] \\
+&=& (0,0, \lambda x \mu y - \lambda y \mu x) \\
+&=& (0,0, \lambda  \mu xy - \lambda \mu xy) \\
+&=& (0,0,0) \in S
+\end{eqnarray*}
+Hence every one-dimensional subspace of $S$ is closed under the Lie bracket and is thus also a one-dimensional subalgebra. 
+\end{proof}
+
+\subsection{two-dimensional subalgebras}
+Let $Z$ denote the z-axis.
+The question is now whether all two-dimensional subspaces of $\g$ are also subalgebras. Two-dimensional subspaces of $\g$ are planes through the origin. So any subspace is the span of two linearly independent vectors in $\g$.
+Let $T= \text{span}(X ,Y)$ where $X=(x_{1},x_{2},x_{3})$ and $Y=(y_{1},y_{2},y_{3})$ are distinct elements of $\g$.
+
+Then  
+\begin{eqnarray*}
+  [X,Y] & \in T \\
+(0,0, x_{1}y_{2}-x_{2}y_{1}) & \in T
+\end{eqnarray*}
+   
+This restriction can be analysed in the following two distinct cases:
+
+\begin{enumerate}
+ \item $x_{1}y_{2}=x_{2}y_{1}$
+ \item $x_{1}y_{2}\neq x_{2}y_{1}$
+\end{enumerate}
+
+In case (1), 
+\[
+x_{1}y_{2}=x_{2}y_{1}
+\]
+First consider the sub-case in which $x_{1}=x_{2}=0$ Then it is not possible to have both $x_{2}=0$ and $y_{2}=0$ since this would make $X$ and $Y$ linearly dependent. So without loss of generality select $y_{2} \neq 0$. Then there exists $k \in \R$ such that 
+\[
+x_{2} = ky_{2}
+\]
+So 
+\[
+X-kY=(0,0,x_{3}-ky_{3}) \in T
+\]
+Note that $X-kY \neq 0$ since otherwise $X$ and $Y$ would be linearly dependent. So $T$ contains $\text{span}(0,0,x_{3}-ky_{3})=Z$, and hence $T$ is a vertical plane. 
+
+Now suppose at least one of $x_{1}$ and $y_{1}$ is non-zero. Without loss of generality suppose $y_{1} \neq 0$.
+Then there exists some $\lambda \in \R$ such that $x_{1} = \lambda y_{1}$. So
+
+\begin{eqnarray*}
+ \lambda y_{1}y_{2} &=& x_{2} y_{1}\\
+ \lambda y_{2} &=& x_{2}
+\end{eqnarray*}
+
+Hence
+\begin{eqnarray*}
+ X-\lambda Y & = & (x_{1},x_{2},x_{3})-(\lambda y_{1},\lambda y_{2},\lambda y_{3}) \\
+	     & = & (0,0,x_{3}-\lambda y_{3}) \\
+	     & \neq & 0
+\end{eqnarray*}
+since $X$ and $Y$ are linearly independent. 
+Therefore 
+\[
+Z=\text{span}(0,0,1)=\text{span}(0,0,x_{3}-\lambda y_{3}) \in T
+\]
+
+In the second case, $x_{1}y_{2}\neq x_{2}y_{1}$ so 
+\[
+\text{span}(0,0, x_{1}y_{2}- x_{2}y_{1})= Z \in T
+\]
+
+Hence any plane through the origin in $\g$ which is closed under the Lie bracket must contain the z-axis. In other words, all two-dimensional subalgebras of $\g$ are vertical planes through the origin.
+
+%-find all the one and two dimensional subalgebras of g. 
+%-describe the cosets
+%-use the previous Proposition to show the map is linear + translation
+%-use preservation of vertical planes to show that the linear portion of the %map takes on that slightly restricted form
 
 \section{Restriction obtained from preservation of discrete cosets}
 
