@@ -541,7 +541,10 @@ where $A=\begin{bmatrix}
 a & b & 0 \\
 c & d & 0 \\
 e & f & g
-\end{bmatrix}$ and $\bf{b} \in \g$
+\end{bmatrix}$,
+$ \det(A) \neq 0
+$
+and $\bf{b} \in \g$
 \end{Theorem}
 
 \begin{Theorem}
@@ -804,7 +807,7 @@ Hence every one-dimensional subspace of $S$ is closed under the Lie bracket and 
 \end{proof}
 
 \subsection{two-dimensional subalgebras}
-Let $Z$ denote the z-axis.
+Let $Z=\text{span}(0,0,1)$ denote the z-axis.
 The question is now whether all two-dimensional subspaces of $\g$ are also subalgebras. Two-dimensional subspaces of $\g$ are planes through the origin. So any subspace is the span of two linearly independent vectors in $\g$.
 Let $T= \text{span}(X ,Y)$ where $X=(x_{1},x_{2},x_{3})$ and $Y=(y_{1},y_{2},y_{3})$ are distinct elements of $\g$.
 
@@ -862,9 +865,53 @@ In the second case, $x_{1}y_{2}\neq x_{2}y_{1}$ so
 
 Hence any plane through the origin in $\g$ which is closed under the Lie bracket must contain the z-axis. In other words, all two-dimensional subalgebras of $\g$ are vertical planes through the origin.
 
-%-find all the one and two dimensional subalgebras of g. 
-%-describe the cosets
-%-use the previous Proposition to show the map is linear + translation
+\subsection{cosets}
+The cosets in $\g$ are either lines or vertical planes. Hence the bijective map $\phi$ sends lines to lines and vertical planes to vertical planes. Therefore by Proposition 2.2.3 $\phi$ is an affine map on the vector space $\g$, and hence by Proposition 2.2.4, 
+\[
+\phi(x)=Ax+\mathbf{b}
+\]
+for some linear map $A$ and some fixed vector $\mathbf{b}$. In other words, $\phi$ is a linear map composed with a translation. 
+
+\begin{proof}(of Theorem 2.1.1)
+%Need to explain why preservation of cosets in $\G$ implies preservation of cosets in $\g$. Then on to the proof of the matrix form
+Now, suppose $S$ and $T$ are distinct vertical planes through the origin in $\g$. So by bijectivity $A(S) \neq A(T)$ and $A(S \cup T)=A(S) \cup A(T)$. Hence 
+\[
+A(Z)=Z
+\]
+If $A$ is given by the matrix 
+$\begin{bmatrix}
+a & b & h \\
+c & d & i \\
+e & f & g
+\end{bmatrix}
+$, with $\det(A) \neq 0$ then 
+
+\[
+\begin{bmatrix}
+a & b & h \\
+c & d & i \\
+e & f & g
+\end{bmatrix} 
+\begin{bmatrix}
+0 \\ 0 \\ 1
+\end{bmatrix} =
+\begin{bmatrix}
+h \\ i \\ g
+\end{bmatrix} 
+\in Z
+\]
+Hence $h=i=0$ and 
+\[
+A=
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & g
+\end{bmatrix}
+\]
+and Theorem 2.1.1 is complete.
+\end{proof}
+
 %-use preservation of vertical planes to show that the linear portion of the %map takes on that slightly restricted form
 
 \section{Restriction obtained from preservation of discrete cosets}
