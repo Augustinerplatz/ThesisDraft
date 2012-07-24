@@ -14,6 +14,9 @@
 \newcommand{\G}{\mathcal{G}}
 %\newcommand{\H}{\mathcal{H}}
 \newcommand{\g}{\mathfrak{g}}
+\newcommand{\1}{\mathbf{e}_{1}}
+\newcommand{\2}{\mathbf{e}_{3}}
+\newcommand{\3}{\mathbf{e}_{3}}
 
 
 %% new environments
@@ -97,8 +100,10 @@
 Lie Groups are to be found in many different applications of mathematics as well as being central to many of the ideas in quantum physics. It is therefore very useful to know whether different Lie groups linked by a certain map are similar in structure, or whether a particular map identifies two Lie groups in a useful or sensible way. This is the idea of a rigidity theorem. If there is a map between two nilpotent Lie groups that preserves the cosets of subgroups (structures arising from the group law on a Lie group), just how much structure of the respective Lie groups does the map preserve? In this paper, the extra assumption of bijectivity will help to show the kind of similarity that exists. If a map is bijective then no information is 'lost' about the structures of the domain and codomain, when either the map or its inverse is applied. 
 This thesis is an attempt to demonstrate rigorously the extension of the rigidity theorem for the Heisenberg Group to all the nilpotent Lie groups. The proof involves arguments from a geometrical as well as algebraic perspective. 
 
+
+%begin chapter 1
 \chapter{Lie Groups, Lie Algebras and Homomorphisms}
-This chapter outlines the basics of the theory of Lie Groups and their relationship to Lie Algebras. It gives some examples of matrix Lie groups including the Heisenberg Group, and explains the use of the Baker-Campbell-Hausdorff Formula in transferring between a Lie Group and its corresponding Lie Algebra. 
+This chapter outlines the basics of the theory of Lie Groups and their relationship to Lie Algebras. It gives some examples of matrix Lie groups including the Heisenberg Group, and explains the use of the Baker-Campbell-Hausdorff Formula in comparing operations in a Lie Group with the operations in its corresponding Lie Algebra. 
 
 \section{Introduction}
 The theory of Lie Groups has evolved from the combination of several different disciplines in mathematics. Lie Group Theory combines the following ingredients: Group Theory from Algebra, Manifold Theory from Differential Geometry, and basic ideas from Topology. All of the Lie Groups mentioned in this paper will be matrix Lie groups. That is, they are matrix groups that are also $C^2$-manifolds. The idea of a rigidity theory in this context is to use structures that arise from the group law within the manifold to show that a weak similarity of these matrix Lie groups implies a strong similarity between them. This paper will prove the theorem for upper-triangular nilpotent matrix Lie groups (and solvable matrix Lie groups??).
@@ -167,12 +172,11 @@ The Heisenberg group, defined as follows, is a Lie group. This example forms the
 \]
 Inversion is given by 
 \[ (x,y,z)^{-1}= (-x, -y, -z+xy) \]
-As a matrix Lie group, the Heisenberg group can be represented as the group of all $ 3\times 3 $ upper triangular real unipotent
-matrices:
+As a matrix Lie group, the Heisenberg group can be represented as the group of all $ 3\times 3 $ upper triangular real matrices with $1$'s on the diagonal:
 \[
  \G= \left\{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \bigg| x,y, z \in \R \right\} 
 \]
-It is a closed subset of $\mathrm{GL}(n,\C)$ and is clearly closed under the operations of inversion and multiplication. Hence $\G$ is a matrix Lie group.
+It is topologically a closed subset of $\mathrm{GL}(n,\C)$ and is clearly closed under the operations of inversion and multiplication. Hence $\G$ is a matrix Lie group.
 \end{Example}
 
 Many of the important examples of matrix Lie groups are noncommutative groups. This makes the study of their structure in many 
@@ -228,7 +232,7 @@ The Lie algebra of the Heisenberg group, $$\G = \left\{ \begin{bmatrix} 1 & x & 
 \[
 \g= \left\{ \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix} \bigg| x,y,z \in \R \right\}
 \]
-and the exponential map $\exp$: $\g \longrightarrow \G$ is a bijection.
+and the exponential map $\exp$: $\g \longrightarrow \G$ is a bijection. 
 \end{Proposition}
 
 \begin{proof}
@@ -264,6 +268,14 @@ c &=& c'
 \end{eqnarray*}
 so $A=A'$.
 \end{proof}
+
+\begin{Definition}
+The elements of $\g$ are $3 \times 3$ upper-triangular nilpotent matrices, where a matrix $A$ is called \emph{nilpotent} if 
+\[
+A^{n}=\mathbf{0}
+\]
+for some positive integer $n$. Since the elements of $\g$ are nilpotent, the corresponding Lie group $\G$ is called a \emph{nilpotent Lie group}.
+\end{Definition}
 
 \subsection*{Notation}
 For the purpose of simplifying the notation of matrices in the Heisenberg group and in its Lie algebra, vector notation will sometimes be used. As defined above, an element of the Heisenberg group $\G$ will be denoted either by $ \begin{bmatrix} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{bmatrix} $ or equivalently $[a,b,c]$. Similarly, elements of the Lie algebra of the Heisenberg group will be denoted either by $\begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix}$ or $(x,y,z)$, or in some cases $\begin{bmatrix} x \\ y \\ z \end{bmatrix}$.
@@ -533,6 +545,9 @@ e^{X}e^{Y}=e^{X+Y+S}
 \]
 The series formula will be stated but not proved in this thesis. A full proof is given in ...
 
+
+
+%Begin chapter 2
 \chapter{Case for the Heisenberg Group}
 For this chapter the following notation will be used:
 \begin{Notation}
@@ -793,6 +808,8 @@ Hence $\phi$ is a linear map.
 This section completes the proof of Theorem 2.1.1. 
 Suppose that $\Phi: \G \longrightarrow \G$ is bijective and sends every coset of any Lie subgroup of $\G$ to some coset of some Lie subgroup of $\G$. Suppose $\phi$ is the corresponding induced map $\g \longrightarrow \g$. 
 
+
+
 Now consider the map $A:\g \longrightarrow \g$ defined by 
 \[
 A(x):= \phi(x)-\phi(0)
@@ -879,15 +896,126 @@ In the second case, $x_{1}y_{2}\neq x_{2}y_{1}$ so
 
 Hence any plane through the origin in $\g$ which is closed under the Lie bracket must contain the z-axis. In other words, all two-dimensional subalgebras of $\g$ are vertical planes through the origin.
 
-\subsection{cosets}
+
+%Using this propostion will mean changing the way the rest of this result is argued
+%Need to explain why preservation of cosets in $\G$ implies preservation of cosets in $\g$.
+\begin{Proposition}
+Let $C$ be a coset of some subgroup $S$ of $\G$. Then $C$ is the image of a translate of a subalgebra of $\g$ under the exponential map. In other words, preserving cosets of Lie subgroups in $\G$ corresponds to preserving translates of subalgebras of $\g$.
+\end{Proposition}
+
+\begin{proof}
+Let $X=(x,y,z) \in \g$ and so that $S=\{ \lambda X | \lambda \in \R \}$ is a one-dimensional subalgebra of $\g$. $e^{S}$ is the corresponding Lie subgroup of $\G$. i.e.
+\begin{eqnarray*}
+e^{S} &=& \{ e^{\lambda X}| \lambda \in \R \} \\
+&=& \left\lbrace \begin{bmatrix}
+1 & \lambda x & \lambda z + \frac{1}{2} \lambda^{2}xy \\
+0 & 1 & \lambda y \\
+0 & 0 & 1
+\end{bmatrix} \bigg| \lambda \in \R \right\rbrace
+\end{eqnarray*}
+Let C be the coset of $e^{S}$ given by right translation by $e^{P}$, for a fixed element $P = \begin{bmatrix}
+0 & p & r \\
+0 & 0 & q \\
+0 & 0 & 0
+\end{bmatrix} \in \g$. Then 
+\begin{eqnarray*}
+C &=& \{e^{\lambda X}e^{P}|\lambda \in \R \} \\
+&=& \{ \exp( \lambda X + P + \frac{1}{2}[\lambda X,P]) | \lambda \in \R \} \\
+&=& \left\lbrace \exp \left( 
+\begin{bmatrix}
+0 & \lambda x & \lambda z \\
+0 & 0 & \lambda y \\
+0 & 0 & 0
+\end{bmatrix} + 
+\begin{bmatrix}
+0 & p & r \\
+0 & 0 & q \\
+0 & 0 & 0
+\end{bmatrix} + 
+\frac{1}{2}
+\begin{bmatrix}
+0 & 0 & \lambda xq - \lambda yp \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{bmatrix}
+\right)
+ \bigg| \lambda \in \R \right\rbrace \\
+&=& \left\lbrace \exp
+\begin{bmatrix}
+0 & \lambda x + p & \lambda (z+\frac{1}{2}(xq-yp))+r \\
+0 & 0 & \lambda y +q \\
+0 & 0 & 0
+\end{bmatrix}
+\bigg| \lambda \in \R \right\rbrace
+\end{eqnarray*}
+Now let $L \subseteq \g$ be the image of $C$ under the logarithm map.
+
+\begin{eqnarray*}
+L &=& \left\lbrace
+\begin{bmatrix}
+0 & \lambda x + p & \lambda (z+\frac{1}{2}(xq-yp))+r \\
+0 & 0 & \lambda y +q \\
+0 & 0 & 0
+\end{bmatrix}
+\bigg| \lambda \in \R \right\rbrace \\
+&=& \left\lbrace \lambda
+\begin{bmatrix}
+0 &  x & z+\frac{1}{2}(xq-yp) \\
+0 & 0 & y \\
+0 & 0 & 0
+\end{bmatrix} +
+\begin{bmatrix}
+0 & p & r \\
+0 & 0 & q \\
+0 & 0 & 0
+\end{bmatrix}
+\bigg| \lambda \in \R \right\rbrace \\
+&=& \{ \lambda (x,y,z+\frac{1}{2}(xq-yp))+P | \lambda \in \R \}
+\end{eqnarray*}
+
+So the one-dimensional coset $C$ corresponds to a line $L$ in $\g$ which is a translate of a one-dimensional subalgebra, $\text{span}\{(x,y,z+\frac{1}{2}(xq-yp))\}$ by the element $P$. Note that this subalgebra is not the same as the subalgebra corresponding to the Lie subgroup in $\G$ from which the coset $C$ was originally generated. 
+
+A similar argument will now demonstrate that two-dimensional cosets in $\G$ do indeed correspond to vertical planes in $\g$.
+Suppose $X=(x,y,z) \in \g$ is not vertical. So there is a vertical plane $\mathbf{\pi}$ given by 
+\[
+\mathbf{\pi} = \{\lambda X + \mu \3 \;\;\;|\;\;\; \lambda,\mu \in \R \}
+\]
+Then the corresponding Lie subgroup of $\mathbf{\pi}$ is 
+\[
+\Pi = \{\exp(\lambda X + \mu \3) \;\;\;|\;\;\; \lambda,\mu \in \R \}
+\]
+A coset of this Lie subgroup is $C$ given by right translation by $e^{P}$ as before. So 
+\begin{eqnarray*}
+C &=& \{\exp(\lambda X + \mu \3)\exp (P) \;\;\;|\;\;\; \lambda,\mu \in \R \} \\
+&=& \{ \exp(\lambda x, \lambda y, \lambda z +\mu)\exp(p,q,r)\;\;\;|\;\;\; \lambda,\mu \in \R \} \;\;\;\textit{applying the CBH Formula:}\\
+&=&  \{ \exp((\lambda x, \lambda y, \lambda z +\mu)+(p,q,r)+\frac{1}{2}[(\lambda x, \lambda y, \lambda z +\mu),(p,q,r)])\;\;\;|\;\;\; \lambda,\mu \in \R \} \\
+&=& \{ \exp ((\lambda x+p, \lambda y+q, \lambda z +\mu +r)+ \frac{1}{2}(0,0,\lambda xq -\lambda yp))\;\;\;|\;\;\; \lambda,\mu \in \R \} \\
+&=& \{ \exp (\lambda x+p, \lambda y+q, \lambda (z+\frac{1}{2}(xq-yp)) +\mu +r)\;\;\;|\;\;\; \lambda,\mu \in \R \} \\
+&=& \{ \exp [\lambda( x, y, z+\frac{1}{2}(xq-yp))+\mu(0,0,1)+(p,q,r)]\;\;\;|\;\;\; \lambda,\mu \in \R \}
+\end{eqnarray*}
+
+Now suppose that $\pi'$ is the image of this coset $C$ under the logarithm map. So 
+
+\begin{eqnarray*}
+\pi' &=& \{ \lambda( x, y, z+\frac{1}{2}(xq-yp))+\mu(0,0,1)+(p,q,r) \;\;\;|\;\;\; \lambda,\mu \in \R \} \\
+&=& P+\text{span}\{Y,\3 \}
+\end{eqnarray*}
+where $Y=X+[X,P]=( x, y, z+\frac{1}{2}(xq-yp))$. \\
+So $\pi'$ is yet another vertical plane in $\g$. Note however that unless $[X,P]=0$, $\pi'$ is not the same as $\pi$. Most importantly, if a bijective map from $\G$ to $\G$ preserves cosets, then the corresponding map from $\g$ to $\g$ preserves lines and vertical planes (translates of subalgebras).
+\end{proof}
+
+% may have to alter this to suit the real assumptions of the problem, ie that may need to get rid of translation bit in the group before moving to the algebra.
+\subsection{Cosets}
 The cosets in $\g$ are either lines or vertical planes. Hence the bijective map $\phi$ sends lines to lines and vertical planes to vertical planes. Therefore by Proposition 2.2.3 $\phi$ is an affine map on the vector space $\g$, and hence by Proposition 2.2.4, 
 \[
 \phi(x)=Ax+\mathbf{b}
 \]
 for some linear map $A$ and some fixed vector $\mathbf{b}$. In other words, $\phi$ is a linear map composed with a translation. 
 
+%NB move the statement of theorem 2.1.1 to this position, just state it more casually in the introduction to the chapter so that the aim is clear.
 \begin{proof}(of Theorem 2.1.1)
-%Need to explain why preservation of cosets in $\G$ implies preservation of cosets in $\g$. Then on to the proof of the matrix form
+
+%-use preservation of vertical planes to show that the linear portion of the %map takes on that slightly restricted form
 Now, suppose $S$ and $T$ are distinct vertical planes through the origin in $\g$. So by bijectivity $A(S) \neq A(T)$ and $A(S \cup T)=A(S) \cup A(T)$. Hence 
 \[
 A(Z)=Z
@@ -926,7 +1054,7 @@ e & f & g
 and Theorem 2.1.1 is complete.
 \end{proof}
 
-%-use preservation of vertical planes to show that the linear portion of the %map takes on that slightly restricted form
+
 
 \section{Restriction obtained from preservation of discrete cosets}
 
