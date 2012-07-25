@@ -392,6 +392,7 @@ and
 Hence $\phi$ is a Lie algebra homomorphism.
 \end{Example}
 
+%Baker Campbell Hausdorff Formula
 \section{The Baker-Campbell-Hausdorff Formula}
 
 Since we wish to simplify the study of Lie group homomorphisms by studying properties of the corresponding Lie algebra homomorphisms, we need a way to relate the operations on these objects directly. In the case of the unit circle $\mathrm{S}^{1}$, the properties of the exponential function on real numbers give the simple correspondence between addition on the real line, and multiplication of elements of the unit circle in the complex plane. For noncommutative groups this simple relationship does not hold. However, there is a more complicated way of relating the structure of Lie algebras to their corresponding Lie groups. 
@@ -452,6 +453,7 @@ Let $\G$ be a matrix Lie group with Lie algebra $\g$. If the commutivity propert
 \[
 e^{X}e^{Y}=e^{X+Y+\frac{1}{2}[X,Y]}
 \]
+This is a special case of the Baker-Campbell-Hausdorff Formula (which will sometimes be referred to as the BCF Formula in this project)
 \end{Theorem}
 
 \begin{proof}
@@ -680,22 +682,60 @@ f(n) &=& f(1+1+ \cdots +1) \\
 Also 
 \begin{eqnarray*}
 1 &=&f(1) \\
- &=& f(n.\frac{1}{n}) \\
-&=& f(n)f(\frac{1}{n}) \\
-&=& nf(\frac{1}{n})
+ &=& f\left( n \cdot \frac{1}{n} \right) \\
+&=& f(n)f\left( \frac{1}{n} \right) \\
+&=& nf\left( \frac{1}{n} \right)
 \end{eqnarray*}
 Hence 
 \[
-f(\frac{1}{n})=\frac{1}{n}
+f \left( \frac{1}{n} \right)=\frac{1}{n}
 \]
 Now let $m$ and $n$ be integers. So 
 \begin{eqnarray*}
-f(\frac{m}{n})&=&f(m.\frac{1}{n})\\
-&=& f(m)f(\frac{1}{n}) \\
-&=& m\frac{1}{n} \\
+f \left(\frac{m}{n}\right)&=&f\left(m \cdot \frac{1}{n}\right)\\
+&=& f(m)f\left(\frac{1}{n}\right) \\
+&=& m\cdot \frac{1}{n} \\
 &=& \frac{m}{n}
 \end{eqnarray*}
-So $f$ restricted to $\Q$ is the identity. In fact, $f$ is continuous because [...] require a proof. Hence since every real number is a limit of a sequence of rational numbers, and $f$ is continuous, $f$ is the identity map $\R \longrightarrow \R$. 
+So $f$ restricted to $\Q$ is the identity. \
+In fact, $f$ is continuous.
+\begin{proof}
+$f$ sends positive numbers to positive numbers and negative numbers to negative numbers since if $a>0$,
+\[
+f(a)=f(\sqrt{a}\sqrt{a})=f(\sqrt{a})f(\sqrt{a})=f(\sqrt{a})^{2}>0
+\]
+and by bijectivity if $b<0$, $f(b)<0$.\
+Let $\epsilon >0$ and fix an element $y \in \R$. Suppose $|x-y|<\epsilon$. Now if $x<y$ then $0<x-y<\epsilon$. Insert a rational number $z$ between $x-y$ and $\epsilon$ so that
+\[
+0<x-y<z<\epsilon
+\]
+Now
+\[
+f(z-(x-y))=f(z)-f(x-y)=z-f(x-y)>0
+\]
+since $z-(x-y)>0$ and $f(z)=z$. Also
+\[
+f(x-y)>0
+\]
+since $x-y>0$. So $0<f(x-y)<z<\epsilon$, so
+\[
+0<f(x)-f(y)<\epsilon
+\]
+On the other hand, if $x \geq y $ then $-\epsilon<x-y \leq 0$. Insert a rational number $z$ between $-\epsilon$ and $x-y$ so that $-\epsilon<z<x-y \leq 0$. Then 
+\[
+f(z-(x-y))=f(z)-f(x-y)=z-f(x-y)<0
+\]
+since $z-(x-y)<0$ and $f(z)=z$. Also
+\[
+f(x-y)\leq 0
+\]
+since $x-y \leq 0$. So $-\epsilon<z<f(x-y)\leq 0$, so
+\[
+-\epsilon < f(x)-f(y) \leq 0
+\]
+In both cases $|f(x)-f(y)|<\epsilon$. Hence the function $f$ is continuous
+\end{proof}
+Since every real number is a limit of a sequence of rational numbers, and $f$ is continuous, $f$ must be the identity map $\R \longrightarrow \R$. 
 
 The same properties can be shown for the map $\psi$ on the y-axis. And then since every point in the plane is a projection of point on the x and y axes by horizontal and vertical lines, $\psi(x,y)=(x,y)$ for all $(x,y) \in \R^{2}$. Hence $\phi'_{o}\phi=\psi=\text{id}$ so $\phi=\phi'^{-1}$, which is a linear map. 
 \end{proof}
@@ -1053,8 +1093,6 @@ e & f & g
 \]
 and Theorem 2.1.1 is complete.
 \end{proof}
-
-
 
 \section{Restriction obtained from preservation of discrete cosets}
 
