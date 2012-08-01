@@ -83,7 +83,7 @@
                         \setlength{\topsep}{\smallskipamount}} }
                         {\end{list}}
 
-\title{Rigidity of Coset-preserving Maps on Nilpotent Lie Groups}
+\title{Rigidity of Coset-preserving Maps on Upper-Triangular Nilpotent Lie Groups}
 
 \authornameonly{Richard Tierney}
 
@@ -344,6 +344,13 @@ Let $\G$ and $\mathcal{H}$ be Lie groups. Then a function $f: \G \longrightarrow
 f(xy)=f(y)f(x) \;\;\;\;\; \forall x,y \in \G
 \]
 If on top of this $f$ is a bijection, then it is called a \emph{Lie group anti-isomorphism}.
+\end{Definition}
+
+\begin{Definition}\label{Lie algebra anti-homomorphism}
+Let $\g$ and $\mathfrak{h}$ be Lie algebras. A linear transformation $T: \g \longrightarrow \mathfrak{h}$ is a Lie algebra anti-homomorphism if in addition to the linearity properties,  
+\[
+T[A,B] = -[T(A), T(B)] \; \;\;\;\;\;\;\;\; \forall A,B \in \g
+\]
 \end{Definition}
 
 \begin{Theorem}\label{Homomorphisms Correspondence}
@@ -854,7 +861,7 @@ Now consider the map $A:\g \longrightarrow \g$ defined by
 \[
 A(x):= \phi(x)-\phi(0)
 \]
-Then since $A(0)=)$, A must send subalgebras of $\g$ to subalgebras of $\g$ bijectively (since every subalgebra contains $0$). What are these subalgebras?
+Then since $A(0)=0$, A must send subalgebras of $\g$ to subalgebras of $\g$ bijectively (since every subalgebra contains $0$). What are these subalgebras?
 
 A subalgebra of $\g$ is a vector subspace which is closed under the Lie bracket. 
 \subsection{one-dimensional subalgebras}
@@ -1095,8 +1102,338 @@ and Theorem 2.1.1 is complete.
 \end{proof}
 
 \section{Restriction obtained from preservation of discrete cosets}
+Without assuming that the map preserves discrete cosets of $G$, this restriction may be the strongest one that can be ascertained. However, by assuming the map $\Phi$ also sends cosets of discrete subgroups to cosets of discrete subgroups, stronger restrictions may be obtained. Note that discrete subgroups are not Lie groups. They are not locally homeomorphic to $\R^{n}$. 
+
+Consider the elements $E_{1}=[1,0,0]$, $E_{2}=[0,1,0]$ and $E_{3}=[0,0,1]$ of $\G$. Their images under the logarithm map are $e_{1}=(1,0,0)$, $e_{2}=(0,1,0)$ and $e_{3}=(0,0,1)$ in $\g$.\
+Now
+\begin{eqnarray*}
+Ae_{1} &=& (a,c,e) \\
+Ae_{2} &=& (b,d,f) \\
+Ae_{3} &=& (0,0,g)
+\end{eqnarray*}
+Since $e_{1}$ and $e_{2}$ lie in different two-dimensional subalgebras of $\g$, their images under $A$ must lie in different two-dimensional subalgebras. [picture]This means that the projected vectors $(a,c)$ and $(b,d)$ are linearly independent in $\R^{2}$ so 
+\begin{eqnarray*}
+\frac{a}{b} &\neq & \frac{c}{d} \\
+ad &\neq & bc\\
+ad-bc &\neq & 0 
+\end{eqnarray*} Let $\Delta = ad-bc$.
+Now consider the linear map $\beta:\g \longrightarrow \g$ given in matrix form by 
+\begin{eqnarray*}
+\beta &=& \begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & \Delta
+\end{bmatrix}^{-1} \\
+&=& \begin{bmatrix}
+\frac{d}{\Delta} & \frac{-b}{\Delta} & 0 \\
+\frac{-c}{\Delta} & \frac{a}{\Delta} & 0 \\
+\frac{cf-ed}{\Delta^{2}} & \frac{eb-af}{\Delta^{2}} & \frac{1}{\Delta}
+\end{bmatrix}
+\end{eqnarray*}
+
+Now define a new map $\tau: \g \longrightarrow \g$ as the composition of $\phi$ and $\beta$. So 
+\begin{eqnarray*}
+\tau &=& \beta_{o} \phi \\
+&=& \begin{bmatrix}
+\frac{d}{\Delta} & \frac{-b}{\Delta} & 0 \\
+\frac{-c}{\Delta} & \frac{a}{\Delta} & 0 \\
+\frac{cf-ed}{\Delta^{2}} & \frac{eb-af}{\Delta^{2}} & \frac{1}{\Delta}
+\end{bmatrix}
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & g
+\end{bmatrix} \\
+&=& 
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & g/\Delta
+\end{bmatrix}
+\end{eqnarray*}
+
+Let the corresponding bijective maps, $B$ and $T$ from $\G$ to $\G$ be given by
+\begin{eqnarray*}
+B(e^{x}) &=& e^{\beta(x)} \\
+T(e^{x}) &=& e^{\tau (x)} \\
+& & \forall x \in \g
+\end{eqnarray*}
+
+\begin{Proposition}
+If $\langle E_{1},E_{2} \rangle$ denotes the smallest subgroup of $\G$ containing the elements $E_{1}$ and $E_{2}$, then 
+\[
+\langle E_{1},E_{2} \rangle = 
+\left\lbrace
+\begin{bmatrix}
+1 & x & z \\
+0 & 1 & y \\
+0 & 0 & 1
+\end{bmatrix} \bigg|x,y,z \in \Z
+\right\rbrace (\text{denote this set}\;\G_{int})
+\]
+\end{Proposition}
+
+\begin{proof}
+Note that 
+\begin{eqnarray*}
+E_{3}=[0,0,1]&=&
+\begin{bmatrix}
+1 & 1 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 1 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 & -1 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & -1 \\
+0 & 0 & 1
+\end{bmatrix}
+ \\
+&=& E_{1}E_{2}E_{1}^{-1}E_{2}^{-1}
+\end{eqnarray*}
+Take an element from $\G_{int}$, $[x,y,z]$, where $x$, $y$ and $z$ are integers. Then 
+\begin{eqnarray*}
+[x,y,z] &=&[x,y,0][0,0,z-xy] \\
+&=& [x,0,0][0,y,0][0,0,z-xy] \\
+&=& E_{1}^{x}E_{2}^{y}E_{3}^{z-xy}
+\end{eqnarray*}
+So $\G_{int} \in \langle E_{1},E_{2} \rangle $. Conversely any element of $\langle E_{1},E_{2} \rangle$ contains only integer entries since multiplying integers or taking their negatives gives integers. So $\langle E_{1},E_{2} \rangle \in \G_{int}$. Hence $\langle E_{1},E_{2} \rangle=\G_{int}$.
+\end{proof}
+
+\begin{Lemma}
+$T(\G_{int})=\G_{int}$. 
+\end{Lemma}
+
+\begin{proof}
+Note the following:
+\begin{eqnarray*}
+T(E_{1})= e^{\tau (e_{1})} &=& e^{e_{1}} = E_{1} \\
+T(E_{2})= e^{\tau (e_{2})} &=& e^{e_{2}} = E_{2} \\
+T^{-1}(E_{1})= e^{\tau^{-1} (e_{1})} &=& e^{e_{1}} = E_{1} \\
+T^{-1}(E_{2})= e^{\tau^{-1} (e_{2})} &=& e^{e_{2}} = E_{2} 
+\end{eqnarray*}
+
+Consider also the following fact. For $X$ and $Y$ in $\G$, $T( \langle X,Y \rangle )$ is a subgroup, which contains $T(X)$ and $T(Y)$ so by minimality, $\langle T(X),T(Y) \rangle \subseteq T( \langle X,Y \rangle )$
+Hence
+\begin{eqnarray*}
+\langle E_{1},E_{2} \rangle = \langle T(E_{1}),T(E_{2}) \rangle &\subseteq & T( \langle E_{1},E_{2} \rangle) \\
+\langle E_{1},E_{2} \rangle = \langle T^{-1}(E_{1}),T^{-1}(E_{2}) \rangle & \subseteq & T^{-1}( \langle E_{1},E_{2} \rangle) \\
+\implies T( \langle E_{1},E_{2} \rangle) & \subseteq & T(T^{-1}( \langle E_{1},E_{2} \rangle))\\
+&=&\langle E_{1},E_{2} \rangle
+\end{eqnarray*}
+and hence 
+\[
+T( \langle E_{1},E_{2} \rangle)= \langle E_{1},E_{2}\rangle
+\]
+giving the result.
+\end{proof}
+
+We now need to consider what happens to the unit vector $(0,0,1)=e_{3}$ in $\g$ by considering what happens to $[0,0,1]=E_{3}=\exp(e_{3})$ in the group.
+
+\[
+T(E_{3})= \exp(\tau (e_{3}))=\exp(0,0,\frac{g}{\Delta})=[0,0,\frac{g}{\Delta}]
+\]
+$T$ maps the centre of $\G$, $Z$ to itself (as do $B$ and $\Phi$) since 
+\[
+T[0,0,z]= \exp(\tau(0,0,z))= \exp(0,0,\frac{gz}{\Delta})=[0,0,\frac{gz}{\Delta}] \in Z
+\]. So combining this result with the previous Lemma,
+\[
+T( Z \cap \G_{int})=Z \cap \G_{int}
+\]
+and hence 
+\begin{eqnarray*}
+T(E_{3}) &\in & Z \cap \G_{int} \\
+\left[ 0,0,\frac{g}{\Delta} \right] &\in & Z \cap \G_{int} \\
+\implies \frac{g}{\Delta} &\in & \Z
+\end{eqnarray*}
+
+Now we move into the Lie algebra to use the linearity properties of $\tau$.
+Let 
+\begin{eqnarray*}
+D &=& \left\lbrace (0,0,m)\; \big| \;\; m \in \Z \right\rbrace \subseteq \g \\
+\exp (D) &=& \left\lbrace [0,0,m] \; \big| \;\; m \in \Z \right\rbrace \subseteq \G \\
+&=& Z \cap \G_{int}
+\end{eqnarray*}
+
+Now consider the image of this set of integer points on the z-axis under $\tau$:
+\begin{eqnarray*}
+\tau(D)&=& \log(\exp (\tau(D))) \\
+&=& \log T(\exp (D)) \\
+&=& \log T(Z \cap \G_{int}) \\
+&=& \log (Z \cap \G_{int}) \\
+&=& \log \exp (D) \\
+&=& D
+\end{eqnarray*}
+So $\tau$ is a bijection when restricted to $D$. Linearity of $\tau$ gives the following for any integer $n$.
+\begin{eqnarray*}
+\tau (0,0,n) &=& n \tau (0,0,1) \\
+&=& n\left(0,0, \frac{g}{\Delta}\right) \\
+&=& \left(0,0, n \frac{g}{\Delta}\right)
+\end{eqnarray*}
+so $g/\Delta \in \Z$. But then considering the surjectivity of $\tau$ on $D$, $e_{1}$ must be the image of some element of $D$ under $\tau$. In other words $(0,0,1)=\tau(0,0,n)$ for some $n \in \Z$ but from the previous result this gives 
+\[
+(0,0,1)=\left(0,0, n\left(\frac{g}{\Delta}\right)\right)
+\]
+where $n$ and $g/\Delta$ are both integers. Hence $n \left( \frac{g}{\Delta}\right)=1$ so 
+\[
+\frac{g}{\Delta}= \pm 1
+\]
+which gives a very important result:
+\[
+g=\pm \Delta
+\]
+
+\begin{Proposition}
+$\Phi$ is a Lie group homomorphism $\iff$ $\phi$ is a Lie algebra homomorphism, and $\Phi$ is a Lie group anti-homomorphism $\iff$ $\phi$ is a Lie algebra anti-homomorphism
+\end{Proposition}
+
+\begin{proof}
+Suppose $\phi$ is a Lie algebra homomorphism. So $\phi [x,y]=[\phi(x),\phi(y)]$ for all $x$ and $y$ in $\g$. Suppose $X=\exp(x)$ and $Y=\exp(y)$. Then
+\begin{eqnarray*}
+\Phi(XY) &=& \Phi( \exp (x+y+\frac{1}{2}[x,y])) \\
+&=& \exp( \phi(x+y+\frac{1}{2}[x,y])) \\
+&=& \exp( \phi(x)+\phi(y) +\frac{1}{2} \phi[x,y])\;\;\; \text{(since $\phi$ is linear)} \\
+&=& \exp ( \phi(x)+\phi(y) +\frac{1}{2} [\phi(x),\phi(y)]) \\
+&=& \exp( \phi (x))\exp(\phi(y))\\
+&=& \Phi(\exp(x))\Phi(\exp(y))\\
+&=& \Phi(X)\Phi(Y)
+\end{eqnarray*}
+
+On the other hand, supposing $\phi [x,y]=-[\phi(x),\phi(y)]$,
+\begin{eqnarray*}
+\Phi(XY) &=& \Phi( \exp (x+y+\frac{1}{2}[x,y])) \\
+&=& \exp( \phi(x+y+\frac{1}{2}[x,y])) \\
+&=& \exp( \phi(x)+\phi(y) +\frac{1}{2} \phi[x,y])\;\;\; \text{(since $\phi$ is linear)} \\
+&=& \exp ( \phi(x)+\phi(y) -\frac{1}{2} [\phi(x),\phi(y)]) \\
+&=& \exp ( \phi(y)+\phi(x) +\frac{1}{2} [\phi(y),\phi(x)]) \\
+&=& \exp( \phi (y))\exp(\phi(x))\\
+&=& \Phi(\exp(y))\Phi(\exp(x))\\
+&=& \Phi(Y)\Phi(X)
+\end{eqnarray*}
+\end{proof}
+
+It remains to be shown that the two possibilities $g=\Delta$ and $g=-\Delta$ correspond to $\phi$ being a Lie algebra homomorphism or anti-homomorphism.
+
+\begin{Proposition}
+If $g=\Delta$, $\phi$ is a Lie algebra homomorphism.
+\end{Proposition}
+
+\begin{proof}
+\[
+\phi = 
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & \Delta
+\end{bmatrix}
+\]
+Let $x=(x_{1},x_{2},x_{3})$ and $y=(y_{1},y_{2},y_{3})$ be any two elements of $\g$. Then $[x,y]=(0,0,x_{1}y_{2}-x_{2}y_{1}$. 
+\begin{eqnarray*}
+[\phi(x),\phi(y)] &=& \left[
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & \Delta
+\end{bmatrix} 
+\begin{bmatrix}
+x_{1} \\ x_{2} \\ x_{3}
+\end{bmatrix}
+,
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & \Delta
+\end{bmatrix} 
+\begin{bmatrix}
+y_{1} \\ y_{2} \\ y_{3}
+\end{bmatrix}
+\right] \\
+&=& \left[
+\begin{bmatrix}
+ax_{1}+bx_{2} \\ cx_{1}+dx_{2} \\ ex_{1}+fx_{2} + \Delta x_{3}
+\end{bmatrix}
+,
+\begin{bmatrix}
+ay_{1}+by_{2} \\ cy_{1}+dy_{2} \\ ey_{1}+fy_{2} + \Delta y_{3}
+\end{bmatrix}
+\right] \\
+&=& (0,0,(ax_{1}+bx_{2})(cy_{1}+dy_{2})-(ay_{1}+by_{2})(cx_{1}+dx_{2})) \\
+&=& (0,0,acx_{1}y_{1} - acx_{1}y_{1} + bdx_{2}y_{2} - bdx_{2}y_{2} + adx_{1}y_{2} + bcx_{2}y_{1} -adx_{2}y_{1} -bcx_{1}y_{2} ) \\
+&=& (0,0, adx_{1}y_{2}  -adx_{2}y_{1}+ bcx_{2}y_{1} -bcx_{1}y_{2} ) \\
+&=& (0,0,ad(x_{1}y_{2}  -x_{2}y_{1})+ bc(x_{2}y_{1} -x_{1}y_{2})) \\
+&=& (0,0,(ad-bc)(x_{1}y_{2}  -x_{2}y_{1})) \\
+&=& (0,0,\Delta(x_{1}y_{2}-x_{2}y_{1})) \\
+&=& \phi(0,0,x_{1}y_{2}-x_{2}y_{1}) \\
+&=& \phi[x,y] 
+\end{eqnarray*}
+\end{proof}
+
+\begin{Proposition}
+If $g=-\Delta$, $\phi$ is a Lie algebra anti-homomorphism.
+\end{Proposition}
+
+\begin{proof}
+\[
+\phi = 
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & -\Delta
+\end{bmatrix}
+\]
+Let $x=(x_{1},x_{2},x_{3})$ and $y=(y_{1},y_{2},y_{3})$ be any two elements of $\g$. Then $[x,y]=(0,0,x_{1}y_{2}-x_{2}y_{1}$. 
+\begin{eqnarray*}
+[\phi(x),\phi(y)] &=& \left[
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & -\Delta
+\end{bmatrix} 
+\begin{bmatrix}
+x_{1} \\ x_{2} \\ x_{3}
+\end{bmatrix}
+,
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & -\Delta
+\end{bmatrix} 
+\begin{bmatrix}
+y_{1} \\ y_{2} \\ y_{3}
+\end{bmatrix}
+\right] \\
+&=& \left[
+\begin{bmatrix}
+ax_{1}+bx_{2} \\ cx_{1}+dx_{2} \\ ex_{1}+fx_{2} - \Delta x_{3}
+\end{bmatrix}
+,
+\begin{bmatrix}
+ay_{1}+by_{2} \\ cy_{1}+dy_{2} \\ ey_{1}+fy_{2} - \Delta y_{3}
+\end{bmatrix}
+\right] \\
+&=& (0,0,(ax_{1}+bx_{2})(cy_{1}+dy_{2})-(ay_{1}+by_{2})(cx_{1}+dx_{2})) \\
+&=& (0,0,acx_{1}y_{1} - acx_{1}y_{1} + bdx_{2}y_{2} - bdx_{2}y_{2} + adx_{1}y_{2} + bcx_{2}y_{1} -adx_{2}y_{1} -bcx_{1}y_{2} ) \\
+&=& (0,0, adx_{1}y_{2}  -adx_{2}y_{1}+ bcx_{2}y_{1} -bcx_{1}y_{2} ) \\
+&=& (0,0,ad(x_{1}y_{2}  -x_{2}y_{1})+ bc(x_{2}y_{1} -x_{1}y_{2})) \\
+&=& (0,0,(ad-bc)(x_{1}y_{2}  -x_{2}y_{1})) \\
+&=& (0,0,\Delta(x_{1}y_{2}-x_{2}y_{1})) \\
+&=& -\phi(0,0,x_{1}y_{2}-x_{2}y_{1}) \\
+&=& -\phi[x,y] 
+\end{eqnarray*}
+\end{proof}
+
 
 \section{Summary}
+
 
 \chapter{Case of all upper triangular nilpotent Lie groups}
 
