@@ -236,7 +236,7 @@ and the exponential map $\exp$: $\g \longrightarrow \G$ is a bijection.
 \end{Proposition}
 
 \begin{proof}
-It will be shown that $im(\exp) \in \G$, $\G \in im(\exp)$ and that $\exp$ is injective. 
+It will be shown that $im(\exp) \subseteq \G$, $\G \subseteq im(\exp)$ and that $\exp$ is injective. 
 Let $x$, $y$ and $z$ be real numbers and note the following: 
 \[
 \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix}^2=\begin{bmatrix} 0 & 0 & xy \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}
@@ -249,12 +249,12 @@ Now,
  \exp \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix} &=& \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} + \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix}+ \frac{1}{2}\begin{bmatrix} 0 & 0 & xy \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix} \\
 &=& \begin{bmatrix} 1 & x & z+\frac{1}{2}xy \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \\
 &\in & \G
-\end{eqnarray*} so $ im(\exp) \in \G$.
+\end{eqnarray*} so $ im(\exp) \subseteq \G$.
 Now suppose $a,b,c \in \R$ so $\begin{bmatrix} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{bmatrix} \in \G$. Then 
 \[ 
 \exp  \begin{bmatrix} 0 & a & c-\frac{1}{2}ab \\ 0 & 0 & b \\ 0 & 0 & 0 \end{bmatrix} = \begin{bmatrix} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{bmatrix}
 \]
-so $\G \in im(\exp)$.
+so $\G \subseteq im(\exp)$.
 
 Suppose that $A=\begin{bmatrix} 0 & a & c \\ 0 & 0 & b \\ 0 & 0 & 0 \end{bmatrix}$ and $A'=\begin{bmatrix} 0 & a' & c' \\ 0 & 0 & b' \\ 0 & 0 & 0 \end{bmatrix}$ are in $\g$ and that $\exp{A}=\exp{A'}$. Then 
 \[
@@ -565,10 +565,11 @@ $$\g=\text{the Lie algebra of the Heisenberg group}$$
 \end{Notation}
 
 \section{Aim}
-The aim of this chapter is to prove a rigidity theorem for coset-preserving bijective maps on the Heisenberg group. The ideas and methods used in this theorem are foundational for the proof of the theorem for higher dimensional Lie groups.
+The aim of this chapter is to prove a rigidity theorem for coset-preserving bijective maps on the Heisenberg group. The ideas and methods used in this theorem are foundational for the proof of the theorem for higher dimensional Lie groups. The first theorem will show that coset-preserving maps on the Heisenberg group have corresponding maps on the Lie algebra that are affine, and take on a particular form.\
+The second theorem shows the stronger result if the map also preserves cosets of discrete subgroups of the Heisenberg group.
 
 \begin{Theorem}\label{preserve closed cosets}
-Suppose that $\Phi: \G \longrightarrow \G$ is bijective and sends every coset of any Lie subgroup of $\G$ to some coset of some Lie subgroup of $\G$. Then the induced map $\phi: \g \longrightarrow \g$ has the form
+Suppose that $\Psi: \G \longrightarrow \G$ is bijective and sends every coset of any Lie subgroup of $\G$ to some coset of some Lie subgroup of $\G$. Then $\Phi:\G \longrightarrow \G$ defined by $\Phi(X)=\Psi(0)^{-1}\Psi(X)$ also preserves these cosets and the induced map $\phi: \g \longrightarrow \g$ defined by $\phi(x)=\log \Phi(\exp(x))$ has the form
 \[
 \phi(x,y,z)=A
 \begin{bmatrix}
