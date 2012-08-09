@@ -1108,9 +1108,9 @@ e & f & g
 Without assuming that the map preserves discrete cosets of $G$, this restriction may be the strongest one that can be ascertained. However, by assuming the map $\Phi$ also sends cosets of discrete subgroups to cosets of discrete subgroups, stronger restrictions may be obtained. Note that discrete subgroups are not Lie groups. They are not locally homeomorphic to $\R^{n}$. 
 
 \begin{Theorem}
-Suppose that $\Psi: \G \longrightarrow \G$ is bijective and sends every coset of \emph{any} subgroup of $\G$ to some coset of some subgroup of $\G$. Then $\Psi=\tau_{o}\Phi$ where $\Phi:\G \longrightarrow \G$ is either an isomorphism or an anti-isomorphism and $\tau: \G \longrightarrow \G$ is a translation. Specifically, for any $x \in \G$
+Suppose that $\Psi: \G \longrightarrow \G$ is bijective and sends every coset of \emph{any} subgroup of $\G$ to some coset of some subgroup of $\G$. Then $\Psi=L \circ \Phi$ where $\Phi:\G \longrightarrow \G$ is either an isomorphism or an anti-isomorphism and $L: \G \longrightarrow \G$ is a translation. Specifically, for any $x \in \G$
 \[
-\tau(x)=\Psi(0)^{-1}x
+L(x)=\Psi(0)^{-1}x
 \]
 
 \end{Theorem}
@@ -1144,7 +1144,7 @@ e & f & \Delta
 
 Now define a new map $\tau: \g \longrightarrow \g$ as the composition of $\phi$ and $\beta$. So 
 \begin{eqnarray*}
-\tau &=& \beta_{o} \phi \\
+\tau &=& \beta \circ  \phi \\
 &=& \begin{bmatrix}
 \frac{d}{\Delta} & \frac{-b}{\Delta} & 0 \\
 \frac{-c}{\Delta} & \frac{a}{\Delta} & 0 \\
@@ -1169,6 +1169,181 @@ B(e^{x}) &=& e^{\beta(x)} \\
 T(e^{x}) &=& e^{\tau (x)} \\
 & & \forall x \in \g
 \end{eqnarray*}
+
+
+\begin{Proposition}
+If $g=\Delta$, $\phi$ is a Lie algebra homomorphism.
+\end{Proposition}
+
+\begin{proof}
+\[
+\phi = 
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & \Delta
+\end{bmatrix}
+\]
+Let $x=(x_{1},x_{2},x_{3})$ and $y=(y_{1},y_{2},y_{3})$ be any two elements of $\g$. Then $[x,y]=(0,0,x_{1}y_{2}-x_{2}y_{1})$. 
+\begin{eqnarray*}
+[\phi(x),\phi(y)] &=& \left[
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & \Delta
+\end{bmatrix} 
+\begin{bmatrix}
+x_{1} \\ x_{2} \\ x_{3}
+\end{bmatrix}
+,
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & \Delta
+\end{bmatrix} 
+\begin{bmatrix}
+y_{1} \\ y_{2} \\ y_{3}
+\end{bmatrix}
+\right] \\
+&=& \left[
+\begin{bmatrix}
+ax_{1}+bx_{2} \\ cx_{1}+dx_{2} \\ ex_{1}+fx_{2} + \Delta x_{3}
+\end{bmatrix}
+,
+\begin{bmatrix}
+ay_{1}+by_{2} \\ cy_{1}+dy_{2} \\ ey_{1}+fy_{2} + \Delta y_{3}
+\end{bmatrix}
+\right] \\
+&=& (0,0,(ax_{1}+bx_{2})(cy_{1}+dy_{2})-(ay_{1}+by_{2})(cx_{1}+dx_{2})) \\
+&=& (0,0,acx_{1}y_{1} - acx_{1}y_{1} + bdx_{2}y_{2} - bdx_{2}y_{2} + adx_{1}y_{2} + bcx_{2}y_{1} -adx_{2}y_{1} -bcx_{1}y_{2} ) \\
+&=& (0,0, adx_{1}y_{2}  -adx_{2}y_{1}+ bcx_{2}y_{1} -bcx_{1}y_{2} ) \\
+&=& (0,0,ad(x_{1}y_{2}  -x_{2}y_{1})+ bc(x_{2}y_{1} -x_{1}y_{2})) \\
+&=& (0,0,(ad-bc)(x_{1}y_{2}  -x_{2}y_{1})) \\
+&=& (0,0,\Delta(x_{1}y_{2}-x_{2}y_{1})) \\
+&=& \phi(0,0,x_{1}y_{2}-x_{2}y_{1}) \\
+&=& \phi[x,y] 
+\end{eqnarray*}
+\end{proof}
+
+\begin{Proposition}
+If $g=-\Delta$, $\phi$ is a Lie algebra anti-homomorphism.
+\end{Proposition}
+
+\begin{proof}
+\[
+\phi = 
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & -\Delta
+\end{bmatrix}
+\]
+Let $x=(x_{1},x_{2},x_{3})$ and $y=(y_{1},y_{2},y_{3})$ be any two elements of $\g$. Then $[x,y]=(0,0,x_{1}y_{2}-x_{2}y_{1})$. 
+\begin{eqnarray*}
+[\phi(x),\phi(y)] &=& \left[
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & -\Delta
+\end{bmatrix} 
+\begin{bmatrix}
+x_{1} \\ x_{2} \\ x_{3}
+\end{bmatrix}
+,
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & -\Delta
+\end{bmatrix} 
+\begin{bmatrix}
+y_{1} \\ y_{2} \\ y_{3}
+\end{bmatrix}
+\right] \\
+&=& \left[
+\begin{bmatrix}
+ax_{1}+bx_{2} \\ cx_{1}+dx_{2} \\ ex_{1}+fx_{2} - \Delta x_{3}
+\end{bmatrix}
+,
+\begin{bmatrix}
+ay_{1}+by_{2} \\ cy_{1}+dy_{2} \\ ey_{1}+fy_{2} - \Delta y_{3}
+\end{bmatrix}
+\right] \\
+&=& (0,0,(ax_{1}+bx_{2})(cy_{1}+dy_{2})-(ay_{1}+by_{2})(cx_{1}+dx_{2})) \\
+&=& (0,0,acx_{1}y_{1} - acx_{1}y_{1} + bdx_{2}y_{2} - bdx_{2}y_{2} + adx_{1}y_{2} + bcx_{2}y_{1} -adx_{2}y_{1} -bcx_{1}y_{2} ) \\
+&=& (0,0, adx_{1}y_{2}  -adx_{2}y_{1}+ bcx_{2}y_{1} -bcx_{1}y_{2} ) \\
+&=& (0,0,ad(x_{1}y_{2}  -x_{2}y_{1})+ bc(x_{2}y_{1} -x_{1}y_{2})) \\
+&=& (0,0,(ad-bc)(x_{1}y_{2}  -x_{2}y_{1})) \\
+&=& (0,0,\Delta(x_{1}y_{2}-x_{2}y_{1})) \\
+&=& -\phi(0,0,x_{1}y_{2}-x_{2}y_{1}) \\
+&=& -\phi[x,y] 
+\end{eqnarray*}
+\end{proof}
+
+\begin{Proposition}
+$\Phi$ is a Lie group homomorphism $\iff$ $\phi$ is a Lie algebra homomorphism, and $\Phi$ is a Lie group anti-homomorphism $\iff$ $\phi$ is a Lie algebra anti-homomorphism
+\end{Proposition}
+
+\begin{proof}
+Suppose $\phi$ is a Lie algebra homomorphism. So $\phi [x,y]=[\phi(x),\phi(y)]$ for all $x$ and $y$ in $\g$. Suppose $X=\exp(x)$ and $Y=\exp(y)$. Then
+\begin{eqnarray*}
+\Phi(XY) &=& \Phi( \exp (x+y+\frac{1}{2}[x,y])) \\
+&=& \exp( \phi(x+y+\frac{1}{2}[x,y])) \\
+&=& \exp( \phi(x)+\phi(y) +\frac{1}{2} \phi[x,y])\;\;\; \text{(since $\phi$ is linear)} \\
+&=& \exp ( \phi(x)+\phi(y) +\frac{1}{2} [\phi(x),\phi(y)]) \\
+&=& \exp( \phi (x))\exp(\phi(y))\\
+&=& \Phi(\exp(x))\Phi(\exp(y))\\
+&=& \Phi(X)\Phi(Y)
+\end{eqnarray*}
+
+On the other hand, suppose $\phi$ is a Lie algebra anti-homomorphism. So $\phi [x,y]=-[\phi(x),\phi(y)]$. Then
+\begin{eqnarray*}
+\Phi(XY) &=& \Phi( \exp (x+y+\frac{1}{2}[x,y])) \\
+&=& \exp( \phi(x+y+\frac{1}{2}[x,y])) \\
+&=& \exp( \phi(x)+\phi(y) +\frac{1}{2} \phi[x,y])\;\;\; \text{(since $\phi$ is linear)} \\
+&=& \exp ( \phi(x)+\phi(y) -\frac{1}{2} [\phi(x),\phi(y)]) \\
+&=& \exp ( \phi(y)+\phi(x) +\frac{1}{2} [\phi(y),\phi(x)]) \\
+&=& \exp( \phi (y))\exp(\phi(x))\\
+&=& \Phi(\exp(y))\Phi(\exp(x))\\
+&=& \Phi(Y)\Phi(X)
+\end{eqnarray*}
+\end{proof}
+
+%Need to change order of the proof so that g=Delta -> isomorphism is done first. Then it can be shown that T maps subgroups to subgroups
+\begin{Proposition}
+$T$ maps subgroups of $\G$ to subgroups of $\G$.
+\end{Proposition}
+\begin{proof}
+Since $\beta^{-1}$ is in the same form as $\phi$ but with $g=\Delta$, the previous two propositions show that $\beta^{-1}$ is a Lie algebra homomorphism. Since it is also bijective, it is a Lie algebra isomorphism. Therefore $\beta$ must also be a Lie algebra isomorphism. 
+
+\begin{Lemma}
+$B$ preserves subgroups. 
+\end{Lemma}
+\begin{proof}
+Let $S$ be any subgroup of $\G$ and $\mathfrak{s}$ be its image under the logarithmic map. Let $Y_{1}$ and $Y_{2}$ be elements of $B(S)$. So there exist $X_{1}=\exp(x_{1})$ and $X_{2}=\exp(x_{2})$ in $S$ such that $Y_{1}=B(X_{1})$ and $Y_{2}=B(X_{2})$. Then 
+\begin{align*}
+Y_{1}Y_{2} &= B(X_{1})B(X_{2}) \\
+&= B(X_{1}X_{2}) 
+\end{align*}
+which is in $B(S)$ because $S$ is a subgroup so $X_{1}X_{2} \in S$. Hence $B(S)$ is closed under the group operation. Moreover, $X_{1}^{-1} \in S$ so
+\begin{align*}
+Y_{1}^{-1} &=B(X_{1})^{-1} \\
+&= B(X_{1}^{-1}) \\
+&= \in B(S)
+\end{align*}
+Also,
+$0_{\G} \in S$ so $B(0_{\G})=0_{\G} \in B(S)$. Hence $B(S)$ is a subgroup.
+
+%&= B(\exp(x_{1}))B(\exp(x_{2})) \\
+%&= \exp(\beta(x_{1}))\exp(\beta(x_{2}))\\
+%&= \exp(\beta(x_{1})+\beta(x_{2})+\frac{1}{2}[\beta(x_{1}),\beta(x_{2})])\\
+%&= \exp(\beta(x_{1})+\beta(x_{2})+\frac{1}{2}\beta[x_{1},x_{2}])\\
+%&= \exp(\beta(x_{1}+x_{2}+\frac{1}{2}[x_{1},x_{2}]))\\
+%&= B(\exp(x_{1}+x_{2}+\frac{1}{2}[x_{1},x_{2}]))\\
+%&= B(\exp(x_{1})\exp(x_{2}))\\
+\end{proof}
+
+Now since $T$ is composed of $B$ and $\Phi$, which both preserve subgroups, $T$ must also preserve subgroups.
+\end{proof}
 
 \begin{Proposition}
 If $\langle E_{1},E_{2} \rangle$ denotes the smallest subgroup of $\G$ containing the elements $E_{1}$ and $E_{2}$, then 
@@ -1298,150 +1473,11 @@ where $n$ and $g/\Delta$ are both integers. Hence $n \left( \frac{g}{\Delta}\rig
 \[
 \frac{g}{\Delta}= \pm 1
 \]
-which gives a very important result:
+which gives
 \[
-g=\pm \Delta
+g=\pm \Delta.
 \]
-
-\begin{Proposition}
-$\Phi$ is a Lie group homomorphism $\iff$ $\phi$ is a Lie algebra homomorphism, and $\Phi$ is a Lie group anti-homomorphism $\iff$ $\phi$ is a Lie algebra anti-homomorphism
-\end{Proposition}
-
-\begin{proof}
-Suppose $\phi$ is a Lie algebra homomorphism. So $\phi [x,y]=[\phi(x),\phi(y)]$ for all $x$ and $y$ in $\g$. Suppose $X=\exp(x)$ and $Y=\exp(y)$. Then
-\begin{eqnarray*}
-\Phi(XY) &=& \Phi( \exp (x+y+\frac{1}{2}[x,y])) \\
-&=& \exp( \phi(x+y+\frac{1}{2}[x,y])) \\
-&=& \exp( \phi(x)+\phi(y) +\frac{1}{2} \phi[x,y])\;\;\; \text{(since $\phi$ is linear)} \\
-&=& \exp ( \phi(x)+\phi(y) +\frac{1}{2} [\phi(x),\phi(y)]) \\
-&=& \exp( \phi (x))\exp(\phi(y))\\
-&=& \Phi(\exp(x))\Phi(\exp(y))\\
-&=& \Phi(X)\Phi(Y)
-\end{eqnarray*}
-
-On the other hand, suppose $\phi$ is a Lie algebra anti-homomorphism. So $\phi [x,y]=-[\phi(x),\phi(y)]$. Then
-\begin{eqnarray*}
-\Phi(XY) &=& \Phi( \exp (x+y+\frac{1}{2}[x,y])) \\
-&=& \exp( \phi(x+y+\frac{1}{2}[x,y])) \\
-&=& \exp( \phi(x)+\phi(y) +\frac{1}{2} \phi[x,y])\;\;\; \text{(since $\phi$ is linear)} \\
-&=& \exp ( \phi(x)+\phi(y) -\frac{1}{2} [\phi(x),\phi(y)]) \\
-&=& \exp ( \phi(y)+\phi(x) +\frac{1}{2} [\phi(y),\phi(x)]) \\
-&=& \exp( \phi (y))\exp(\phi(x))\\
-&=& \Phi(\exp(y))\Phi(\exp(x))\\
-&=& \Phi(Y)\Phi(X)
-\end{eqnarray*}
-\end{proof}
-
-It remains to be shown that the two possibilities $g=\Delta$ and $g=-\Delta$ correspond to $\phi$ being a Lie algebra homomorphism or anti-homomorphism.
-
-\begin{Proposition}
-If $g=\Delta$, $\phi$ is a Lie algebra homomorphism.
-\end{Proposition}
-
-\begin{proof}
-\[
-\phi = 
-\begin{bmatrix}
-a & b & 0 \\
-c & d & 0 \\
-e & f & \Delta
-\end{bmatrix}
-\]
-Let $x=(x_{1},x_{2},x_{3})$ and $y=(y_{1},y_{2},y_{3})$ be any two elements of $\g$. Then $[x,y]=(0,0,x_{1}y_{2}-x_{2}y_{1})$. 
-\begin{eqnarray*}
-[\phi(x),\phi(y)] &=& \left[
-\begin{bmatrix}
-a & b & 0 \\
-c & d & 0 \\
-e & f & \Delta
-\end{bmatrix} 
-\begin{bmatrix}
-x_{1} \\ x_{2} \\ x_{3}
-\end{bmatrix}
-,
-\begin{bmatrix}
-a & b & 0 \\
-c & d & 0 \\
-e & f & \Delta
-\end{bmatrix} 
-\begin{bmatrix}
-y_{1} \\ y_{2} \\ y_{3}
-\end{bmatrix}
-\right] \\
-&=& \left[
-\begin{bmatrix}
-ax_{1}+bx_{2} \\ cx_{1}+dx_{2} \\ ex_{1}+fx_{2} + \Delta x_{3}
-\end{bmatrix}
-,
-\begin{bmatrix}
-ay_{1}+by_{2} \\ cy_{1}+dy_{2} \\ ey_{1}+fy_{2} + \Delta y_{3}
-\end{bmatrix}
-\right] \\
-&=& (0,0,(ax_{1}+bx_{2})(cy_{1}+dy_{2})-(ay_{1}+by_{2})(cx_{1}+dx_{2})) \\
-&=& (0,0,acx_{1}y_{1} - acx_{1}y_{1} + bdx_{2}y_{2} - bdx_{2}y_{2} + adx_{1}y_{2} + bcx_{2}y_{1} -adx_{2}y_{1} -bcx_{1}y_{2} ) \\
-&=& (0,0, adx_{1}y_{2}  -adx_{2}y_{1}+ bcx_{2}y_{1} -bcx_{1}y_{2} ) \\
-&=& (0,0,ad(x_{1}y_{2}  -x_{2}y_{1})+ bc(x_{2}y_{1} -x_{1}y_{2})) \\
-&=& (0,0,(ad-bc)(x_{1}y_{2}  -x_{2}y_{1})) \\
-&=& (0,0,\Delta(x_{1}y_{2}-x_{2}y_{1})) \\
-&=& \phi(0,0,x_{1}y_{2}-x_{2}y_{1}) \\
-&=& \phi[x,y] 
-\end{eqnarray*}
-\end{proof}
-
-\begin{Proposition}
-If $g=-\Delta$, $\phi$ is a Lie algebra anti-homomorphism.
-\end{Proposition}
-
-\begin{proof}
-\[
-\phi = 
-\begin{bmatrix}
-a & b & 0 \\
-c & d & 0 \\
-e & f & -\Delta
-\end{bmatrix}
-\]
-Let $x=(x_{1},x_{2},x_{3})$ and $y=(y_{1},y_{2},y_{3})$ be any two elements of $\g$. Then $[x,y]=(0,0,x_{1}y_{2}-x_{2}y_{1})$. 
-\begin{eqnarray*}
-[\phi(x),\phi(y)] &=& \left[
-\begin{bmatrix}
-a & b & 0 \\
-c & d & 0 \\
-e & f & -\Delta
-\end{bmatrix} 
-\begin{bmatrix}
-x_{1} \\ x_{2} \\ x_{3}
-\end{bmatrix}
-,
-\begin{bmatrix}
-a & b & 0 \\
-c & d & 0 \\
-e & f & -\Delta
-\end{bmatrix} 
-\begin{bmatrix}
-y_{1} \\ y_{2} \\ y_{3}
-\end{bmatrix}
-\right] \\
-&=& \left[
-\begin{bmatrix}
-ax_{1}+bx_{2} \\ cx_{1}+dx_{2} \\ ex_{1}+fx_{2} - \Delta x_{3}
-\end{bmatrix}
-,
-\begin{bmatrix}
-ay_{1}+by_{2} \\ cy_{1}+dy_{2} \\ ey_{1}+fy_{2} - \Delta y_{3}
-\end{bmatrix}
-\right] \\
-&=& (0,0,(ax_{1}+bx_{2})(cy_{1}+dy_{2})-(ay_{1}+by_{2})(cx_{1}+dx_{2})) \\
-&=& (0,0,acx_{1}y_{1} - acx_{1}y_{1} + bdx_{2}y_{2} - bdx_{2}y_{2} + adx_{1}y_{2} + bcx_{2}y_{1} -adx_{2}y_{1} -bcx_{1}y_{2} ) \\
-&=& (0,0, adx_{1}y_{2}  -adx_{2}y_{1}+ bcx_{2}y_{1} -bcx_{1}y_{2} ) \\
-&=& (0,0,ad(x_{1}y_{2}  -x_{2}y_{1})+ bc(x_{2}y_{1} -x_{1}y_{2})) \\
-&=& (0,0,(ad-bc)(x_{1}y_{2}  -x_{2}y_{1})) \\
-&=& (0,0,\Delta(x_{1}y_{2}-x_{2}y_{1})) \\
-&=& -\phi(0,0,x_{1}y_{2}-x_{2}y_{1}) \\
-&=& -\phi[x,y] 
-\end{eqnarray*}
-\end{proof}
-
+Hence $\phi$ and $\Phi$ are either a pair of isomorphisms or anti-isomorphims and $\Psi$ is a composition of a translation and either an isomorphism or an anti-isomorphism.
 
 \section{Summary}
 The weaker assumption that $\Psi$ preserves cosets of Lie subgroups ensures $\phi$ is a linear map which sends the z-axis to itself. The stronger assumption that $\Psi$ preserves cosets of any subgroups ensures that $\Phi$ is either a Lie group isomorphism or a Lie group anti-isomorphism.\
