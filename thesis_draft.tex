@@ -18,6 +18,8 @@
 \newcommand{\2}{\mathbf{e}_{3}}
 \newcommand{\3}{\mathbf{e}_{3}}
 
+\DeclareMathOperator{\image}{image}
+
 
 %% new environments
 
@@ -83,7 +85,7 @@
                         \setlength{\topsep}{\smallskipamount}} }
                         {\end{list}}
 
-\title{Rigidity of Coset-preserving Maps on Upper-Triangular Nilpotent Lie Groups}
+\title{Rigidity of Coset-Preserving Maps on Upper-Triangular Nilpotent Lie Groups}
 
 \authornameonly{Richard Tierney}
 
@@ -97,20 +99,20 @@
 
 \prefacesection{Introduction}
 
-Lie Groups are to be found in many different applications of mathematics as well as being central to many of the ideas in quantum physics. It is therefore very useful to know whether different Lie groups linked by a certain map are similar in structure, or whether a particular map identifies two Lie groups in a useful or sensible way. This is the idea of a rigidity theorem. If there is a map between two nilpotent Lie groups that preserves the cosets of subgroups (structures arising from the group law on a Lie group), just how much structure of the respective Lie groups does the map preserve? In this paper, the extra assumption of bijectivity will help to show the kind of similarity that exists. If a map is bijective then no information is 'lost' about the structures of the domain and codomain, when either the map or its inverse is applied. 
+Lie groups are to be found in many different applications of mathematics as well as being central to many of the ideas in quantum physics. It is therefore very useful to know whether different Lie groups linked by a certain map are similar in structure, or whether a particular map identifies two Lie groups in a useful or sensible way. This is the idea of a rigidity theorem. If there is a map between two nilpotent Lie groups that preserves the cosets of subgroups (structures arising from the group law on a Lie group), just how much structure of the respective Lie groups does the map preserve? In this paper, the extra assumption of bijectivity will help to show the kind of similarity that exists. If a map is bijective then no information is `lost' about the structures of the domain and codomain, when either the map or its inverse is applied. 
 This thesis is an attempt to demonstrate rigorously the extension of the rigidity theorem for the Heisenberg Group to all the nilpotent Lie groups. The proof involves arguments from a geometrical as well as algebraic perspective. 
 
 
 %begin chapter 1
 \chapter{Lie Groups, Lie Algebras and Homomorphisms}
-This chapter outlines the basics of the theory of Lie Groups and their relationship to Lie Algebras. It gives some examples of matrix Lie groups including the Heisenberg Group, and explains the use of the Baker-Campbell-Hausdorff Formula in comparing operations in a Lie Group with the operations in its corresponding Lie Algebra. 
+This chapter outlines the basics of the theory of Lie groups and their relationship to Lie algebras. It gives some examples of matrix Lie groups including the Heisenberg Group, and explains the use of the Baker-Campbell-Hausdorff Formula in comparing operations in a Lie group with the operations in its corresponding Lie algebra. 
 
 \section{Introduction}
-The theory of Lie Groups has evolved from the combination of several different disciplines in mathematics. Lie Group Theory combines the following ingredients: Group Theory from Algebra, Manifold Theory from Differential Geometry, and basic ideas from Topology. All of the Lie Groups mentioned in this paper will be matrix Lie groups. That is, they are matrix groups that are also $C^2$-manifolds. The idea of a rigidity theory in this context is to use structures that arise from the group law within the manifold to show that a weak similarity of these matrix Lie groups implies a strong similarity between them. This paper will prove the theorem for upper-triangular nilpotent matrix Lie groups (and solvable matrix Lie groups??).
+The theory of Lie groups has evolved from the combination of several different disciplines in mathematics. Lie group theory combines the following ingredients: Group Theory from Algebra, Manifold Theory from Differential Geometry, and basic ideas from Topology. This paper will be mainly concerned with matrix Lie groups. That is, matrix groups that are also $C^{\inf}$-manifolds. The idea of a rigidity theory in this context is to use structures that arise from the group law within the manifold to show that a weak similarity of these matrix Lie groups implies a strong similarity between them. This paper will prove the theorem for upper-triangular nilpotent matrix Lie groups (and solvable matrix Lie groups??).
 
 \section{Lie Groups}
 \begin{Definition}\label{Lie Group}
-A Lie group $\G $ is a $\mathrm{C}^{\infty}$ manifold which is also a group, for which the group operations of multiplication and taking inverses are continuous. ie the maps
+A Lie group $\G $ is a $\mathrm{C}^{\infty}$ manifold which is also a group, for which the group operations of multiplication and taking inverses are $\mathrm{C}^{\infty}$ maps. ie the maps
 
 \begin{eqnarray*}
 \sigma : & \G \times \G & \longrightarrow \G  \\
@@ -123,24 +125,25 @@ and
 & g & \longmapsto g^{-1}
 \end{eqnarray*}
 
-are continuous with respect to the topology on $\G$.
+are smooth with respect to the topology on $\G$.
 \end{Definition}
 
 \begin{Example}\label{Rn}
-$(\R^{n}, +)$ is a Lie group with one single coordinate patch defined by the identity map on $\R^{n}$. The usual addition, and inversion given by multiplication by $(-1)$ are continuous maps.
+$(\R^{n}, +)$ is a Lie group with one single coordinate patch defined by the identity map on $\R^{n}$. The usual addition, and inversion given by multiplication by $(-1)$ are smooth maps.
 
 \end{Example}
 
 \begin{Example}\label{Circle}
-The circle $\mathrm{S}^{1} = \{ e^{i\theta}\; \big| 0 \leq \theta < 2\pi \}$ is a Lie group. As a manifold, $\mathrm{S}^{1}$ has a single coordinate patch given by:
+The circle $\mathrm{S}^{1} = \{ e^{i\theta} \mid 0 \leq \theta < 2\pi \}$ is a Lie group. As a manifold, $\mathrm{S}^{1}$ has a single coordinate patch given by:
 
 \begin{eqnarray*}
 p_{1} : & \mathrm{S}^{1}  & \longrightarrow \R  \\
-& e^{i\theta} & \longmapsto \theta
+& e^{i\theta} & \longmapsto \theta .
 \end{eqnarray*}
 
 The group multiplication on $\mathrm{S}^{1}$ is given by 
-\[ (e^{i\theta}, e^{i\phi}) \longmapsto e^{i\theta}e^{i\phi} = e^{i(\theta + \phi)} \]
+\[ (e^{i\theta}, e^{i\phi}) \longmapsto e^{i\theta}e^{i\phi} = e^{i(\theta + \phi)} .\] 
+This map is smooth with respect to the topologies on $\mathrm{S}^{1} \times \mathrm{S}^{1}$ and $\mathrm{S}^{1}$.
 \end{Example}
 
 An important aspect of this particular coordinate patch (even though in this case only one is required), is that it is 
@@ -156,7 +159,7 @@ very useful for the study of Lie groups and takes on a structure of its own call
 \begin{Definition}\label{Matrix Lie Group}
 A matrix Lie group is any subgroup $\G$ of $\mathrm{GL}(n,\C)$ with the property that if there is a sequence $A_{m}$ of
 matrices in $\G$ that converges to some matrix $A \in \mathrm{M}(n,\C)$ then either $A \in \G $ or $A$ is not invertible.
-This is equivalent to $G$ being a closed subset of $\mathrm{GL}(n,\C)$.
+This is equivalent to $G$ being a closed subset of $\mathrm{GL}(n,\C)$ that is also a subgroup.
 \end{Definition}
 
 \subsection*{Examples}
@@ -168,13 +171,13 @@ The Heisenberg group, defined as follows, is a Lie group. This example forms the
 \paragraph
 {\noindent}The Heisenberg group is the set of real three-tuples with non-commutative multiplication given by
 \[
-(x,y,z). (x', y', z') := (x+x', y+y', z+z' + xy')
+(x,y,z)\cdot(x', y', z') := (x+x', y+y', z+z' + xy').
 \]
 Inversion is given by 
-\[ (x,y,z)^{-1}= (-x, -y, -z+xy) \]
+\[ (x,y,z)^{-1}= (-x, -y, -z+xy) .\]
 As a matrix Lie group, the Heisenberg group can be represented as the group of all $ 3\times 3 $ upper triangular real matrices with $1$'s on the diagonal:
 \[
- \G= \left\{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \bigg| x,y, z \in \R \right\} 
+ \G= \left\{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \biggm| x,y, z \in \R \right\} 
 \]
 It is topologically a closed subset of $\mathrm{GL}(n,\C)$ and is clearly closed under the operations of inversion and multiplication. Hence $\G$ is a matrix Lie group.
 \end{Example}
@@ -185,13 +188,13 @@ cases fairly complex. However, as with the example of the circle, studying the L
 
 \section{Lie Algebras}
 \begin{Definition}\label{Lie Algebra}
-A Lie algebra is a vector space $\mathcal{A}$ endowed with a map
-\[ [\cdotp,\cdotp]:\; \mathcal{A} \times \mathcal{A} \longrightarrow \mathcal{A} \]
+A Lie algebra is a vector space $\mathfrak{a}$ endowed with a map
+\[ [\cdotp,\cdotp]:\; \mathfrak{a} \times \mathfrak{a} \longrightarrow \mathfrak{a} \]
 with the following properties:
 \begin{enumerate}
  \item $[\cdotp, \cdotp]$ is bilinear
- \item $[X,Y]=-[Y,X]$ for all $X$, $Y$ $\in \mathcal{A}$
- \item $[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$ for all $X$, $Y$, $Z$ $\in \mathcal{A}$
+ \item $[X,Y]=-[Y,X]$ for all $X$, $Y$ $\in \mathfrak{a}$
+ \item $[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$ for all $X$, $Y$, $Z$ $\in \mathfrak{a}$
 \end{enumerate}
 This map is often called the \emph{Lie bracket} or the \emph{bracket operation}.
 \end{Definition}
@@ -199,22 +202,22 @@ This map is often called the \emph{Lie bracket} or the \emph{bracket operation}.
 The Lie algebra $\g$ of a Lie group $\G$ is the tangent space to $G$ at the identity $e$. This can be seen clearly in 
 the example of the circle. The circle is parametrised as before by a the curve
 \[ g: [0,2\pi) \longrightarrow \C \]
-\[ g(\theta)= e^{i\theta}\]
+\[ g(\theta)= e^{i\theta}.\]
 Differentiating gives
-\[g' (\theta)= ie^{i\theta}\]
+\[g' (\theta)= ie^{i\theta}.\]
 At the identity, $1=e^{0}$,
 \[ g' (0) = i \]
-so the tangent space $s$ is the real vector space with basis $\{i\}$. 
+so the tangent space $T_{1}\G$ is the real vector space with basis $\{i\}$. 
 In this case the operation $[\cdotp, \cdotp]$ is trivial, as with the Lie algebra of any abelian Lie group.
 Without going into rigorous detail, it can be seen that the group operation on $S^{1}$ corresponds to addition of 
-vectors in $s$. Also, the close we move towards the identity in $S^{1}$ the more it resembles flat space. Multiplying two elements together becomes almost equivalent to adding their imaginary components.
+vectors in $T_{1}\G$. Also, the closer we move towards the identity in $S^{1}$ the more it resembles flat space. Multiplying two elements together becomes almost equivalent to adding their imaginary components.
 (picture required)
 
-In the case of matrix Lie groups, tangent space at the identity takes a very clear form. The relationship between a 
+In the case of matrix Lie groups, the tangent space at the identity takes a very clear form. The relationship between a 
 matrix Lie group and its Lie algebra is determined by the exponential mapping on matrices. 
 
 \begin{Definition}\label{Lie Algebra of a Matrix Lie Group}
-The Lie algebra of an $n \times n$ matrix Lie group $\G$ is
+The Lie algebra $\g$ of an $n \times n$ matrix Lie group $\G$ is
 \[
 \g = \{ X \in M_{n}(\C) \big| \exp{X} \in \G \}
 \]
@@ -222,10 +225,10 @@ The bracket operation on $\g$, given by $[X,Y]=XY-YX$, satisfies the axioms for 
 \end{Definition}
 
 \begin{Proposition}
-This definition corresponds to the definition of a Lie algebra as the tangent space to the manifold $\G$ at the identity. (proof?)
+This definition corresponds to the definition of a Lie algebra as the tangent space to the manifold $\G$ at the identity. [give ref]
 \end{Proposition}
 
-Note that the exponential map from $\g$ to $\G$ is injective but not necessarily surjective. The image of $\g$ under the exponential map is precisely the connected component of $\G$ containing the identity $e$. (proof). In the case that $\G$ is connected, the inverse of the map $\exp : \g \longrightarrow \G $ is called the matrix logarithm map, $\log : \G \longrightarrow \g $.
+Note that the exponential map from $\g$ to $\G$ is injective but not necessarily surjective. The image of $\g$ under the exponential map is precisely the connected component of $\G$ containing the identity $e$. (proof). In the case that $\G$ is connected, the inverse of the map $\exp : \g \longrightarrow \G $ is called the matrix logarithm map, \mbox{$\log : \G \longrightarrow \g $}.
 
 \begin{Proposition}\label{Lie algebra of Heisenberg group}
 The Lie algebra of the Heisenberg group, $$\G = \left\{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \bigg| x,y, z \in \R \right\}$$ is 
@@ -236,7 +239,7 @@ and the exponential map $\exp$: $\g \longrightarrow \G$ is a bijection.
 \end{Proposition}
 
 \begin{proof}
-It will be shown that $im(\exp) \subseteq \G$, $\G \subseteq im(\exp)$ and that $\exp$ is injective. 
+It will be shown that $\image(\exp) \subseteq \G$, $\G \subseteq \image(\exp)$ and that $\exp$ is injective. 
 Let $x$, $y$ and $z$ be real numbers and note the following: 
 \[
 \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix}^2=\begin{bmatrix} 0 & 0 & xy \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}
@@ -249,33 +252,28 @@ Now,
  \exp \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix} &=& \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} + \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix}+ \frac{1}{2}\begin{bmatrix} 0 & 0 & xy \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix} \\
 &=& \begin{bmatrix} 1 & x & z+\frac{1}{2}xy \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \\
 &\in & \G
-\end{eqnarray*} so $ im(\exp) \subseteq \G$.
+\end{eqnarray*} so $ \image(\exp) \subseteq \G$.
 Now suppose $a,b,c \in \R$ so $\begin{bmatrix} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{bmatrix} \in \G$. Then 
 \[ 
 \exp  \begin{bmatrix} 0 & a & c-\frac{1}{2}ab \\ 0 & 0 & b \\ 0 & 0 & 0 \end{bmatrix} = \begin{bmatrix} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{bmatrix}
 \]
-so $\G \subseteq im(\exp)$.
+so $\G \subseteq \image(\exp)$.
 
 Suppose that $A=\begin{bmatrix} 0 & a & c \\ 0 & 0 & b \\ 0 & 0 & 0 \end{bmatrix}$ and $A'=\begin{bmatrix} 0 & a' & c' \\ 0 & 0 & b' \\ 0 & 0 & 0 \end{bmatrix}$ are in $\g$ and that $\exp{A}=\exp{A'}$. Then 
 \[
 \begin{bmatrix} 0 & a & c+\frac{1}{2}ab \\ 0 & 0 & b \\ 0 & 0 & 0 \end{bmatrix} =\begin{bmatrix} 0 & a' & c' +\frac{1}{2}a' b' \\ 0 & 0 & b' \\ 0 & 0 & 0 \end{bmatrix}
 \] 
 and hence
-\begin{eqnarray*}
-a &=& a' \\
-b &=& b' \\
-c &=& c'
-\end{eqnarray*}
+\begin{align*}
+a &= a' \\
+b &= b' \\
+c &= c'
+\end{align*}
 so $A=A'$.
 \end{proof}
 
-\begin{Definition}
-The elements of $\g$ are $3 \times 3$ upper-triangular nilpotent matrices, where a matrix $A$ is called \emph{nilpotent} if 
-\[
-A^{n}=\mathbf{0}
-\]
-for some positive integer $n$. Since the elements of $\g$ are nilpotent, the corresponding Lie group $\G$ is called a \emph{nilpotent Lie group}.
-\end{Definition}
+
+
 
 \subsection*{Notation}
 For the purpose of simplifying the notation of matrices in the Heisenberg group and in its Lie algebra, vector notation will sometimes be used. As defined above, an element of the Heisenberg group $\G$ will be denoted either by $ \begin{bmatrix} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{bmatrix} $ or equivalently $[a,b,c]$. Similarly, elements of the Lie algebra of the Heisenberg group will be denoted either by $\begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix}$ or $(x,y,z)$, or in some cases $\begin{bmatrix} x \\ y \\ z \end{bmatrix}$.
@@ -299,7 +297,29 @@ Let $\g$ be a Lie algebra. Then a vector subspace $\mathfrak{h}$ of $\g$ is call
 [X,Y] \in \mathfrak{h}
 \]
 
-N.B. In this paper, the term "subalgebra" will be interchangeable with "Lie subalgebra" since no other types of algebras will be mentioned.
+N.B. In this paper, the term ``subalgebra" will be interchangeable with ``Lie subalgebra" since no other types of algebras will be mentioned.
+\end{Definition}
+
+\begin{Definition}\label{Nilpotent Group}
+Every group $G$ has an \emph{upper central series} $Z_{0},Z_{1}, Z_{2} \ldots$  constructed in the following way:
+\begin{itemize}
+\item $Z_{0}={e}$
+\item $Z_{1}=$the centre of the group $G$
+\item For $n \geq 2$,  $Z_{n}$ is the unique subgroup of $G$ such that $Z_{n}/Z_{n-1}$ is the centre of $G/Z_{n-1}$.
+
+A group $G$ is called nilpotent if its \emph{upper central series} $Z_{n}$ vanishes for some integer $n$.
+\end{itemize}
+
+\end{Definition}
+
+
+\begin{Definition}\label{Nilpotent Lie Algebra}
+In a similar way, every Lie algebra $\mathfrak{a}$ has a \emph{lower central series} constructed by applying the bracket operation to the Lie algebra repeatedly:
+\[
+\mathfrak{a}_{k}=[\mathfrak{a},\mathfrak{a}_{k-1}]
+\]
+Note that if $S$ and $T$ are subalgebras of $\mathfrak{a}$, then a new subalgebra is defined by $[S,T]=\{x \in \mathfrak{a} \mid x=[s,t] \text{for some} s \in S, \; t \in T \}$.  
+A Lie Algebra $\mathfrak{a}$ is called \emph{nilpotent} if its lower central series $\mathfrak{a}_{k}$ vanishes for some $k$. The Lie algebra of the Heisenberg group is the unique three dimensional nilpotent Lie algebra (up to isomorphism).
 \end{Definition}
 
 \section{Homomorphisms}
