@@ -288,13 +288,13 @@ In this notation, the bracket operation on two elements of $\g$ is given by
 \section{Subgroups and Subalgebras}
 
 \begin{Definition}\label{Lie subgroup}
-Let $\G$ be a Lie group. A subset $\mathcal{H}$ of $\G$ is called a Lie subgroup if it is a subgroup and also a Lie group. So topologically $\mathcal{H}$ must be a closed subset of $\mathrm{GL}(n,\C)$, and algebraically $\mathcal{H}$ must be closed under operations of multiplication and taking inverses. 
+Let $\G$ be a Lie group. A subset $\mathcal{H}$ of $\G$ is called a Lie subgroup if it is a subgroup and also a Lie group. So topologically $\mathcal{H}$ must be a closed subset of $\mathrm{GL}(n,\C)$, and algebraically $\mathcal{H}$ must be closed under the operations of multiplication and taking inverses. 
 \end{Definition}
 
 \begin{Definition}\label{Lie subalgebra}
-Let $\g$ be a Lie algebra. Then a vector subspace $\mathfrak{h}$ of $\g$ is called a Lie subalgebra of $\g$ if it is also closed under the Lie bracket, so if $X$ and $Y$ are in $\mathfrak{h}$
+Let $\g$ be a Lie algebra. Then a vector subspace $\mathfrak{h}$ of $\g$ is called a Lie subalgebra of $\g$ if it is also closed under the Lie bracket, so if $X$ and $Y$ are in $\mathfrak{h}$, then
 \[
-[X,Y] \in \mathfrak{h}
+[X,Y] \in \mathfrak{h}.
 \]
 
 N.B. In this paper, the term ``subalgebra" will be interchangeable with ``Lie subalgebra" since no other types of algebras will be mentioned.
@@ -325,7 +325,7 @@ A Lie Algebra $\mathfrak{a}$ is called \emph{nilpotent} if its lower central ser
 \section{Homomorphisms}
 
 \begin{Definition}\label{Lie Group Homomorphism}
-Let $\G$ and $\mathcal{H}$ be Lie groups and $f:\G \longrightarrow \mathcal{H} $ be a function. $f$ is called a \emph{Lie group homomorphism} if and only if 
+Let $\G$ and $\mathcal{H}$ be Lie groups and $f:\G \longrightarrow \mathcal{H} $ be a function. Then $f$ is called a \emph{Lie group homomorphism} if 
 \[ f(xy)=f(x)f(y) \; \; \; \text{(i.e. $f$ is a group homomorphism)} \]
 and $f$ is continuous with respect to the topologies on $\G$ and $\mathcal{H}$. 
 If moreover, $f$ is a bijection, $f$ is called a \emph{Lie group isomorphism}
@@ -363,7 +363,7 @@ Let $\G$ and $\mathcal{H}$ be Lie groups. Then a function $f: \G \longrightarrow
 \[
 f(xy)=f(y)f(x) \;\;\;\;\; \forall x,y \in \G
 \]
-If on top of this $f$ is a bijection, then it is called a \emph{Lie group anti-isomorphism}.
+If $f$ is also a bijection, then it is called a \emph{Lie group anti-isomorphism}.
 \end{Definition}
 
 \begin{Definition}\label{Lie algebra anti-homomorphism}
@@ -379,14 +379,14 @@ Let $\G$ and $\mathcal{H}$ be matrix Lie groups with corresponding Lie algebras 
 \Phi(e^{X}) = e^{\phi(X)} \;\;\;\;\;\;\; \forall X \in \g
 \]
 
-Now let $\G$ and $\mathcal{H}$ be matrix Lie groups, $\g$ and $\mathfrak{h}$ be their Lie algebras and let $\G$ be connected. Then if $\phi: \g \longrightarrow \mathfrak{h}$ is a Lie algebra homomorphism, there exists a unique Lie group homomorphism $\Phi: \G \longrightarrow \mathcal{H}$ defined by
+Now let $\G$ and $\mathcal{H}$ be matrix Lie groups, $\g$ and $\mathfrak{h}$ be their Lie algebras and let $\G$ be simply connected [need to define this somewhere- appendix]. Then if $\phi: \g \longrightarrow \mathfrak{h}$ is a Lie algebra homomorphism, there exists a unique Lie group homomorphism $\Phi: \G \longrightarrow \mathcal{H}$ defined by
 \[
 \Phi(A) = e^{\phi(\log{A})} \;\;\;\;\;\;\; \forall A \in \G
 \]
 \end{Theorem}
 
 \begin{Example}
-Let $\G$ be the Heisenberg group and $\g$ its Lie algebra. Let $\mathcal{H}=\mathrm{GL}(1,\R)$. The Lie algebra of $\mathcal{H}$ is $\mathfrak{h}=\mathrm{M}_{1}(\R)$. Define 
+Let $\G$ be the Heisenberg group and let $\g$ be its Lie algebra. Let $\mathcal{H}=\mathrm{GL}(1,\R)$. The Lie algebra of $\mathcal{H}$ is $\mathfrak{h}=\mathrm{M}_{1}(\R)$. Define 
 \begin{eqnarray*}
 \Phi :& \G &\longrightarrow  \mathcal{H} \\
 &[x,y,z] &\longmapsto  e^{x}
@@ -480,11 +480,11 @@ Let $\G$ be a matrix Lie group with Lie algebra $\g$. If the commutivity propert
 \[
 e^{X}e^{Y}=e^{X+Y+\frac{1}{2}[X,Y]}
 \]
-This is a special case of the Baker-Campbell-Hausdorff Formula (which will sometimes be referred to as the BCF Formula in this project)
+This is a special case of the Baker-Campbell-Hausdorff Formula (which will sometimes be referred to as the BCH Formula in this project)
 \end{Theorem}
 
 \begin{proof}
-To prove the formula, it will be shown that two apparently differential functions are both the unique solution to a certain differential equation, and therefore must be identical. 
+To prove the formula, it will be shown that two apparently different functions are both the unique solution to a particular differential equation, and therefore must be identical. 
 Let $X$ and $Y$ be elements of $\g$. Consider the differential equations in the real variable $t$ defined by 
 \begin{eqnarray*}
 A(t)&=& e^{tX}e^{tY}e^{-\frac{t^{2}}{2}[X,Y]} \\
@@ -579,12 +579,11 @@ The series formula will be stated but not proved in this thesis. A full proof is
 
 
 %Begin chapter 2
-\chapter{Case for the Heisenberg Group}
+\chapter{Case of the Heisenberg Group}
 For this chapter the following notation will be used:
-\begin{Notation}
+
 $$\G=\text{the Heisenberg group}$$
 $$\g=\text{the Lie algebra of the Heisenberg group}$$
-\end{Notation}
 
 \section{Aim}
 The aim of this chapter is to prove a rigidity theorem for coset-preserving bijective maps on the Heisenberg group. The ideas and methods used in this theorem are foundational for the proof of the theorem for higher dimensional Lie groups. The first theorem will show that coset-preserving maps on the Heisenberg group have corresponding maps on the Lie algebra that are affine, and take on a particular form.\
@@ -594,7 +593,7 @@ The second theorem shows the stronger result if the map also preserves cosets of
 
 
 
-\section{Proof that it is an affine map}
+\section{Proof that coset-preserving maps are affine}
 
 \begin{Definition}\label{affine map}
 A map $\varphi: \R^{n} \longrightarrow \R^{n}$ is \emph{affine} if for all $\mathbf{v_{1}},\mathbf{v_{2}} \in \R^{n}$ and all $\lambda \in \R$ 
@@ -604,7 +603,7 @@ A map $\varphi: \R^{n} \longrightarrow \R^{n}$ is \emph{affine} if for all $\mat
 \end{Definition}
 
 \begin{Lemma}
-Suppose $\alpha: \R^{2} \longrightarrow \R^{2}$ sends $0$ to $0$, sends lines to lines and is bijective. Then $\alpha$ is linear. 
+Suppose $\alpha: \R^{2} \longrightarrow \R^{2}$ sends $\vec{0}$ to $\vec{0}$, sends lines to lines and is bijective. Then $\alpha$ is linear. 
 \end{Lemma}
 
 \begin{proof}
@@ -614,8 +613,8 @@ Construct a map based on the following assumptions. Let $\alpha': \R^{2} \longri
 \alpha'(\alpha(0,1)) &=& (0,1)
 \end{eqnarray*}
 This map $\alpha'$ is well-defined and unique since bijectivity of $\alpha$ implies $\alpha(1,0) \neq \alpha(0,1)$ so every element of $\R^{2}$ can be written as a linear combination of $\alpha(1,0)$ and $\alpha(0,1)$. 
-Now define a map $\psi: \R^{2} \longrightarrow \R^{2}$ by $\psi= \alpha'_{o}\alpha$
-Note that $\psi$ is bijective so sends parallel lines to parallel lines. In particular $\psi$ sends the x-axis to itself and also the y-axis to itself. Suppose $\psi(x_{1},0)=(x_{1}',y_{1}')$ and $\psi(x_{2},0)=(x_{2}',y_{2}')$
+Now define a map $\psi: \R^{2} \longrightarrow \R^{2}$ by $\psi= \alpha' \circ \alpha$
+Note that $\psi$ is bijective so sends parallel lines to parallel lines. In particular $\psi$ sends the $x$-axis to itself and also the $y$-axis to itself. Suppose $\psi(x_{1},0)=(x_{1}',0)$ and $\psi(x_{2},0)=(x_{2}',0)$
 A geometrical construction will demonstrate that
 \begin{equation}
 \psi(x_{1}+x_{2},0)=\psi(x_{1},0)+\psi(x_{2},0)
@@ -634,7 +633,7 @@ P: &R^{2}& \longrightarrow \R \\
 \end{eqnarray*}
 
 Proof of the addition property:
-Consider the diagram. Let $P=(1,0)$ and $Q=(0,1)$. $A$ is the point $(x_{1},0)$ and $B$ is the point $(x_{2},0)$. Then construct lines $L_{1}$, $L_{2}$, $L_{3}$ and $L_{4}$ as shown so that $$A'=(0,x_{1})$$ $$B'=(x_{2}, x_{1})$$ and $$C=(x_{1}+x_{2},0)$$ Now the map $\psi$ sends the x and y axes to themselves, sends parallel lines to parallel lines and $\psi(P)=P$ and $\psi(Q)=Q$. So the parallelogram $AA'B'C$ is mapped to a new parallelogram $\psi(A)\psi(A')\psi(B')\psi(C)$ where the sloping sides must have gradient $-1$, since they are parallel to $PQ$. So $\psi(A)=(x_{1}',0)$ and $\psi(B)=(x_{2}',0)$. Then by the properties of the parallelogram, 
+Consider the diagram. Let $P=(1,0)$ and $Q=(0,1)$. $A$ is the point $(x_{1},0)$ and $B$ is the point $(x_{2},0)$. Then construct lines $L_{1}$, $L_{2}$, $L_{3}$ and $L_{4}$ as shown so that $$A'=(0,x_{1})$$ $$B'=(x_{2}, x_{1})$$ and $$C=(x_{1}+x_{2},0)$$ Now the map $\psi$ sends the $x$- and $y$- axes to themselves, sends parallel lines to parallel lines and $\psi(P)=P$ and $\psi(Q)=Q$. So the parallelogram $AA'B'C$ is mapped to a new parallelogram $\psi(A)\psi(A')\psi(B')\psi(C)$ where the sloping sides must have gradient $-1$, since they are parallel to $PQ$. So $\psi(A)=(x_{1}',0)$ and $\psi(B)=(x_{2}',0)$. Then by the properties of the parallelogram, 
 \[
 \psi(A')=(0,x_{1}')
 \]
@@ -645,15 +644,18 @@ and
 \[
 \psi(C)=(x_{1}'+x_{2}',0)
 \]
-Hence $\psi(x_{1}+x_{2},0)=\psi(x_{1},0)+\psi(x_{2},0)$.
+Hence 
+\begin{equation}\label{axisaddnmap}
+\psi(x_{1}+x_{2},0)=\psi(x_{1},0)+\psi(x_{2},0). 
+\end{equation}
 
-Now consider this diagram showing the construction of $C=(x_{1}x_{2},0)$ by starting with $A=(x_{1},0)$ and $B=(x_{2},0)$. Construct the line of gradient $-1$ through $A$ so that $A'=(0,x_{1})$. Then construct a horizontal through $A'$ and a vertical through $P$ to meet in $D=(1,x_{1})$. Construct a line $L$ through $O$ and $C$, $y=x_{1}x$ and a vertical line through $B$ to meet in $E=(x_{2}, x_{1}x_{2})$. Then construct a horizontal line through $E$ to meet the y-axis in $B'=(0,x_{1}x_{2})$. Construct a line of gradient $-1$ through $B'$ which meets the x-axis at $C$. 
+Now consider this diagram showing the construction of $C=(x_{1}x_{2},0)$ by starting with $A=(x_{1},0)$ and $B=(x_{2},0)$. Construct the line of gradient $-1$ through $A$ so that $A'=(0,x_{1})$. Then construct a horizontal through $A'$ and a vertical through $P$ to meet in $D=(1,x_{1})$. Construct a line $L$ through $O$ and $C$, $y=x_{1}x$ and a vertical line through $B$ to meet in $E=(x_{2}, x_{1}x_{2})$. Then construct a horizontal line through $E$ to meet the $y$-axis in $B'=(0,x_{1}x_{2})$. Construct a line of gradient $-1$ through $B'$ which meets the $x$-axis at $C$. 
 
 Now consider the all these points and lines under the map $\psi$. Let $\psi(A)=(x_{1}',0)$ and $\psi(B)=(x_{2}',0) $. Lines of gradient $-1$ are mapped to lines of gradient $-1$ since $P$ and $Q$ are fixed. So 
 \[
 \psi(A')=(0,x_{1}')
 \]
-Horizontals are mapped to horizontals and verticals are mapped to verticals so
+Horizontal lines are mapped to horizontal lines and vertical lines are mapped to vertical lines so
 \[
 \psi(D)=(1,x_{1}')
 \]
@@ -661,7 +663,7 @@ Hence the line $L$ is mapped to the line $\psi(L)$ which is given by $y=x_{1}'x$
 \[
 E=(x_{2}',x_{1}'x_{2}')
 \]
-and the by the preservation of horizontals, 
+and the by the preservation of horizontal lines, 
 \[
 \psi(B)=(0,x_{1}'x_{2}')
 \]
@@ -673,9 +675,9 @@ and by the preservation of lines of gradient $-1$
 \]
 
 Hence 
-\begin{equation*}
+\begin{equation}\label{axismultmap}
 \psi(x_{1}x_{2},0)= (x_{1}'x_{2}',0)
-\end{equation*}
+\end{equation}
 
 Define the projection map
 \begin{eqnarray*}
@@ -687,7 +689,7 @@ Consider the induced map $f:\R \longrightarrow \R$ defined by
 \[
 f(x)=P_{x}(\psi(x,0))
 \]
-Then by the equations (how do I refer to their labels???) above, $f$ is bijective and has the following properties:
+Then by the equations \ref{axisaddnmap} and \ref{axismultmap} above, $f$ is bijective and has the following properties:
 \begin{eqnarray*}
 f(0) &=& 0 \\
 f(1) &=& 1 \\
@@ -720,13 +722,13 @@ f \left(\frac{m}{n}\right)&=&f\left(m \cdot \frac{1}{n}\right)\\
 &=& \frac{m}{n}
 \end{eqnarray*}
 So $f$ restricted to $\Q$ is the identity. \
-In fact, $f$ is continuous.
+Further, $f$ is continuous.
 \begin{proof}
 $f$ sends positive numbers to positive numbers and negative numbers to negative numbers since if $a>0$,
 \[
 f(a)=f(\sqrt{a}\sqrt{a})=f(\sqrt{a})f(\sqrt{a})=f(\sqrt{a})^{2}>0
 \]
-and by bijectivity if $b<0$, $f(b)<0$.\
+and by bijectivity if $b<0$ then $f(b)<0$.\
 Let $\epsilon >0$ and fix an element $y \in \R$. Suppose $|x-y|<\epsilon$. Now if $x<y$ then $0<x-y<\epsilon$. Insert a rational number $z$ between $x-y$ and $\epsilon$ so that
 \[
 0<x-y<z<\epsilon
@@ -759,7 +761,7 @@ In both cases $|f(x)-f(y)|<\epsilon$. Hence the function $f$ is continuous
 \end{proof}
 Since every real number is a limit of a sequence of rational numbers, and $f$ is continuous, $f$ must be the identity map $\R \longrightarrow \R$. 
 
-The same properties can be shown for the map $\psi$ on the y-axis. And then since every point in the plane is a projection of point on the x and y axes by horizontal and vertical lines, $\psi(x,y)=(x,y)$ for all $(x,y) \in \R^{2}$. Hence $\alpha'_{o}\alpha=\psi=\text{id}$ so $\alpha=\alpha'^{-1}$, which is a linear map since $\alpha'$ is a linear map. 
+The same properties can be shown for the map $\psi$ on the $y$-axis. And then since every point in the plane is a projection of point on the x and y axes by horizontal and vertical lines, $\psi(x,y)=(x,y)$ for all $(x,y) \in \R^{2}$. Hence $\alpha'_{o}\alpha=\psi=\text{id}$ so $\alpha=\alpha'^{-1}$, which is a linear map since $\alpha'$ is a linear map. 
 \end{proof}
 
 \begin{Proposition}
@@ -767,8 +769,12 @@ Let $\varphi: \R^{3} \longrightarrow \R^{3}$ be such that $\varphi$ is bijective
 \end{Proposition}  
 
 \begin{proof}
-Let there be a line $L$ in $\R^{3}$ given by $$\lambda \mathbf{v_{1}} + (1-\lambda) \mathbf{v_{2}} $$ where the vector $\mathbf{v_{1}}-\mathbf{v_{2}} \notin \text{span} \{ \mathbf{{\bf e}_{3}} \}$. 
-Now define a vertical plane $\Pi: \lambda \mathbf{v_{1}} + (1-\lambda) \mathbf{v_{2}} + \mu\mathbf{{\bf e}_{3}}$. $\varphi$ sends vertical planes to vertical planes so define the plane $\Sigma = \varphi(\Pi)$. Then 
+Let $\mathbf{v_{1}}$ and $\mathbf{v_{2}} $ be vectors in $\R^{3}$.[[ such that $\mathbf{v_{1}}-\mathbf{v_{2}} \notin \text{span} \{ \mathbf{{\bf e}_{3}} \}$.]] Define a line $L$ in $\R^{3}$ by 
+$$ L:=\{ \lambda \mathbf{v_{1}} + (1-\lambda) \mathbf{v_{2}} \mid \lambda \in \R \}.$$
+
+If $\mathbf{v_{1}}-\mathbf{v_{2}} \notin \text{span} \{ (0,0,1) \}$, then let $\mathbf{v_{3}}=(0,0,1)$. Whereas if $\mathbf{v_{1}}-\mathbf{v_{2}} \in \text{span} \{ (0,0,1) \}$ let $\mathbf{v_{3}}=(0,0,1)$. 
+  
+In either case it is possible to define a vertical plane $\Pi: \lambda \mathbf{v_{1}} + (1-\lambda) \mathbf{v_{2}} + \mu\mathbf{v_{3}}$. $\varphi$ sends vertical planes to vertical planes so define the plane $\Sigma = \varphi(\Pi)$. Then 
 \[
 \mathbf{v_{1}} \in \Pi
 \]
@@ -781,25 +787,25 @@ so
 \]
 and 
 \[
-\varphi(\mathbf{v_{2}}) \in \Sigma
+\varphi(\mathbf{v_{2}}) \in \Sigma.
 \]
 Hence the line joining these to points is also in $\Sigma$, in other words
 \[
 \gamma \varphi(\mathbf{v_{1}}) + (1-\gamma)\varphi(\mathbf{v_{2}}) \in \Sigma
 \]
-Also $\Sigma$ is vertical, and since $\mathbf{v_{1}}-\mathbf{v_{2}} \notin \text{span}\{ \mathbf{{\bf e}_{3}}\}$, the plane $\Sigma$ is defined by 
+Also $\Sigma$ is vertical, and since $\mathbf{v_{1}}-\mathbf{v_{2}} \notin \text{span}\{ \mathbf{v_{3}}\}$, the plane $\Sigma$ is defined by 
 \[
-\Sigma = \{ \gamma \varphi(\mathbf{v_{1}}) + (1-\gamma)\varphi(\mathbf{v_{2}}) + \delta\mathbf{{\bf e}_{3}} \; \;|\;\; \gamma,\delta \in \R \}
+\Sigma = \{ \gamma \varphi(\mathbf{v_{1}}) + (1-\gamma)\varphi(\mathbf{v_{2}}) + \delta \varphi(\mathbf{v_{3}}) \; \;|\;\; \gamma,\delta \in \R \}
 \]
 Now each plane $\Pi$ and $\Sigma$ can be given the structure of a two dimensional vector space in the following sense:
 Let $O_{\Pi}=\mathbf{v_{2}}$ and $O_{\Sigma}= \varphi(\mathbf{v_{2}})$. Then elements of $\Pi$ can all be expressed as 
 \[
-(\alpha_{1}, \alpha_{2})_{\Pi}:= \alpha_{1}\mathbf{v_{1}}+(1-\alpha_{1})\mathbf{v_{2}} + \alpha_{2}\mathbf{{\bf e}_{3}}
+(\alpha_{1}, \alpha_{2})_{\Pi}:= \alpha_{1}\mathbf{v_{1}}+(1-\alpha_{1})\mathbf{v_{2}} + \alpha_{2}\mathbf{v_{3}}
 \]
 so that $O_{\Pi}=(0,0)$. 
 Elements of $\Sigma$ can similarly be expressed as
 \[
-(\beta_{1}, \beta_{2})_{\Sigma}= \beta_{1}\varphi(\mathbf{v_{1}})+(1-\beta_{1})\varphi(\mathbf{v_{2}}) + \beta_{2}\mathbf{{\bf e}_{3}}
+(\beta_{1}, \beta_{2})_{\Sigma}= \beta_{1}\varphi(\mathbf{v_{1}})+(1-\beta_{1})\varphi(\mathbf{v_{2}}) + \beta_{2} \varphi (\mathbf{v_{3}})
 \]
 Thus $\Pi$ and $\Sigma$ have the structure of two-dimensional vector spaces, isomorphic to $\R^2$. Then by the Lemma 2.2.1, since $\varphi(O_{\Pi}=O_{\Sigma}$, and $\varphi$ is bijective and sends lines to lines, $\varphi:\Pi \longrightarrow \Sigma$ is linear. In other words, 
 \[
@@ -812,15 +818,14 @@ Note also that
 \end{eqnarray*}
 So:
 \begin{eqnarray*}
-\lambda(\mathbf{v_{1}})+(1-\lambda)(\mathbf{v_{2}}) &=& (\lambda,0)_{\Pi} \\
-&=&\lambda(1,0)_{\Pi} \\
+\varphi[\lambda(\mathbf{v_{1}})+(1-\lambda)(\mathbf{v_{2}})] &=& \varphi(\lambda,0)_{\Pi} \\
 &=& \varphi[\lambda(1,0)_{\Pi}] \\
 &=& \lambda\varphi(1,0)_{\Pi} \\
 &=& \lambda(1,0)_{\Sigma} \\
 &=&(\lambda,0)_{\Sigma} \\
 &=& \lambda\varphi(\mathbf{v_{1}})+(1-\lambda)\varphi(\mathbf{v_{2}})
 \end{eqnarray*}
-Hence $\varphi$ is affine on $\R^{3}$ (except for the case when v1-v2 is vertical).
+Hence $\varphi$ is affine on $\R^{3}$.
 \end{proof}
 
 \begin{Proposition}
@@ -868,8 +873,20 @@ $\phi =\begin{bmatrix}
 a & b & 0 \\
 c & d & 0 \\
 e & f & g
-\end{bmatrix}$,
-$ \det(\phi) \neq 0 $
+\end{bmatrix}$, where
+$ \det(\phi) \neq 0 $. In other words
+\[
+\phi \begin{bmatrix}
+x \\y \\z 
+\end{bmatrix}= \begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & g
+\end{bmatrix}
+\begin{bmatrix}
+x \\y \\z 
+\end{bmatrix}
+\]
 
 \end{Theorem}
 
@@ -881,12 +898,11 @@ Observe that
 &=& \log \Phi(0) \\
 &=& \log \Psi(0)^{-1}\Psi(0) \\
 &=& \log 0_{\G} \\
-&=& 0_{\g}
+&=& 0_{\g}.
 \end{eqnarray*}
 
-Then since $\phi(0)=0$, A must send subalgebras of $\g$ to subalgebras of $\g$ bijectively (since every subalgebra contains $0$). What are these subalgebras?
+Then since $\phi(0_{\g})=0_{\g}$, $\phi$ must send subalgebras of $\g$ to subalgebras of $\g$ bijectively (since every subalgebra contains $0_{\g}$). What are these subalgebras?
 
-A subalgebra of $\g$ is a vector subspace which is closed under the Lie bracket. 
 
 %What are the subalgebras and Subgroups and Cosets?
 \subsection{One-dimensional Subalgebras}
@@ -909,15 +925,15 @@ for some $X=(x,y,z) \in \g$. Let $\lambda X$ and $\mu X$ be elements of $S$. The
 Hence every one-dimensional subspace of $S$ is closed under the Lie bracket and is thus also a one-dimensional subalgebra. 
 \end{proof}
 
-\subsection{two-dimensional subalgebras}
-Let $Z=\text{span}(0,0,1)$ denote the z-axis.
+\subsection{Two-dimensional Subalgebras}
+Let $\mathfrak{Z}=\text{span}(0,0,1)$ denote the $z$-axis.
 The question is now whether all two-dimensional subspaces of $\g$ are also subalgebras. Two-dimensional subspaces of $\g$ are planes through the origin. So any subspace is the span of two linearly independent vectors in $\g$.
-Let $T= \text{span}(X ,Y)$ where $X=(x_{1},x_{2},x_{3})$ and $Y=(y_{1},y_{2},y_{3})$ are distinct elements of $\g$.
+Let $\mathfrak{T}= \text{span}(X ,Y)$ where $X=(x_{1},x_{2},x_{3})$ and $Y=(y_{1},y_{2},y_{3})$ are distinct elements of $\g$.
 
 Then  
 \begin{eqnarray*}
-  [X,Y] & \in T \\
-(0,0, x_{1}y_{2}-x_{2}y_{1}) & \in T
+  [X,Y] & \in \mathfrak{T} \\
+\text{i.e.}\;\;\;\;\;(0,0, x_{1}y_{2}-x_{2}y_{1}) & \in \mathfrak{T}
 \end{eqnarray*}
    
 This restriction can be analysed in the following two distinct cases:
@@ -937,9 +953,9 @@ x_{2} = ky_{2}
 \]
 So 
 \[
-X-kY=(0,0,x_{3}-ky_{3}) \in T
+X-kY=(0,0,x_{3}-ky_{3}) \in \mathfrak{T}
 \]
-Note that $X-kY \neq 0$ since otherwise $X$ and $Y$ would be linearly dependent. So $T$ contains $\text{span}(0,0,x_{3}-ky_{3})=Z$, and hence $T$ is a vertical plane. 
+Note that $X-kY \neq 0$ since otherwise $X$ and $Y$ would be linearly dependent. So $\mathfrak{T}$ contains $\text{span}(0,0,x_{3}-ky_{3})=\mathfrak{Z}$, and hence $\mathfrak{T}$ is a vertical plane. 
 
 Now suppose at least one of $x_{1}$ and $y_{1}$ is non-zero. Without loss of generality suppose $y_{1} \neq 0$.
 Then there exists some $\lambda \in \R$ such that $x_{1} = \lambda y_{1}$. So
@@ -958,40 +974,40 @@ Hence
 since $X$ and $Y$ are linearly independent. 
 Therefore 
 \[
-Z=\text{span}(0,0,1)=\text{span}(0,0,x_{3}-\lambda y_{3}) \in T
+\mathfrak{Z}=\text{span}(0,0,1)=\text{span}(0,0,x_{3}-\lambda y_{3}) \in \mathfrak{T}
 \]
 
 In the second case, $x_{1}y_{2}\neq x_{2}y_{1}$ so 
 \[
-\text{span}(0,0, x_{1}y_{2}- x_{2}y_{1})= Z \in T
+\text{span}(0,0, x_{1}y_{2}- x_{2}y_{1})= \mathfrak{Z} \in \mathfrak{T}
 \]
 
-Hence any plane through the origin in $\g$ which is closed under the Lie bracket must contain the z-axis. In other words, all two-dimensional subalgebras of $\g$ are vertical planes through the origin.
+Hence any plane through the origin in $\g$ which is closed under the Lie bracket must contain the $z$-axis. In other words, all two-dimensional subalgebras of $\g$ are vertical planes through the origin.
 
 
 %Using this propostion will mean changing the way the rest of this result is argued
 %Need to explain why preservation of cosets in $\G$ implies preservation of cosets in $\g$.
 \begin{Proposition}
-Let $C$ be a coset of some subgroup $S$ of $\G$. Then $C$ is the image of a translate of a subalgebra of $\g$ under the exponential map. In other words, preserving cosets of Lie subgroups in $\G$ corresponds to preserving translates of subalgebras of $\g$.
+Let $\mathcal{C}$ be a coset of some subgroup $\mathcal{S}$ of $\G$. Then $\mathcal{C}$ is the image of a translate of a subalgebra of $\g$ under the exponential map. In other words, preserving cosets of Lie subgroups in $\G$ corresponds to preserving translates of subalgebras of $\g$.
 \end{Proposition}
 
 \begin{proof}
-Let $X=(x,y,z) \in \g$ and so that $S=\{ \lambda X | \lambda \in \R \}$ is a one-dimensional subalgebra of $\g$. $e^{S}$ is the corresponding Lie subgroup of $\G$. i.e.
+Let $X=(x,y,z) \in \g$ and so that $\mathcal{S}=\{ \lambda X | \lambda \in \R \}$ is a one-dimensional subalgebra of $\g$. $e^{\mathcal{S}}$ is the corresponding Lie subgroup of $\G$. i.e.
 \begin{eqnarray*}
-e^{S} &=& \{ e^{\lambda X}| \lambda \in \R \} \\
+e^{\mathcal{S}} &=& \{ e^{\lambda X}| \lambda \in \R \} \\
 &=& \left\lbrace \begin{bmatrix}
 1 & \lambda x & \lambda z + \frac{1}{2} \lambda^{2}xy \\
 0 & 1 & \lambda y \\
 0 & 0 & 1
 \end{bmatrix} \bigg| \lambda \in \R \right\rbrace
 \end{eqnarray*}
-Let C be the coset of $e^{S}$ given by right translation by $e^{P}$, for a fixed element $P = \begin{bmatrix}
+Let $\mathcal{C}$ be the coset of $e^{\mathcal{S}}$ given by right translation by $e^{P}$, for a fixed element $P = \begin{bmatrix}
 0 & p & r \\
 0 & 0 & q \\
 0 & 0 & 0
 \end{bmatrix} \in \g$. Then 
 \begin{eqnarray*}
-C &=& \{e^{\lambda X}e^{P}|\lambda \in \R \} \\
+\mathcal{C} &=& \{e^{\lambda X}e^{P}|\lambda \in \R \} \\
 &=& \{ \exp( \lambda X + P + \frac{1}{2}[\lambda X,P]) | \lambda \in \R \} \\
 &=& \left\lbrace \exp \left( 
 \begin{bmatrix}
@@ -1020,7 +1036,7 @@ C &=& \{e^{\lambda X}e^{P}|\lambda \in \R \} \\
 \end{bmatrix}
 \bigg| \lambda \in \R \right\rbrace
 \end{eqnarray*}
-Now let $L \subseteq \g$ be the image of $C$ under the logarithm map.
+Now let $L \subseteq \g$ be the image of $\mathcal{C}$ under the logarithm map.
 
 \begin{eqnarray*}
 L &=& \left\lbrace
@@ -1045,7 +1061,7 @@ L &=& \left\lbrace
 &=& \{ \lambda (x,y,z+\frac{1}{2}(xq-yp))+P | \lambda \in \R \}
 \end{eqnarray*}
 
-So the one-dimensional coset $C$ corresponds to a line $L$ in $\g$ which is a translate of a one-dimensional subalgebra, $\text{span}\{(x,y,z+\frac{1}{2}(xq-yp))\}$ by the element $P$. Note that this subalgebra is not the same as the subalgebra corresponding to the Lie subgroup in $\G$ from which the coset $C$ was originally generated. 
+So the one-dimensional coset $\mathcal{C}$ corresponds to a line $L$ in $\g$ which is a translate of a one-dimensional subalgebra, $\text{span}\{(x,y,z+\frac{1}{2}(xq-yp))\}$ by the element $P$. Note that this subalgebra is not the same as the subalgebra corresponding to the Lie subgroup in $\G$ from which the coset $\mathcal{C}$ was originally generated. 
 
 A similar argument will now demonstrate that two-dimensional cosets in $\G$ do indeed correspond to vertical planes in $\g$.
 Suppose $X=(x,y,z) \in \g$ is not vertical. So there is a vertical plane $\mathbf{\pi}$ given by 
@@ -1056,17 +1072,20 @@ Then the corresponding Lie subgroup of $\mathbf{\pi}$ is
 \[
 \Pi = \{\exp(\lambda X + \mu \3) \;\;\;|\;\;\; \lambda,\mu \in \R \}
 \]
-A coset of this Lie subgroup is $C$ given by right translation by $e^{P}$ as before. So 
+A coset of this Lie subgroup is $\mathcal{C}$ given by right translation by $e^{P}$ as before. Let So 
 \begin{eqnarray*}
-C &=& \{\exp(\lambda X + \mu \3)\exp (P) \;\;\;|\;\;\; \lambda,\mu \in \R \} \\
-&=& \{ \exp(\lambda x, \lambda y, \lambda z +\mu)\exp(p,q,r)\;\;\;|\;\;\; \lambda,\mu \in \R \} \;\;\;\textit{applying the CBH Formula:}\\
-&=&  \{ \exp((\lambda x, \lambda y, \lambda z +\mu)+(p,q,r)+\frac{1}{2}[(\lambda x, \lambda y, \lambda z +\mu),(p,q,r)])\;\;\;|\;\;\; \lambda,\mu \in \R \} \\
+\mathcal{C} &=& \{\exp(\lambda X + \mu \3)\exp (P) \;\;\;|\;\;\; \lambda,\mu \in \R \} \\
+&=& \{ \exp(\lambda x, \lambda y, \lambda z +\mu)\exp(p,q,r)\;\;\;|\;\;\; \lambda,\mu \in \R \} 
+\end{eqnarray*}
+Then, applying the CBH Formula:
+\begin{eqnarray*}
+\mathcal{C}&=&  \{ \exp((\lambda x, \lambda y, \lambda z +\mu)+(p,q,r)+\frac{1}{2}[(\lambda x, \lambda y, \lambda z +\mu),(p,q,r)])\;\;\;|\;\;\; \lambda,\mu \in \R \} \\
 &=& \{ \exp ((\lambda x+p, \lambda y+q, \lambda z +\mu +r)+ \frac{1}{2}(0,0,\lambda xq -\lambda yp))\;\;\;|\;\;\; \lambda,\mu \in \R \} \\
 &=& \{ \exp (\lambda x+p, \lambda y+q, \lambda (z+\frac{1}{2}(xq-yp)) +\mu +r)\;\;\;|\;\;\; \lambda,\mu \in \R \} \\
 &=& \{ \exp [\lambda( x, y, z+\frac{1}{2}(xq-yp))+\mu(0,0,1)+(p,q,r)]\;\;\;|\;\;\; \lambda,\mu \in \R \}
 \end{eqnarray*}
 
-Now suppose that $\pi'$ is the image of this coset $C$ under the logarithm map. So 
+Now suppose that $\pi'$ is the image of this coset $\mathcal{C}$ under the logarithm. So 
 
 \begin{eqnarray*}
 \pi' &=& \{ \lambda( x, y, z+\frac{1}{2}(xq-yp))+\mu(0,0,1)+(p,q,r) \;\;\;|\;\;\; \lambda,\mu \in \R \} \\
@@ -1077,7 +1096,7 @@ So $\pi'$ is yet another vertical plane in $\g$. Note however that unless $[X,P]
 \end{proof}
 
 % may have to alter this to suit the real assumptions of the problem, ie that may need to get rid of translation bit in the group before moving to the algebra.
-\subsection{Cosets}
+\subsection{Preserving Connected Cosets}
 The cosets in $\g$ are either lines or vertical planes. Hence the bijective map $\phi$ sends lines to lines and vertical planes to vertical planes. Therefore by Proposition [?] $\phi$ is an affine map on the vector space $\g$, and because $\phi$ maps the identity to the identity, Proposition 2.2.4 indicates it must be linear.
 
 
@@ -1155,20 +1174,20 @@ a & b & 0 \\
 c & d & 0 \\
 e & f & \Delta
 \end{bmatrix}^{-1} \\
-&=& \begin{bmatrix}
-\frac{d}{\Delta} & \frac{-b}{\Delta} & 0 \\
-\frac{-c}{\Delta} & \frac{a}{\Delta} & 0 \\
-\frac{cf-ed}{\Delta^{2}} & \frac{eb-af}{\Delta^{2}} & \frac{1}{\Delta}
+&=& \frac{1}{\Delta}\begin{bmatrix}
+d & -b & 0 \\
+-c & a & 0 \\
+(cf-ed)/\Delta & (eb-af)/\Delta & 1
 \end{bmatrix}
 \end{eqnarray*}
 
 Now define a new map $\tau: \g \longrightarrow \g$ as the composition of $\phi$ and $\beta$. So 
 \begin{eqnarray*}
 \tau &=& \beta \circ  \phi \\
-&=& \begin{bmatrix}
-\frac{d}{\Delta} & \frac{-b}{\Delta} & 0 \\
-\frac{-c}{\Delta} & \frac{a}{\Delta} & 0 \\
-\frac{cf-ed}{\Delta^{2}} & \frac{eb-af}{\Delta^{2}} & \frac{1}{\Delta}
+&=& \frac{1}{\Delta}\begin{bmatrix}
+d & -b & 0 \\
+-c & a & 0 \\
+(cf-ed)/\Delta & (eb-af)/\Delta & 1
 \end{bmatrix}
 \begin{bmatrix}
 a & b & 0 \\
@@ -1180,7 +1199,7 @@ e & f & g
 1 & 0 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & g/\Delta
-\end{bmatrix}
+\end{bmatrix}.
 \end{eqnarray*}
 
 Let the corresponding bijective maps, $B$ and $T$ from $\G$ to $\G$ be given by
@@ -1192,7 +1211,7 @@ T(e^{x}) &=& e^{\tau (x)} \\
 
 
 \begin{Proposition}
-If $g=\Delta$, $\phi$ is a Lie algebra homomorphism.
+If $g=\Delta$, then $\phi$ is a Lie algebra homomorphism.
 \end{Proposition}
 
 \begin{proof}
@@ -1246,7 +1265,7 @@ ay_{1}+by_{2} \\ cy_{1}+dy_{2} \\ ey_{1}+fy_{2} + \Delta y_{3}
 \end{proof}
 
 \begin{Proposition}
-If $g=-\Delta$, $\phi$ is a Lie algebra anti-homomorphism.
+If $g=-\Delta$, then $\phi$ is a Lie algebra anti-homomorphism.
 \end{Proposition}
 
 \begin{proof}
@@ -1289,9 +1308,9 @@ ay_{1}+by_{2} \\ cy_{1}+dy_{2} \\ ey_{1}+fy_{2} - \Delta y_{3}
 \end{bmatrix}
 \right] \\
 &=& (0,0,(ax_{1}+bx_{2})(cy_{1}+dy_{2})-(ay_{1}+by_{2})(cx_{1}+dx_{2})) \\
-&=& (0,0,acx_{1}y_{1} - acx_{1}y_{1} + bdx_{2}y_{2} - bdx_{2}y_{2} + adx_{1}y_{2} + bcx_{2}y_{1} -adx_{2}y_{1} -bcx_{1}y_{2} ) \\
+%&=& (0,0,acx_{1}y_{1} - acx_{1}y_{1} + bdx_{2}y_{2} - bdx_{2}y_{2} + adx_{1}y_{2} + bcx_{2}y_{1} -adx_{2}y_{1} -bcx_{1}y_{2} ) \\
 &=& (0,0, adx_{1}y_{2}  -adx_{2}y_{1}+ bcx_{2}y_{1} -bcx_{1}y_{2} ) \\
-&=& (0,0,ad(x_{1}y_{2}  -x_{2}y_{1})+ bc(x_{2}y_{1} -x_{1}y_{2})) \\
+%&=& (0,0,ad(x_{1}y_{2}  -x_{2}y_{1})+ bc(x_{2}y_{1} -x_{1}y_{2})) \\
 &=& (0,0,(ad-bc)(x_{1}y_{2}  -x_{2}y_{1})) \\
 &=& (0,0,\Delta(x_{1}y_{2}-x_{2}y_{1})) \\
 &=& -\phi(0,0,x_{1}y_{2}-x_{2}y_{1}) \\
@@ -1375,8 +1394,9 @@ If $\langle E_{1},E_{2} \rangle$ denotes the smallest subgroup of $\G$ containin
 0 & 1 & y \\
 0 & 0 & 1
 \end{bmatrix} \bigg|x,y,z \in \Z
-\right\rbrace (\text{denote this set}\;\G_{int})
+\right\rbrace .
 \]
+Denote this set $\G_{\Z}$.
 \end{Proposition}
 
 \begin{proof}
@@ -1406,17 +1426,17 @@ E_{3}=[0,0,1]&=&
  \\
 &=& E_{1}E_{2}E_{1}^{-1}E_{2}^{-1}
 \end{eqnarray*}
-Take an element from $\G_{int}$, $[x,y,z]$, where $x$, $y$ and $z$ are integers. Then 
+Take an element from $\G_{\Z}$, $[x,y,z]$, where $x$, $y$ and $z$ are integers. Then 
 \begin{eqnarray*}
 [x,y,z] &=&[x,y,0][0,0,z-xy] \\
 &=& [x,0,0][0,y,0][0,0,z-xy] \\
 &=& E_{1}^{x}E_{2}^{y}E_{3}^{z-xy}
 \end{eqnarray*}
-So $\G_{int} \in \langle E_{1},E_{2} \rangle $. Conversely any element of $\langle E_{1},E_{2} \rangle$ contains only integer entries since multiplying integers or taking their negatives gives integers. So $\langle E_{1},E_{2} \rangle \in \G_{int}$. Hence $\langle E_{1},E_{2} \rangle=\G_{int}$.
+So $\G_{\Z} \in \langle E_{1},E_{2} \rangle $. Conversely any element of $\langle E_{1},E_{2} \rangle$ contains only integer entries since adding and multiplying integers or taking their negatives produces only integers. So $\langle E_{1},E_{2} \rangle \in \G_{\Z}$. Hence $\langle E_{1},E_{2} \rangle=\G_{\Z}$.
 \end{proof}
 
 \begin{Lemma}
-$T(\G_{int})=\G_{int}$. 
+$T(\G_{\Z})=\G_{\Z}$. 
 \end{Lemma}
 
 \begin{proof}
@@ -1446,19 +1466,19 @@ giving the result.
 We now need to consider what happens to the unit vector $(0,0,1)={\bf e}_{3}$ in $\g$ by considering what happens to $[0,0,1]=E_{3}=\exp({\bf e}_{3})$ in the group.
 
 \[
-T(E_{3})= \exp(\tau ({\bf e}_{3}))=\exp(0,0,\frac{g}{\Delta})=[0,0,\frac{g}{\Delta}]
+T(E_{3})= \exp(\tau ({\bf e}_{3}))=\exp(0,0,\frac{g}{\Delta})=[0,0,\frac{g}{\Delta}].
 \]
-$T$ maps the centre of $\G$, $Z$ to itself (as do $B$ and $\Phi$) since 
+Now $T$ maps the centre of $\G$, $Z$ to itself (as do $B$ and $\Phi$) since 
 \[
 T[0,0,z]= \exp(\tau(0,0,z))= \exp(0,0,\frac{gz}{\Delta})=[0,0,\frac{gz}{\Delta}] \in Z
-\]. So combining this result with the previous Lemma,
+.\] So combining this result with the previous Lemma,
 \[
-T( Z \cap \G_{int})=Z \cap \G_{int}
-\]
-and hence 
+T( Z \cap \G_{\Z})=Z \cap \G_{\Z}
+.\]
+Hence 
 \begin{eqnarray*}
-T(E_{3}) &\in & Z \cap \G_{int} \\
-\left[ 0,0,\frac{g}{\Delta} \right] &\in & Z \cap \G_{int} \\
+T(E_{3}) &\in & Z \cap \G_{\Z} \\
+\left[ 0,0,\frac{g}{\Delta} \right] &\in & Z \cap \G_{\Z} \\
 \implies \frac{g}{\Delta} &\in & \Z
 \end{eqnarray*}
 
@@ -1470,7 +1490,7 @@ D &=& \left\lbrace (0,0,m)\; \big| \;\; m \in \Z \right\rbrace \subseteq \g \\
 &=& Z \cap \G_{int}
 \end{eqnarray*}
 
-Now consider the image of this set of integer points on the z-axis under $\tau$:
+Now consider the image of this set of integer points on the $z$-axis under $\tau$:
 \begin{eqnarray*}
 \tau(D)&=& \log(\exp (\tau(D))) \\
 &=& \log T(\exp (D)) \\
@@ -1500,7 +1520,7 @@ g=\pm \Delta.
 Hence $\phi$ and $\Phi$ are either a pair of isomorphisms or anti-isomorphims and $\Psi$ is a composition of a translation and either an isomorphism or an anti-isomorphism.
 
 \section{Summary}
-The weaker assumption that $\Psi$ preserves cosets of Lie subgroups ensures $\phi$ is a linear map which sends the z-axis to itself. The stronger assumption that $\Psi$ preserves cosets of any subgroups ensures that $\Phi$ is either a Lie group isomorphism or a Lie group anti-isomorphism.\
+The weaker assumption that $\Psi$ preserves cosets of Lie subgroups ensures $\phi$ is a linear map which sends the $z$-axis to itself. The stronger assumption that $\Psi$ preserves cosets of any subgroups ensures that $\Phi$ is either a Lie group isomorphism or a Lie group anti-isomorphism.\
 The next chapter of this project will attempt to prove similar results for any upper-triangular nilpotent Lie group using induction. 
 
 \chapter{Case of all upper triangular nilpotent Lie groups}
