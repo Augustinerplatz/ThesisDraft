@@ -1524,6 +1524,46 @@ The weaker assumption that $\Psi$ preserves cosets of Lie subgroups ensures $\ph
 The next chapter of this project will attempt to prove similar results for any upper-triangular nilpotent Lie group using induction. 
 
 \chapter{Case of all upper triangular nilpotent Lie groups}
+The aim now is to extend the two theorems proved in the previous section by an inductive step on any $n$-dimensional nilpotent Lie group.
 
+\section{Theory of Nilpotent Lie Groups and Lie Algebras}
+[include all the background information for the proof and general ideas about the basic structure of these groups and algebras]
+
+\section{Basis of the Induction}
+
+\begin{Proposition}
+Up to isomorphism, the only three-dimensional nilpotent Lie groups are the Heisenberg group, and $(\R^{3},+)$. (Three-dimensional Lie groups are those which correspond to three-dimensional algebras).
+\end{Proposition}
+
+\begin{proof}
+Start by considering how Lie algebras could be built by starting with a basic three-dimensional vector space. The algebras then differ only in the definitions of their bracket operation, and the corresponding Lie groups are given their structures by the BCH Formula:
+\[
+e^{x}e^{y}= \exp{x+y+\frac{1}{2}[x,y]+\frac{1}{12}[x,[x,y]]-\frac{1}{12}[y,[x,y]]-\frac{1}{24}[y,[x,[x,y]]]+\cdots (\text{longer commutators}) }
+\]
+%how do I get the equation to break itself and spread over two lines
+
+\begin{Lemma}
+Suppose $x$ and $y$ are linearly independent elements of a three-dimensional nilpotent Lie algebra $\g$. Then $\{x,y,[x,y]\}$ forms a basis for $\g$.
+\begin{proof}
+For a contradiction suppose the opposite, i.e. suppose there exist real numbers $a$, $b$ and $c$, not all zero, such that $ax+by+c[x,y]=0$. Suppose without loss of generality that $a \neq 0$. Then by the property of nilpotency there is some positive integer $k$ such that
+\begin{align*}
+ax &= -by-c[x,y]\\
+&=-by-c[-\frac{1}{a}(by+c[x,y]),y] \\
+&= -by+\frac{c^{2}}{a}[[x,y],y] \\
+&= -by+\frac{c^{2}}{a}[[-\frac{c}{a}[x,y],y],y] \\
+&= -by+\frac{c^{3}}{a^{2}}[[[x,y],y],y] \\
+& \vdots \\
+&= -by+\frac{c^{k}}{a^{k-1}}[[\ldots[x,y]\ldots ,y],y] \\
+&= -by.
+\end{align*}
+%need a brace above the penultimate line of this array to indicate how many applications of the bracket there are
+But this implies that $x$ and $y$ are linearly dependent, contrary to the assumption. Therefore $\{x,y,[x,y]\}$ forms a basis for $\g$.
+\end{proof}
+\end{Lemma}
+
+
+\end{proof}
+
+\bibliography{bibliography.bib}
 
 \end{document}
