@@ -1536,6 +1536,7 @@ Up to isomorphism, the only three-dimensional nilpotent Lie groups are the Heise
 \end{Proposition}
 
 \begin{proof}
+Let $\mathfrak{a}$ be any three-dimensional nilpotent Lie algebra.
 Start by considering how Lie algebras could be built by starting with a basic three-dimensional vector space. The algebras then differ only in the definitions of their bracket operation, and the corresponding Lie groups are given their structures by the BCH Formula:
 \[
 e^{x}e^{y}= \exp{x+y+\frac{1}{2}[x,y]+\frac{1}{12}[x,[x,y]]-\frac{1}{12}[y,[x,y]]-\frac{1}{24}[y,[x,[x,y]]]+\cdots (\text{longer commutators}) }
@@ -1543,7 +1544,7 @@ e^{x}e^{y}= \exp{x+y+\frac{1}{2}[x,y]+\frac{1}{12}[x,[x,y]]-\frac{1}{12}[y,[x,y]
 %how do I get the equation to break itself and spread over two lines
 
 \begin{Lemma}
-Suppose $x$ and $y$ are linearly independent elements of a three-dimensional nilpotent Lie algebra $\g$. Then $\{x,y,[x,y]\}$ forms a basis for $\g$.
+Suppose $x$ and $y$ are linearly independent elements of $\mathfrak{a}$. Then $\{x,y,[x,y]\}$ forms a basis for $\g$.
 \begin{proof}
 For a contradiction suppose the opposite, i.e. suppose there exist real numbers $a$, $b$ and $c$, not all zero, such that $ax+by+c[x,y]=0$. Suppose without loss of generality that $a \neq 0$. Then by the property of nilpotency there is some positive integer $k$ such that
 \begin{align*}
@@ -1557,12 +1558,149 @@ ax &= -by-c[x,y]\\
 &= -by.
 \end{align*}
 %need a brace above the penultimate line of this array to indicate how many applications of the bracket there are
-But this implies that $x$ and $y$ are linearly dependent, contrary to the assumption. Therefore $\{x,y,[x,y]\}$ forms a basis for $\g$.
+But this implies that $x$ and $y$ are linearly dependent, contrary to the assumption. Therefore $\{x,y,[x,y]\}$ forms a basis for $\mathfrak{a}$.
 \end{proof}
 \end{Lemma}
 
+\begin{Lemma}
+All the terms with commutators of length three or more in the BCH Formula for two elements of a three-dimensional nilpotent Lie algebra are zero.
 
+\begin{proof} 
+Higher terms in the Baker-Campbell-Hausdorff Formula all contain either $[x,[x,y]]$ or $[y,[x,y]]$, for $x$, $y \in \mathfrak{a}$. If $x$ and $y$ are linearly dependent then $[x,[x,y]]$ and $[y,[x,y]]$ are both zero and the result holds. So suppose that $x$ and $y$ are linearly independent elements of $\mathfrak{a}$. Then $\{x,y,[x,y]\}$ forms a basis for $\mathfrak{a}$ and so
+\[
+[x,[x,y]]=ax+by+c[x,y], \;\;\;\;\; \text{some $a$, $b$, $c \in \R$}
+\]
+By repeatedly taking commutators with $x$, we obtain
+\[
+[x,[x,[x,y]]]=b[x,y]+c[x,[x,y]]
+\]
+Further, let $D(n)=[x,[x,\ldots[x,y]] \ldots ]$, then for $n \geq 3$,
+\begin{equation}\label{recurrence}
+D(n)=bD(n-2)+cD(n-1).
+\end{equation}
+Since $\mathfrak{a}$ is nilpotent, there must exist some $k \geq 2$ such that $D(k)=0$ but $D(k-1) \neq 0$. If this $k=2$ the result holds. If $k \geq 3$ then from \ref{recurrence}, substituting $n=k+1$,
+\[
+bD(k-1)=0
+.\] Hence $b=0$.
+Then substituting $n=k$,
+\[
+bD(k-2)+cD(k-1)=0
+.\] So
+\[
+cD(k-1)=0
+\] and so
+\[
+c=0.
+\]
+
+This leaves us with 
+\[
+[x,[x,y]]=ax.
+\]
+If a=0 then the result holds. Suppose $a \neq 0$. Then $x=\frac{1}{a}[x,[x,y]]$. So
+
+\begin{align*}
+x &= \frac{1}{a}[x,[x,y]] \\
+&= \frac{1}{a}[x,[\frac{1}{a}[x,[x,y]],y]] \\
+&=\frac{1}{a}[x,[\frac{1}{a}[x,[\frac{1}{a}[x,[x,y]],y]],y]] \\
+&=\frac{1}{a}[x,[\frac{1}{a}[x,[\frac{1}{a}[x,[\frac{1}{a}[x,[x,y]],y]],y]],y]].
+\end{align*}
+%Need to define precisely what the A_{n} are, ie the entries in the upper central series. Define at the beginning of the chapter. 
+By continuing this argument it can be seen that $x \in A_{n}$ for arbitrarily large $n$. Thus, making sure $n$ is sufficiently large, the nilpotent property gives $x=0$, which is a contradiction. Hence $a=0$.
+
+So $[x,[x,y]]=0$ and by symmetry $[y,[y,x]]=0$ so $[y,[x,y]=0$ as required.
 \end{proof}
+
+\end{Lemma}
+There are two cases. Either there exist linearly independent elements $x$ and $y$ of $\mathfrak{a}$ such that $[x,y] \neq 0$, in which case $\{x,y,[x,y]$ is a basis for $\mathfrak{a}$ or not. In the first case, $\mathfrak{a}$ is isomorphic to $\g$ via the linear transformation $\varphi$, defined by:
+\begin{align*}
+\varphi(x)&=\begin{bmatrix}
+0 & 1 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 0 
+\end{bmatrix}\\
+\varphi(y)&=\begin{bmatrix}
+0 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 0 & 0 
+\end{bmatrix}\\
+\varphi([x,y])&=\begin{bmatrix}
+0 & 0 & 1 \\
+0 & 0 & 0 \\
+0 & 0 & 0 
+\end{bmatrix}\\
+\end{align*}
+
+\begin{proof}
+The map $\varphi$ is defined to be a linear transformation so it suffices to prove that it preserves the bracket operation.
+Let $u$ and $v$ be elements of $\mathfrak{a}$. These can each be written as linear combinations of the basis elements $x$, $y$ and $[x,y]$. So suppose
+\begin{align*}
+u &=ax+by+c[x,y] \\
+v &=a'x+b'y+c'[x,y].
+\end{align*}
+Then
+\begin{align*}
+\varphi[u,v] &= \varphi [ax+by+c[x,y],a'x+b'y+c'[x,y]] \\
+&=\varphi(aa'[x,x]+ab'[x,y]+ac'[x,[x,y]]+ba'[y,x]+bb'[y,y]+bc'[y,[x,y]]+ca'[[x,y],x]+cb'[[x,y],y]+cc'[[x,y],[x,y]])\\
+&=\varphi(ab'[x,y]+ba'[y,x]) \\
+&=(ab'-a'b)\varphi[x,y] \\
+&=(0,0,ab'-a'b).
+\end{align*}
+And,
+\begin{align*}
+[\varphi(u),\varphi(v)] &=[a\varphi(x)+b\varphi(y)+c\varphi[x,y],a'\varphi(x)+b'\varphi(y)+c'\varphi[x,y]]\\
+&=[(a,b,c),(a',b',c')]\\
+&=(0,0,ab'-ba')\\
+&=\varphi[u,v] 
+\end{align*}
+%Could add subscripts to the bracket operations to distinguish between bracket in a and g!
+Hence $\varphi$ is a Lie algebra homomorphism. Since $\varphi$ sends each of the basis vectors in $\mathfrak{a}$ to each of the basis vectors in $\g$, it is the identity transformation with respect to these bases and so is a bijection. Hence $\varphi$ is a Lie algebra isomorphism.
+\end{proof}
+
+In the second case, $\mathfrak{a}$ has no non-zero commutators and is isomorphic to $\R^{3}$. 
+\begin{proof}
+Let $\varphi$ be the identity transformation with respect to any two bases of $\mathfrak{a}$ and $\g$. So $\varphi$ is a bijective linear transformation and 
+\[
+\varphi[x,y]=0=[\varphi(x),\varphi(y)], \;\;\;\; \forall x,y \in \mathfrak{a}
+\]
+Hence $\varphi$ is a Lie algebra isomorphism.
+\end{proof}
+Hence there are only two three-dimensional nilpotent Lie algebras up to isomorphism: $\R^{3}$ and the Lie algebra of the Heisenberg group.
+\end{proof}
+
+\begin{Proposition}
+A bijective map between $(\R^{3},+)$ and the Heisenberg Group cannot preserve the cosets.
+This is obvious. Two-dimensional cosets in $\R^{3}$ are all the planes, whereas two-dimensional cosets in the Heisenberg group are only the vertical planes. So the set of two-dimensional cosets in $\R^{3}$ has greater cardinality than the set of two-dimensional cosets in the Heisenberg group and there cannot be a bijection between them.
+\end{Proposition}
+
+%explain now how this works as a basis for induction
+
+Note that a bijective coset-preserving map on $\R^{3}$ is just a bijective affine map, so is composed of a linear map and a translation. This linear map is a bijection so is an isomorphism. Hence the theorem holds trivially when considering $(\R^{3},+)$ as a Lie group.
+Therefore a bijective coset-preserving map between \emph{any} three-dimensional Lie groups is composed of a translation and either an isomorphism or anti-isomorphism.
+%need to word this more carefully
+
+
+When considering nilpotent Lie groups and Lie algebras of higher dimension, the essential structure can be studied mainly by looking at the bracket operation and the lower central series.
+
+\begin{Proposition}
+Let $\mathfrak{a}$ be any Lie algebra and let $ A_{0},A_{1},A_{2}\ldots$ be its lower central series. Then if $x \in A_{m}$ and $y \in A_{n}$, $[x,y] \in A_{m+n+1}$.
+\end{Proposition}
+
+\begin{proof}
+Proof is by induction on $m$, with arbitrary $n$. Suppose $x=\sum\limits_{i} U_{i}$ with $U_{i}=[x_{i1},[x_{i2},[x_{i3},\ldots [x_{im},x_{i0}]\ldots]]]$ and $y=\sum\limits_{i} V_{i}$, with $V_{i}=[y_{i1},[y_{i2},[y_{i3},\ldots [y_{im},y_{i0}]\ldots]]]$.
+\newline
+Suppose $m=0$, so $x$ is any element of $\mathfrak{a}$. Then $[x,y]=\sum\limits_{i}[x,V_{i}]=\Sigma_{i}W_{i}$, where $W_{i} \in A_{n+1}=A_{m+n+1}$ as required. The statement is true for $m=0$. \newline
+Now suppose the statement is true for $m \leq k$, for some integer $k \geq 0$. Now suppose that $m=k+1$. So each $U_{i}$ can be written as $[x_{i1},T_{i}]$, where $T_{i} \in A_{k}$. So
+\begin{align*}
+[x,y] &=\sum\limits_{i}[[x_{i1},T_{i1}],y] \\
+&= \sum\limits_{i}([x_{i1},[T_{i},y]]-[T_{i},[x_{i1},y]]).
+\end{align*}
+
+Now $T_{i}$ is in $A_{k}$ so $[T_{i},y]$ is in $A_{k+n+1}$ by the inductive hypothesis, and since $x_{i1}$ is any element of $\mathfrak{a}$, $[x_{i1},[T_{i},y]]$ must be in $A_{k+n+2}=A_{m+n+1}$. \newline
+Also, $[x_{i1},y] \in A_{n+1}$ since $x_{i1}$ is any element of $\mathfrak{a}$, and then by the inductive hypothesis $[T_{i},[x_{i1},y]]$ must be in $A_{k+n+1+1}=A_{m+n+1}$. \newline
+Hence $\sum\limits_{i}([x_{i1},[T_{i},y]]-[T_{i},[x_{i1},y]])$ is in $A_{m+n+1}$ as required. By induction the statement is true for all integers $m \geq 0$.
+\end{proof}
+
 
 \bibliography{bibliography.bib}
 
