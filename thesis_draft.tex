@@ -315,11 +315,7 @@ A group $G$ is called nilpotent if its \emph{upper central series} $Z_{n}$ vanis
 
 \begin{Definition}\label{Nilpotent Lie Algebra}
 In a similar way, every Lie algebra $\mathfrak{a}$ has a \emph{lower central series} constructed by applying the bracket operation to the Lie algebra repeatedly:
-\[
-\mathfrak{a}_{k}=[\mathfrak{a},\mathfrak{a}_{k-1}]
-\]
-Note that if $S$ and $T$ are subalgebras of $\mathfrak{a}$, then a new subalgebra is defined by $[S,T]=\{x \in \mathfrak{a} \mid x=[s,t] \text{for some} s \in S, \; t \in T \}$.  
-A Lie Algebra $\mathfrak{a}$ is called \emph{nilpotent} if its lower central series $\mathfrak{a}_{k}$ vanishes for some $k$. The Lie algebra of the Heisenberg group is the unique three dimensional nilpotent Lie algebra (up to isomorphism).
+ The Lie algebra of the Heisenberg group is a three dimensional nilpotent Lie algebra.
 \end{Definition}
 
 \section{Homomorphisms}
@@ -1523,13 +1519,47 @@ Hence $\phi$ and $\Phi$ are either a pair of isomorphisms or anti-isomorphims an
 The weaker assumption that $\Psi$ preserves cosets of Lie subgroups ensures $\phi$ is a linear map which sends the $z$-axis to itself. The stronger assumption that $\Psi$ preserves cosets of any subgroups ensures that $\Phi$ is either a Lie group isomorphism or a Lie group anti-isomorphism.\
 The next chapter of this project will attempt to prove similar results for any upper-triangular nilpotent Lie group using induction. 
 
+
+
+
+
+
 \chapter{Case of all upper triangular nilpotent Lie groups}
-The aim now is to extend the two theorems proved in the previous section by an inductive step on any $n$-dimensional nilpotent Lie group.
+The aim now is to extend the two theorems proved in the previous section by an inductive step on any $n$-dimensional nilpotent Lie group. It will be shown that a bijective map between two nilpotent Lie algebras of any degree, for which the corresponding mapping between Lie groups is coset-preserving, is either a Lie algebra isomorphism or anti-isomorphism. We will be considering all cosets to be preserved (including the discrete ones that are not Lie subgroups). 
+
+
 
 \section{Theory of Nilpotent Lie Groups and Lie Algebras}
-[include all the background information for the proof and general ideas about the basic structure of these groups and algebras]
+%include all the background information for the proof and general ideas about the basic structure of these groups and algebras
+
+
+
+Let $\mathfrak{a}$ be a Lie algebra and let $S$ and $T$ be subalgebras. Then a new subalgebra is defined by 
+\[
+[S,T]=\left\lbrace \sum\limits_{i} [s_{i},t_{i}] \mid s_{i} \in S,\;\; t_{i} \in T \right\rbrace
+\]
+
+\begin{Definition}
+The \emph{lower central series} $\{A_{i}\}$ of a Lie algebra $\mathfrak{a}$ is 
+\begin{align*}
+A_{0} &=\mathfrak{a} \\
+A_{1} &=[\mathfrak{a},\mathfrak{a}] \\
+A_{2} &=[\mathfrak{a},A_{1}] \\
+&\vdots \\
+A_{n} &=[\mathfrak{a},A_{n-1}]\;\;\;\text{for all} \;\;n \geq 3 
+\end{align*}
+\end{Definition}
+
+\begin{Definition}\label{nilp lie alg}
+
+A Lie Algebra $\mathfrak{a}$ is called \emph{nilpotent} if its lower central series $A_{n}$ vanishes for some $n$. \newline
+Note that there is a specific $n$ for which $A_{n-1} \neq 0$ but $A_{n} =0$.
+\end{Definition}
+
+The idea behind the proof is to look at the linear portion of the map on the Lie algebra, say $\phi$. We will take any two elements $x$ and $y$ of a nilpotent Lie algebra and see what kind of subalgebra they \emph{generate}. If they do not generate the whole algebra, then $\phi$ can be restricted to this generated subalgebra, and by an inductive assumption, will act as either an isomorphism or anti-isomorphism on this subalgebra. So $\phi[x,y]=\pm[\phi(x),\phi(y)]$ will hold. Some pairs of elements may however generate the whole algebra, in which case the inductive assumption cannot be directly applied. These pairs of elements will require special attention and it is this part of the proof that occupies the bulk of this chapter. 
 
 \section{Basis of the Induction}
+%could include this section in the previous chapter
 
 \begin{Proposition}
 Up to isomorphism, the only three-dimensional nilpotent Lie groups are the Heisenberg group, and $(\R^{3},+)$. (Three-dimensional Lie groups are those which correspond to three-dimensional algebras).
@@ -1538,15 +1568,16 @@ Up to isomorphism, the only three-dimensional nilpotent Lie groups are the Heise
 \begin{proof}
 Let $\mathfrak{a}$ be any three-dimensional nilpotent Lie algebra.
 Start by considering how Lie algebras could be built by starting with a basic three-dimensional vector space. The algebras then differ only in the definitions of their bracket operation, and the corresponding Lie groups are given their structures by the BCH Formula:
-\[
-e^{x}e^{y}= \exp{x+y+\frac{1}{2}[x,y]+\frac{1}{12}[x,[x,y]]-\frac{1}{12}[y,[x,y]]-\frac{1}{24}[y,[x,[x,y]]]+\cdots (\text{longer commutators}) }
-\]
-%how do I get the equation to break itself and spread over two lines
+\begin{align*}
+e^{x}e^{y} &= \exp\big( x+y+\frac{1}{2}[x,y]+\frac{1}{12}[x,[x,y]]-\frac{1}{12}[y,[x,y]] \\
+&-\frac{1}{24}[y,[x,[x,y]]]+\cdots (\text{longer commutators}) \big)
+\end{align*}
+
 
 \begin{Lemma}
-Suppose $x$ and $y$ are linearly independent elements of $\mathfrak{a}$. Then $\{x,y,[x,y]\}$ forms a basis for $\g$.
+Suppose $x$ and $y$ are linearly independent elements of $\mathfrak{a}$ and that $[x,y] \neq 0$. Then $\{x,y,[x,y]\}$ forms a basis for $\mathfrak{a}$.
 \begin{proof}
-For a contradiction suppose the opposite, i.e. suppose there exist real numbers $a$, $b$ and $c$, not all zero, such that $ax+by+c[x,y]=0$. Suppose without loss of generality that $a \neq 0$. Then by the property of nilpotency there is some positive integer $k$ such that
+For a contradiction suppose the opposite, i.e. suppose there exist real numbers $a$, $b$ and $c$, not all zero, such that $ax+by+c[x,y]=0$. Suppose that $a \neq 0$. Then by the property of nilpotency there is some positive integer $k$ with $A_{k}=0$. Hence by recursively applying $x=-a^{-1}(by+c[x,y])$ on the right hand side in the following relation, the last term is forced to be zero:
 \begin{align*}
 ax &= -by-c[x,y]\\
 &=-by-c[-\frac{1}{a}(by+c[x,y]),y] \\
@@ -1554,18 +1585,24 @@ ax &= -by-c[x,y]\\
 &= -by+\frac{c^{2}}{a}[[-\frac{c}{a}[x,y],y],y] \\
 &= -by+\frac{c^{3}}{a^{2}}[[[x,y],y],y] \\
 & \vdots \\
-&= -by+\frac{c^{k}}{a^{k-1}}[[\ldots[x,y]\ldots ,y],y] \\
+&= -by+\frac{c^{k}}{a^{k-1}}[[\ldots[x,\overbrace{y]\ldots ,y],y]}^{k} \\
 &= -by.
 \end{align*}
-%need a brace above the penultimate line of this array to indicate how many applications of the bracket there are
-But this implies that $x$ and $y$ are linearly dependent, contrary to the assumption. Therefore $\{x,y,[x,y]\}$ forms a basis for $\mathfrak{a}$.
+But this implies that $x$ and $y$ are linearly dependent, contrary to the assumption.
+
+Supposing instead that $b \neq 0$, the same recursive argument can be applied using $y$ instead of $x$, giving the same contradiction. \newline
+If neither of these is the case, so $a=0$, $b=0$ and $c \neq 0$, then this gives $[x,y]=0$ which is also a contradiction.
+
+ Therefore $\{x,y,[x,y]\}$ forms a basis for $\mathfrak{a}$.
 \end{proof}
 \end{Lemma}
 
 \begin{Lemma}
-All the terms with commutators of length three or more in the BCH Formula for two elements of a three-dimensional nilpotent Lie algebra are zero.
+All the terms with commutators of length three or more in the BCH Formula for two elements of a three-dimensional nilpotent Lie algebra $\mathfrak{a}$ are zero.
 
 \begin{proof} 
+Let $\mathfrak{a}$ have lower central series $A_{n}$. Since $\mathfrak{a}$ is nilpotent, there is some integer $k$ such that $A_{k}=0$.\newline
+Let $x$ and $y$ be elements of $\mathfrak{a}$.
 Higher terms in the Baker-Campbell-Hausdorff Formula all contain either $[x,[x,y]]$ or $[y,[x,y]]$, for $x$, $y \in \mathfrak{a}$. If $x$ and $y$ are linearly dependent then $[x,[x,y]]$ and $[y,[x,y]]$ are both zero and the result holds. So suppose that $x$ and $y$ are linearly independent elements of $\mathfrak{a}$. Then $\{x,y,[x,y]\}$ forms a basis for $\mathfrak{a}$ and so
 \[
 [x,[x,y]]=ax+by+c[x,y], \;\;\;\;\; \text{some $a$, $b$, $c \in \R$}
@@ -1574,10 +1611,11 @@ By repeatedly taking commutators with $x$, we obtain
 \[
 [x,[x,[x,y]]]=b[x,y]+c[x,[x,y]]
 \]
-Further, let $D(n)=[x,[x,\ldots[x,y]] \ldots ]$, then for $n \geq 3$,
+Further, let $D(n)=\underbrace{[x,[x,\ldots[x}_{n},y]] \ldots ]$, then for $n \geq 3$,
 \begin{equation}\label{recurrence}
 D(n)=bD(n-2)+cD(n-1).
 \end{equation}
+
 Since $\mathfrak{a}$ is nilpotent, there must exist some $k \geq 2$ such that $D(k)=0$ but $D(k-1) \neq 0$. If this $k=2$ the result holds. If $k \geq 3$ then from \ref{recurrence}, substituting $n=k+1$,
 \[
 bD(k-1)=0
@@ -1601,12 +1639,13 @@ If a=0 then the result holds. Suppose $a \neq 0$. Then $x=\frac{1}{a}[x,[x,y]]$.
 
 \begin{align*}
 x &= \frac{1}{a}[x,[x,y]] \\
-&= \frac{1}{a}[x,[\frac{1}{a}[x,[x,y]],y]] \\
-&=\frac{1}{a}[x,[\frac{1}{a}[x,[\frac{1}{a}[x,[x,y]],y]],y]] \\
-&=\frac{1}{a}[x,[\frac{1}{a}[x,[\frac{1}{a}[x,[\frac{1}{a}[x,[x,y]],y]],y]],y]].
+&= \frac{1}{a^{2}}[x,[[x,[x,y]],y]] \\
+&=\frac{1}{a^{3}}[x,[[x,[[x,[x,y]],y]],y]] \\
+&=\frac{1}{a^{n}}\underbrace{[x,[[x,[[x,}_{n}[x,\underbrace{y]],y]],y]]}_{n}\\
+&=\frac{(-1)^{n}}{a^{n}}[[\ldots[x,\underbrace{y],x],y],x]\ldots,y],x]}_{2n\; \text{brackets}} .
 \end{align*}
 %Need to define precisely what the A_{n} are, ie the entries in the upper central series. Define at the beginning of the chapter. 
-By continuing this argument it can be seen that $x \in A_{n}$ for arbitrarily large $n$. Thus, making sure $n$ is sufficiently large, the nilpotent property gives $x=0$, which is a contradiction. Hence $a=0$.
+By continuing this argument it can be seen that $x \in A_{2n}$ for arbitrarily large $n$. Thus, making sure $n$ is sufficiently large, the nilpotent property of $\mathfrak{a}$ gives $x=0$, which is a contradiction. Hence $a=0$.
 
 So $[x,[x,y]]=0$ and by symmetry $[y,[y,x]]=0$ so $[y,[x,y]=0$ as required.
 \end{proof}
@@ -1701,7 +1740,11 @@ Also, $[x_{i1},y] \in A_{n+1}$ since $x_{i1}$ is any element of $\mathfrak{a}$, 
 Hence $\sum\limits_{i}([x_{i1},[T_{i},y]]-[T_{i},[x_{i1},y]])$ is in $A_{m+n+1}$ as required. By induction the statement is true for all integers $m \geq 0$.
 \end{proof}
 
+\section{Reducing the Dimension of an Algebra}
 
+\section{The Central Error Term}
+
+\section{Proof that the Error Term is Zero}
 \bibliography{bibliography.bib}
 
 \end{document}
