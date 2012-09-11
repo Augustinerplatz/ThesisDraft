@@ -1526,7 +1526,7 @@ The next chapter of this project will attempt to prove similar results for any u
 
 
 
-\chapter{Case of all upper triangular nilpotent Lie groups}
+\chapter{Case of all Nilpotent Lie Groups}
 The aim now is to extend the two theorems proved in the previous section by an inductive step on any $n$-dimensional nilpotent Lie group. It will be shown that a bijective map between two nilpotent Lie algebras of any degree, for which the corresponding mapping between Lie groups is coset-preserving, is either a Lie algebra isomorphism or anti-isomorphism. We will be considering all cosets to be preserved (including the discrete ones that are not Lie subgroups). 
 
 
@@ -1536,10 +1536,41 @@ The aim now is to extend the two theorems proved in the previous section by an i
 
 
 
-Let $\mathfrak{a}$ be a Lie algebra and let $S$ and $T$ be subalgebras. Then a new subalgebra is defined by 
+Let $\mathfrak{a}$ be a Lie algebra and let $S$ and $T$ be subspaces. Then a new subspace is defined by 
 \[
 [S,T]=\left\lbrace \sum\limits_{i} [s_{i},t_{i}] \mid s_{i} \in S,\;\; t_{i} \in T \right\rbrace
 \]
+
+\begin{proof}
+Let $x=\sum\limits_{i=1}^{k} [s_{i},t_{i}]$ and $y=\sum\limits_{i=k+1}^{l} [s_{i},t_{i}]$ be elements of $[S,T]$, and let $\lambda$ be a real number. Then
+\begin{align*}
+\lambda x &=\sum\limits_{i=1}^{k} [\lambda s_{i},t_{i}]\\
+&=\sum\limits_{i=1}^{k} [s'_{i},t_{i}]
+\end{align*}
+where $s'_{i}=\lambda s_{i} \in S$, since $S$ is a subspace. Hence $\lambda x \in [S,T]$.
+\newline Now
+\begin{align*}
+x+y&=\sum\limits_{i=1}^{k} [s_{i},t_{i}]+\sum\limits_{i=k+1}^{l} [s_{i},t_{i}]\\
+&= \sum\limits_{i=1}^{l} [s_{i},t_{i}] \\
+&\in [S,T]
+\end{align*}
+Hence $[S,T]$ is a vector subspace of $\mathfrak{a}$.
+\newline
+%Also, 
+%\begin{align*}
+%[x,y]&= [\sum\limits_{i=1}^{k} [s_{i},t_{i}], \sum\limits_{i=k+1}^{l} [s_{i},t_{i}]]\\
+%&=\sum\limits_{
+%\begin{array}{c} 0 \leq i \leq k \\ k+1 \leq j \leq l \end{array}}
+%[[s_{i},t_{i}],[s_{j},t_{j}]] \\
+%&= -\sum\limits_{
+%\begin{array}{c} 0 \leq i \leq k \\ k+1 \leq j \leq l \end{array}}
+%+[s_{j},[t_{j},[s_{i},t_{i}]]]+[t_{j},[[s_{i},t_{i}],s_{j}]]\\
+%&=\sum\limits_{
+%\begin{array}{c} 0 \leq i \leq k \\ k+1 \leq j \leq l \end{array}}
+
+%\end{align*}
+
+\end{proof}
 
 \begin{Definition}
 The \emph{lower central series} $\{A_{i}\}$ of a Lie algebra $\mathfrak{a}$ is 
@@ -1551,6 +1582,52 @@ A_{2} &=[\mathfrak{a},A_{1}] \\
 A_{n} &=[\mathfrak{a},A_{n-1}]\;\;\;\text{for all} \;\;n \geq 3 
 \end{align*}
 \end{Definition}
+
+\begin{Proposition}
+Let $k$ be a positive integer. For any $k+1$ elements $x_{i}$ of $\mathfrak{a}$, 
+\[
+[x_{k},[x_{k-1},[\ldots [x_{1},x_{0}]\ldots ]] \in A_{k}.
+\]
+\end{Proposition}
+\begin{proof}
+For $k=0$, this is true since $x_{0} \in \mathfrak{a}=A_{0}$. \newline
+Suppose that the statement is true for $k=j$. Now let $k=j+1$. Then let $x_{i}$ be any elements of $\mathfrak{a}$ for $0 \leq i \leq k$. So 
+\begin{align*}
+[x_{k},[x_{k-1},[\ldots [x_{1},x_{0}]\ldots ]] &= [x_{k},[x_{j},[x_{j-1},[\ldots [x_{1},x_{0}]\ldots ]]\\
+&=[x_{k},y]
+\end{align*}
+where $y \in A_{j}=A_{k-1}$. Hence
+\[
+[x_{k},[x_{k-1},[\ldots [x_{1},x_{0}]\ldots ]] \in A_{k}.
+\]
+\end{proof}
+
+\begin{Proposition}
+The entries $A_{i}$ in the lower central series for a Lie algebra $\mathfrak{a}$ are nested in the following way:
+\[
+A_{0}\supset A_{1} \supset A_{2} \supset \cdots \supset A_{j} \supset A_{j+1} \supset \cdots
+\]
+\end{Proposition}
+ 
+\begin{proof}
+Prove that $x \in A_{k}$ whenever $x \in A_{k+1}$. For $k=0$ this is trivial since $A_{0}$ is the whole Lie algebra. Suppose this statement is true for all $k \leq N$ for some positive integer $N$. Now let $k=N+1$.
+Let $x \in A_{k+1}$. So 
+\[
+x= \sum\limits_{i}[g_{i},h_{i}]
+\]
+where $g_{i} \in \mathfrak{a}$ and $h_{i} \in A_{k}$. But then $h_{i} \in A_{N+1}$ and by the inductive hypothesis, $h_{i} \in A_{N}=A_{k-1}$. Hence 
+\[
+[g_{i},h_{i}] \in A_{k}
+\]
+and therefore
+\[
+x=\sum\limits_{i}[g_{i},h_{i}] \in A_{k}.
+\]
+\end{proof}
+
+\begin{Proposition}
+If $\mathfrak{a}$ is a Lie algebra with lower central series $A_{i}$, then each of the $A_{i}$ is a Lie subalgebra. 
+\end{Proposition}
 
 \begin{Definition}\label{nilp lie alg}
 
