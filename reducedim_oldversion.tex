@@ -1,0 +1,207 @@
+\documentclass[honours]{UNSWthesis}
+\linespread{1}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{latexsym,amsmath}
+\usepackage{graphicx}
+
+%% define some macros
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\G}{\mathcal{G}}
+%\newcommand{\H}{\mathcal{H}}
+\newcommand{\g}{\mathfrak{g}}
+\newcommand{\1}{\mathbf{e}_{1}}
+\newcommand{\2}{\mathbf{e}_{3}}
+\newcommand{\3}{\mathbf{e}_{3}}
+
+\DeclareMathOperator{\image}{image}
+\DeclareMathOperator{\alg}{Alg}
+\DeclareMathOperator{\spn}{span}
+
+
+%% new environments
+
+\newcounter{Item}[section]
+%\newenvironment{proof}{\noindent {\bf Proof.}\ }{\qed}
+\newenvironment{Definition}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Definition \thesection.\theItem.}\ }
+                           {\medskip}
+\newenvironment{Notation}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Notation \thesection.\theItem.}\ }
+                           {\medskip}
+\newenvironment{Theorem}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Theorem \thesection.\theItem.}\ %
+                            \begingroup \sl}
+                           {\endgroup\medskip}
+\newenvironment{Proposition}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Proposition \thesection.\theItem.}\ %
+                            \begingroup \sl}
+                           {\endgroup\medskip}
+\newenvironment{Corollary}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Corollary \thesection.\theItem.}\ %
+                            \begingroup \sl}
+                           {\endgroup\medskip}
+\newenvironment{Lemma}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Lemma \thesection.\theItem.}\ %
+                            \begingroup \sl}
+                           {\endgroup\medskip}
+\newenvironment{Conjecture}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Conjecture \thesection.\theItem.}\ %
+                            \begingroup \sl}
+                           {\endgroup\medskip}
+\newenvironment{Example}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Example \thesection.\theItem.}\ }
+                           {\qed}
+\newenvironment{Remark}{\smallskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Remark \thesection.\theItem.}\ }
+                           {\qed}
+\newenvironment{Question}{\smallskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Question \thesection.\theItem.}\ }
+                           {\par}
+\newenvironment{theoremlist}{\begin{list}{}
+                        {\setlength{\parsep}{0pt}
+                        \setlength{\topsep}{\smallskipamount}} }
+                        {\end{list}}
+
+\title{Rigidity of Coset-Preserving Maps on Upper-Triangular Nilpotent Lie Groups}
+
+\authornameonly{Richard Tierney}
+
+\author{\Authornameonly\\{\bigskip}Supervisor: Professor Michael Cowling}
+
+\begin{document}
+\maketitle
+\section{Reducing the Dimension of an Algebra}
+For the rest of the thesis, $\g$ will denote a nilpotent Lie algebra of dimension $n$ with corresponding Lie group $\G$. Suppose the lower central series for $\g$ is $A_{i}$ and the last non-zero term is $A_{N}$. Let $\phi: \g \longrightarrow \g$ denote a linear map that preserves structures corresponding to cosets in the group. \newline
+Let $x$ and $y$ be elements of $\g$. If $\alg(x,y)\subsetneq \g$ then by the inductive assumption $\phi|_{\alg(x,y)}$ is either an isomorphism or anti-isomorphism, so $\phi[x,y]= \pm [\phi(x),\phi(y)]$. \newline
+Whereas if $\alg(x,y)=\g$, the inductive assumption cannot be directly applied. Therefore we attempt to reduce the dimension of the algebra $\alg(x,y)$ and look at the restrictions obtained by using the inductive assumption on the new algebra. 
+\newline Suppose that $\g=\alg(x,y)$.
+
+\begin{Proposition}
+Suppose that the terms in the BCH Formula for $x$ and $y$ are labelled $C_{i}$. (So $x=C_{1}$, $y=C_{2}$, $[x,y]=C_{3}$ etc.), and that $C_{k}$ is the last non-zero term in the sequence. 
+Then $\{C_{1},\ldots,C_{k}\} $ forms a basis for $\alg(x,y)=\g$.
+
+\end{Proposition}
+
+\begin{proof}
+\begin{Lemma}\label{linindepuv}
+If $u \in A_{i}\backslash A_{i+1} $ and $v \in A_{i+1}$ then $u$ and $v$ are linearly independent.
+\end{Lemma}
+\begin{proof}
+Since $A_{i+1}$ is a subspace of $\g$, 
+\[
+\spn \{ v\} \subseteq A_{i+1}.
+\]
+Hence $u \notin \spn \{ v\}$ so $u$ and $v$ are linearly independent.
+%Let $\alpha_{1}u+\alpha_{2}v=0$ for some real numbers $\alpha_{1}$ and $\alpha_{2}$. Then choose some element $z_{1} \in \g$ such that $[z_{1},u] \neq 0$. So 
+%\[
+%\alpha_{1}[z_{1},u]+\alpha_{2}[z_{1},v]=0.
+%\]
+%Continue to choose elements $z_{2}$, $z_{3}$ ... $z_{N-i}$ so that $[z_{N-i},[z_{N-i-1},[\ldots[z_{1},u]\ldots]$ is a non-zero element of $A_{N}$. Then 
+%\[
+%\alpha_{1}[z_{N-i},[z_{N-i-1},[\ldots[z_{1},u]\ldots]+\alpha_{2}[z_{N-i},[z_{N-i-1},[\ldots[z_{1},v]\ldots]=0.
+%\]
+%But $[z_{N-i},[z_{N-i-1},[\ldots[z_{1},v]\ldots] \in A_{N+1}=0$ so
+%\begin{align*}
+%\alpha_{1}[z_{N-i},[z_{N-i-1},[\ldots[z_{1},u]\ldots]&=0 \\
+%\alpha_{1} &=0.
+%\end{align*}
+%Hence $\alpha_{2}v=0$ so $\alpha_{2}=0$ and hence $u$ and $v$ are linearly independent. 
+\end{proof}
+
+Now suppose that there are real numbers $a_{i}$ such that $a_{1}C_{1}+\ldots + a_{k}C_{k}=0$. Let $a_{r}$ be the first of these coefficients that is non-zero, and suppose that $C_{r} \ldots C_{s}$ all consist of commutators of the same length, i.e. suppose $C_{r} \ldots C_{s} \in A_{i}\backslash A_{i+1}$. Then $C_{s+1} \ldots C_{k} \in A_{i+1}$ so let
+\begin{align*}
+u &=a_{r}C_{r}+ \ldots a_{s}C_{s} \\
+v &=a_{s+1}C_{s+1} + \ldots a_{k}C_{k} \\
+\end{align*}
+But then $u+v=0$ so $u$ and $v$ are linearly dependent, which contradicts \ref{linindepuv}. Hence there is no non-zero coefficient $a_{j}$. All the coefficients are zero so $\{ C_{1},\ldots,C_{k} \}$ is linearly independent.
+\newline
+Clearly $\{ C_{1},\ldots,C_{k} \}$ is a spanning set for $\g=\alg(x,y)$ since the $C_{j}$ are all the non-zero commutators involving $x$ and $y$, and by definition $\alg(x,y)$ is anything in the linear span of this set.
+
+\end{proof}
+
+Now that we have a basis for $\alg(x,y)$ it is possible to reduce its dimension by deleting one of the basis elements. We will consider the subalgebras that arise by deleting $x$ ($C_{1}$) or $y$ ($C_{2}$). \newline
+Let 
+\[
+\g_{-x}=\spn \{ C_{2},C_{3},\ldots,C_{k} \}
+\]
+and
+\[
+\g_{-y}=\spn \{C_{1},C_{3},C_{4},\ldots,C_{k} \}
+\]
+
+\begin{Lemma}\label{gohigher}
+If $C_{p}$ and $C_{q}$ are distinct non-zero terms in the sequence $\{C_{i}\}$, then $[C_{p},C_{q}]= C_{p'}-C_{q'}$ where $C_{p'}$ and $C_{q'}$ are also terms in the sequence $\{C_{i}\}$ (they are possibly zero), for which  $p',q' > p$.
+\end{Lemma}
+\begin{proof}
+The proof is by induction, very similar to the proof of \ref{adddim}. Clearly
+\begin{align*}
+[C_{1},C_{q}]&=[x,C_{q}]\\
+&=C_{p'}
+\end{align*}
+for some $p'>p$. So the result holds if $p=1$. Now suppose the result holds for all distinct $p$ and $q$ with $p \leq K$ ($q$ can be anything distinct from $p$). Then suppose $r \leq K+1$ and that $r \neq q$. Then
+\[
+C_{r}=[\mu,C_{p}]
+\]
+for some $\mu \in \{x,y\}$ and some $C_{p}$ with $p < r$ (hence $p\leq K$). 
+\newline
+So then 
+\begin{align*}
+[C_{r},C_{q}]&=[[\mu,C_{p}],C_{q}]\\
+&=[\mu,[C_{p},C_{q}]]-[C_{p},[\mu,C_{q}]] \\
+&=[\mu,C_{p'}]-[C_{p},C_{s}]\\
+&=C_{t_{1}}-C_{t_{2}}
+\end{align*}
+for some $t_{1}>p'>p$ and some $t_{2}>p$ as required. Hence by induction the statement is true for all positive integers $p$ and $q \neq p$.
+\end{proof}
+
+
+\begin{Proposition} The subspaces $\g_{-x}$ and $\g_{-y}$ are Lie subalgebras.
+\end{Proposition} 
+\begin{proof}
+Let $u$ and $v$ be elements of $\g_{-x}$. Then there are real numbers $a_{2}\ldots a_{k}$ and $b_{2} \ldots b_{k}$ such that 
+\begin{align*}
+u &= a_{2}C_{2}+ a_{3}C_{3} + \ldots a_{k}C_{k} \\
+v &= b_{2}C_{2}+ b_{3}C_{3} + \ldots b_{k}C_{k}
+\end{align*}
+Then $[u,v]\in A_{1}$. Now suppose that 
+\[
+[u,v]=\gamma_{1}C_{1}+\gamma_{2}C_{2}+\ldots \gamma_{k}C_{k}
+\]
+
+\begin{align*}
+\gamma_{1}C_{1}+\gamma_{2}C_{2}+\ldots \gamma_{k}C_{k}&=[a_{2}C_{2}+ a_{3}C_{3} + \ldots a_{k}C_{k},b_{2}C_{2}+ b_{3}C_{3} + \ldots b_{k}C_{k}] \\
+&=a_{2}b_{3}[C_{2},C_{3}]+a_{2}b_{4}[C_{2},C_{4}]+\ldots a_{k}b_{k-1}[C_{k},C_{k-1}]
+\end{align*}
+The commutator terms in the last line all begin with a term $C_{i}$ of the sequence $\{C_{i} \}$ with $i \geq 2$. So by \ref{gohigher}, the commutator terms in the last line can be converted into a series of $C_{i}$-terms, all of which have $i \geq 3$. Hence
+\[
+\gamma_{1}C_{1}+\gamma_{2}C_{2}+\ldots \gamma_{k}C_{k} =\delta_{3}C_{3}+\delta_{4}C_{4}+\ldots \delta_{k}C_{k} 
+\]
+Since $\{ C_{i} \}$ is linearly independent, the coefficients can be equated, giving $\gamma_{1}=0$. Hence $[u,v] \in \g_{-x}$ and so $\g_{-x}$ is closed under the bracket operation, making it a Lie subalgebra. By symmetry it can be seen that $\g_{-y}$ is also a Lie subalgebra.
+\end{proof}
+
+\end{document}
