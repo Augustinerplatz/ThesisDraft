@@ -1905,7 +1905,32 @@ The subalgebras $\g_{-x}$ and $\g_{-y}$ are proper subalgebras of $\g$.
 \end{Proposition}
 
 \begin{proof}
+The result will be proved for $\g_{-x}$ since by symmetry it is the same for $\g_{-y}$. Suppose the converse, i.e. that $\g_{-x}=\g$. Then $x \in \g_{-x}$ so there are real numbers $x_{2},\ldots,x_{k}$ such that
+\begin{align*}
+x&= x_{2}y +x_{3}C_{3}+ x_{4}C_{4}+\cdots x_{k}C_{k}\\
+[y,x]&= [C_{2},x]=x_{3}[C_{2},C_{3}]+x_{4}[C_{2},C_{4}]+\cdots x_{p}[C_{2},C_{p}]
+\end{align*}
+where $p < k$, because $[y,C_{k}]=0$ since it is a commutator term further down the series and so by assumption must be zero. Then In fact $[y,C_{i}]=C_{j}$ with $j >i$ for every $i$ from $3$ to $k$. So the coefficients can be relabelled starting from $C_{4}$ as follows (also multiplying by $-1$):
+\begin{equation}\label{Iterate}
+[x,y]=x'_{4}C_{4}+x'_{5}C_{5}+\cdots x'_{p}C_{p}.
+\end{equation}
 
+But now each $C_{i}$ in the above expression is of the form 
+\[
+C_{i}=[y,[u_{1},[\ldots[u_{r},[x,y]\ldots]
+\]
+where $u_{i} \in \{x,y\}$. So then by substituting the left hand side of \ref{Iterate} into the right hand side repeatedly each individual term $C_{i}$ can grow to an arbitrarily long commutator. Take one such term: 
+ 
+\begin{align*}
+C_{i} &=[y,[u_{1}^{i},[u_{2}^{i},[\ldots[u_{r_{i}}^{i},[x,y]]\ldots]  \\
+ &=[y,[u_{1}^{i},[u_{2}^{i},[\ldots [u_{r_{i}}^{i},x'_{4}C_{4}+x'_{5}C_{5}+\cdots x'_{p}C_{p}]\ldots]\\
+ &=\sum\limits_{j=4}^{p}[y,[u_{1}^{i},[u_{2}^{i},[\ldots [u_{r_{i}}^{i},x'_{j}C_{j}]\ldots]\\
+ &=\sum\limits_{j=4}^{p}x'_{j}[y,[u_{1}^{i},[u_{2}^{i},[\ldots,[u_{r_{i}}^{i},[y,[u_{1}^{j},[u_{2}^{j},[\ldots[u_{r_{j}}^{j},[x,y]]\ldots]]\ldots]\\
+ &=\\
+ &\vdots \;\;\; \text{(repeatedly substituting the long expression for $[x,y]$)}\\
+ &=0
+\end{align*}
+Hence all the terms $C_{i}$ with $i$ from $4$ to $p$ are zero so $C_{3}=[x,y]=0$ which is a contradiction. Hence $x \notin \g_{-x}$ and so $\g_{-x}$ is a proper subalgebra of $\g$.
 \end{proof}
 
 
@@ -1994,6 +2019,285 @@ So
 \end{proof}
 
 \section{Proof that the Error Term is Zero}
+
+A subgroup will now be constructed in two different ways. By observing how the map $\phi$ acts on each of these expressions for the subgroup it will be shown that the error term $z$ must be zero.
+
+\begin{Definition}
+First of all recall that if $S$ is a subset of $\G$ then we denote the smallest subgroup containing $S$ by $\langle S \rangle$. Now for ease of notation the following abbreviation will be used:
+\[
+\langle e^{\Q\lambda x},e^{\Q\lambda y} \rangle =\langle \; \{ e^{q\lambda x} \mid q \in \Q \}\cup \{ e^{q\lambda y} \mid q \in \Q \} \; \rangle
+\]
+\end{Definition}
+
+\begin{Definition}
+Define the \emph{length} $L(C_{i})$ of a term in the sequence $C_{i}$ as the number of times the bracket operation has been applied. So for example
+\begin{align*}
+L(C_{1}) &= L(x)=0 \\
+L(C_{3}) &= L([x,y])=1 \\
+L(C_{6}) &= L([x,[x,[x,y]]])=3
+\end{align*}
+\end{Definition}
+
+\begin{Definition}
+To make manipulations of terms in the sequence $C_{i}$ easier define a new related sequence $C'_{i}$ by taking the BCH Formula for $\lambda x$ and $\lambda y$ instead of just $x$ and $y$. So for example
+
+\begin{align*}
+C'_{1} &= \lambda x \\
+C'_{2} &= \lambda y \\
+C'_{3} &= [\lambda x, \lambda y]
+\end{align*} 
+etc. And note the following: 
+\[
+C'_{i}=\lambda^{L(C_{i})}C_{i}
+\]
+simply by taking the multiples $\lambda$ outside the brackets.
+\end{Definition}
+
+\begin{Proposition}\label{Subset}
+\begin{align*}
+\langle e^{\Q\lambda x},e^{\Q\lambda y} \rangle 
+&\subseteq \{\exp(q_{1}C'_{1} + q_{2} C'_{2} + q_{3} C'_{3} \\
+&\;\;\;+ \cdots + q_{i}C'_{i}+ \cdots q_{k}C'_{k}) \mid q_{i} \in \Q \} \\
+&=\left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}C'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
+&= \left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}\lambda^{L(C_{i})}C_{i}\right) \mid q_{i} \in \Q \right\rbrace
+ \end{align*}
+\end{Proposition}
+
+\begin{proof}
+Let 
+\begin{align*}
+S&=\left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}C'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
+&=\left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}\lambda^{L(C_{i})}C_{i}\right) \mid q_{i} \in \Q \right\rbrace
+\end{align*}
+Any elements of $\{ e^{q\lambda x} \mid q \in \Q \}\cup \{ e^{q\lambda y} \mid q \in \Q \}$ can be multiplied together in any order to form the elements of the subgroup $\langle e^{\Q\lambda x},e^{\Q\lambda x} \rangle$. Note that if two elements in say $\{ e^{q\lambda x} \mid q \in \Q \}$ are multiplied together the result is another element of this set (and similarly for the set defined with $y$):
+\begin{align*}
+\exp(q \lambda x)\exp(q' \lambda x)&=\exp((q+q')\lambda x +0) \\
+&=\exp(r\lambda x) \\
+&\in \{ e^{q\lambda x} \mid q \in \Q \}
+\end{align*}
+Hence any element $w$ of $\langle e^{\Q\lambda x},e^{\Q\lambda y} \rangle$ is made up of a string of factors alternating between the set defined by $x$ and the set defined by $y$:
+\[
+w=e^{q_{1}\lambda x}e^{p_{1}\lambda y} \cdots e^{q_{N}\lambda x}e^{p_{N}\lambda y}.
+\]
+Now it will be proved by induction on $N$ that $w \in S$. \newline
+If $N=1$ we have 
+\begin{align*}
+w &=e^{q_{1}\lambda x}e^{p_{1}\lambda y} \\
+&= \exp \left( q_{1}C'_{1}+p_{1}C'_{2} +(1/2)q_{1}p_{1}[C'_{1},C'_{2}]+\cdots r_{k} C'_{k} \right) \\
+&= \exp \left( r_{1}C'_{1}+r_{2}C'_{2} +r_{3}C'_{3}+\cdots+r_{i} C'_{i}+\cdots + r_{k}C'_{k} \right) \\
+&=\exp \left(\sum\limits_{i=1}^{k}r_{i}C'_{i}\right)
+\end{align*}
+where all the $r_{i}$ are rational numbers.
+This is of the desired form to be in the set $S$. Hence the statement is true for $N=1$. \newline
+Now suppose the statement is true for $N=M$, for some particular $M \geq 1$. Then suppose that
+\[
+w=e^{q_{1}\lambda x}e^{p_{1}\lambda y} \cdots e^{q_{N}\lambda x}e^{p_{N}\lambda y}e^{q_{N+1}\lambda x}e^{p_{N+1}\lambda y}.
+\]
+Then since the statement is true for $N=1$ and $N=M$ let 
+\begin{align*}
+u&=e^{q_{1}\lambda x}e^{p_{1}\lambda y} \cdots e^{q_{N}\lambda x}e^{p_{N}\lambda y} \\
+v&=e^{q_{N+1}\lambda x}e^{p_{N+1}\lambda y}
+\end{align*}
+So we know that $u$ and $v$ are in $S$. It now suffices to prove that $S$ is closed under multiplication. Suppose 
+\begin{align*}
+u&=\exp \left(\sum\limits_{i=1}^{k}u_{i}C'_{i}\right)\\
+v&=\exp \left(\sum\limits_{i=1}^{k}v_{i}C'_{i}\right)
+\end{align*}
+for rational numbers $u_{i}$ and $v_{i}$. 
+\newline
+Multiplying these two elements together is very untidy but the essential point is that $[C_{i},C_{j}]=C_{i'}-C_{j'} \in \{ \sum\limits_{h=1}^{k}q_{h}C_{h} \mid q_{h} \in \Q \}$ as was shown in Lemma \ref{gohigher}. So 
+\begin{align*}
+uv &= \exp \left(\sum\limits_{i=1}^{k}u_{i}C'_{i}\right)
+\exp \left(\sum\limits_{i=1}^{k}v_{i}C'_{i}\right) \\
+&= \exp \left( \sum\limits_{i=1}^{k}u_{i}C'_{i}+ \sum\limits_{i=1}^{k}v_{i}C'_{i} + \frac{1}{2}\left[\sum\limits_{i=1}^{k}u_{i}C'_{i},\sum\limits_{i=1}^{k}v_{i}C'_{i}\right] + \cdots
+ \right) \\
+ &= \exp \left( \sum\limits_{i=1}^{k} w_{i}C'_{i} \right)
+\end{align*} 
+for some rational coefficients $w_{i}$. Hence $uv$ is in the correct form to be in the set $S$ so $S$ is closed under multiplication as desired.
+\newline
+Hence $w=e^{q_{1}\lambda x}e^{p_{1}\lambda y} \cdots e^{q_{N}\lambda x}e^{p_{N}\lambda y} $ is in $S$ for any integer $N \geq 1$ and any rational coefficients $q_{i}$. So 
+\[
+\langle e^{\Q\lambda x},e^{\Q\lambda y} \rangle \subseteq S
+\]
+
+\end{proof}
+
+We need some notation for the following section: \newline
+Let $q_{x}$ and $q_{y}$ be rational numbers and let
+\begin{align*}
+G&= \langle e^{\Q\lambda x},e^{\Q\lambda y} \rangle \\
+H&= \langle e^{q_{x}\lambda x},e^{q_{y}\lambda y} \rangle \\
+g&= \log G \\
+h&= \log H 
+\end{align*}
+Define also $G_{\phi}$ and $H_{\phi}$, which are constructed by replacing $x$ and $y$ with $\phi(x)$ and $\phi(y)$ in $G$ and $H$:
+\begin{align*}
+G_{\phi} &= \langle e^{\Q\lambda x},e^{\Q\lambda y} \rangle \\
+&= \langle \; \{ e^{q\lambda \phi(x)} \mid q \in \Q \}\cup \{ e^{q\lambda \phi(y)} \mid q \in \Q \} \; \rangle \\
+H_{\phi} &= \langle e^{q_{x}\lambda \phi(x)},e^{q_{y}\lambda \phi(y)} \rangle
+\end{align*}
+Then also define:
+\begin{align*}
+s &= \log S \\
+&=\log \left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}C'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
+&= \left\lbrace \log \exp \left(\sum\limits_{i=1}^{k}q_{i}C'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
+&=\left\lbrace \left(\sum\limits_{i=1}^{k}q_{i}C'_{i}\right) \mid q_{i} \in \Q \right\rbrace
+\end{align*}
+
+We will also be considering the image of these sets under $\phi$ so define two more sequences as follows: 
+\begin{align*}
+\{ D_{i}\}&= \{\phi(x),\phi(y), [\phi(x),\phi(y)], [\phi(x),[\phi(x),[\phi(y)]]], \ldots  \} \\
+D'_{i} &= \{\phi(\lambda x),\phi(\lambda y), [\phi(\lambda x),\phi(\lambda y)], [\phi(\lambda x),[\phi(\lambda x),[\phi(\lambda y)]]], \ldots  \}\\
+&=  \{\lambda\phi(x),\lambda\phi(y), [\lambda\phi(x),\lambda\phi(y)], [\lambda\phi(x),[\lambda\phi(x),[\lambda\phi(y)]]], \ldots  \}
+\end{align*}
+Similar to the relationship between $C_{i}$ and $C'_{i}$, we have for $1 \leq i \leq k$,
+\[
+D'_{i}= \lambda^{L(D_{i})}D_{i}.
+\]
+
+\begin{Proposition}
+For $i=4,5\ldots k$, we have $\phi(C_{i})=D_{i}$. 
+\end{Proposition}
+
+\begin{proof}
+The proof is by induction on $l=L(C_{i})$. For $l=2$ there are two terms in the sequence and the statement is 
+\begin{align*}
+\phi[x,[x,y]]&=[\phi(x),[\phi(x),\phi(y)]] \\
+\phi[y,[x,y]]&=[\phi(y),[\phi(x),\phi(y)]]
+\end{align*}
+But these are both true by Proposition \ref{miracle}. \newline
+Now suppose that the statement is true for $l=M$ for some $M \geq 2$. Then suppose that $L(C_{i})=M+1$. There are two possibilities:
+\[
+C_{i}=[C_{1},C_{j}]
+\]
+or 
+\[
+C_{i}=[C_{2},C_{j}]
+\]
+where $L(C_{j})=M$. But then in either case we know $j\geq 4$ so
+
+\[
+\phi[C_{1},C_{j}]=[\phi C_{1},\phi C_{j}]
+\]
+and
+\[
+\phi[C_{2},C_{j}]=[\phi C_{2},\phi C_{j}]
+\]
+since $[C_{1},C_{j}] \in \g_{-y}$ and $[C_{2},C_{j}] \in \g_{-x}$. 
+Without loss of generality suppose $C_{i}=[C_{1},C_{j}]$. Then 
+\begin{align*}
+\phi[C_{1},C_{j}] &=[\phi C_{1},\phi C_{j}] \\
+&=[\phi(x),D_{j}]\\
+&=D_{i}
+\end{align*}
+ as required. 
+Hence for $l\geq 2$, $\phi(C_{i})=D_{i}$. The first term in the sequence with length $2$ is $C_{4}$ so the result holds. 
+\end{proof}
+
+\begin{Lemma}\label{Groupimage}
+Let $v_{1}$ and $v_{2}$ be elements of $\g$. Then 
+\begin{align*}
+\Phi \langle e^{v_{1}},e^{v_{2}} \rangle &=  \langle \Phi(e^{v_{1}}), \Phi(e^{v_{2}}) \rangle \\ 
+&= \langle e^{\phi(v_{1})}, e^{\phi(v_{2})} \rangle
+\end{align*}
+
+\end{Lemma}
+
+\begin{proof}
+%need to fill this in
+The proof is similar to (<<< near the end of chapter 2 >>>) .
+Since $\Phi$ sends subgroups of $\G$ to subgroups of $\G$, $\Phi \langle e^{v_{1}},e^{v_{2}} \rangle$ is a subgroup. So the fact that $\Phi(e^{v_{1}})$ and $\Phi(e^{v_{2}})$ are elements of $\Phi \langle e^{v_{1}},e^{v_{2}} \rangle$ along with minimality give
+
+\[
+\langle \Phi(e^{v_{1}}), \Phi(e^{v_{2}}) \rangle \subseteq \Phi \langle e^{v_{1}},e^{v_{2}} \rangle  
+\]
+
+
+\end{proof}
+
+\begin{Proposition}
+\[
+\lambda^{2}z= \sum\limits_{i=1}^{k}r_{i}D'_{i}
+\]
+\end{Proposition}
+
+\begin{proof}
+From Proposition \ref{Subset} we have $G \subseteq S$. And since $\{ e^{q_{x}\lambda x}, e^{q_{y}\lambda y} \}\subset \{ e^{q\lambda x} \mid q \in \Q \}\cup \{ e^{q\lambda y} \mid q \in \Q \}$ we have $H \subseteq G \subseteq S$. So taking the logarithm of both sides:
+\[
+h \subseteq s.
+\]
+So 
+\[
+\log \langle e^{q_{x}\lambda x},e^{q_{y}\lambda y} \rangle \subseteq \left\lbrace \left(\sum\limits_{i=1}^{k}q_{i}C'_{i}\right) \mid q_{i} \in \Q \right\rbrace.
+\]
+Now consider the image of this under $\phi$ and use the fact that $\phi(C_{3}= \pm D_{3} + z$:
+\begin{align*}
+\phi(h) &=
+\phi \log \langle e^{q_{x}\lambda x},e^{q_{y}\lambda x} \rangle \\
+&\subseteq \phi \left\lbrace \sum\limits_{i=1}^{k}q_{i}C'_{i} \mid q_{i} \in \Q \right\rbrace \\
+&= \left\lbrace \phi \left(\sum\limits_{i=1}^{k}q_{i}C'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
+&= \left\lbrace \left(\sum\limits_{i=1}^{k}q_{i}\phi(C'_{i})\right) \mid q_{i} \in \Q \right\rbrace \\
+&= \left\lbrace \left(q_{1}D'_{1}+q_{2}D'_{2} + q_{3}\lambda^{2}(\pm D_{3} + z) +\sum\limits_{i=4}^{k}q_{i}D'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
+&= \left\lbrace \left(q_{1}D'_{1}+q_{2}D'_{2} \pm q_{3}D'_{3} + q_{3}\lambda^{2}z +\sum\limits_{i=4}^{k}q_{i}D'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
+\end{align*}
+
+
+
+So consider applying the proof in Proposition \ref{Subset} to the subgroup $G_{\phi}$. This just involves replacing $x$ everywhere with $\phi(x)$, $y$ everywhere with $\phi(y)$ and $C_{i}$ everywhere with $D_{i}$. So 
+\[
+G_{\phi} \subseteq \left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}\phi(D'_{i})\right) \mid q_{i} \in \Q \right\rbrace.
+\]
+Therefore
+\begin{align*}
+H_{\phi} &\subseteq G_{\phi}  \subseteq \left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}\phi(D'_{i})\right) \mid q_{i} \in \Q \right\rbrace \\
+\log \langle e^{q_{x}\lambda \phi(x)},e^{q_{y}\lambda \phi(y)} \rangle =\log (H_{\phi})&\subseteq \log \left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}\phi(D'_{i})\right) \mid q_{i} \in \Q \right\rbrace \\
+&= \left\lbrace \left(\sum\limits_{i=1}^{k}q_{i}\phi(D'_{i})\right) \mid q_{i} \in \Q \right\rbrace 
+\end{align*}
+
+But from Lemma \ref{Groupimage} we know that 
+\begin{align*}
+\phi (h) &= \log \langle \Phi e^{q_{x}\lambda x},\Phi e^{q_{y}\lambda y} \rangle \\
+&= \log \langle e^{q_{x}\lambda \phi(x)},e^{q_{y}\lambda \phi(y)} \rangle
+\end{align*}
+So 
+\[
+\phi (h) \subseteq 
+\left\lbrace \left(\sum\limits_{i=1}^{k}q_{i}\phi(D'_{i})\right) \mid q_{i} \in \Q \right\rbrace .
+\]
+Now we have $\phi(h)$ being a subset of two apparently different larger sets:
+\begin{align*}
+\phi(h) &\subseteq \left\lbrace \left(q_{1}D'_{1}+q_{2}D'_{2} \pm q_{3}D'_{3} + q_{3}\lambda^{2}z +\sum\limits_{i=4}^{k}q_{i}D'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
+\phi (h) &\subseteq 
+\left\lbrace \left(\sum\limits_{i=1}^{k}p_{i}\phi(D'_{i})\right) \mid p_{i} \in \Q \right\rbrace
+\end{align*}
+Relabel $q_{3}$ to incorporate the possible negative sign before it in the above expression so that the first relation is
+
+\[
+\phi(h) \subseteq \left\lbrace \sum\limits_{i=1}^{3}q_{i}D'_{i}+ q_{3}\lambda^{2}z +\sum\limits_{i=4}^{k}q_{i}D'_{i} \mid q_{i} \in \Q \right\rbrace 
+\]
+So take a element $\pi$ of $\phi (h)$. Then $\pi$ can be written in two forms:
+\[
+\pi = \sum\limits_{i=1}^{3}q_{i}D'_{i}+ q_{3}\lambda^{2}z +\sum\limits_{i=4}^{k}q_{i}D'_{i}
+\]
+for some rational numbers $q_{i}$. 
+Also 
+\[
+\pi = \sum\limits_{i=1}^{k}p_{i}\phi(D'_{i})
+\]
+for some rational numbers $p_{i}$. Equating the above expressions:
+
+\begin{align*}
+q_{3}\lambda^{2} z &= \sum\limits_{i=1}^{k}p_{i}\phi(D'_{i}) -\sum\limits_{i=1}^{3}q_{i}D'_{i} -\sum\limits_{i=4}^{k}q_{i}D'_{i} \\
+&= \sum\limits_{i=1}^{k}r_{i}\phi(D'_{i})
+\end{align*}
+for rational numbers $r_{i}$ given by $r_{i}=p_{i}-q_{i}$ for $i \neq 3 $
+and $r_{3}=p_{3}$. So providing $q_{3} \neq 0$ we may divide it out giving:
+
+\[
+\lambda^{2} z = \sum\limits_{i=1}^{k}R_{i}\phi(D'_{i})
+\]
+where $R_{i}=r_{i}/q_{3}$ are rational numbers.
+\end{proof}
 
 
 
