@@ -2132,7 +2132,7 @@ h&= \log H
 \end{align*}
 Define also $G_{\phi}$ and $H_{\phi}$, which are constructed by replacing $x$ and $y$ with $\phi(x)$ and $\phi(y)$ in $G$ and $H$:
 \begin{align*}
-G_{\phi} &= \langle e^{\Q\lambda x},e^{\Q\lambda y} \rangle \\
+G_{\phi} &= \langle e^{\Q\lambda \phi(x)},e^{\Q\lambda \phi(y)} \rangle \\
 &= \langle \; \{ e^{q\lambda \phi(x)} \mid q \in \Q \}\cup \{ e^{q\lambda \phi(y)} \mid q \in \Q \} \; \rangle \\
 H_{\phi} &= \langle e^{q_{x}\lambda \phi(x)},e^{q_{y}\lambda \phi(y)} \rangle
 \end{align*}
@@ -2204,20 +2204,46 @@ Let $v_{1}$ and $v_{2}$ be elements of $\g$. Then
 \end{Lemma}
 
 \begin{proof}
-%need to fill this in
+
 The proof is similar to (<<< near the end of chapter 2 >>>) .
 Since $\Phi$ sends subgroups of $\G$ to subgroups of $\G$, $\Phi \langle e^{v_{1}},e^{v_{2}} \rangle$ is a subgroup. So the fact that $\Phi(e^{v_{1}})$ and $\Phi(e^{v_{2}})$ are elements of $\Phi \langle e^{v_{1}},e^{v_{2}} \rangle$ along with minimality give
 
 \[
 \langle \Phi(e^{v_{1}}), \Phi(e^{v_{2}}) \rangle \subseteq \Phi \langle e^{v_{1}},e^{v_{2}} \rangle  
 \]
+Now $\Phi^{-1}$ is also bijective and preserves subgroups of $\G$ so
 
+\begin{align*}
+\langle \Phi^{-1}(e^{v_{1}}), \Phi^{-1}(e^{v_{2}}) \rangle &\subseteq \Phi^{-1} \langle e^{v_{1}},e^{v_{2}} \rangle  \\
+\Phi \langle \Phi^{-1}(e^{v_{1}}), \Phi^{-1}(e^{v_{2}}) \rangle &\subseteq \Phi\Phi^{-1} \langle e^{v_{1}},e^{v_{2}} \rangle  \\
+\Phi \langle \Phi^{-1}(e^{v_{1}}), \Phi^{-1}(e^{v_{2}}) \rangle &\subseteq  \langle e^{v_{1}},e^{v_{2}} \rangle  
+\end{align*}
+But since this is true for any pair of elements $e^{v_{1}}$ and $e^{v_{2}}$, and since $\Phi$ is bijective, it also applies to $\Phi(e^{v_{1}})$, $\Phi(e^{v_{2}})$. Substituting these elements into the last relation:
+\begin{align*}
+\Phi \langle \Phi^{-1}(\Phi(e^{v_{1}})), \Phi^{-1}(\Phi(e^{v_{2}})) \rangle &\subseteq  \langle \Phi(e^{v_{1}}),\Phi(e^{v_{2}}) \rangle \\
+\Phi \langle e^{v_{1}}, e^{v_{2}} \rangle &\subseteq  \langle \Phi(e^{v_{1}}),\Phi(e^{v_{2}}) \rangle
+\end{align*}
 
 \end{proof}
 
-\begin{Proposition}
+Because of this Lemma we have 
+\begin{align*}
+\Phi(H) &=\langle \Phi(e^{q_{x}\lambda x}),\Phi(e^{q_{y}\lambda y}) \rangle \\
+&= \langle e^{q_{x}\lambda \phi(x)},e^{q_{y}\lambda \phi(y)} \rangle \\
+&= H_{\phi}
+\end{align*}
+And hence
+\begin{align*}
+\phi(h) &= \phi \log (H) \\
+&=\log \Phi (H) \\
+&= \log (H_{\phi})
+\end{align*}
+
+
+\begin{Proposition}\label{Rational}
+There is a sequence of rational numbers $R_{i}$ such that
 \[
-\lambda^{2}z= \sum\limits_{i=1}^{k}r_{i}D'_{i}
+\lambda^{2}z= \sum\limits_{i=1}^{k}R_{i}D'_{i}.
 \]
 \end{Proposition}
 
@@ -2230,7 +2256,7 @@ So
 \[
 \log \langle e^{q_{x}\lambda x},e^{q_{y}\lambda y} \rangle \subseteq \left\lbrace \left(\sum\limits_{i=1}^{k}q_{i}C'_{i}\right) \mid q_{i} \in \Q \right\rbrace.
 \]
-Now consider the image of this under $\phi$ and use the fact that $\phi(C_{3}= \pm D_{3} + z$:
+Now consider the image of this under $\phi$ and use the fact that $\phi(C_{3})= \pm D_{3} + z$:
 \begin{align*}
 \phi(h) &=
 \phi \log \langle e^{q_{x}\lambda x},e^{q_{y}\lambda x} \rangle \\
@@ -2245,13 +2271,13 @@ Now consider the image of this under $\phi$ and use the fact that $\phi(C_{3}= \
 
 So consider applying the proof in Proposition \ref{Subset} to the subgroup $G_{\phi}$. This just involves replacing $x$ everywhere with $\phi(x)$, $y$ everywhere with $\phi(y)$ and $C_{i}$ everywhere with $D_{i}$. So 
 \[
-G_{\phi} \subseteq \left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}\phi(D'_{i})\right) \mid q_{i} \in \Q \right\rbrace.
+G_{\phi} \subseteq \left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}D'_{i}\right) \mid q_{i} \in \Q \right\rbrace.
 \]
 Therefore
 \begin{align*}
-H_{\phi} &\subseteq G_{\phi}  \subseteq \left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}\phi(D'_{i})\right) \mid q_{i} \in \Q \right\rbrace \\
-\log \langle e^{q_{x}\lambda \phi(x)},e^{q_{y}\lambda \phi(y)} \rangle =\log (H_{\phi})&\subseteq \log \left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}\phi(D'_{i})\right) \mid q_{i} \in \Q \right\rbrace \\
-&= \left\lbrace \left(\sum\limits_{i=1}^{k}q_{i}\phi(D'_{i})\right) \mid q_{i} \in \Q \right\rbrace 
+H_{\phi} &\subseteq G_{\phi}  \subseteq \left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}D'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
+\log \langle e^{q_{x}\lambda \phi(x)},e^{q_{y}\lambda \phi(y)} \rangle =\log (H_{\phi})&\subseteq \log \left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}D'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
+&= \left\lbrace \left(\sum\limits_{i=1}^{k}q_{i}D'_{i}\right) \mid q_{i} \in \Q \right\rbrace 
 \end{align*}
 
 But from Lemma \ref{Groupimage} we know that 
@@ -2262,13 +2288,13 @@ But from Lemma \ref{Groupimage} we know that
 So 
 \[
 \phi (h) \subseteq 
-\left\lbrace \left(\sum\limits_{i=1}^{k}q_{i}\phi(D'_{i})\right) \mid q_{i} \in \Q \right\rbrace .
+\left\lbrace \left(\sum\limits_{i=1}^{k}q_{i}D'_{i}\right) \mid q_{i} \in \Q \right\rbrace .
 \]
 Now we have $\phi(h)$ being a subset of two apparently different larger sets:
 \begin{align*}
 \phi(h) &\subseteq \left\lbrace \left(q_{1}D'_{1}+q_{2}D'_{2} \pm q_{3}D'_{3} + q_{3}\lambda^{2}z +\sum\limits_{i=4}^{k}q_{i}D'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
 \phi (h) &\subseteq 
-\left\lbrace \left(\sum\limits_{i=1}^{k}p_{i}\phi(D'_{i})\right) \mid p_{i} \in \Q \right\rbrace
+\left\lbrace \left(\sum\limits_{i=1}^{k}p_{i}D'_{i}\right) \mid p_{i} \in \Q \right\rbrace
 \end{align*}
 Relabel $q_{3}$ to incorporate the possible negative sign before it in the above expression so that the first relation is
 
@@ -2282,24 +2308,112 @@ So take a element $\pi$ of $\phi (h)$. Then $\pi$ can be written in two forms:
 for some rational numbers $q_{i}$. 
 Also 
 \[
-\pi = \sum\limits_{i=1}^{k}p_{i}\phi(D'_{i})
+\pi = \sum\limits_{i=1}^{k}p_{i}D'_{i}
 \]
 for some rational numbers $p_{i}$. Equating the above expressions:
 
 \begin{align*}
-q_{3}\lambda^{2} z &= \sum\limits_{i=1}^{k}p_{i}\phi(D'_{i}) -\sum\limits_{i=1}^{3}q_{i}D'_{i} -\sum\limits_{i=4}^{k}q_{i}D'_{i} \\
-&= \sum\limits_{i=1}^{k}r_{i}\phi(D'_{i})
+q_{3}\lambda^{2} z &= \sum\limits_{i=1}^{k}p_{i}D'_{i} -\sum\limits_{i=1}^{3}q_{i}D'_{i} -\sum\limits_{i=4}^{k}q_{i}D'_{i} \\
+&= \sum\limits_{i=1}^{k}r_{i}D'_{i}
 \end{align*}
 for rational numbers $r_{i}$ given by $r_{i}=p_{i}-q_{i}$ for $i \neq 3 $
 and $r_{3}=p_{3}$. So providing $q_{3} \neq 0$ we may divide it out giving:
 
 \[
-\lambda^{2} z = \sum\limits_{i=1}^{k}R_{i}\phi(D'_{i})
+\lambda^{2} z = \sum\limits_{i=1}^{k}R_{i}D'_{i}
 \]
 where $R_{i}=r_{i}/q_{3}$ are rational numbers.
 \end{proof}
 
 
+
+
+\begin{Lemma}
+The algebra generated by $\phi(x)$ and $\phi(y)$ is all of $\g$. (Just as $\alg(x,y)=\g$.) Thus $\g =\spn \{ D_{i} \mid i=1 \dots k  \} $ so a subset of these $D_{i}$ may be selected to form a basis $\{D_{a_{j}} \}$ of $\g$.
+\end{Lemma}
+
+\begin{proof}
+%need to fill this in. has been done on paper.
+\end{proof}
+
+\begin{Proposition}\label{threedim}
+Using the above notation, if $R_{3}$ is the only non-zero coefficient out of all the $\R_{i}$, then $\g$ is three-dimensional and the theorem holds.
+\end{Proposition}
+
+\begin{proof}
+We have 
+\begin{align*}
+\lambda^{2}z &= R_{3} D'_{3} \\
+&= R_{3}\lambda^{2}[\phi(x),\phi(y)] \\
+z&=R_{3}[\phi(x),\phi(y)]
+\end{align*}
+
+But this indicates that $D_{3}=[\phi(x),\phi(y)]=(1/R_{3})z \in Z(\g)$. But then $D_{i}=0$ for all $i \geq 4$ since these terms all come from applying the bracket operation to $D_{3}$. So then 
+\begin{align*}
+\g &= \spn \{ D_{i} \mid i=1\ldots k \} \\
+&= \spn \{ \phi(x), \phi(y), [\phi(x), \phi(y)] \} 
+\end{align*}
+So $\g$ is only three-dimensional and therefore the result holds since we have already proved this case.
+\end{proof}
+
+\begin{Definition}
+Define an inner product $((, )):\g \longrightarrow \R$ with respect to the basis $\{ D_{a_{j}} \}$ of $\g$. Then let 
+\[
+E = \sum\limits_{a_{j}} D_{a_{j}}.
+\]
+so that $((g,E))$ is non-zero for all non-zero elements $g$ of $\g$.
+%I may need to prove this little one
+\end{Definition}
+
+
+
+\begin{Proposition}
+The central error term $z$ must be $\vec{0}$. 
+\end{Proposition}
+
+\begin{proof}
+From Proposition \ref{Rational} we have for \emph{any} $\lambda \in \R$, there exist rational numbers $R_{i}$ such that
+\begin{equation}\label{important}
+ \sum\limits_{i=1}^{k}R_{i}D'_{i} -\lambda^{2} z  = \vec{0}.
+\end{equation}
+So for any $\lambda \in \R$,
+\begin{align*}
+\sum\limits_{i=1}^{k}R_{i}\lambda^{L(D_{i})}(( D_{i}, E))-\lambda^{2}((z,E))
+&= (( \sum\limits_{i=1}^{k}R_{i}\lambda^{L(D_{i})}D_{i}-\lambda^{2}z,E)) \\
+&=((\vec{0}, E))\\
+&=0
+\end{align*}
+
+Now look at this expression as a polynomial in $\lambda$:
+\[
+P(\lambda)=\sum\limits_{i=1}^{k} a_{i}\lambda^{L(D_{i})}=0
+\]
+where the coefficients are 
+\[
+a_{i}= 
+\left\lbrace
+\begin{array}{ll}
+R_{i}((D_{i},E)) & \text{for $i=1,2,4,5,\ldots k$} \\
+R_{3}((D_{3},E))-((z,E)) & \text{for $i=3$}
+\end{array}
+\right.
+\]
+Note that each $D_{i}$ is fixed, as are $z$ and $E$. Then since $R_{i} \in \Q$, and there are finitely many such coefficients, there must be only countably many sets of coefficients $\{a_{i} \}$, for different choices of $R_{i}$. Also for any individual polynomial, there are only finitely many solutions.
+Now define the set $\zeta$ as follows:
+\[
+\zeta = \{ \lambda \in \R \mid P(\lambda)=0 \text{ for some set of coefficients $a_{i}$} \}
+\]
+From the above reasoning it is seen that by systematically choosing all possible sets of $a_{i}$ such that they are not all zero, and finding all the values of $\lambda$ for which the polynomial is zero will only yield a countable number of values in total. But we know that for \emph{any} real value of $\lambda$ it is possible to find a set of coefficients $a_{i}$ . So $\zeta=\R$, which is uncountable. Hence there must be some values of $\lambda$ for which all the coefficients $a_{i}$ must be zero for the polynomial to have a solution. Hence the only set of rational numbers $R_{i}$ which satisfy equation \ref{important} for all values of $\lambda$ are those for which all the $a_{i}$ are zero. Then since for all $i$ we have $((D_{i},E)) \neq 0$,
+\begin{align*}
+R_{i}&=0, \;\;\text{for}i=1,2,4\ldots k \\
+R_{3}((D_{3},E))-((z,E))=0
+\end{align*}
+Now suppose $R_{3}$ is not $0$. Then we may apply Proposition \ref{threedim} and see that $\g$ is three-dimensional so the result must hold, indicating that $z=0$, so $R_{3}=0$, which is a contradiction. \newline
+Therefore we must have $R_{i}=0$ for all $i=1 \ldots k $. Hence $z=0$ as required and the map $\phi$ is a Lie algebra isomorphism or anti-isomorphism.
+
+\end{proof}
+
+\chapter{Discussion}
 
 \bibliography{bibliography.bib}
 
