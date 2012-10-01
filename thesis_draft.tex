@@ -5,6 +5,7 @@
 \usepackage{amsthm}
 \usepackage{latexsym,amsmath}
 \usepackage{graphicx}
+\usepackage{texdraw}
 
 %% define some macros
 \newcommand{\R}{\mathbb{R}}
@@ -87,7 +88,7 @@
                         \setlength{\topsep}{\smallskipamount}} }
                         {\end{list}}
 
-\title{Rigidity of Coset-Preserving Maps on Upper-Triangular Nilpotent Lie Groups}
+\title{Rigidity of Coset-Preserving Maps on Nilpotent Lie Groups}
 
 \authornameonly{Richard Tierney}
 
@@ -631,7 +632,16 @@ P: &R^{2}& \longrightarrow \R \\
 \end{eqnarray*}
 
 Proof of the addition property:
-Consider the diagram. Let $P=(1,0)$ and $Q=(0,1)$. $A$ is the point $(x_{1},0)$ and $B$ is the point $(x_{2},0)$. Then construct lines $L_{1}$, $L_{2}$, $L_{3}$ and $L_{4}$ as shown so that $$A'=(0,x_{1})$$ $$B'=(x_{2}, x_{1})$$ and $$C=(x_{1}+x_{2},0)$$ Now the map $\psi$ sends the $x$- and $y$- axes to themselves, sends parallel lines to parallel lines and $\psi(P)=P$ and $\psi(Q)=Q$. So the parallelogram $AA'B'C$ is mapped to a new parallelogram $\psi(A)\psi(A')\psi(B')\psi(C)$ where the sloping sides must have gradient $-1$, since they are parallel to $PQ$. So $\psi(A)=(x_{1}',0)$ and $\psi(B)=(x_{2}',0)$. Then by the properties of the parallelogram, 
+Consider the diagram.
+
+%\begin{center}
+%\begin{texdraw}
+% \drawdim{cm} \linewd 0.02
+% \move(0 -1) \lvec(0 4)
+%\end{texdraw}
+%\end{center} 
+
+Let $P=(1,0)$ and $Q=(0,1)$. $A$ is the point $(x_{1},0)$ and $B$ is the point $(x_{2},0)$. Then construct lines $L_{1}$, $L_{2}$, $L_{3}$ and $L_{4}$ as shown so that $$A'=(0,x_{1})$$ $$B'=(x_{2}, x_{1})$$ and $$C=(x_{1}+x_{2},0)$$ Now the map $\psi$ sends the $x$- and $y$- axes to themselves, sends parallel lines to parallel lines and $\psi(P)=P$ and $\psi(Q)=Q$. So the parallelogram $AA'B'C$ is mapped to a new parallelogram $\psi(A)\psi(A')\psi(B')\psi(C)$ where the sloping sides must have gradient $-1$, since they are parallel to $PQ$. So $\psi(A)=(x_{1}',0)$ and $\psi(B)=(x_{2}',0)$. Then by the properties of the parallelogram, 
 \[
 \psi(A')=(0,x_{1}')
 \]
@@ -1527,50 +1537,19 @@ The next chapter of this project will attempt to prove similar results for any u
 
 
 \chapter{Case of all Nilpotent Lie Groups}
-The aim now is to extend the two theorems proved in the previous section by an inductive step on any $n$-dimensional nilpotent Lie group. It will be shown that a bijective map between two nilpotent Lie algebras of any degree, for which the corresponding mapping between Lie groups is coset-preserving, is either a Lie algebra isomorphism or anti-isomorphism. We will be considering all cosets to be preserved (including the discrete ones that are not Lie subgroups). 
+The aim now is to extend the two theorems proved in the previous section by induction to all $n$-dimensional nilpotent Lie group. It will be shown that a bijective map between two nilpotent Lie algebras of any degree, for which the corresponding mapping between Lie groups is coset-preserving, is either a Lie algebra isomorphism or anti-isomorphism. We need to consider preserving all cosets of all subgroups (including the discrete or dense subgroups that are not Lie subgroups). 
 
 
 
 \section{Theory of Nilpotent Lie Groups and Lie Algebras}
 %include all the background information for the proof and general ideas about the basic structure of these groups and algebras
 
-
-
+\begin{Definition}
 Let $\mathfrak{a}$ be a Lie algebra and let $S$ and $T$ be subspaces. Then a new subspace is defined by 
 \[
-[S,T]=\left\lbrace \sum\limits_{i} [s_{i},t_{i}] \mid s_{i} \in S,\;\; t_{i} \in T \right\rbrace
+[S,T]=\spn \left\lbrace \;[s,t] \mid s \in S,\;\; t \in T \right\rbrace
 \]
-
-\begin{proof}
-Let $x=\sum\limits_{i=1}^{k} [s_{i},t_{i}]$ and $y=\sum\limits_{i=k+1}^{l} [s_{i},t_{i}]$ be elements of $[S,T]$, and let $\lambda$ be a real number. Then
-\begin{align*}
-\lambda x &=\sum\limits_{i=1}^{k} [\lambda s_{i},t_{i}]\\
-&=\sum\limits_{i=1}^{k} [s'_{i},t_{i}]
-\end{align*}
-where $s'_{i}=\lambda s_{i} \in S$, since $S$ is a subspace. Hence $\lambda x \in [S,T]$.
-\newline Now
-\begin{align*}
-x+y&=\sum\limits_{i=1}^{k} [s_{i},t_{i}]+\sum\limits_{i=k+1}^{l} [s_{i},t_{i}]\\
-&= \sum\limits_{i=1}^{l} [s_{i},t_{i}] \\
-&\in [S,T]
-\end{align*}
-Hence $[S,T]$ is a vector subspace of $\mathfrak{a}$.
-\newline
-%Also, 
-%\begin{align*}
-%[x,y]&= [\sum\limits_{i=1}^{k} [s_{i},t_{i}], \sum\limits_{i=k+1}^{l} [s_{i},t_{i}]]\\
-%&=\sum\limits_{
-%\begin{array}{c} 0 \leq i \leq k \\ k+1 \leq j \leq l \end{array}}
-%[[s_{i},t_{i}],[s_{j},t_{j}]] \\
-%&= -\sum\limits_{
-%\begin{array}{c} 0 \leq i \leq k \\ k+1 \leq j \leq l \end{array}}
-%+[s_{j},[t_{j},[s_{i},t_{i}]]]+[t_{j},[[s_{i},t_{i}],s_{j}]]\\
-%&=\sum\limits_{
-%\begin{array}{c} 0 \leq i \leq k \\ k+1 \leq j \leq l \end{array}}
-
-%\end{align*}
-
-\end{proof}
+\end{Definition}
 
 \begin{Definition}
 The \emph{lower central series} $\{A_{i}\}$ of a Lie algebra $\mathfrak{a}$ is 
@@ -1610,7 +1589,7 @@ A_{0}\supset A_{1} \supset A_{2} \supset \cdots \supset A_{j} \supset A_{j+1} \s
 \end{Proposition}
  
 \begin{proof}
-Prove that $x \in A_{k}$ whenever $x \in A_{k+1}$. For $k=0$ this is trivial since $A_{0}$ is the whole Lie algebra. Suppose this statement is true for all $k \leq N$ for some positive integer $N$. Now let $k=N+1$.
+We prove that $x \in A_{k}$ whenever $x \in A_{k+1}$. For $k=0$ this is trivial since $A_{0}$ is the whole Lie algebra. Suppose this statement is true for all $k \leq N$ for some positive integer $N$. Now let $k=N+1$.
 Let $x \in A_{k+1}$. So 
 \[
 x= \sum\limits_{i}[g_{i},h_{i}]
@@ -1639,18 +1618,47 @@ A Lie Algebra $\mathfrak{a}$ is called \emph{nilpotent} if its lower central ser
 Note that there is a specific $n$ for which $A_{n-1} \neq 0$ but $A_{n} =0$.
 \end{Definition}
 
-The idea behind the proof is to look at the linear portion of the map on the Lie algebra, say $\phi$. We will take any two elements $x$ and $y$ of a nilpotent Lie algebra and see what kind of subalgebra they \emph{generate}. If they do not generate the whole algebra, then $\phi$ can be restricted to this generated subalgebra, and by an inductive assumption, will act as either an isomorphism or anti-isomorphism on this subalgebra. So $\phi[x,y]=\pm[\phi(x),\phi(y)]$ will hold. Some pairs of elements may however generate the whole algebra, in which case the inductive assumption cannot be directly applied. These pairs of elements will require special attention and it is this part of the proof that occupies the bulk of this chapter. 
+\section{The Set-up for the Proof}
+\begin{Theorem}\label{BigTheorem}
+Let $\G$ be an $n$-dimensional nilpotent Lie group, with corresponding Lie algebra $\g$, where $n \geq 3$. Let $\Psi$ be a bijective map from $\G$ to $\G$ that sends any coset of any subgroup of $\G$ to some coset of some subgroups of $\G$.  Define the following maps: 
+\begin{align*}
+\Phi: \G &\longrightarrow \G \\
+X & \longrightarrow \Psi(I)^{-1} \Psi(X)
+\end{align*}
+and 
+\begin{align*}
+\phi: \g &\longrightarrow \g \\
+x & \longrightarrow \log(\Phi(e^{x}))
+\end{align*}
+In other words, 
+
+\[
+\Phi(\exp{x})=\exp{\phi(x)} \;\;\; \forall x \in \g.
+\]
+Thus the maps $\Phi$ and $\phi$ preserve the identity element of the group and the zero-vector in the algebra respectively. \\
+\\ Then either $\phi$ is either a Lie algebra isomorphism or anti-isomorphism. In other words, 
+\[
+\phi[x,y]= [\phi(x),\phi(y)], \;\;\forall x,y \in \g
+\]
+or
+\[
+\phi[x,y]= -[\phi(x),\phi(y)], \;\;\forall x,y \in \g
+\]
+\end{Theorem}
+
+The idea behind the proof is to take any two elements $x$ and $y$ of a nilpotent Lie algebra and see what kind of subalgebra they \emph{generate}. 
+%don't know if I've defined generation of algebras yet
+If they do not generate the whole algebra, then $\phi$ can be restricted to this generated subalgebra, and by the inductive assumption, will act as either an isomorphism or anti-isomorphism on this subalgebra. So $\phi[x,y]=\pm[\phi(x),\phi(y)]$ will hold. Some pairs of elements may however generate the whole algebra, in which case the inductive assumption cannot be directly applied. These pairs of elements will require special attention and it is this part of the proof that occupies the bulk of this chapter. 
 
 \section{Basis of the Induction}
 %could include this section in the previous chapter
 
-\begin{Proposition}
+\begin{Proposition}\label{Three-dim}
 Up to isomorphism, the only three-dimensional nilpotent Lie groups are the Heisenberg group, and $(\R^{3},+)$. (Three-dimensional Lie groups are those which correspond to three-dimensional algebras).
 \end{Proposition}
 
-\begin{proof}
-Let $\mathfrak{a}$ be any three-dimensional nilpotent Lie algebra.
-Start by considering how Lie algebras could be built by starting with a basic three-dimensional vector space. The algebras then differ only in the definitions of their bracket operation, and the corresponding Lie groups are given their structures by the BCH Formula:
+The following two lemmas will be necessary in proving this proposition. For the two lemmas and for the final proof of the proposition, let $\mathfrak{a}$ be any three-dimensional nilpotent Lie algebra. \\
+We start by considering how Lie algebras could be built by starting with a basic three-dimensional vector space. The algebras then differ only in the definitions of their bracket operation, and the corresponding Lie groups are given their structures by the BCH Formula:
 \begin{align*}
 e^{x}e^{y} &= \exp\big( x+y+\frac{1}{2}[x,y]+\frac{1}{12}[x,[x,y]]-\frac{1}{12}[y,[x,y]] \\
 &-\frac{1}{24}[y,[x,[x,y]]]+\cdots (\text{longer commutators}) \big)
@@ -1658,9 +1666,11 @@ e^{x}e^{y} &= \exp\big( x+y+\frac{1}{2}[x,y]+\frac{1}{12}[x,[x,y]]-\frac{1}{12}[
 
 
 \begin{Lemma}
-Suppose $x$ and $y$ are linearly independent elements of $\mathfrak{a}$ and that $[x,y] \neq 0$. Then $\{x,y,[x,y]\}$ forms a basis for $\mathfrak{a}$.
+Suppose $x$ and $y$ are elements of $\mathfrak{a}$ and that $[x,y] \neq 0$. Then $\{x,y,[x,y]\}$ forms a basis for $\mathfrak{a}$.
+\end{Lemma}
+
 \begin{proof}
-For a contradiction suppose the opposite, i.e. suppose there exist real numbers $a$, $b$ and $c$, not all zero, such that $ax+by+c[x,y]=0$. Suppose that $a \neq 0$. Then by the property of nilpotency there is some positive integer $k$ with $A_{k}=0$. Hence by recursively applying $x=-a^{-1}(by+c[x,y])$ on the right hand side in the following relation, the last term is forced to be zero:
+For a contradiction suppose the opposite, i.e., suppose that there exist real numbers $a$, $b$ and $c$, not all zero, such that $ax+by+c[x,y]=0$. Suppose that $a \neq 0$. Then by the nilpotent property of $\mathfrak{a}$, there is some positive integer $k$ with $A_{k}=0$. Hence by recursively applying $x=-a^{-1}(by+c[x,y])$ on the right hand side in the following relation, the last term is forced to be zero:
 \begin{align*}
 ax &= -by-c[x,y]\\
 &=-by-c[-\frac{1}{a}(by+c[x,y]),y] \\
@@ -1671,22 +1681,25 @@ ax &= -by-c[x,y]\\
 &= -by+\frac{c^{k}}{a^{k-1}}[[\ldots[x,\overbrace{y]\ldots ,y],y]}^{k} \\
 &= -by.
 \end{align*}
-But this implies that $x$ and $y$ are linearly dependent, contrary to the assumption.
+But this implies that $[x,y]=0$, contrary to the assumption.
 
-Supposing instead that $b \neq 0$, the same recursive argument can be applied using $y$ instead of $x$, giving the same contradiction. \newline
+Supposing instead that $b \neq 0$, the same recursive argument can be applied using $y$ instead of $x$, giving the same contradiction. 
+
 If neither of these is the case, so $a=0$, $b=0$ and $c \neq 0$, then this gives $[x,y]=0$ which is also a contradiction.
 
- Therefore $\{x,y,[x,y]\}$ forms a basis for $\mathfrak{a}$.
+Therefore $\{x,y,[x,y]\}$ forms a basis for $\mathfrak{a}$.
 \end{proof}
-\end{Lemma}
+
 
 \begin{Lemma}
 All the terms with commutators of length three or more in the BCH Formula for two elements of a three-dimensional nilpotent Lie algebra $\mathfrak{a}$ are zero.
+\end{Lemma}
+
 
 \begin{proof} 
 Let $\mathfrak{a}$ have lower central series $A_{n}$. Since $\mathfrak{a}$ is nilpotent, there is some integer $k$ such that $A_{k}=0$.\newline
 Let $x$ and $y$ be elements of $\mathfrak{a}$.
-Higher terms in the Baker-Campbell-Hausdorff Formula all contain either $[x,[x,y]]$ or $[y,[x,y]]$, for $x$, $y \in \mathfrak{a}$. If $x$ and $y$ are linearly dependent then $[x,[x,y]]$ and $[y,[x,y]]$ are both zero and the result holds. So suppose that $x$ and $y$ are linearly independent elements of $\mathfrak{a}$. Then $\{x,y,[x,y]\}$ forms a basis for $\mathfrak{a}$ and so
+Higher terms in the Baker-Campbell-Hausdorff Formula all contain either $[x,[x,y]]$ or $[y,[x,y]]$, for $x$, $y \in \mathfrak{a}$. If $[x,y]=0$ then $[x,[x,y]]$ and $[y,[x,y]]$ are both zero and the result holds. So suppose that $[x,y] \neq 0$. Then $\{x,y,[x,y]\}$ forms a basis for $\mathfrak{a}$ and so
 \[
 [x,[x,y]]=ax+by+c[x,y], \;\;\;\;\; \text{some $a$, $b$, $c \in \R$}
 \]
@@ -1699,7 +1712,7 @@ Further, let $D(n)=\underbrace{[x,[x,\ldots[x}_{n},y]] \ldots ]$, then for $n \g
 D(n)=bD(n-2)+cD(n-1).
 \end{equation}
 
-Since $\mathfrak{a}$ is nilpotent, there must exist some $k \geq 2$ such that $D(k)=0$ but $D(k-1) \neq 0$. If this $k=2$ the result holds. If $k \geq 3$ then from \ref{recurrence}, substituting $n=k+1$,
+Since $\mathfrak{a}$ is nilpotent, there must exist some $k \geq 2$ such that $D(k)=0$ but $D(k-1) \neq 0$. If $k=2$ the result holds. If $k \geq 3$ then from equation \ref{recurrence}, substituting $n=k+1$ gives,
 \[
 bD(k-1)=0
 .\] Hence $b=0$.
@@ -1718,7 +1731,7 @@ This leaves us with
 \[
 [x,[x,y]]=ax.
 \]
-If a=0 then the result holds. Suppose $a \neq 0$. Then $x=\frac{1}{a}[x,[x,y]]$. So
+If $a=0$ then the result holds. Suppose that $a \neq 0$. Then $$x=\frac{1}{a}[x,[x,y]].$$ So
 
 \begin{align*}
 x &= \frac{1}{a}[x,[x,y]] \\
@@ -1727,14 +1740,16 @@ x &= \frac{1}{a}[x,[x,y]] \\
 &=\frac{1}{a^{n}}\underbrace{[x,[[x,[[x,}_{n}[x,\underbrace{y]],y]],y]]}_{n}\\
 &=\frac{(-1)^{n}}{a^{n}}[[\ldots[x,\underbrace{y],x],y],x]\ldots,y],x]}_{2n\; \text{brackets}} .
 \end{align*}
-%Need to define precisely what the A_{n} are, ie the entries in the upper central series. Define at the beginning of the chapter. 
+
 By continuing this argument it can be seen that $x \in A_{2n}$ for arbitrarily large $n$. Thus, making sure $n$ is sufficiently large, the nilpotent property of $\mathfrak{a}$ gives $x=0$, which is a contradiction. Hence $a=0$.
 
-So $[x,[x,y]]=0$ and by symmetry $[y,[y,x]]=0$ so $[y,[x,y]=0$ as required.
+So $[x,[x,y]]=0$ and by symmetry $[y,[y,x]]=0$ so $[y,[x,y]]=0$ as required.
 \end{proof}
 
-\end{Lemma}
-There are two cases. Either there exist linearly independent elements $x$ and $y$ of $\mathfrak{a}$ such that $[x,y] \neq 0$, in which case $\{x,y,[x,y]$ is a basis for $\mathfrak{a}$ or not. In the first case, $\mathfrak{a}$ is isomorphic to $\g$ via the linear transformation $\varphi$, defined by:
+\begin{proof} We now continue to finally prove Proposition \ref{Three-dim}.
+
+There are two cases. Either there exist linearly independent elements $x$ and $y$ of $\mathfrak{a}$ such that $[x,y] \neq 0$, in which case $\{x,y,[x,y]\}$ is a basis for $\mathfrak{a}$, or no such pair of elements exists. 
+\paragraph*{Case 1} In the first case, $\mathfrak{a}$ is isomorphic to $\g$ via the linear transformation $\varphi$, defined by:
 \begin{align*}
 \varphi(x)&=\begin{bmatrix}
 0 & 1 & 0 \\
@@ -1753,7 +1768,7 @@ There are two cases. Either there exist linearly independent elements $x$ and $y
 \end{bmatrix}\\
 \end{align*}
 
-\begin{proof}
+
 The map $\varphi$ is defined to be a linear transformation so it suffices to prove that it preserves the bracket operation.
 Let $u$ and $v$ be elements of $\mathfrak{a}$. These can each be written as linear combinations of the basis elements $x$, $y$ and $[x,y]$. So suppose
 \begin{align*}
@@ -1777,74 +1792,113 @@ And,
 \end{align*}
 %Could add subscripts to the bracket operations to distinguish between bracket in a and g!
 Hence $\varphi$ is a Lie algebra homomorphism. Since $\varphi$ sends each of the basis vectors in $\mathfrak{a}$ to each of the basis vectors in $\g$, it is the identity transformation with respect to these bases and so is a bijection. Hence $\varphi$ is a Lie algebra isomorphism.
-\end{proof}
 
-In the second case, $\mathfrak{a}$ has no non-zero commutators and is isomorphic to $\R^{3}$. 
-\begin{proof}
+
+\paragraph*{Case 2} In the second case, $\mathfrak{a}$ has no non-zero commutators and is isomorphic to $\R^{3}$. 
+
 Let $\varphi$ be the identity transformation with respect to any two bases of $\mathfrak{a}$ and $\g$. So $\varphi$ is a bijective linear transformation and 
 \[
 \varphi[x,y]=0=[\varphi(x),\varphi(y)], \;\;\;\; \forall x,y \in \mathfrak{a}
 \]
 Hence $\varphi$ is a Lie algebra isomorphism.
-\end{proof}
+
 Hence there are only two three-dimensional nilpotent Lie algebras up to isomorphism: $\R^{3}$ and the Lie algebra of the Heisenberg group.
 \end{proof}
 
 \begin{Proposition}
 A bijective map between $(\R^{3},+)$ and the Heisenberg Group cannot preserve the cosets.
-This is obvious. Two-dimensional cosets in $\R^{3}$ are all the planes, whereas two-dimensional cosets in the Heisenberg group are only the vertical planes. So the set of two-dimensional cosets in $\R^{3}$ has greater cardinality than the set of two-dimensional cosets in the Heisenberg group and there cannot be a bijection between them.
 \end{Proposition}
 
+\begin{proof}
+This is obvious. Two-dimensional cosets in $\R^{3}$ are all the planes, whereas two-dimensional cosets in the Heisenberg group are only the vertical planes. So the set of two-dimensional cosets in $\R^{3}$ strictly contains the set of two-dimensional cosets in the Heisenberg group and there cannot be a bijection between them.
+\end{proof}
 %explain now how this works as a basis for induction
 
-Note that a bijective coset-preserving map on $\R^{3}$ is just a bijective affine map, so is composed of a linear map and a translation. This linear map is a bijection so is an isomorphism. Hence the theorem holds trivially when considering $(\R^{3},+)$ as a Lie group.
-Therefore a bijective coset-preserving map between \emph{any} three-dimensional Lie groups is composed of a translation and either an isomorphism or anti-isomorphism.
-%need to word this more carefully
+Note that a bijective coset-preserving map on $(\R^{3},+)$ is just a bijective affine map, so is composed of a linear map and a translation. This linear map is a bijection so is an isomorphism. Hence Theorem \ref{BigTheorem} holds trivially when considering $(\R^{3},+)$ as a Lie group.
+Therefore a bijective coset-preserving map between \emph{any} pair of three-dimensional Lie groups is composed of a translation and either an isomorphism or anti-isomorphism.
 
 
 When considering nilpotent Lie groups and Lie algebras of higher dimension, the essential structure can be studied mainly by looking at the bracket operation and the lower central series.
 
-\begin{Proposition}\label{adddim}
-Let $\mathfrak{a}$ be any Lie algebra and let $ A_{0},A_{1},A_{2}\ldots$ be its lower central series. Then if $x \in A_{m}$ and $y \in A_{n}$, $[x,y] \in A_{m+n+1}$.
-\end{Proposition}
+\begin{Lemma}\label{adddim}
+Let $\mathfrak{a}$ be any Lie algebra and let $ A_{0},A_{1},A_{2}\ldots$ be its lower central series. If $x \in A_{m}$ and $y \in A_{n}$, then $[x,y] \in A_{m+n+1}$.
+\end{Lemma}
 
 \begin{proof}
-Proof is by induction on $m$, with arbitrary $n$. Suppose $x=\sum\limits_{i} U_{i}$ with $U_{i}=[x_{i1},[x_{i2},[x_{i3},\ldots [x_{im},x_{i0}]\ldots]]]$ and $y=\sum\limits_{i} V_{i}$, with $V_{i}=[y_{i1},[y_{i2},[y_{i3},\ldots [y_{im},y_{i0}]\ldots]]]$.
-\newline
-Suppose $m=0$, so $x$ is any element of $\mathfrak{a}$. Then $[x,y]=\sum\limits_{i}[x,V_{i}]=\Sigma_{i}W_{i}$, where $W_{i} \in A_{n+1}=A_{m+n+1}$ as required. The statement is true for $m=0$. \newline
+The proof is by induction on $m$, with arbitrary $n$. Suppose $x=\sum\limits_{i} U_{i}$ and $y=\sum\limits_{i} V_{i}$, with 
+\[
+U_{i}=[x_{i1},[x_{i2},[x_{i3},\ldots [x_{im},x_{i0}]\ldots]]]
+\]
+and 
+\[
+V_{i}=[y_{i1},[y_{i2},[y_{i3},\ldots [y_{im},y_{i0}]\ldots]]]
+\]
+for some $x_{ij}$ and $y_{ij}$ in $\mathfrak{a}$.
+
+Suppose $m=0$, so $x$ is any element of $\mathfrak{a}$. Then 
+\[
+[x,y]=\sum\limits_{i}[x,V_{i}]=\Sigma_{i}W_{i}
+\]
+where $W_{i} \in A_{n+1}=A_{m+n+1}$ as required. So the statement is true for $m=0$. \newline
+
 Now suppose the statement is true for $m \leq k$, for some integer $k \geq 0$. Now suppose that $m=k+1$. So each $U_{i}$ can be written as $[x_{i1},T_{i}]$, where $T_{i} \in A_{k}$. So
 \begin{align*}
 [x,y] &=\sum\limits_{i}[[x_{i1},T_{i1}],y] \\
-&= \sum\limits_{i}([x_{i1},[T_{i},y]]-[T_{i},[x_{i1},y]]).
+&= \sum\limits_{i}\big( \; [x_{i1},[T_{i},y]]-[T_{i},[x_{i1},y]]\; \big).
 \end{align*}
 
-Now $T_{i}$ is in $A_{k}$ so $[T_{i},y]$ is in $A_{k+n+1}$ by the inductive hypothesis, and since $x_{i1}$ is any element of $\mathfrak{a}$, $[x_{i1},[T_{i},y]]$ must be in $A_{k+n+2}=A_{m+n+1}$. \newline
-Also, $[x_{i1},y] \in A_{n+1}$ since $x_{i1}$ is any element of $\mathfrak{a}$, and then by the inductive hypothesis $[T_{i},[x_{i1},y]]$ must be in $A_{k+n+1+1}=A_{m+n+1}$. \newline
+Now $T_{i}$ is in $A_{k}$ so $[T_{i},y]$ is in $A_{k+n+1}$ by the inductive hypothesis, and since $x_{i1}$ is any element of $\mathfrak{a}$, $[x_{i1},[T_{i},y]]$ must be in $A_{k+n+2}=A_{m+n+1}$. 
+
+Also, $[x_{i1},y] \in A_{n+1}$ since $x_{i1}$ is any element of $\mathfrak{a}$, and then by the inductive hypothesis $[T_{i},[x_{i1},y]]$ must be in $A_{k+n+1+1}=A_{m+n+1}$. 
+
 Hence $\sum\limits_{i}([x_{i1},[T_{i},y]]-[T_{i},[x_{i1},y]])$ is in $A_{m+n+1}$ as required. By induction the statement is true for all integers $m \geq 0$.
 \end{proof}
 
 
+\section{The Inductive Assumption}
+For the induction, suppose that $n > 3$ and that if $\mathfrak{a}$ is a nilpotent Lie algebra of dimension $d$ such that
+\[
+3 \leq d \leq n-1
+\]
+then Theorem \ref{BigTheorem} holds. 
 
+\begin{Corollary}\label{CorReduceDim}
+If $\mathfrak{h}$ is a strict subalgebra of $\g$, then Theorem \ref{BigTheorem} holds for $\mathfrak{h}$. 
+\end{Corollary}
+
+\begin{proof}
+Any strict subalgebra $\mathfrak{h}$ of $\g$ must have dimension less than or equal to $n-1$. Let $A_{i}$ denote the lower central series of $\g$ and $B_{i}$ denote the lower central series of $\mathfrak{h}$. Suppose that $A_{N}$ is the last non-trivial term in the the series $A_{i}$. 
+
+Let $b \in B_{N+1}$. Then $b$ is a linear combination of some elements $U_{i}$ of $\mathfrak{h}$, where 
+\[
+U_{i}=[b_{i1},[b_{i2},[\ldots[b_{iN}, b_{i(N+1)}]\ldots]]]
+\]
+But then $U_{i} \in A_{N+1}$ so each $U_{i}$ is the zero vector. Hence $b=0$ and hence $\mathfrak{a}$ is a nilpotent Lie algebra. 
+
+Therefore, applying the inductive assumption, $\phi$ is either an isomorphism or anti-isomorphism when restricted to $\mathfrak{h}$.
+  
+\end{proof}
 
 \section{Reducing the Dimension of an Algebra}
-For the rest of the thesis, $\g$ will denote a nilpotent Lie algebra of dimension $n$ with corresponding Lie group $\G$. Suppose the lower central series for $\g$ is $A_{i}$ and the last non-zero term is $A_{N}$. Let $\phi: \g \longrightarrow \g$ denote a linear map that preserves structures corresponding to cosets in the group. \newline
-Let $x$ and $y$ be elements of $\g$. If $\alg(x,y)\subsetneq \g$ then by the inductive assumption $\phi|_{\alg(x,y)}$ is either an isomorphism or anti-isomorphism, so $\phi[x,y]= \pm [\phi(x),\phi(y)]$. \newline
-Whereas if $\alg(x,y)=\g$, the inductive assumption cannot be directly applied. Therefore we attempt to reduce the dimension of the algebra $\alg(x,y)$ and look at the restrictions obtained by using the inductive assumption on the new algebra. 
-\newline Suppose that $\g=\alg(x,y)$.
+Let $x$ and $y$ be elements of $\g$. If $\dim(\alg(x,y)) < \dim(\g)$, then by Corollary \ref{CorReduceDim}, \; $\phi|_{\alg(x,y)}$ is either an isomorphism or anti-isomorphism, so $\phi[x,y]= \pm [\phi(x),\phi(y)]$. 
+
+Whereas if $\alg(x,y)=\g$, the inductive assumption cannot be directly applied. Therefore we attempt to reduce the dimension of the algebra $\alg(x,y)$ and look at the restrictions obtained by using the inductive assumption on the smaller algebra. \newline 
+
+Suppose that $\g=\alg(x,y)$.
 
 \begin{Proposition}
 Suppose that the terms in the BCH Formula for $x$ and $y$ are labelled $C_{i}$. (So $x=C_{1}$, $y=C_{2}$, $[x,y]=C_{3}$ etc.), and that $C_{k}$ is the last non-zero term in the sequence. 
-Then $\spn\{C_{1},\ldots,C_{k}\}=\alg(x,y)=\g $.
+Then $\spn\{C_{1},\ldots,C_{k}\}=\alg(x,y)$.
 
 \end{Proposition}
 
 \begin{proof}
 
-Clearly $\{ C_{1},\ldots,C_{k} \}$ is a spanning set for $\g=\alg(x,y)$ since the $C_{j}$ are all the non-zero commutators involving $x$ and $y$, and by definition $\alg(x,y)$ is anything in the linear span of this set.
+Clearly $\{ C_{1},\ldots,C_{k} \}$ is a spanning set for $\alg(x,y)$ since the $C_{j}$ are all the non-zero commutators involving $x$ and $y$, and by definition $\alg(x,y)$ is anything in the linear span of this set.
 
 \end{proof}
 
-Now that we have this spanning set for $\alg(x,y)$ it is possible to reduce its dimension by deleting particular elements. We will consider the subalgebras that arise by deleting $x$ ($C_{1}$) or $y$ ($C_{2}$). \newline
+Now that we have this spanning set for $\alg(x,y)$ it is possible to reduce its dimension by deleting particular elements. We will consider the subalgebras that arise by deleting $x$ (that is, $C_{1}$) or $y$ (that is, $C_{2}$). \newline
 Let 
 \[
 \g_{-x}=\spn \{ C_{2},C_{3},\ldots,C_{k} \}
@@ -1905,12 +1959,12 @@ The subalgebras $\g_{-x}$ and $\g_{-y}$ are proper subalgebras of $\g$.
 \end{Proposition}
 
 \begin{proof}
-The result will be proved for $\g_{-x}$ since by symmetry it is the same for $\g_{-y}$. Suppose the converse, i.e. that $\g_{-x}=\g$. Then $x \in \g_{-x}$ so there are real numbers $x_{2},\ldots,x_{k}$ such that
+The result will be proved for $\g_{-x}$ since by symmetry it is the same for $\g_{-y}$. Suppose the converse, i.e., $\g_{-x}=\g$. Then $x \in \g_{-x}$ so there are real numbers $x_{2},\ldots,x_{k}$ such that
 \begin{align*}
 x&= x_{2}y +x_{3}C_{3}+ x_{4}C_{4}+\cdots x_{k}C_{k}\\
 [y,x]&= [C_{2},x]=x_{3}[C_{2},C_{3}]+x_{4}[C_{2},C_{4}]+\cdots x_{p}[C_{2},C_{p}]
 \end{align*}
-where $p < k$, because $[y,C_{k}]=0$ since it is a commutator term further down the series and so by assumption must be zero. Then In fact $[y,C_{i}]=C_{j}$ with $j >i$ for every $i$ from $3$ to $k$. So the coefficients can be relabelled starting from $C_{4}$ as follows (also multiplying by $-1$):
+where $p < k$, because $[y,C_{k}]=0$ since it is a commutator term further down the series and so by assumption must be zero. Then in fact $[y,C_{i}]=C_{j}$ with $j >i$ for every $i$ from $3$ to $k$. So the coefficients can be relabelled starting from $C_{4}$ as follows (also multiplying by $-1$):
 \begin{equation}\label{Iterate}
 [x,y]=x'_{4}C_{4}+x'_{5}C_{5}+\cdots x'_{p}C_{p}.
 \end{equation}
@@ -1959,29 +2013,123 @@ Hence
 \] which is the requirement for $x$ to be in the centre of $\mathfrak{a}$. Hence the centre in non-trivial.
 \end{proof}
 
+
+
 \begin{Proposition}\label{miracle}
-Let $\phi:\g \longrightarrow \g $ be bijective and linear. Then 
+Let $\phi:\g \longrightarrow \g $ be bijective and linear such that the corresponding map $\varphi: \G \longrightarrow \G$ preserves subgroups.
+%which type of subgroups?
+ Then 
 \[
 \phi[x,[x,y]]=[\phi(x),[\phi(x),\phi(y)]]
 \]
 \end{Proposition}
 
 \begin{proof}
+
+So we have 
+\[
+\varphi(e^{sx}e^{ty}e^{sx})= e^{s\phi(x)}e^{t\phi(y)}e^{s\phi(x)}
+\]
+We now apply the BCH formula to the left hand side twice. Note that when the parameters $s$ and $t$ are factored outside the commutator terms, the sum of the indices of $s$ and $t$ in each commutator term must be equal to the length of the commutator. 
+\begin{align*}
+\text{LHS} &= \varphi \left( \exp \left( 
+sx+ty+\frac{1}{2}st[x, y]+\frac{1}{12}s^{2}t[x,[x,y]] -\frac{1}{12}st^{2}[y,[x,y]] \right. \right.\\
+&\;\;\; \left. \left. +\sum\limits_{n,m \geq 1 ,\; n+m \geq 4} s^{n}t^{m}C_{nm}
+\right) \exp (sx) \right) 
+\end{align*}
+where the $C_{nm}$ represent the commutators of length $4$ or more in the series where $x$ appears $n$ times and $y$ appears $m$ times. These take into account the fractions out the front and all the different permutations for each $n$ and $m$. Now using the BCH Formula again:
+
+\begin{align*}
+\text{LHS} &= \varphi \bigg( \exp \bigg( 
+2sx+ty+\frac{1}{2}st[x, y]+\frac{1}{12}s^{2}t[x,[x,y]] -\frac{1}{12}st^{2}[y,[x,y]] \\
+&\;\;\;  +(\text{commutators of length $\geq 4$}) \\
+&\;\;\; + \frac{1}{2}\left( st[y,x] + \frac{1}{2}s^{2}t[[x,y],x] +(\text{commutators of length $\geq 4$}) \right) \\
+&\;\;\;+\frac{1}{12}\left( s^{2}t[x,[y,x]]+st^{2}[y,[y,x]] + (\text{commutators of length $\geq 4$}) \right) \\
+&\;\;\;-\frac{1}{12}\left( s^{2}t[x,[y,x]] + (\text{commutators of length $\geq 4$}) \right) \\
+&\;\;\;+ \text{more commutators of length $\geq 4$} \bigg) \bigg) \\
+&\\
+&= \varphi \bigg( \exp \bigg( 
+2sx+ty-\frac{1}{6}s^{2}t[x,[x,y]] -\frac{1}{6}st^{2}[y,[x,y]] \\
+&\;\;\;\;\;\;\;\;\;  +(\text{commutators of length $\geq 4$}) \bigg) \bigg)
+\end{align*}
+Now the terms in the series with commutators of length greater than or equal to four all have factors of $s$ and $t$ with total multiplicity greater than or equal to four. Since later on the powers of $s$ and $t$ in these terms will be important for differentiation they will be included with abbreviated notation $s^{n}t^{m}\chi_{nm}$, where $\chi_{nm}$ incorporates a sum of all the terms with commutators in which $x$ appears $n$ times and $y$ appears $m$ times, as well as the rational coefficients that arise from the BCH formula. So 
+\begin{align*}
+\text{LHS} &= \varphi \bigg( \exp \bigg( 
+2sx+ty-\frac{1}{6}s^{2}t[x,[x,y]] -\frac{1}{6}st^{2}[y,[x,y]] \\
+&\;\;\;\;\;\;\;\;\;  +\sum\limits_{\substack{n,m \geq 1  \\ n+m \geq 4}}s^{n}t^{m}\chi_{nm} \bigg) \bigg)
+\end{align*}
+Now the right hand side will be given by almost the same expression, just replacing each $x$ in the above with $\phi(x)$ and each $y$ with $\phi(y)$ as well as omitting the $\varphi$ at the beginning. We will use $\zeta$ instead of $\chi$ to denote the higher length commutators as before. So 
+\begin{align*}
+\text{RHS} &=  \exp \bigg( 
+2s\phi(x)+t\phi(y)-\frac{1}{6}s^{2}t[\phi(x),[\phi(x),\phi(y)]] -\frac{1}{6}st^{2}[\phi(y),[\phi(x),\phi(y)]] \\
+&\;\;\;\;\;\;\;\;\;  +\sum\limits_{\substack{n,m \geq 1  \\ n+m \geq 4}}s^{n}t^{m}\zeta_{nm} \bigg) 
+\end{align*}
+
+Now bringing the map $\varphi$ inside the exponential map in the usual way, and applying linearity of $\phi$ we obtain for the left hand side:
+
+\begin{align*}
+\text{LHS} &=  \exp \bigg( 
+2s\phi(x)+t\phi(y)-\frac{1}{6}s^{2}t\phi[x,[x,y]] -\frac{1}{6}st^{2}\phi[y,[x,y]] \\
+&\;\;\;\;\;\;\;\;\;  +\sum\limits_{\substack{n,m \geq 1  \\ n+m \geq 4}} s^{n}t^{m}\phi(\chi_{nm}) \bigg)
+\end{align*}
+Since the exponential map $\exp: \g \longrightarrow \G$ is injective, equating the left and right hand sides above gives
+\begin{align*}
+&2s\phi(x)+t\phi(y)-\frac{1}{6}s^{2}t\phi[x,[x,y]] -\frac{1}{6}st^{2}\phi[y,[x,y]]+\sum\limits_{\substack{n,m \geq 1  \\ n+m \geq 4}}s^{n}t^{m}\phi(\chi_{nm}) \\
+&=2s\phi(x)+t\phi(y)-\frac{1}{6}s^{2}t[\phi(x),[\phi(x),\phi(y)]] -\frac{1}{6}st^{2}[\phi(y),[\phi(x),\phi(y)]]+\sum\limits_{\substack{n,m \geq 1  \\ n+m \geq 4}}s^{n}t^{m}\zeta_{nm} \\
+\end{align*}
+Cancelling and multiplying by $-6$ gives:
+\begin{align*}
+&s^{2}t\phi[x,[x,y]]+st^{2}\phi[y,[x,y]]-s^{2}t[\phi(x),[\phi(x),\phi(y)]]-st^{2}[\phi(y),[\phi(x),\phi(y)]] \\
+&+\sum\limits_{\substack{n,m \geq 1\\ n+m \geq 4}}s^{n}t^{m}(\phi(\chi_{nm})- \zeta_{nm})=0
+\end{align*}
+Factoring this:
+\begin{align*}
+&s^{2}t\big(\phi[x,[x,y]]-[\phi(x),[\phi(x),\phi(y)]]\big)+st^{2}\big(\phi[y,[x,y]]-[\phi(y),[\phi(x),\phi(y)]]\big) \\
+&+\sum\limits_{\substack{n,m \geq 1\\ n+m \geq 4}}s^{n}t^{m}(\phi(\chi_{nm})- \zeta_{nm})=0
+\end{align*}
+Now taking $d/dt$ gives
+\begin{align*}
+&s^{2}\big(\phi[x,[x,y]]-[\phi(x),[\phi(x),\phi(y)]]\big)+2st\big(\phi[y,[x,y]]-[\phi(y),[\phi(x),\phi(y)]]\big) \\
+&+\sum\limits_{\substack{n,m \geq 1\\ n+m \geq 4}}m s^{n}t^{m-1}(\phi(\chi_{nm})- \zeta_{nm})=0
+\end{align*}
+Then substituting $t=0$, 
+\begin{align*}
+s^{2}\big(\phi[x,[x,y]]-[\phi(x),[\phi(x),\phi(y)]]\big)+\sum\limits_{\substack{m=1\\ n \geq 3}}m s^{n}t^{m-1}(\phi(\chi_{nm})- \zeta_{nm})&=0 \\
+s^{2}\big(\phi[x,[x,y]]-[\phi(x),[\phi(x),\phi(y)]]\big)+\sum\limits_{n \geq 3} s^{n}(\phi(\chi_{nm})- \zeta_{nm})&=0
+\end{align*}
+Now taking $d^{2}/ds^{2}$, 
+\[
+2\big(\phi[x,[x,y]]-[\phi(x),[\phi(x),\phi(y)]]\big)+\sum\limits_{n \geq 3} n(n-1)s^{n-2}(\phi(\chi_{nm})- \zeta_{nm})=0
+\]
+Setting $s=0$ gives
+\begin{align*}
+2\big(\phi[x,[x,y]]-[\phi(x),[\phi(x),\phi(y)]]\big)&=0 \\
+\phi[x,[x,y]] &= [\phi(x),[\phi(x),\phi(y)]]
+\end{align*}
+
 \end{proof}
+
+\begin{Proposition}
+If $\phi$ is either an isomorphism or anti-isomorphism when restricted to $\g_{-x}$ or $\g_{-y}$, then $\phi$ is either an isomorphism on both of these subalgebras, or an anti-isomorphism on both of them.  \end{Proposition}
 
 
 We wish to show that $\phi[x,y]= \pm[\phi(x),\phi(y)]$. So we will define an element of $\g$ which is the difference between these two elements and aim to prove that it is zero.
 
 \begin{Proposition}
- Let $z$ be the `error' term 
+ Let $z$ be the `error' term as follows: If $\phi$ is an isomorphism on $\g_{-x}$ and $\g_{-y}$ then define
 \[
 z = \phi [x,y] -[\phi(x),\phi(y)].
 \]
-Then $z \in Z(\g)$.
+Whereas if $\phi$ is an anti-isomorphism on $\g_{-x}$ and $\g_{-y}$ then define
+\[
+z = \phi [x,y] +[\phi(x),\phi(y)].
+\]
+In either case $z \in Z(\g)$.
 \end{Proposition}
 
 \begin{proof}
-Let $a$ be any element of $\g$. Recall that $\g = \alg(x,y)$ and that a basis is $C_{i}$, the commutator terms in the BCH Formula for $x$ and $y$. We have 
+For the first case, suppose that $\phi$ is an isomorphism on $\g_{-x}$ and $\g_{-y}$. \newline
+Let $a$ be any element of $\g$. Recall that $\g = \alg(x,y)$ and that it is spanned by $C_{i}$, the commutator terms in the BCH Formula for $x$ and $y$. We have 
 \begin{align*}
 x&=C_{1}\\
 y&=C_{2}\\
@@ -1993,7 +2141,7 @@ and by the inductive assumption on $\g_{-x}$ and $\g_{-y}$, we know that
 \]
 Since $\phi$ is bijective, $a$ is the image of some element of $\g$ under $\phi$. So we can write 
 \begin{align*}
-a &=\phi(\sum\limits_{i=1}^{k}a_{i}C_{i})\\
+a &=\phi\left(\sum\limits_{i=1}^{k}a_{i}C_{i}\right)\\
 &=\sum\limits_{i=1}^{k} a_{i}\phi(C_{i})
 \end{align*}
 for some real numbers $a_{i}$.\newline
@@ -2016,6 +2164,40 @@ So
 &=0
 \end{align*}
 
+For the second case, suppose that $\phi$ is an anti-isomorphism on $\g_{-x}$ and $\g_{-y}$. So in this case
+\[
+z=\phi[C_{1},C_{2}]+[\phi(C_{1}),\phi(C_{2})].
+\]
+\newline
+Once again let $a$ be any element of $\g$ which is given by 
+\[
+a=\sum\limits_{i=1}^{k} a_{i}\phi(C_{i})
+\] as before.
+This time, the inductive assumption tells us that 
+\[
+[\phi(C_{i}),\phi(C_{j})]=-\phi[C_{i},C_{j}],\;\;\text{whenever}\;\; (i,j) \notin \{(1,2),(2,1)\}.
+\]
+\newline
+So
+\begin{align*}
+[a,z] &= [a,\phi(C_{3})+[\phi(C_{1}),\phi(C_{2})]] \\
+&=[a,\phi(C_{3})]+[a,[\phi(C_{1}),\phi(C_{2})]] \\
+&=\left[\sum\limits_{i=1}^{k} a_{i}\phi(C_{i}),\phi(C_{3}) \right]+\left[ \sum\limits_{i=1}^{k} a_{i}\phi(C_{i}),[\phi(C_{1}),\phi(C_{2})]\right] \\
+&=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]+\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),[\phi(C_{1}),\phi(C_{2})]] \\
+&=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]- \sum\limits_{i=1}^{k} a_{i}\big(\; [\phi(C_{1}),[\phi(C_{2}),\phi(C_{i})]]+[\phi(C_{2}),[\phi(C_{i}),\phi(C_{1})]]\;\big) \\
+&=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]-a_{1}[\phi(C_{1}),[\phi(C_{2}),\phi(C_{1})]]-a_{2}[\phi(C_{2}),[\phi(C_{2}),\phi(C_{1})]] \\
+&\;\;\;- \sum\limits_{i=3}^{k} a_{i}\big(\; [\phi(C_{1}),[\phi(C_{2}),\phi(C_{i})]]+[\phi(C_{2}),[\phi(C_{i}),\phi(C_{1})]] \;\big) \\
+&= \sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]-a_{1}\phi[C_{1},[C_{2},C_{1}]]-a_{2}\phi[C_{2},[C_{2},C_{1}]] \\
+&\;\;\;- \sum\limits_{i=3}^{k} a_{i}\big(\; [\phi(C_{1}),-\phi[C_{2},C_{i}]]+[\phi(C_{2}),-\phi[C_{i},C_{1}]] \;\big) \\
+&=-\sum\limits_{i=1}^{k} a_{i}\phi[C_{i},C_{3}]-a_{1}\phi[C_{1},[C_{2},C_{1}]]-a_{2}\phi[C_{2},[C_{2},C_{1}]] \\
+&\;\;\;- \sum\limits_{i=3}^{k} a_{i}\big(\; \phi[C_{1},[C_{2},C_{i}]]+\phi[C_{2},[C_{i},C_{1}]] \;\big) \\
+& \;\;\;\;\;\; \text{(using Proposition \ref{miracle} and the inductive assumption) } \\
+&=-\sum\limits_{i=1}^{k} a_{i}\phi[C_{i},C_{3}]- \sum\limits_{i=1}^{k} a_{i}\big(\; \phi[C_{1},[C_{2},C_{i}]]+\phi[C_{2},[C_{i},C_{1}]] \;\big) \\
+&=-\sum\limits_{i=1}^{k} \big( a_{i}\phi[C_{i},C_{3}]+ a_{i}\phi\big(\; [C_{1},[C_{2},C_{i}]]+[C_{2},[C_{i},C_{1}]] \;\big)\big) \\
+&=-\sum\limits_{i=1}^{k} a_{i}\big(\phi[C_{i},C_{3}]- \phi\big(\; [C_{i},[C_{1},C_{2}]] \;\big)\big) \\
+&=-\sum\limits_{i=1}^{k} a_{i}\big(\phi[C_{i},C_{3}]- \phi[C_{i},C_{3}] \big) \\
+&=0
+\end{align*}
 \end{proof}
 
 \section{Proof that the Error Term is Zero}
@@ -2023,7 +2205,7 @@ So
 A subgroup will now be constructed in two different ways. By observing how the map $\phi$ acts on each of these expressions for the subgroup it will be shown that the error term $z$ must be zero.
 
 \begin{Definition}
-First of all recall that if $S$ is a subset of $\G$ then we denote the smallest subgroup containing $S$ by $\langle S \rangle$. Now for ease of notation the following abbreviation will be used:
+First of all recall that if $S$ is a subset of $\G$ then we denote the smallest subgroup containing $S$ by $\langle S \rangle$. For ease of notation the following abbreviation will be used:
 \[
 \langle e^{\Q\lambda x},e^{\Q\lambda y} \rangle =\langle \; \{ e^{q\lambda x} \mid q \in \Q \}\cup \{ e^{q\lambda y} \mid q \in \Q \} \; \rangle
 \]
@@ -2039,7 +2221,7 @@ L(C_{6}) &= L([x,[x,[x,y]]])=3
 \end{Definition}
 
 \begin{Definition}
-To make manipulations of terms in the sequence $C_{i}$ easier define a new related sequence $C'_{i}$ by taking the BCH Formula for $\lambda x$ and $\lambda y$ instead of just $x$ and $y$. So for example
+To simplify manipulations of terms in the sequence $C_{i}$, define a new related sequence $C'_{i}$ by taking the BCH Formula for $\lambda x$ and $\lambda y$ rather than for $x$ and $y$. So for example
 
 \begin{align*}
 C'_{1} &= \lambda x \\
@@ -2055,19 +2237,18 @@ simply by taking the multiples $\lambda$ outside the brackets.
 
 \begin{Proposition}\label{Subset}
 \begin{align*}
-\langle e^{\Q\lambda x},e^{\Q\lambda y} \rangle 
-&\subseteq \{\exp(q_{1}C'_{1} + q_{2} C'_{2} + q_{3} C'_{3} \\
-&\;\;\;+ \cdots + q_{i}C'_{i}+ \cdots q_{k}C'_{k}) \mid q_{i} \in \Q \} \\
-&=\left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}C'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
-&= \left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}\lambda^{L(C_{i})}C_{i}\right) \mid q_{i} \in \Q \right\rbrace
+&\langle e^{\Q\lambda x},e^{\Q\lambda y} \rangle \\
+&\subseteq \{\exp(q_{1}C'_{1} + q_{2} C'_{2} + q_{3} C'_{3}+ \cdots + q_{i}C'_{i}+ \cdots q_{k}C'_{k}) \mid q_{i} \in \Q \} \\
+&=\left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}C'_{i}\right) \Bigm| q_{i} \in \Q \right\rbrace \\
+&= \left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}\lambda^{L(C_{i})}C_{i}\right) \Bigm| q_{i} \in \Q \right\rbrace
  \end{align*}
 \end{Proposition}
 
 \begin{proof}
 Let 
 \begin{align*}
-S&=\left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}C'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
-&=\left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}\lambda^{L(C_{i})}C_{i}\right) \mid q_{i} \in \Q \right\rbrace
+S&=\left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}C'_{i}\right) \Bigm| q_{i} \in \Q \right\rbrace \\
+&=\left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}\lambda^{L(C_{i})}C_{i}\right) \Bigm| q_{i} \in \Q \right\rbrace
 \end{align*}
 Any elements of $\{ e^{q\lambda x} \mid q \in \Q \}\cup \{ e^{q\lambda y} \mid q \in \Q \}$ can be multiplied together in any order to form the elements of the subgroup $\langle e^{\Q\lambda x},e^{\Q\lambda x} \rangle$. Note that if two elements in say $\{ e^{q\lambda x} \mid q \in \Q \}$ are multiplied together the result is another element of this set (and similarly for the set defined with $y$):
 \begin{align*}
@@ -2329,11 +2510,27 @@ where $R_{i}=r_{i}/q_{3}$ are rational numbers.
 
 
 \begin{Lemma}
-The algebra generated by $\phi(x)$ and $\phi(y)$ is all of $\g$. (Just as $\alg(x,y)=\g$.) Thus $\g =\spn \{ D_{i} \mid i=1 \dots k  \} $ so a subset of these $D_{i}$ may be selected to form a basis $\{D_{a_{j}} \}$ of $\g$.
+The subalgebra $\alg(\phi(x),\phi(y))$ generated by $\phi(x)$ and $\phi(y)$ is all of $\g$. (Just as $\alg(x,y)=\g$.) Thus $\g =\spn \{ D_{i} \mid i=1 \dots k  \} $ so a subset of these $D_{i}$ may be selected to form a basis $\{D_{j} \}_{j \in J}$ of $\g$, where $J \subseteq \{ 1,2,\ldots ,k \}$.
 \end{Lemma}
 
 \begin{proof}
-%need to fill this in. has been done on paper.
+The map $\phi$ has the property that it maps subalgebras to subalgebras bijectively. So there is a subalgebra $\mathfrak{h}$ of $\g$ such that 
+\[
+\alg(\phi(x),\phi(y))= \phi(\mathfrak{h}).
+\]
+This implies that $\phi(x)\in  \phi(\mathfrak{h})$ and $\phi(x)\in  \phi(\mathfrak{h})$. Then since $\phi$ is injective it follows that $x \in \mathfrak{h}$ and $y \in \mathfrak{h}$. So by minimality, 
+\[
+\alg(x,y) \subseteq \mathfrak{h}
+\]
+Hence 
+\[
+\g\subseteq \mathfrak{h} 
+\]
+so using the fact that $\phi$ is surjective,
+\[
+\g=\mathfrak{h} =\phi(\g)=\phi(\mathfrak{h})=\alg(\phi(x),\phi(y)).
+\]
+
 \end{proof}
 
 \begin{Proposition}\label{threedim}
@@ -2357,9 +2554,9 @@ So $\g$ is only three-dimensional and therefore the result holds since we have a
 \end{proof}
 
 \begin{Definition}
-Define an inner product $((, )):\g \longrightarrow \R$ with respect to the basis $\{ D_{a_{j}} \}$ of $\g$. Then let 
+Define an inner product $((, )):\g \longrightarrow \R$ with respect to the basis $\{ D_{j} \}_{j \in J}$ of $\g$. Then let 
 \[
-E = \sum\limits_{a_{j}} D_{a_{j}}.
+E = \sum\limits_{j \in J} D_{j}.
 \]
 so that $((g,E))$ is non-zero for all non-zero elements $g$ of $\g$.
 %I may need to prove this little one
@@ -2405,7 +2602,7 @@ Now define the set $\zeta$ as follows:
 \]
 From the above reasoning it is seen that by systematically choosing all possible sets of $a_{i}$ such that they are not all zero, and finding all the values of $\lambda$ for which the polynomial is zero will only yield a countable number of values in total. But we know that for \emph{any} real value of $\lambda$ it is possible to find a set of coefficients $a_{i}$ . So $\zeta=\R$, which is uncountable. Hence there must be some values of $\lambda$ for which all the coefficients $a_{i}$ must be zero for the polynomial to have a solution. Hence the only set of rational numbers $R_{i}$ which satisfy equation \ref{important} for all values of $\lambda$ are those for which all the $a_{i}$ are zero. Then since for all $i$ we have $((D_{i},E)) \neq 0$,
 \begin{align*}
-R_{i}&=0, \;\;\text{for}i=1,2,4\ldots k \\
+R_{i}&=0, \;\;\text{for}\;\;i=1,2,4\ldots k \\
 R_{3}((D_{3},E))-((z,E))=0
 \end{align*}
 Now suppose $R_{3}$ is not $0$. Then we may apply Proposition \ref{threedim} and see that $\g$ is three-dimensional so the result must hold, indicating that $z=0$, so $R_{3}=0$, which is a contradiction. \newline
