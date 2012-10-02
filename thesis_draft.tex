@@ -200,7 +200,14 @@ with the following properties:
  \item $[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$ for all $X$, $Y$, $Z$ $\in \mathfrak{a}$
 \end{enumerate}
 This map is often called the \emph{Lie bracket} or the \emph{bracket operation}.
+
+The third property is called the Jacobi identity and can also be written as
+\[
+[X,[Y,Z]]=[[X,Y],Z]+[Y,[X,Z]]
+\]
+Both forms of the Jacobi identity are used in this thesis for manipulating commutators.
 \end{Definition}
+
 
 The Lie algebra $\g$ of a Lie group $\G$ is the tangent space to $G$ at the identity $e$. This can be seen clearly in 
 the example of the circle. The circle is parametrised as before by a the curve
@@ -1085,7 +1092,7 @@ A coset of this Lie subgroup is $\mathcal{C}$ given by right translation by $e^{
 \mathcal{C} &=& \{\exp(\lambda X + \mu \3)\exp (P) \;\;\;|\;\;\; \lambda,\mu \in \R \} \\
 &=& \{ \exp(\lambda x, \lambda y, \lambda z +\mu)\exp(p,q,r)\;\;\;|\;\;\; \lambda,\mu \in \R \} 
 \end{eqnarray*}
-Then, applying the CBH Formula:
+Then, applying the BCH Formula:
 \begin{eqnarray*}
 \mathcal{C}&=&  \{ \exp((\lambda x, \lambda y, \lambda z +\mu)+(p,q,r)+\frac{1}{2}[(\lambda x, \lambda y, \lambda z +\mu),(p,q,r)])\;\;\;|\;\;\; \lambda,\mu \in \R \} \\
 &=& \{ \exp ((\lambda x+p, \lambda y+q, \lambda z +\mu +r)+ \frac{1}{2}(0,0,\lambda xq -\lambda yp))\;\;\;|\;\;\; \lambda,\mu \in \R \} \\
@@ -1443,7 +1450,7 @@ Take an element from $\G_{\Z}$, $[x,y,z]$, where $x$, $y$ and $z$ are integers. 
 So $\G_{\Z} \in \langle E_{1},E_{2} \rangle $. Conversely any element of $\langle E_{1},E_{2} \rangle$ contains only integer entries since adding and multiplying integers or taking their negatives produces only integers. So $\langle E_{1},E_{2} \rangle \in \G_{\Z}$. Hence $\langle E_{1},E_{2} \rangle=\G_{\Z}$.
 \end{proof}
 
-\begin{Lemma}
+\begin{Lemma}\label{Groupimage1}
 $T(\G_{\Z})=\G_{\Z}$. 
 \end{Lemma}
 
@@ -1562,22 +1569,43 @@ A_{n} &=[\mathfrak{a},A_{n-1}]\;\;\;\text{for all} \;\;n \geq 3
 \end{align*}
 \end{Definition}
 
-\begin{Proposition}
-Let $k$ be a positive integer. For any $k+1$ elements $x_{i}$ of $\mathfrak{a}$, 
+\begin{Definition}
+An expression of the form 
 \[
-[x_{k},[x_{k-1},[\ldots [x_{1},x_{0}]\ldots ]] \in A_{k}.
+[x_{k},[x_{k-1},[\ldots [x_{2},x_{1}]\ldots ]]
 \]
+is called a \emph{commutator}, and the \emph{length} of such a commutator is $k$ (the total number of elements which the bracket operation has been applied to).
+ 
+\end{Definition}
+
+\begin{Proposition}
+Let $k$ be a positive integer. Let $\mathfrak{a}$ be a Lie algebra with lower central series $A_i$. If $x \in \mathfrak{a}$ and $x$ can be expressed as a commutator of length $k$, 
+\[
+x \in A_{k-1}
+\]
+
+%For any $k+1$ elements $x_{i}$ of $\mathfrak{a}$, 
+%\[
+%[x_{k},[x_{k-1},[\ldots [x_{1},x_{0}]\ldots ]] \in A_{k}.
+%\]
 \end{Proposition}
 \begin{proof}
-For $k=0$, this is true since $x_{0} \in \mathfrak{a}=A_{0}$. \newline
-Suppose that the statement is true for $k=j$. Now let $k=j+1$. Then let $x_{i}$ be any elements of $\mathfrak{a}$ for $0 \leq i \leq k$. So 
+Suppose that 
+\[
+x=[x_{k},[x_{k-1},[\ldots [x_{2},x_{1}]\ldots ]]
+\]
+for $x_i \in \mathfrak{a}$.
+
+For $k=1$, the statement is true since $x_{1} \in \mathfrak{a}=A_{0}$. 
+
+Suppose that the statement is true for $k=j$. Now let $k=j+1$. Then let $x_{i} \in \mathfrak{a}$ for $1 \leq i \leq k$. So 
 \begin{align*}
-[x_{k},[x_{k-1},[\ldots [x_{1},x_{0}]\ldots ]] &= [x_{k},[x_{j},[x_{j-1},[\ldots [x_{1},x_{0}]\ldots ]]\\
+[x_{k},[x_{k-1},[\ldots [x_{2},x_{1}]\ldots ]] &= [x_{k},[x_{j},[x_{j-1},[\ldots [x_{2},x_{1}]\ldots ]]\\
 &=[x_{k},y]
 \end{align*}
-where $y \in A_{j}=A_{k-1}$. Hence
+where $y \in A_{j-1}=A_{k-2}$. Hence
 \[
-[x_{k},[x_{k-1},[\ldots [x_{1},x_{0}]\ldots ]] \in A_{k}.
+[x_{k},[x_{k-1},[\ldots [x_{1},x_{0}]\ldots ]] \in A_{k-1}.
 \]
 \end{proof}
 
@@ -1898,7 +1926,8 @@ Clearly $\{ C_{1},\ldots,C_{k} \}$ is a spanning set for $\alg(x,y)$ since the $
 
 \end{proof}
 
-Now that we have this spanning set for $\alg(x,y)$ it is possible to reduce its dimension by deleting particular elements. We will consider the subalgebras that arise by deleting $x$ (that is, $C_{1}$) or $y$ (that is, $C_{2}$). \newline
+Now that we have this spanning set for $\alg(x,y)$ it is possible to reduce its dimension by deleting particular elements. We will consider the subspaces of $\g$ that arise by deleting $x$ (that is, $C_{1}$) or $y$ (that is, $C_{2}$) from the span. 
+
 Let 
 \[
 \g_{-x}=\spn \{ C_{2},C_{3},\ldots,C_{k} \}
@@ -1963,22 +1992,56 @@ as required.
 
 
 \begin{Proposition} The subspaces $\g_{-x}$ and $\g_{-y}$ are Lie subalgebras.
+
+%Here, also need to prove that \g_-x-y and \g_\theta are subalgebras. These facts should all follow the same proof and are required later on.
 \end{Proposition} 
 \begin{proof}
 Let $u$ and $v$ be elements of $\g_{-x}$. Then there are real numbers $a_{2}\ldots a_{k}$ and $b_{2} \ldots b_{k}$ such that 
 \begin{align*}
-u &= a_{2}C_{2}+ a_{3}C_{3} + \ldots a_{k}C_{k} \\
-v &= b_{2}C_{2}+ b_{3}C_{3} + \ldots b_{k}C_{k}
+u &= a_{2}C_{2}+ a_{3}C_{3} + \ldots +a_{k}C_{k}, \\
+v &= b_{2}C_{2}+ b_{3}C_{3} + \ldots +b_{k}C_{k}.
 \end{align*}
 
-
+Then,
 \begin{align*}
-[u,v]&=[a_{2}C_{2}+ a_{3}C_{3} + \ldots a_{k}C_{k},b_{2}C_{2}+ b_{3}C_{3} + \ldots b_{k}C_{k}] \\
+[u,v]&=[\;a_{2}C_{2}+ a_{3}C_{3} + \ldots a_{k}C_{k} \;,\;b_{2}C_{2}+ b_{3}C_{3} + \ldots b_{k}C_{k}\;] \\
 &=a_{2}b_{3}[C_{2},C_{3}]+a_{2}b_{4}[C_{2},C_{4}]+\ldots a_{k}b_{k-1}[C_{k},C_{k-1}]\\
 &=\gamma_{d(1)} C_{d(1)} +\gamma_{d(2)} C_{d(2)}+ \cdots \gamma_{d(P)} C_{d(P)}
 \end{align*}
 % give better explanation of where this expression comes from in terms of the new version of the previous lemma
-Where $d(i) \geq 3$ for all $1 \leq i \leq P$, by \ref{gohigher}. Hence $[u,v] \in \spn \{ C_{2},C_{3}, \ldots C_{k} = \g_{-x}\}$ and so $\g_{-x}$ is closed under the bracket operation, making it a Lie subalgebra. By symmetry it can be seen that $\g_{-y}$ is also a Lie subalgebra.
+Where $d(i) \geq 3$ for all $1 \leq i \leq P$, by Lemma \ref{gohigher}. Hence 
+$$[u,v] \in \spn \{ C_{2},C_{3}, \ldots C_{k} = \g_{-x}\}$$
+ and so $\g_{-x}$ is closed under the bracket operation, making it a Lie subalgebra. By symmetry it can be seen that $\g_{-y}$ is also a Lie subalgebra.
+\end{proof}
+
+\begin{Proposition}\label{minus both}
+The subspace of $\g$ defined by 
+\[
+\g_{-x-y} = \spn \{C_3,C_4,\ldots, C_n\}
+\]
+is a proper subalgebra of $\g$. 
+\end{Proposition}
+
+\begin{proof}
+First, it can be seen that $\g_{-x-y}$ is a proper subspace since it is contained in $\g_{-x}$. So it suffices to prove that it is closed under the bracket operation. 
+
+Let $u$ and $v$ be elements of $\g_{-x-y}$. Then there are real numbers $a_{3}\ldots a_{k}$ and $b_{3} \ldots b_{k}$ such that 
+\begin{align*}
+u &= a_{3}C_{3}+ a_{4}C_{4} + \ldots +a_{k}C_{k}, \\
+v &= b_{3}C_{3}+ b_{4}C_{4} + \ldots +b_{k}C_{k}.
+\end{align*}
+
+Then,
+\begin{align*}
+[u,v]&=[ \;a_{3}C_{3} + \ldots a_{k}C_{k}\;,\; b_{3}C_{3} + \ldots b_{k}C_{k}\;] \\
+&=a_{3}b_{4}[C_{3},C_{4}]+a_{3}b_{5}[C_{3},C_{5}]+\ldots a_{k}b_{k-1}[C_{k},C_{k-1}]\\
+&=\gamma_{d(1)} C_{d(1)} +\gamma_{d(2)} C_{d(2)}+ \cdots \gamma_{d(P)} C_{d(P)}
+\end{align*}
+% give better explanation of where this expression comes from in terms of the new version of the previous lemma
+Where each $\gamma_{j} \in \R$ and $d(i) \geq 4$ for all $1 \leq i \leq P$, by Lemma \ref{gohigher}. Hence 
+$$[u,v] \in \spn \{ C_{3}, \ldots C_{k} = \g_{-x-y}\}$$
+ and so $\g_{-x-y}$ is closed under the bracket operation, making it a Lie subalgebra.
+
 \end{proof}
 
 \begin{Proposition}
@@ -2014,6 +2077,8 @@ C_{i} &=[y,[u_{1}^{i},[u_{2}^{i},[\ldots[u_{r_{i}}^{i},[x,y]]\ldots]  \\
 Hence all the terms $C_{i}$ with $i$ from $4$ to $p$ are zero so $C_{3}=[x,y]=0$ which is a contradiction. Hence $x \notin \g_{-x}$ and so $\g_{-x}$ is a proper subalgebra of $\g$.
 \end{proof}
 
+\paragraph*{Consequence}
+By the inductive assumption, when $\phi$ is restricted to $\g_{-x}$ or to $\g_{-y}$, it is an isomorphism or anti-isomorphism.
 
 \section{The Central Error Term}
 
@@ -2136,8 +2201,157 @@ Setting $s=0$ gives
 
 \end{proof}
 
-\begin{Proposition}
-If $\phi$ is either an isomorphism or anti-isomorphism when restricted to $\g_{-x}$ or $\g_{-y}$, then $\phi$ is either an isomorphism on both of these subalgebras, or an anti-isomorphism on both of them.  \end{Proposition}
+\begin{Lemma}\label{Two x's}
+If $[x,[x,y]]=0 $ then all commutators of $x$ and $y$, in which $x$ appears at least twice, are zero.
+
+Similarly, if $[y,[x,y]]=0$ then all all commutators of $x$ and $y$, in which $y$ appears at least twice, are zero.
+\end{Lemma}
+
+\begin{proof}
+The first statement will be proved. The second statement then follows by symmetry.
+
+For each non-negative integer $n$, let 
+\[
+h_n = [x,\underbrace{[y,[y,[\ldots[y,}_{n}[x,y]]\ldots]]]].
+\]
+Every commutator of $x$ and $y$, in which $x$ appears at least twice, contains one of these $h_n$, so it suffices to prove by induction that $h_n=0$ for all $n \geq 0$. 
+
+For $n=0$, 
+\[
+h_n=[x,[x,y]]
+\]
+which is zero by assumption. Hence the statement is true for $n=0$.
+
+We suppose the statement to be true for $n=k$ and prove that it is also true for $n=k+1$. 
+
+Applying the Jacobi identity,
+\begin{align*}
+h_{k+1} &= [x,\underbrace{[y,\ldots[y,}_{k+1}[x,y]]\ldots]] \\
+&= [[x,y],[y,\ldots[y,[x,y]]\ldots ]] + [y,[x,\underbrace{[y,\ldots[y,}_{k}[x,y]]\ldots]]].
+\end{align*}
+But now $[x,y]$ and $[y,\ldots[y,[x,y]]\ldots ]$ are in $\g_{-x-y}$, so taking their commutator gives zero (since $\g_{-x-y}$ is abelian). In other words 
+\[
+[[x,y],[y,\ldots[y,[x,y]]\ldots ]]=0.
+\]
+So  
+\begin{align*}
+h_{k+1} &=[y,[x,\underbrace{[y,\ldots[y,}_{k}[x,y]]\ldots]]] \\
+&= [y,h_k] \\
+&=[y,\vec{0}] \\
+&= \vec{0}
+\end{align*}
+as required.
+\end{proof}
+
+\begin{Lemma}
+For every real number $\theta$ define a subspace of $\g$ by
+\[
+\g_{\theta} = \spn\{ (\cos{\theta})x + (\sin{\theta})y, C_3,C_4,\ldots C_k \}.
+\]
+Each of these subspaces is a proper subalgebra of $\g$.
+\end{Lemma}
+
+
+%fill this bit in
+\begin{proof}
+
+\end{proof}
+
+
+\begin{Proposition}\label{consistency}
+The map $\phi$ is either an isomorphism on both $\g_{-x}$ and $\g_{-y}$ or and anti-isomorphism on $\g_{-x}$ and $\g_{-y}$. 
+%If $\phi$ is either an isomorphism or anti-isomorphism when restricted to $\g_{-x}$ or $\g_{-y}$, then $\phi$ is either an isomorphism on both of these subalgebras, or an anti-isomorphism on both of them.  
+\end{Proposition}
+
+\begin{proof}
+We already know that $\phi$ is either an isomorphism of anti-isomorphism on each of $\g_{-x}$ and $\g_{-y}$. 
+
+Note that $\phi$ is both an isomorphism and an anti-isomorphism on a subalgebra $\mathfrak{h}$ of $\g$ if and only if 
+\[
+\phi[h_1,h_2]=-\phi[h_1,h_2], \forall h_1,h_2 \in \mathfrak{h}.
+\]
+In other words, $\phi[h_1,h_2]=0$, meaning also that $[h_1,h_2]=0$ for all $h_1,h_2 \in \mathfrak{h}$. 
+
+Hence $\phi$ is both an isomorphism and an anti-isomorphism on a subalgebra $\mathfrak{h}$ of $\g$ if and only if $\mathfrak{h}$ is abelian.
+
+So it suffices to prove the following.
+\begin{enumerate}
+\item If $\phi$ is an isomorphism on $\g_{-x}$ and an anti-isomorphism on $\g_{-y}$, then $\g_{-x}$ is abelian or $\g_{-y}$ is abelian. 
+\item If $\phi$ is an anti-isomorphism on $\g_{-x}$ and an isomorphism on $\g_{-y}$, then $\g_{-x}$ is abelian or $\g_{-y}$ is abelian.
+\end{enumerate}
+
+Only the first statement will be proved since the second follows by symmetry.
+
+Suppose that $\phi$ is an isomorphism on $\g_{-x}$ and an anti-isomorphism on $\g_{-y}$.
+
+Since elements of the subalgebras $\g_{-x}$, $\g_{-y}$ and $\g_{-x-y}$ can all be written as linear combinations of the commutator terms that define them, it always suffices to show that the bracket applied to all pairs of the commutator terms is zero, when proving that one of these algebras is abelian. 
+
+\paragraph{Claim}
+The subalgebra $\g_{-x-y}$ is abelian. This is true because
+\[
+\g_{-x-y} \subset \g_{-x}
+\]
+and 
+\[
+\g_{-x-y} \subset \g_{-y}
+\]
+so that $\phi$ must be both and isomorphism and an anti-isomorphism when restricted to $\g_{-x-y}$. 
+
+The proof now splits into cases depending on whether $C_{4}$ and $C_{5}$ are zero. (Recall that $C_4=[x,[x,y]]$ and $C_5 = [y,[x,y]]$.
+
+
+\begin{enumerate}
+\item Suppose that $C_4=0$. Then $[x,[x,y]]=0$ and Lemma \ref{Two x's} applies. Now note that 
+\[
+\g_{-y} = \spn \{ x, [x,y], \text{higher length commutators}\}.
+\]
+So the bracket of any two commutators in $\g_{-y}$ involves at least two $x$'s and hence by Lemma \ref{Two x's} must be zero. Hence $g_{-y}$ is abelian. 
+
+\item Suppose that $C_5=0$. Then $[y,[x,y]]=0$ and Lemma \ref{Two x's} applies. Now note that 
+\[
+\g_{-x} = \spn \{ y, [x,y], \text{higher length commutators}\}.
+\]
+So the bracket of any two commutators in $\g_{-x}$ involves at least two $y$'s and hence by Lemma \ref{Two x's} must be zero. Hence in this case, $g_{-x}$ is abelian.
+
+\item Suppose that neither $C_4$ nor $C_5$ is zero. (It will be shown that this gives a contradiction so that one of them must indeed by zero). 
+
+Consider the subalgebra 
+$$\g_\theta= \R((\cos{\theta})x + (\sin{\theta})y) \oplus \g_{-x-y}.$$
+Since this is a strict subalgebra, $\phi$ is either an isomorphism or anti-isomorphism when restricted to it. 
+
+\begin{enumerate}
+\item Suppose $\phi$ is an isomorphism when restricted to $\g_\theta$. Then 
+\[
+\phi[(\cos{\theta})x + (\sin{\theta})y, [x,y]]= [(\cos{\theta})\phi(x) + (\sin{\theta})\phi(y), \phi[x,y]].
+\]
+Letting $\theta=0$ gives 
+\[
+\phi[x,[x,y]]=[\phi(x),\phi[x,y]],
+\]
+but we have assumed that $\phi$ is an anti-isomorphism on $\g_{-y}$, which implies
+\[
+\phi[x,[x,y]]=-[\phi(x),\phi[x,y]].
+\]
+So $\phi[x,[x,y]]=0$ and so $[x,[x,y]]=0$, which is a contradiction. 
+
+\item Suppose $\phi$ is an anti-isomorphism when restricted to $\g_\theta$. Then 
+\[
+\phi[(\cos{\theta})x + (\sin{\theta})y, [x,y]]= -[(\cos{\theta})\phi(x) + (\sin{\theta})\phi(y), \phi[x,y]].
+\]
+Letting $\theta=\pi /2$ gives 
+\[
+\phi[y,[x,y]]=-[\phi(y),\phi[x,y]],
+\]
+but we have assumed that $\phi$ is an isomorphism on $\g_{-x}$, which implies
+\[
+\phi[y,[x,y]]=[\phi(y),\phi[x,y]].
+\]
+So $\phi[y,[x,y]]=0$ and so $[y,[x,y]]=0$, which is again a contradiction. 
+\end{enumerate}
+\end{enumerate}
+Hence in any of the possible cases, either $\g_{-x}$ or $\g_{-y}$ is abelian, completing the proof. 
+
+\end{proof}
 
 
 We wish to show that $\phi[x,y]= \pm[\phi(x),\phi(y)]$. So we will define an element of $\g$ which is the difference between these two elements and aim to prove that it is zero.
@@ -2180,10 +2394,10 @@ So
 &=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]-\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),[\phi(C_{1}),\phi(C_{2})]] \\
 &=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]+ \sum\limits_{i=1}^{k} a_{i}\big(\; [\phi(C_{1}),[\phi(C_{2}),\phi(C_{i})]]+[\phi(C_{2}),[\phi(C_{i}),\phi(C_{1})]]\;\big) \\
 &=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]+a_{1}[\phi(C_{1}),[\phi(C_{2}),\phi(C_{1})]]+a_{2}[\phi(C_{2}),[\phi(C_{2}),\phi(C_{1})]] \\
-&\;\;\;+ \sum\limits_{i=3}^{k} a_{i}\big(\; [\phi(C_{1}),[\phi(C_{2}),\phi(C_{i})]]+[\phi(C_{2}),[\phi(C_{i}),\phi(C_{1})]] \;\big) \\
+&\quad+ \sum\limits_{i=3}^{k} a_{i}\big(\; [\phi(C_{1}),[\phi(C_{2}),\phi(C_{i})]]+[\phi(C_{2}),[\phi(C_{i}),\phi(C_{1})]] \;\big) \\
 &=\sum\limits_{i=1}^{k} a_{i}\phi[C_{i},C_{3}]+a_{1}\phi[C_{1},[C_{2},C_{1}]]+a_{2}\phi[C_{2},[C_{2},C_{1}]] \\
-&\;\;\;+ \sum\limits_{i=3}^{k} a_{i}\big(\; \phi[C_{1},[C_{2},C_{i}]]+\phi[C_{2},[C_{i},C_{1}]] \;\big) \\
-& \;\;\;\;\;\; \text{(using Proposition \ref{miracle} and the inductive assumption) } \\
+&\quad+ \sum\limits_{i=3}^{k} a_{i}\big(\; \phi[C_{1},[C_{2},C_{i}]]+\phi[C_{2},[C_{i},C_{1}]] \;\big) \\
+& \quad \quad \text{(using Proposition \ref{miracle} and the inductive assumption) } \\
 &=\sum\limits_{i=1}^{k} a_{i}\phi[C_{i},C_{3}]+ \sum\limits_{i=1}^{k} a_{i}\big(\; \phi[C_{1},[C_{2},C_{i}]]+\phi[C_{2},[C_{i},C_{1}]] \;\big) \\
 &=\sum\limits_{i=1}^{k} \big( a_{i}\phi[C_{i},C_{3}]+ a_{i}\phi\big(\; [C_{1},[C_{2},C_{i}]]+[C_{2},[C_{i},C_{1}]] \;\big)\big) \\
 &=\sum\limits_{i=1}^{k} a_{i}\big(\phi[C_{i},C_{3}]- \phi\big(\; [C_{i},[C_{1},C_{2}]] \;\big)\big) \\
@@ -2213,12 +2427,12 @@ So
 &=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]+\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),[\phi(C_{1}),\phi(C_{2})]] \\
 &=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]- \sum\limits_{i=1}^{k} a_{i}\big(\; [\phi(C_{1}),[\phi(C_{2}),\phi(C_{i})]]+[\phi(C_{2}),[\phi(C_{i}),\phi(C_{1})]]\;\big) \\
 &=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]-a_{1}[\phi(C_{1}),[\phi(C_{2}),\phi(C_{1})]]-a_{2}[\phi(C_{2}),[\phi(C_{2}),\phi(C_{1})]] \\
-&\;\;\;- \sum\limits_{i=3}^{k} a_{i}\big(\; [\phi(C_{1}),[\phi(C_{2}),\phi(C_{i})]]+[\phi(C_{2}),[\phi(C_{i}),\phi(C_{1})]] \;\big) \\
+&\quad- \sum\limits_{i=3}^{k} a_{i}\big(\; [\phi(C_{1}),[\phi(C_{2}),\phi(C_{i})]]+[\phi(C_{2}),[\phi(C_{i}),\phi(C_{1})]] \;\big) \\
 &= \sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]-a_{1}\phi[C_{1},[C_{2},C_{1}]]-a_{2}\phi[C_{2},[C_{2},C_{1}]] \\
-&\;\;\;- \sum\limits_{i=3}^{k} a_{i}\big(\; [\phi(C_{1}),-\phi[C_{2},C_{i}]]+[\phi(C_{2}),-\phi[C_{i},C_{1}]] \;\big) \\
+&\quad- \sum\limits_{i=3}^{k} a_{i}\big(\; [\phi(C_{1}),-\phi[C_{2},C_{i}]]+[\phi(C_{2}),-\phi[C_{i},C_{1}]] \;\big) \\
 &=-\sum\limits_{i=1}^{k} a_{i}\phi[C_{i},C_{3}]-a_{1}\phi[C_{1},[C_{2},C_{1}]]-a_{2}\phi[C_{2},[C_{2},C_{1}]] \\
-&\;\;\;- \sum\limits_{i=3}^{k} a_{i}\big(\; \phi[C_{1},[C_{2},C_{i}]]+\phi[C_{2},[C_{i},C_{1}]] \;\big) \\
-& \;\;\;\;\;\; \text{(using Proposition \ref{miracle} and the inductive assumption) } \\
+&\quad- \sum\limits_{i=3}^{k} a_{i}\big(\; \phi[C_{1},[C_{2},C_{i}]]+\phi[C_{2},[C_{i},C_{1}]] \;\big) \\
+& \quad \quad \text{(using Proposition \ref{miracle} and the inductive assumption) } \\
 &=-\sum\limits_{i=1}^{k} a_{i}\phi[C_{i},C_{3}]- \sum\limits_{i=1}^{k} a_{i}\big(\; \phi[C_{1},[C_{2},C_{i}]]+\phi[C_{2},[C_{i},C_{1}]] \;\big) \\
 &=-\sum\limits_{i=1}^{k} \big( a_{i}\phi[C_{i},C_{3}]+ a_{i}\phi\big(\; [C_{1},[C_{2},C_{i}]]+[C_{2},[C_{i},C_{1}]] \;\big)\big) \\
 &=-\sum\limits_{i=1}^{k} a_{i}\big(\phi[C_{i},C_{3}]- \phi\big(\; [C_{i},[C_{1},C_{2}]] \;\big)\big) \\
@@ -2239,21 +2453,21 @@ First of all recall that if $S$ is a subset of $\G$ then we denote the smallest 
 \end{Definition}
 
 \begin{Definition}
-Define the \emph{length} $L(C_{i})$ of a term in the sequence $C_{i}$ as the number of times the bracket operation has been applied. So for example
+Define the \emph{length} $L(C_{i})$ of a term in the sequence $C_{i}$ as the number of times the bracket operation has been applied. So, for example,
 \begin{align*}
-L(C_{1}) &= L(x)=0 \\
-L(C_{3}) &= L([x,y])=1 \\
-L(C_{6}) &= L([x,[x,[x,y]]])=3
+L(C_{1}) &= L(x)=0, \\
+L(C_{3}) &= L(\;[x,y]\;)=1, \\
+L(C_{6}) &= L(\;[x,[x,[x,y]]]\;)=3.
 \end{align*}
 \end{Definition}
 
 \begin{Definition}
-To simplify manipulations of terms in the sequence $C_{i}$, define a new related sequence $C'_{i}$ by taking the BCH Formula for $\lambda x$ and $\lambda y$ rather than for $x$ and $y$. So for example
+To simplify manipulations of terms in the sequence $C_{i}$, define a new related sequence $C'_{i}$ by taking the BCH Formula for $\lambda x$ and $\lambda y$ rather than for $x$ and $y$. So, for example,
 
 \begin{align*}
-C'_{1} &= \lambda x \\
-C'_{2} &= \lambda y \\
-C'_{3} &= [\lambda x, \lambda y]
+C'_{1} &= \lambda x, \\
+C'_{2} &= \lambda y, \\
+C'_{3} &= [\lambda x, \lambda y].
 \end{align*} 
 etc. And note the following: 
 \[
@@ -2312,7 +2526,10 @@ u&=\exp \left(\sum\limits_{i=1}^{k}u_{i}C'_{i}\right)\\
 v&=\exp \left(\sum\limits_{i=1}^{k}v_{i}C'_{i}\right)
 \end{align*}
 for rational numbers $u_{i}$ and $v_{i}$. 
-\newline
+
+
+%careful- need to change this argument now that the gohigher lemma is different. Be careful with the requirement for rational coefficients.
+
 Multiplying these two elements together is very untidy but the essential point is that $[C_{i},C_{j}]=C_{i'}-C_{j'} \in \{ \sum\limits_{h=1}^{k}q_{h}C_{h} \mid q_{h} \in \Q \}$ as was shown in Lemma \ref{gohigher}. So 
 \begin{align*}
 uv &= \exp \left(\sum\limits_{i=1}^{k}u_{i}C'_{i}\right)
@@ -2323,14 +2540,15 @@ uv &= \exp \left(\sum\limits_{i=1}^{k}u_{i}C'_{i}\right)
 \end{align*} 
 for some rational coefficients $w_{i}$. Hence $uv$ is in the correct form to be in the set $S$ so $S$ is closed under multiplication as desired.
 \newline
-Hence $w=e^{q_{1}\lambda x}e^{p_{1}\lambda y} \cdots e^{q_{N}\lambda x}e^{p_{N}\lambda y} $ is in $S$ for any integer $N \geq 1$ and any rational coefficients $q_{i}$. So 
+Hence $w=e^{q_{1}\lambda x}e^{p_{1}\lambda y} \cdots e^{q_{N}\lambda x}e^{p_{N}\lambda y} $ is in $S$ for any integer $N \geq 1$ and all rational coefficients $q_{i}$. So 
 \[
 \langle e^{\Q\lambda x},e^{\Q\lambda y} \rangle \subseteq S
 \]
 
 \end{proof}
 
-We need some notation for the following section: \newline
+We need some notation for the following section. 
+
 Let $q_{x}$ and $q_{y}$ be rational numbers and let
 \begin{align*}
 G&= \langle e^{\Q\lambda x},e^{\Q\lambda y} \rangle \\
@@ -2413,7 +2631,8 @@ Let $v_{1}$ and $v_{2}$ be elements of $\g$. Then
 
 \begin{proof}
 
-The proof is similar to (<<< near the end of chapter 2 >>>) .
+The proof is similar to the proof of Lemma \ref{Groupimage1}.
+
 Since $\Phi$ sends subgroups of $\G$ to subgroups of $\G$, $\Phi \langle e^{v_{1}},e^{v_{2}} \rangle$ is a subgroup. So the fact that $\Phi(e^{v_{1}})$ and $\Phi(e^{v_{2}})$ are elements of $\Phi \langle e^{v_{1}},e^{v_{2}} \rangle$ along with minimality give
 
 \[
@@ -2434,7 +2653,7 @@ But since this is true for any pair of elements $e^{v_{1}}$ and $e^{v_{2}}$, and
 
 \end{proof}
 
-Because of this Lemma we have 
+Because of Lemma \ref{Groupimage} we have 
 \begin{align*}
 \Phi(H) &=\langle \Phi(e^{q_{x}\lambda x}),\Phi(e^{q_{y}\lambda y}) \rangle \\
 &= \langle e^{q_{x}\lambda \phi(x)},e^{q_{y}\lambda \phi(y)} \rangle \\
@@ -2449,14 +2668,16 @@ And hence
 
 
 \begin{Proposition}\label{Rational}
-There is a sequence of rational numbers $R_{i}$ such that
+There is a sequence of rational numbers $r_{i}$ such that
 \[
-\lambda^{2}z= \sum\limits_{i=1}^{k}R_{i}D'_{i}.
+\lambda^{2}z= \sum\limits_{i=1}^{k}r_{i}D'_{i}.
 \]
 \end{Proposition}
 
 \begin{proof}
-From Proposition \ref{Subset} we have $G \subseteq S$. And since $\{ e^{q_{x}\lambda x}, e^{q_{y}\lambda y} \}\subset \{ e^{q\lambda x} \mid q \in \Q \}\cup \{ e^{q\lambda y} \mid q \in \Q \}$ we have $H \subseteq G \subseteq S$. So taking the logarithm of both sides:
+From Proposition \ref{Subset} we have $G \subseteq S$. And since 
+$$\{ e^{q_{x}\lambda x}, e^{q_{y}\lambda y} \}\subset \{ e^{q\lambda x} \mid q \in \Q \}\cup \{ e^{q\lambda y} \mid q \in \Q \}$$
+ we have $H \subseteq G \subseteq S$. So taking the logarithm of both sides:
 \[
 h \subseteq s.
 \]
@@ -2522,15 +2743,15 @@ for some rational numbers $p_{i}$. Equating the above expressions:
 
 \begin{align*}
 q_{3}\lambda^{2} z &= \sum\limits_{i=1}^{k}p_{i}D'_{i} -\sum\limits_{i=1}^{3}q_{i}D'_{i} -\sum\limits_{i=4}^{k}q_{i}D'_{i} \\
-&= \sum\limits_{i=1}^{k}r_{i}D'_{i}
+&= \sum\limits_{i=1}^{k}r'_{i}D'_{i}
 \end{align*}
-for rational numbers $r_{i}$ given by $r_{i}=p_{i}-q_{i}$ for $i \neq 3 $
-and $r_{3}=p_{3}$. So providing $q_{3} \neq 0$ we may divide it out giving:
+for rational numbers $r'_{i}$ given by $r'_{i}=p_{i}-q_{i}$ for $i \neq 3 $
+and $r'_{3}=p_{3}$. So providing $q_{3} \neq 0$ we may divide it out giving:
 
 \[
-\lambda^{2} z = \sum\limits_{i=1}^{k}R_{i}D'_{i}
+\lambda^{2} z = \sum\limits_{i=1}^{k}r_{i}D'_{i}
 \]
-where $R_{i}=r_{i}/q_{3}$ are rational numbers.
+where $r_{i}=r'_{i}/q_{3}$ are rational numbers.
 \end{proof}
 
 
@@ -2561,18 +2782,18 @@ so using the fact that $\phi$ is surjective,
 \end{proof}
 
 \begin{Proposition}\label{threedim}
-Using the above notation, if $R_{3}$ is the only non-zero coefficient out of all the $\R_{i}$, then $\g$ is three-dimensional and the theorem holds.
+Using the above notation, if $r_{3}$ is the only non-zero coefficient out of all the $r_{i}$, then $\g$ is three-dimensional and the theorem holds.
 \end{Proposition}
 
 \begin{proof}
 We have 
 \begin{align*}
-\lambda^{2}z &= R_{3} D'_{3} \\
-&= R_{3}\lambda^{2}[\phi(x),\phi(y)] \\
-z&=R_{3}[\phi(x),\phi(y)]
+\lambda^{2}z &= r_{3} D'_{3} \\
+&= r_{3}\lambda^{2}[\phi(x),\phi(y)] \\
+z&=r_{3}[\phi(x),\phi(y)]
 \end{align*}
 
-But this indicates that $D_{3}=[\phi(x),\phi(y)]=(1/R_{3})z \in Z(\g)$. But then $D_{i}=0$ for all $i \geq 4$ since these terms all come from applying the bracket operation to $D_{3}$. So then 
+But this indicates that $D_{3}=[\phi(x),\phi(y)]=(1/r_{3})z \in Z(\g)$. But then $D_{i}=0$ for all $i \geq 4$ since these terms all come from applying the bracket operation to $D_{3}$. So then 
 \begin{align*}
 \g &= \spn \{ D_{i} \mid i=1\ldots k \} \\
 &= \spn \{ \phi(x), \phi(y), [\phi(x), \phi(y)] \} 
@@ -2596,14 +2817,14 @@ The central error term $z$ must be $\vec{0}$.
 \end{Proposition}
 
 \begin{proof}
-From Proposition \ref{Rational} we have for \emph{any} $\lambda \in \R$, there exist rational numbers $R_{i}$ such that
+From Proposition \ref{Rational} we have for \emph{any} $\lambda \in \R$, there exist rational numbers $r_{i}$ such that
 \begin{equation}\label{important}
- \sum\limits_{i=1}^{k}R_{i}D'_{i} -\lambda^{2} z  = \vec{0}.
+ \sum\limits_{i=1}^{k}r_{i}D'_{i} -\lambda^{2} z  = \vec{0}.
 \end{equation}
 So for any $\lambda \in \R$,
 \begin{align*}
-\sum\limits_{i=1}^{k}R_{i}\lambda^{L(D_{i})}(( D_{i}, E))-\lambda^{2}((z,E))
-&= (( \sum\limits_{i=1}^{k}R_{i}\lambda^{L(D_{i})}D_{i}-\lambda^{2}z,E)) \\
+\sum\limits_{i=1}^{k}r_{i}\lambda^{L(D_{i})}(( D_{i}, E))-\lambda^{2}((z,E))
+&= (( \sum\limits_{i=1}^{k}r_{i}\lambda^{L(D_{i})}D_{i}-\lambda^{2}z,E)) \\
 &=((\vec{0}, E))\\
 &=0
 \end{align*}
@@ -2617,23 +2838,23 @@ where the coefficients are
 a_{i}= 
 \left\lbrace
 \begin{array}{ll}
-R_{i}((D_{i},E)) & \text{for $i=1,2,4,5,\ldots k$} \\
-R_{3}((D_{3},E))-((z,E)) & \text{for $i=3$}
+r_{i}((D_{i},E)) & \text{for $i=1,2,4,5,\ldots k$} \\
+r_{3}((D_{3},E))-((z,E)) & \text{for $i=3$}
 \end{array}
 \right.
 \]
-Note that each $D_{i}$ is fixed, as are $z$ and $E$. Then since $R_{i} \in \Q$, and there are finitely many such coefficients, there must be only countably many sets of coefficients $\{a_{i} \}$, for different choices of $R_{i}$. Also for any individual polynomial, there are only finitely many solutions.
+Note that each $D_{i}$ is fixed, as are $z$ and $E$. Then since $r_{i} \in \Q$, and there are finitely many such coefficients, there must be only countably many sets of coefficients $\{a_{i} \}$, for different choices of $r_{i}$. Also for any individual polynomial, there are only finitely many solutions.
 Now define the set $\zeta$ as follows:
 \[
 \zeta = \{ \lambda \in \R \mid P(\lambda)=0 \text{ for some set of coefficients $a_{i}$} \}
 \]
-From the above reasoning it is seen that by systematically choosing all possible sets of $a_{i}$ such that they are not all zero, and finding all the values of $\lambda$ for which the polynomial is zero will only yield a countable number of values in total. But we know that for \emph{any} real value of $\lambda$ it is possible to find a set of coefficients $a_{i}$ . So $\zeta=\R$, which is uncountable. Hence there must be some values of $\lambda$ for which all the coefficients $a_{i}$ must be zero for the polynomial to have a solution. Hence the only set of rational numbers $R_{i}$ which satisfy equation \ref{important} for all values of $\lambda$ are those for which all the $a_{i}$ are zero. Then since for all $i$ we have $((D_{i},E)) \neq 0$,
+From the above reasoning it is seen that by systematically choosing all possible sets of $a_{i}$ such that they are not all zero, and finding all the values of $\lambda$ for which the polynomial is zero will only yield a countable number of values in total. But we know that for \emph{any} real value of $\lambda$ it is possible to find a set of coefficients $a_{i}$ . So $\zeta=\R$, which is uncountable. Hence there must be some values of $\lambda$ for which all the coefficients $a_{i}$ must be zero for the polynomial to have a solution. Hence the only set of rational numbers $r_{i}$ which satisfy equation \ref{important} for all values of $\lambda$ are those for which all the $a_{i}$ are zero. Then since for all $i$ we have $((D_{i},E)) \neq 0$,
 \begin{align*}
-R_{i}&=0, \;\;\text{for}\;\;i=1,2,4\ldots k \\
-R_{3}((D_{3},E))-((z,E))=0
+r_{i}&=0, \;\;\text{for}\;\;i=1,2,4\ldots k \\
+r_{3}((D_{3},E))-((z,E))=0
 \end{align*}
-Now suppose $R_{3}$ is not $0$. Then we may apply Proposition \ref{threedim} and see that $\g$ is three-dimensional so the result must hold, indicating that $z=0$, so $R_{3}=0$, which is a contradiction. \newline
-Therefore we must have $R_{i}=0$ for all $i=1 \ldots k $. Hence $z=0$ as required and the map $\phi$ is a Lie algebra isomorphism or anti-isomorphism.
+Now suppose $r_{3}$ is not $0$. Then we may apply Proposition \ref{threedim} and see that $\g$ is three-dimensional so the result must hold, indicating that $z=0$, so $r_{3}=0$, which is a contradiction. \newline
+Therefore we must have $r_{i}=0$ for all $i=1 \ldots k $. Hence $z=0$ as required and the map $\phi$ is a Lie algebra isomorphism or anti-isomorphism.
 
 \end{proof}
 
