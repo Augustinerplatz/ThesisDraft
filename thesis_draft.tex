@@ -1609,6 +1609,48 @@ where $y \in A_{j-1}=A_{k-2}$. Hence
 \]
 \end{proof}
 
+\begin{Lemma}\label{adddim}
+Let $\mathfrak{a}$ be any Lie algebra and let $ A_{0},A_{1},A_{2}\ldots$ be its lower central series. If $x \in A_{m}$ and $y \in A_{n}$, then $[x,y] \in A_{m+n+1}$.
+\end{Lemma}
+
+\begin{proof}
+The proof is by induction on $m$, with arbitrary $n$. Suppose $x=\sum\limits_{i} U_{i}$ and $y=\sum\limits_{i} V_{i}$, with 
+\[
+U_{i}=[x_{i0},[x_{i1},[x_{i2},\ldots [x_{i(m-1)},x_{im}]\ldots]]]
+\]
+and 
+\[
+V_{i}=[y_{i0},[y_{i1},[y_{i2},\ldots [y_{i(n-1)},y_{in}]\ldots]]]
+\]
+for some $x_{ij}$ and $y_{ij}$ in $\mathfrak{a}$.
+
+Suppose $m=0$, so that $x$ is just any element of $\mathfrak{a}$. Then 
+\[
+[x,y]=\sum\limits_{i}[x,V_{i}]=\sum\limits_{i}W_{i}
+\]
+where $W_{i} \in A_{n+1}=A_{m+n+1}$ as required. So the statement is true for $m=0$. \newline
+
+Now suppose the statement is true for $m = k$, for some integer $k \geq 0$. 
+
+Let $m=k+1$. Each $U_{i}$ can be written as $[x_{im},T_{i}]$, where $T_{i} \in A_{k}$. Then
+\begin{align*}
+[x,y] &=\sum\limits_{i}[[x_{im},T_{i1}],y] \\
+&= \sum\limits_{i}\big( \; [x_{im},[T_{i},y]]-[T_{i},[x_{im},y]]\; \big).
+\end{align*}
+
+Now $T_{i}$ is in $A_{k}$ so $[T_{i},y]$ is in $A_{k+n+1}$ by the inductive hypothesis, and since $x_{im}$ is any element of $\mathfrak{a}$, $[x_{im},[T_{i},y]]$ must be in $A_{k+n+2}=A_{m+n+1}$. 
+
+Also, $[x_{im},y] \in A_{n+1}$ since $x_{im}$ is any element of $\mathfrak{a}$, and then by the inductive hypothesis $[T_{i},[x_{im},y]]$ must be in $A_{k+n+1+1}=A_{m+n+1}$. 
+
+Hence 
+$$\sum\limits_{i}([x_{im},[T_{i},y]]-[T_{i},[x_{i1},y]])\;\in A_{m+n+1}$$
+and hence
+$$[x,y] \;\in A_{m+n+1} $$
+as required. 
+
+By induction the statement is true for all integers $m \geq 0$.
+\end{proof}
+
 \begin{Proposition}
 The entries $A_{i}$ in the lower central series for a Lie algebra $\mathfrak{a}$ are nested in the following way:
 \[
@@ -1848,39 +1890,7 @@ Therefore a bijective coset-preserving map between \emph{any} pair of three-dime
 
 When considering nilpotent Lie groups and Lie algebras of higher dimension, the essential structure can be studied mainly by looking at the bracket operation and the lower central series.
 
-\begin{Lemma}\label{adddim}
-Let $\mathfrak{a}$ be any Lie algebra and let $ A_{0},A_{1},A_{2}\ldots$ be its lower central series. If $x \in A_{m}$ and $y \in A_{n}$, then $[x,y] \in A_{m+n+1}$.
-\end{Lemma}
 
-\begin{proof}
-The proof is by induction on $m$, with arbitrary $n$. Suppose $x=\sum\limits_{i} U_{i}$ and $y=\sum\limits_{i} V_{i}$, with 
-\[
-U_{i}=[x_{i1},[x_{i2},[x_{i3},\ldots [x_{im},x_{i0}]\ldots]]]
-\]
-and 
-\[
-V_{i}=[y_{i1},[y_{i2},[y_{i3},\ldots [y_{im},y_{i0}]\ldots]]]
-\]
-for some $x_{ij}$ and $y_{ij}$ in $\mathfrak{a}$.
-
-Suppose $m=0$, so $x$ is any element of $\mathfrak{a}$. Then 
-\[
-[x,y]=\sum\limits_{i}[x,V_{i}]=\Sigma_{i}W_{i}
-\]
-where $W_{i} \in A_{n+1}=A_{m+n+1}$ as required. So the statement is true for $m=0$. \newline
-
-Now suppose the statement is true for $m \leq k$, for some integer $k \geq 0$. Now suppose that $m=k+1$. So each $U_{i}$ can be written as $[x_{i1},T_{i}]$, where $T_{i} \in A_{k}$. So
-\begin{align*}
-[x,y] &=\sum\limits_{i}[[x_{i1},T_{i1}],y] \\
-&= \sum\limits_{i}\big( \; [x_{i1},[T_{i},y]]-[T_{i},[x_{i1},y]]\; \big).
-\end{align*}
-
-Now $T_{i}$ is in $A_{k}$ so $[T_{i},y]$ is in $A_{k+n+1}$ by the inductive hypothesis, and since $x_{i1}$ is any element of $\mathfrak{a}$, $[x_{i1},[T_{i},y]]$ must be in $A_{k+n+2}=A_{m+n+1}$. 
-
-Also, $[x_{i1},y] \in A_{n+1}$ since $x_{i1}$ is any element of $\mathfrak{a}$, and then by the inductive hypothesis $[T_{i},[x_{i1},y]]$ must be in $A_{k+n+1+1}=A_{m+n+1}$. 
-
-Hence $\sum\limits_{i}([x_{i1},[T_{i},y]]-[T_{i},[x_{i1},y]])$ is in $A_{m+n+1}$ as required. By induction the statement is true for all integers $m \geq 0$.
-\end{proof}
 
 
 \section{The Inductive Assumption}
@@ -1914,10 +1924,50 @@ Whereas if $\alg(x,y)=\g$, the inductive assumption cannot be directly applied. 
 
 Suppose that $\g=\alg(x,y)$.
 
-\begin{Proposition}
-Suppose that the terms in the BCH Formula for $x$ and $y$ are labelled $C_{i}$. (So $x=C_{1}$, $y=C_{2}$, $[x,y]=C_{3}$ etc.), and that $C_{k}$ is the last non-zero term in the sequence. 
-Then $\spn\{C_{1},\ldots,C_{k}\}=\alg(x,y)$.
 
+
+\begin{Definition}
+Let $L(C_{i})$ denote the length of a term in the sequence $C_{i}$. So, for example,
+\begin{align*}
+L(C_{1}) &= L(x)=1, \\
+L(C_{3}) &= L(\;[x,y]\;)=2, \\
+L(C_{6}) &= L(\;[x,[x,[x,y]]]\;)=4.
+\end{align*}
+\end{Definition}
+
+\begin{Definition}
+Label the terms in the BCH Formula for $x$ and $y$ by an ordered sequence $C_{i}$. So, ordering the first few terms,
+\begin{align*}
+C_1 &= x \\
+C_2 &= y \\
+C_3 &= [x,y] \\
+C_4 &= [x,[x,y]] \\
+C_5 &= [y,[x,y]] \\
+& \text{etc.}
+\end{align*}
+Let $C_{k}$ be the last non-zero term in the sequence.
+\end{Definition}
+
+\begin{Definition}
+We will also be considering the image of these sets under $\phi$ so define the sequence $D_1,\ldots D_k$ by replacing $x$ with $\phi(x)$ and $y$ with $\phi(y)$ in each of the terms of the sequence $C_i$. So for example,
+
+\begin{align*}
+D_1 &= \phi(x) \\
+D_2 &= \phi(y) \\
+D_3 &= [\phi(x),\phi(y)] \\
+D_4 &= [\phi(x),[\phi(x),\phi(y)]] \\
+D_5 &= [\phi(y),[\phi(x),\phi(y)]] \\
+& \text{etc.}
+\end{align*}
+\[
+\{ D_{i}\}= \{\phi(x),\phi(y), [\phi(x),\phi(y)], [\phi(x),[\phi(x),[\phi(y)]]], \ldots  \}
+\]
+\end{Definition}
+
+%Could include here the fact that the D's span g, which I don't mention until right near the end.
+
+\begin{Proposition}
+Using the notation for the commutators in Definition above, $\spn\{C_{1},\ldots,C_{k}\}=\alg(x,y)$.
 \end{Proposition}
 
 \begin{proof}
@@ -1925,8 +1975,7 @@ Then $\spn\{C_{1},\ldots,C_{k}\}=\alg(x,y)$.
 Clearly $\{ C_{1},\ldots,C_{k} \}$ is a spanning set for $\alg(x,y)$ since the $C_{j}$ are all the non-zero commutators involving $x$ and $y$, and by definition $\alg(x,y)$ is anything in the linear span of this set.
 
 \end{proof}
-
-Now that we have this spanning set for $\alg(x,y)$ it is possible to reduce its dimension by deleting particular elements. We will consider the subspaces of $\g$ that arise by deleting $x$ (that is, $C_{1}$) or $y$ (that is, $C_{2}$) from the span. 
+Now that we have this spanning set for $\g=\alg(x,y)$ it is possible to reduce its dimension by deleting particular elements. We will consider the subspaces of $\g$ that arise by deleting $x$ (that is, $C_{1}$) or $y$ (that is, $C_{2}$) from the span. 
 
 Let 
 \[
@@ -1937,59 +1986,33 @@ and
 \g_{-y}=\spn \{C_{1},C_{3},C_{4},\ldots,C_{k} \}
 \]
 
-%do this lemma differently by looking at something is the span of all the Ci and commuting it with x or y to get something in g-x or g-y.
-\begin{Lemma}\label{gohigher}
-Let $\mathfrak{a}$ be a Lie algebra with lower central series $A_{i}$. Suppose that $u_{p} \in A_{p}$ and $u_{q} \in A_{q}$, for some non-negative integers $p$ and $q$. Then $[u_p,u_q] \in A_{p+q+1}$. 
+
+
+
+%this lemma may not be in the right place.
+\begin{Lemma}\label{generateWithDs}
+The subalgebra $\alg(\phi(x),\phi(y))$ generated by $\phi(x)$ and $\phi(y)$ is all of $\g$. (Just as $\alg(x,y)=\g$.) Thus $\g =\spn \{ D_{i} \mid i=1 \dots k  \} $ so a subset of these $D_{i}$ may be selected to form a basis $\{D_{j} \}_{j \in J}$ of $\g$, where $J \subseteq \{ 1,2,\ldots ,k \}$.
 \end{Lemma}
+
 \begin{proof}
-The proof is by induction on $p$. 
-
-For $p=0$, let $u_{0} \in \g$ and let $u_{q} \in A_{q}$. So $u_{q}$ can be expressed as a sum of commutators in $\mathfrak{a}$ of length $(q+1)$. In other words, there are elements $u_{q}^{ij} \in \mathfrak{a}$, for $i=1, \ldots ,N$ and $j=0, \ldots , q$ such that,
+The map $\phi$ has the property that it maps subalgebras to subalgebras bijectively. So there is a subalgebra $\mathfrak{h}$ of $\g$ such that 
 \[
-u_{q}= \sum\limits_{i=1}^{N} [u_{q}^{iq},[u_{q}^{i(q-1)},[\ldots[u_{q}^{i1}, u_{q}^{i0}]\ldots]].
+\alg(\phi(x),\phi(y))= \phi(\mathfrak{h}).
+\]
+This implies that $\phi(x)\in  \phi(\mathfrak{h})$ and $\phi(x)\in  \phi(\mathfrak{h})$. Then since $\phi$ is injective it follows that $x \in \mathfrak{h}$ and $y \in \mathfrak{h}$. So by minimality, 
+\[
+\alg(x,y) \subseteq \mathfrak{h}
+\]
+Hence 
+\[
+\g\subseteq \mathfrak{h} 
+\]
+so using the fact that $\phi$ is surjective,
+\[
+\g=\mathfrak{h} =\phi(\g)=\phi(\mathfrak{h})=\alg(\phi(x),\phi(y)).
 \]
 
-Then 
-\begin{align*}
-[u_{1},u_{q}] &= \sum\limits_{i=1}^{N} [u_1,[u_{q}^{iq},[u_{q}^{i(q-1)},[\ldots[u_{q}^{i1}, u_{q}^{i0}]\ldots]]] \\
-& \in A_{q+1}
-\end{align*}
-as required. 
-
-Suppose that the Lemma is true for $p=k$. 
-
-Now let $u_{k+1} \in A_{k+1}$. Then $u_{k+1}$ can be written as 
-\[
-u_{k+1} = \sum\limits_{i=1}^{N} [a_{i}, u_{ki}]
-\]
-where each $a_i \in \mathfrak{a}$ and each $u_{ki} \in A_{k}$. So 
-
-\begin{align*}
-[u_{k+1}, u_{q}] &= \sum\limits_{i=1}^{N} [[a_{i}, u_{ki}],u_q] \\
-&= \sum\limits_{i=1}^{N}\big(\; [a_{i},[ u_{ki},u_q]] -[u_{ki},[a_i,u_q]]\; \big)
-\end{align*}
-(applying the Jacobi identity). 
-
-But now from the inductive assumption we know that 
-\[
-[u_{ki},u_{q}] \in A_{k+q+1}
-\]
-giving
-\[
-[a_i,[u_{ki},u_{q}]] \in A_{k+q+2}.
-\]
-Now, the statement is true for $p=0$ so  $[a_i,u_q]\in A_{q+1}$. Then since $q$ was arbitrary, the inductive assumption also gives
-\begin{align*}
-[u_{ki},[a_i,u_q]] &\in A_{k+(q+1)+1} \\
-&= A_{k+q+2}
-\end{align*}
-So, since $u_{k+1}$ is a linear combination of elements of this form, 
-\[
-u_{k+1} \in A_{k+q+2}
-\]
-as required.
 \end{proof}
-
 
 \begin{Proposition} The subspaces $\g_{-x}$ and $\g_{-y}$ are Lie subalgebras.
 
@@ -2009,7 +2032,7 @@ Then,
 &=\gamma_{d(1)} C_{d(1)} +\gamma_{d(2)} C_{d(2)}+ \cdots \gamma_{d(P)} C_{d(P)}
 \end{align*}
 % give better explanation of where this expression comes from in terms of the new version of the previous lemma
-Where $d(i) \geq 3$ for all $1 \leq i \leq P$, by Lemma \ref{gohigher}. Hence 
+Where $d(i) \geq 3$ for all $1 \leq i \leq P$, by Lemma \ref{adddim}. Hence 
 $$[u,v] \in \spn \{ C_{2},C_{3}, \ldots C_{k} = \g_{-x}\}$$
  and so $\g_{-x}$ is closed under the bracket operation, making it a Lie subalgebra. By symmetry it can be seen that $\g_{-y}$ is also a Lie subalgebra.
 \end{proof}
@@ -2120,7 +2143,7 @@ Let $\phi:\g \longrightarrow \g $ be bijective and linear such that the correspo
 
 So we have 
 \[
-\varphi(e^{sx}e^{ty}e^{sx})= e^{s\phi(x)}e^{t\phi(y)}e^{s\phi(x)}
+\Phi(e^{sx}e^{ty}e^{sx})= e^{s\phi(x)}e^{t\phi(y)}e^{s\phi(x)}
 \]
 We now apply the BCH formula to the left hand side twice. Note that when the parameters $s$ and $t$ are factored outside the commutator terms, the sum of the indices of $s$ and $t$ in each commutator term must be equal to the length of the commutator. 
 \begin{align*}
@@ -2264,11 +2287,11 @@ The map $\phi$ is either an isomorphism on both $\g_{-x}$ and $\g_{-y}$ or and a
 \end{Proposition}
 
 \begin{proof}
-We already know that $\phi$ is either an isomorphism of anti-isomorphism on each of $\g_{-x}$ and $\g_{-y}$. 
+We already know that $\phi$ is either an isomorphism or an anti-isomorphism on each of $\g_{-x}$ and $\g_{-y}$. 
 
 Note that $\phi$ is both an isomorphism and an anti-isomorphism on a subalgebra $\mathfrak{h}$ of $\g$ if and only if 
 \[
-\phi[h_1,h_2]=-\phi[h_1,h_2], \forall h_1,h_2 \in \mathfrak{h}.
+\phi[h_1,h_2]=-\phi[h_1,h_2],\;\; \forall h_1,h_2 \in \mathfrak{h}.
 \]
 In other words, $\phi[h_1,h_2]=0$, meaning also that $[h_1,h_2]=0$ for all $h_1,h_2 \in \mathfrak{h}$. 
 
@@ -2315,39 +2338,66 @@ So the bracket of any two commutators in $\g_{-x}$ involves at least two $y$'s a
 
 \item Suppose that neither $C_4$ nor $C_5$ is zero. (It will be shown that this gives a contradiction so that one of them must indeed by zero). 
 
-Consider the subalgebra 
+For each real number $\theta \in [0,\pi/2]$, consider the subalgebra 
 $$\g_\theta= \R((\cos{\theta})x + (\sin{\theta})y) \oplus \g_{-x-y}.$$
 Since this is a strict subalgebra, $\phi$ is either an isomorphism or anti-isomorphism when restricted to it. 
 
+%New version for this written out on paper, taking into account the fact that the pm sign does depend on theta.
+Note that since $\phi$ is an isomorphism on $\g_{-x}$ and an anti-isomorphism on $\g_{-y}$, we have
+\begin{equation}\label{anti}
+\phi[x,[x,[y]]= -[\phi(x),\phi[x,y]]
+\end{equation}
+and similarly,
+\begin{equation}\label{iso}
+\phi[y,[x,[y]]= [\phi(y),\phi[x,y]]
+\end{equation}
 \begin{enumerate}
-\item Suppose $\phi$ is an isomorphism when restricted to $\g_\theta$. Then 
+\item If for some $\theta \in [0,\pi/2]$, the map $\phi$ acts as an isomorphism on $\g_{\theta}$, then
+\begin{align*}
+\phi[(\cos{\theta})x + (\sin{\theta})y,[x,y]] &=
+\phi\big( \cos{\theta}[x,[x,y]]+ \sin{\theta}[y,[x,y]] \big) \\
+&= \cos{\theta}\phi[x,[x,y]]+ \sin{\theta}\phi[y,[x,y]] \\
+&= \cos{\theta}[\phi(x),\phi[x,y]]+ \sin{\theta}[\phi(y),\phi[x,y]] \\
+&= -\cos{\theta}[\phi(x),\phi[x,y]]+ \sin{\theta}[\phi(y),\phi[x,y]] \\ 
+& \quad \quad  \text{using equation \ref{anti}}
+\end{align*}
+But this indicates that 
 \[
-\phi[(\cos{\theta})x + (\sin{\theta})y, [x,y]]= [(\cos{\theta})\phi(x) + (\sin{\theta})\phi(y), \phi[x,y]].
+\cos{\theta}[\phi(x),\phi[x,y]]=0.
 \]
-Letting $\theta=0$ gives 
+However, we have assumed that $C_4 \neq 0 $ and 
 \[
-\phi[x,[x,y]]=[\phi(x),\phi[x,y]],
+[\phi(x),\phi[x,y]]= -\phi(C_4)
 \]
-but we have assumed that $\phi$ is an anti-isomorphism on $\g_{-y}$, which implies
+so since $\phi$ is bijective and sends zero to zero, 
 \[
-\phi[x,[x,y]]=-[\phi(x),\phi[x,y]].
+[\phi(x),\phi[x,y]]=0 \iff C_4=0.
 \]
-So $\phi[x,[x,y]]=0$ and so $[x,[x,y]]=0$, which is a contradiction. 
+Hence we conclude that in this case, the only possible value for $\theta$ is $\pi/2$. 
 
-\item Suppose $\phi$ is an anti-isomorphism when restricted to $\g_\theta$. Then 
+
+\item If for some $\theta \in [0,\pi/2]$, the map $\phi$ acts as an anti-isomorphism on $\g_{\theta}$, then
+\begin{align*}
+\phi[(\cos{\theta})x + (\sin{\theta})y,[x,y]] 
+&= \cos{\theta}\phi[x,[x,y]]+ \sin{\theta}\phi[y,[x,y]] \\
+&= -\cos{\theta}[\phi(x),\phi[x,y]]- \sin{\theta}[\phi(y),\phi[x,y]] \\
+&= -\cos{\theta}[\phi(x),\phi[x,y]]+ \sin{\theta}[\phi(y),\phi[x,y]]\\ 
+& \quad \quad \text{using equation \ref{iso}}
+\end{align*}
+But this indicates that 
 \[
-\phi[(\cos{\theta})x + (\sin{\theta})y, [x,y]]= -[(\cos{\theta})\phi(x) + (\sin{\theta})\phi(y), \phi[x,y]].
+\sin{\theta}[\phi(y),\phi[x,y]]=0.
 \]
-Letting $\theta=\pi /2$ gives 
-\[
-\phi[y,[x,y]]=-[\phi(y),\phi[x,y]],
-\]
-but we have assumed that $\phi$ is an isomorphism on $\g_{-x}$, which implies
-\[
-\phi[y,[x,y]]=[\phi(y),\phi[x,y]].
-\]
-So $\phi[y,[x,y]]=0$ and so $[y,[x,y]]=0$, which is again a contradiction. 
+However, we have assumed that $C_5 \neq 0 $ and 
+so by a similar argument to the one in the previous case, we must have $\sin{\theta}=0$. So the only possible value for $\theta$ in this case is $\theta = 0$.
 \end{enumerate}
+
+But these two statements are contradictory, since $\phi$ must be either an isomorphism or anti-isomorphism on $\g_{\theta}$ for \emph{every} possible value of $\theta \in [0, \pi/2]$.
+
+Hence it is not possible that $C_4$ and $C_5$ are both non-zero under the assumption that $\phi$ is an isomorphism on $\g_{-x}$ and an anti-isomorphism on $\g_{-y}$. 
+
+So all cases have been covered.
+
 \end{enumerate}
 Hence in any of the possible cases, either $\g_{-x}$ or $\g_{-y}$ is abelian, completing the proof. 
 
@@ -2445,21 +2495,9 @@ So
 
 A subgroup will now be constructed in two different ways. By observing how the map $\phi$ acts on each of these expressions for the subgroup it will be shown that the error term $z$ must be zero.
 
-\begin{Definition}
-First of all recall that if $S$ is a subset of $\G$ then we denote the smallest subgroup containing $S$ by $\langle S \rangle$. For ease of notation the following abbreviation will be used:
-\[
-\langle e^{\Q\lambda x},e^{\Q\lambda y} \rangle =\langle \; \{ e^{q\lambda x} \mid q \in \Q \}\cup \{ e^{q\lambda y} \mid q \in \Q \} \; \rangle
-\]
-\end{Definition}
 
-\begin{Definition}
-Define the \emph{length} $L(C_{i})$ of a term in the sequence $C_{i}$ as the number of times the bracket operation has been applied. So, for example,
-\begin{align*}
-L(C_{1}) &= L(x)=0, \\
-L(C_{3}) &= L(\;[x,y]\;)=1, \\
-L(C_{6}) &= L(\;[x,[x,[x,y]]]\;)=3.
-\end{align*}
-\end{Definition}
+
+
 
 \begin{Definition}
 To simplify manipulations of terms in the sequence $C_{i}$, define a new related sequence $C'_{i}$ by taking the BCH Formula for $\lambda x$ and $\lambda y$ rather than for $x$ and $y$. So, for example,
@@ -2474,112 +2512,18 @@ etc. And note the following:
 C'_{i}=\lambda^{L(C_{i})}C_{i}
 \]
 simply by taking the multiples $\lambda$ outside the brackets.
-\end{Definition}
 
-\begin{Proposition}\label{Subset}
+Also for the sequence $D_i$, define the related sequence $D'_i$ by 
 \begin{align*}
-&\langle e^{\Q\lambda x},e^{\Q\lambda y} \rangle \\
-&\subseteq \{\exp(q_{1}C'_{1} + q_{2} C'_{2} + q_{3} C'_{3}+ \cdots + q_{i}C'_{i}+ \cdots q_{k}C'_{k}) \mid q_{i} \in \Q \} \\
-&=\left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}C'_{i}\right) \Bigm| q_{i} \in \Q \right\rbrace \\
-&= \left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}\lambda^{L(C_{i})}C_{i}\right) \Bigm| q_{i} \in \Q \right\rbrace
- \end{align*}
-\end{Proposition}
-
-\begin{proof}
-Let 
-\begin{align*}
-S&=\left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}C'_{i}\right) \Bigm| q_{i} \in \Q \right\rbrace \\
-&=\left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}\lambda^{L(C_{i})}C_{i}\right) \Bigm| q_{i} \in \Q \right\rbrace
-\end{align*}
-Any elements of $\{ e^{q\lambda x} \mid q \in \Q \}\cup \{ e^{q\lambda y} \mid q \in \Q \}$ can be multiplied together in any order to form the elements of the subgroup $\langle e^{\Q\lambda x},e^{\Q\lambda x} \rangle$. Note that if two elements in say $\{ e^{q\lambda x} \mid q \in \Q \}$ are multiplied together the result is another element of this set (and similarly for the set defined with $y$):
-\begin{align*}
-\exp(q \lambda x)\exp(q' \lambda x)&=\exp((q+q')\lambda x +0) \\
-&=\exp(r\lambda x) \\
-&\in \{ e^{q\lambda x} \mid q \in \Q \}
-\end{align*}
-Hence any element $w$ of $\langle e^{\Q\lambda x},e^{\Q\lambda y} \rangle$ is made up of a string of factors alternating between the set defined by $x$ and the set defined by $y$:
-\[
-w=e^{q_{1}\lambda x}e^{p_{1}\lambda y} \cdots e^{q_{N}\lambda x}e^{p_{N}\lambda y}.
-\]
-Now it will be proved by induction on $N$ that $w \in S$. \newline
-If $N=1$ we have 
-\begin{align*}
-w &=e^{q_{1}\lambda x}e^{p_{1}\lambda y} \\
-&= \exp \left( q_{1}C'_{1}+p_{1}C'_{2} +(1/2)q_{1}p_{1}[C'_{1},C'_{2}]+\cdots r_{k} C'_{k} \right) \\
-&= \exp \left( r_{1}C'_{1}+r_{2}C'_{2} +r_{3}C'_{3}+\cdots+r_{i} C'_{i}+\cdots + r_{k}C'_{k} \right) \\
-&=\exp \left(\sum\limits_{i=1}^{k}r_{i}C'_{i}\right)
-\end{align*}
-where all the $r_{i}$ are rational numbers.
-This is of the desired form to be in the set $S$. Hence the statement is true for $N=1$. \newline
-Now suppose the statement is true for $N=M$, for some particular $M \geq 1$. Then suppose that
-\[
-w=e^{q_{1}\lambda x}e^{p_{1}\lambda y} \cdots e^{q_{N}\lambda x}e^{p_{N}\lambda y}e^{q_{N+1}\lambda x}e^{p_{N+1}\lambda y}.
-\]
-Then since the statement is true for $N=1$ and $N=M$ let 
-\begin{align*}
-u&=e^{q_{1}\lambda x}e^{p_{1}\lambda y} \cdots e^{q_{N}\lambda x}e^{p_{N}\lambda y} \\
-v&=e^{q_{N+1}\lambda x}e^{p_{N+1}\lambda y}
-\end{align*}
-So we know that $u$ and $v$ are in $S$. It now suffices to prove that $S$ is closed under multiplication. Suppose 
-\begin{align*}
-u&=\exp \left(\sum\limits_{i=1}^{k}u_{i}C'_{i}\right)\\
-v&=\exp \left(\sum\limits_{i=1}^{k}v_{i}C'_{i}\right)
-\end{align*}
-for rational numbers $u_{i}$ and $v_{i}$. 
-
-
-%careful- need to change this argument now that the gohigher lemma is different. Be careful with the requirement for rational coefficients.
-
-Multiplying these two elements together is very untidy but the essential point is that $[C_{i},C_{j}]=C_{i'}-C_{j'} \in \{ \sum\limits_{h=1}^{k}q_{h}C_{h} \mid q_{h} \in \Q \}$ as was shown in Lemma \ref{gohigher}. So 
-\begin{align*}
-uv &= \exp \left(\sum\limits_{i=1}^{k}u_{i}C'_{i}\right)
-\exp \left(\sum\limits_{i=1}^{k}v_{i}C'_{i}\right) \\
-&= \exp \left( \sum\limits_{i=1}^{k}u_{i}C'_{i}+ \sum\limits_{i=1}^{k}v_{i}C'_{i} + \frac{1}{2}\left[\sum\limits_{i=1}^{k}u_{i}C'_{i},\sum\limits_{i=1}^{k}v_{i}C'_{i}\right] + \cdots
- \right) \\
- &= \exp \left( \sum\limits_{i=1}^{k} w_{i}C'_{i} \right)
-\end{align*} 
-for some rational coefficients $w_{i}$. Hence $uv$ is in the correct form to be in the set $S$ so $S$ is closed under multiplication as desired.
-\newline
-Hence $w=e^{q_{1}\lambda x}e^{p_{1}\lambda y} \cdots e^{q_{N}\lambda x}e^{p_{N}\lambda y} $ is in $S$ for any integer $N \geq 1$ and all rational coefficients $q_{i}$. So 
-\[
-\langle e^{\Q\lambda x},e^{\Q\lambda y} \rangle \subseteq S
-\]
-
-\end{proof}
-
-We need some notation for the following section. 
-
-Let $q_{x}$ and $q_{y}$ be rational numbers and let
-\begin{align*}
-G&= \langle e^{\Q\lambda x},e^{\Q\lambda y} \rangle \\
-H&= \langle e^{q_{x}\lambda x},e^{q_{y}\lambda y} \rangle \\
-g&= \log G \\
-h&= \log H 
-\end{align*}
-Define also $G_{\phi}$ and $H_{\phi}$, which are constructed by replacing $x$ and $y$ with $\phi(x)$ and $\phi(y)$ in $G$ and $H$:
-\begin{align*}
-G_{\phi} &= \langle e^{\Q\lambda \phi(x)},e^{\Q\lambda \phi(y)} \rangle \\
-&= \langle \; \{ e^{q\lambda \phi(x)} \mid q \in \Q \}\cup \{ e^{q\lambda \phi(y)} \mid q \in \Q \} \; \rangle \\
-H_{\phi} &= \langle e^{q_{x}\lambda \phi(x)},e^{q_{y}\lambda \phi(y)} \rangle
-\end{align*}
-Then also define:
-\begin{align*}
-s &= \log S \\
-&=\log \left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}C'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
-&= \left\lbrace \log \exp \left(\sum\limits_{i=1}^{k}q_{i}C'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
-&=\left\lbrace \left(\sum\limits_{i=1}^{k}q_{i}C'_{i}\right) \mid q_{i} \in \Q \right\rbrace
-\end{align*}
-
-We will also be considering the image of these sets under $\phi$ so define two more sequences as follows: 
-\begin{align*}
-\{ D_{i}\}&= \{\phi(x),\phi(y), [\phi(x),\phi(y)], [\phi(x),[\phi(x),[\phi(y)]]], \ldots  \} \\
 D'_{i} &= \{\phi(\lambda x),\phi(\lambda y), [\phi(\lambda x),\phi(\lambda y)], [\phi(\lambda x),[\phi(\lambda x),[\phi(\lambda y)]]], \ldots  \}\\
 &=  \{\lambda\phi(x),\lambda\phi(y), [\lambda\phi(x),\lambda\phi(y)], [\lambda\phi(x),[\lambda\phi(x),[\lambda\phi(y)]]], \ldots  \}
 \end{align*}
-Similar to the relationship between $C_{i}$ and $C'_{i}$, we have for $1 \leq i \leq k$,
+
+For $1 \leq i \leq k$ we have
 \[
 D'_{i}= \lambda^{L(D_{i})}D_{i}.
 \]
+\end{Definition}
 
 \begin{Proposition}
 For $i=4,5\ldots k$, we have $\phi(C_{i})=D_{i}$. 
@@ -2653,210 +2597,193 @@ But since this is true for any pair of elements $e^{v_{1}}$ and $e^{v_{2}}$, and
 
 \end{proof}
 
-Because of Lemma \ref{Groupimage} we have 
-\begin{align*}
-\Phi(H) &=\langle \Phi(e^{q_{x}\lambda x}),\Phi(e^{q_{y}\lambda y}) \rangle \\
-&= \langle e^{q_{x}\lambda \phi(x)},e^{q_{y}\lambda \phi(y)} \rangle \\
-&= H_{\phi}
-\end{align*}
-And hence
-\begin{align*}
-\phi(h) &= \phi \log (H) \\
-&=\log \Phi (H) \\
-&= \log (H_{\phi})
-\end{align*}
+%From now is the new version of the final section
+\begin{Proposition}\label{Polysets}
+Define an inner product $((,))$ on $ \g$, with respect to some basis (it doesn't matter which). There exists a real number $\lambda_0$ which is not a root of any of the following polynomials. 
 
-
-\begin{Proposition}\label{Rational}
-There is a sequence of rational numbers $r_{i}$ such that
+For $j=1,\ldots,k$ define a set of polynomials
 \[
-\lambda^{2}z= \sum\limits_{i=1}^{k}r_{i}D'_{i}.
+P_j(\lambda)= \left\lbrace \sum\limits_{i=1}^{k} \lambda^{L(D_i)} q_{ij} ((D_i,D_j)) - \lambda^2 ((z,D_j)) \bigm| q_{ij} \in \Q \right\rbrace \setminus \bigg\{ 0 \bigg\}
 \]
 \end{Proposition}
 
 \begin{proof}
-From Proposition \ref{Subset} we have $G \subseteq S$. And since 
-$$\{ e^{q_{x}\lambda x}, e^{q_{y}\lambda y} \}\subset \{ e^{q\lambda x} \mid q \in \Q \}\cup \{ e^{q\lambda y} \mid q \in \Q \}$$
- we have $H \subseteq G \subseteq S$. So taking the logarithm of both sides:
-\[
-h \subseteq s.
-\]
-So 
-\[
-\log \langle e^{q_{x}\lambda x},e^{q_{y}\lambda y} \rangle \subseteq \left\lbrace \left(\sum\limits_{i=1}^{k}q_{i}C'_{i}\right) \mid q_{i} \in \Q \right\rbrace.
-\]
-Now consider the image of this under $\phi$ and use the fact that $\phi(C_{3})= \pm D_{3} + z$:
+For each set of polynomials $P_j(\lambda)$ there are countably many choices of $q_{ij}$ for each $i$, and there are only finitely many (precisely $k$) coefficients $q_{ij}$ to be chosen. Hence each set $P_j(\lambda)$ is countable. 
+
+Let $S(P_j)$ be the set of all real roots to any of the polynomials in $P_j (\lambda)$, for each $j$. We have excluded the zero polynomial from each set so there are only finitely many solutions to each polynomial in $P_j (\lambda)$. They are all polynomials of finite degree.) Hence $S(P_j)$ is a countable set. 
+
+Consider the set $\mathcal{S} \subseteq \R$ defined by
 \begin{align*}
-\phi(h) &=
-\phi \log \langle e^{q_{x}\lambda x},e^{q_{y}\lambda x} \rangle \\
-&\subseteq \phi \left\lbrace \sum\limits_{i=1}^{k}q_{i}C'_{i} \mid q_{i} \in \Q \right\rbrace \\
-&= \left\lbrace \phi \left(\sum\limits_{i=1}^{k}q_{i}C'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
-&= \left\lbrace \left(\sum\limits_{i=1}^{k}q_{i}\phi(C'_{i})\right) \mid q_{i} \in \Q \right\rbrace \\
-&= \left\lbrace \left(q_{1}D'_{1}+q_{2}D'_{2} + q_{3}\lambda^{2}(\pm D_{3} + z) +\sum\limits_{i=4}^{k}q_{i}D'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
-&= \left\lbrace \left(q_{1}D'_{1}+q_{2}D'_{2} \pm q_{3}D'_{3} + q_{3}\lambda^{2}z +\sum\limits_{i=4}^{k}q_{i}D'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
+\mathcal{S} &= \{ \lambda \in \R \mid \lambda \in S(P_j) \; \text{for some} \; j \in \{1,\ldots,k\}\} \\
+&= \bigcup_{j=1}^{k} S(P_j) 
 \end{align*}
-
-
-
-So consider applying the proof in Proposition \ref{Subset} to the subgroup $G_{\phi}$. This just involves replacing $x$ everywhere with $\phi(x)$, $y$ everywhere with $\phi(y)$ and $C_{i}$ everywhere with $D_{i}$. So 
+So $\mathcal{S}$ is a finite union of countable sets and so is countable. Hence
 \[
-G_{\phi} \subseteq \left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}D'_{i}\right) \mid q_{i} \in \Q \right\rbrace.
+\mathcal{S} \neq \R
 \]
-Therefore
-\begin{align*}
-H_{\phi} &\subseteq G_{\phi}  \subseteq \left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}D'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
-\log \langle e^{q_{x}\lambda \phi(x)},e^{q_{y}\lambda \phi(y)} \rangle =\log (H_{\phi})&\subseteq \log \left\lbrace \exp \left(\sum\limits_{i=1}^{k}q_{i}D'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
-&= \left\lbrace \left(\sum\limits_{i=1}^{k}q_{i}D'_{i}\right) \mid q_{i} \in \Q \right\rbrace 
-\end{align*}
-
-But from Lemma \ref{Groupimage} we know that 
-\begin{align*}
-\phi (h) &= \log \langle \Phi e^{q_{x}\lambda x},\Phi e^{q_{y}\lambda y} \rangle \\
-&= \log \langle e^{q_{x}\lambda \phi(x)},e^{q_{y}\lambda \phi(y)} \rangle
-\end{align*}
-So 
-\[
-\phi (h) \subseteq 
-\left\lbrace \left(\sum\limits_{i=1}^{k}q_{i}D'_{i}\right) \mid q_{i} \in \Q \right\rbrace .
-\]
-Now we have $\phi(h)$ being a subset of two apparently different larger sets:
-\begin{align*}
-\phi(h) &\subseteq \left\lbrace \left(q_{1}D'_{1}+q_{2}D'_{2} \pm q_{3}D'_{3} + q_{3}\lambda^{2}z +\sum\limits_{i=4}^{k}q_{i}D'_{i}\right) \mid q_{i} \in \Q \right\rbrace \\
-\phi (h) &\subseteq 
-\left\lbrace \left(\sum\limits_{i=1}^{k}p_{i}D'_{i}\right) \mid p_{i} \in \Q \right\rbrace
-\end{align*}
-Relabel $q_{3}$ to incorporate the possible negative sign before it in the above expression so that the first relation is
-
-\[
-\phi(h) \subseteq \left\lbrace \sum\limits_{i=1}^{3}q_{i}D'_{i}+ q_{3}\lambda^{2}z +\sum\limits_{i=4}^{k}q_{i}D'_{i} \mid q_{i} \in \Q \right\rbrace 
-\]
-So take a element $\pi$ of $\phi (h)$. Then $\pi$ can be written in two forms:
-\[
-\pi = \sum\limits_{i=1}^{3}q_{i}D'_{i}+ q_{3}\lambda^{2}z +\sum\limits_{i=4}^{k}q_{i}D'_{i}
-\]
-for some rational numbers $q_{i}$. 
-Also 
-\[
-\pi = \sum\limits_{i=1}^{k}p_{i}D'_{i}
-\]
-for some rational numbers $p_{i}$. Equating the above expressions:
-
-\begin{align*}
-q_{3}\lambda^{2} z &= \sum\limits_{i=1}^{k}p_{i}D'_{i} -\sum\limits_{i=1}^{3}q_{i}D'_{i} -\sum\limits_{i=4}^{k}q_{i}D'_{i} \\
-&= \sum\limits_{i=1}^{k}r'_{i}D'_{i}
-\end{align*}
-for rational numbers $r'_{i}$ given by $r'_{i}=p_{i}-q_{i}$ for $i \neq 3 $
-and $r'_{3}=p_{3}$. So providing $q_{3} \neq 0$ we may divide it out giving:
-
-\[
-\lambda^{2} z = \sum\limits_{i=1}^{k}r_{i}D'_{i}
-\]
-where $r_{i}=r'_{i}/q_{3}$ are rational numbers.
+so there exists some a real number $\lambda_0$ which is not a solution to any polynomial in any of the sets $P_j(\lambda)$, as required.
 \end{proof}
 
+\paragraph*{Method}
+The purpose of Proposition \ref{Polysets} was to fix this number $\lambda_0$. Then for the following proposition, the method is to come up with a polynomial in one of the sets $P_j(\lambda)$ above. Then by definition, $\lambda_0$ will not be a solution to such a polynomial unless all the coefficients are zero. Equating the coefficients with zero will give us the desired relation.
 
-
-
-\begin{Lemma}
-The subalgebra $\alg(\phi(x),\phi(y))$ generated by $\phi(x)$ and $\phi(y)$ is all of $\g$. (Just as $\alg(x,y)=\g$.) Thus $\g =\spn \{ D_{i} \mid i=1 \dots k  \} $ so a subset of these $D_{i}$ may be selected to form a basis $\{D_{j} \}_{j \in J}$ of $\g$, where $J \subseteq \{ 1,2,\ldots ,k \}$.
-\end{Lemma}
-
-\begin{proof}
-The map $\phi$ has the property that it maps subalgebras to subalgebras bijectively. So there is a subalgebra $\mathfrak{h}$ of $\g$ such that 
+\begin{Proposition}
+Let $H$ be the subgroup of $\G$ generated by $\exp(\lambda_0 x)$ and $\exp(\lambda_0 y)$ and similarly let $H_{\phi}$ be the subgroup of $\G$ generated by $\exp(\lambda_0 \phi(x))$ and $\exp(\lambda_0 \phi(y))$. So 
+\begin{align*}
+H &=\langle e^{\lambda_0 x}, e^{\lambda_0 y} \rangle \\
+H_{\phi} &= \langle e^{\lambda_0\phi(x)}, e^{\lambda_0 \phi(y)} \rangle.
+\end{align*}
+Then 
 \[
-\alg(\phi(x),\phi(y))= \phi(\mathfrak{h}).
+H \subseteq \left\lbrace \exp \left( \sum\limits_{i=1}^{k} q_{i}\lambda_{0}^{L(C_{i})}C_{i} \right) \biggm| q_{i} \in \Q \right\rbrace
 \]
-This implies that $\phi(x)\in  \phi(\mathfrak{h})$ and $\phi(x)\in  \phi(\mathfrak{h})$. Then since $\phi$ is injective it follows that $x \in \mathfrak{h}$ and $y \in \mathfrak{h}$. So by minimality, 
+and similarly
 \[
-\alg(x,y) \subseteq \mathfrak{h}
+H_{\phi} \subseteq \left\lbrace \exp \left( \sum\limits_{i=1}^{k} q_{i}\lambda_{0}^{L(D_{i})}D_{i} \right) \biggm| q_{i} \in \Q \right\rbrace
 \]
-Hence 
-\[
-\g\subseteq \mathfrak{h} 
-\]
-so using the fact that $\phi$ is surjective,
-\[
-\g=\mathfrak{h} =\phi(\g)=\phi(\mathfrak{h})=\alg(\phi(x),\phi(y)).
-\]
-
-\end{proof}
-
-\begin{Proposition}\label{threedim}
-Using the above notation, if $r_{3}$ is the only non-zero coefficient out of all the $r_{i}$, then $\g$ is three-dimensional and the theorem holds.
 \end{Proposition}
 
 \begin{proof}
-We have 
+I will prove the proposition for the set $H$ since the proof for $H_{\phi}$ is exactly the same, replacing $x$ with $\phi(x)$, $y$ with $\phi(y)$ and $C_i$ with $D_i$.
+
+Any element of $H$ is a product of any number of copies of the two generating elements. Use BCH Formula to express as one exponent (i.e. work out its corresponding element in the Lie algebra). This involves commutators of $x$ and $x$ with all sorts of rational coefficients.
+
+I will prove this formally by induction
+The general form for an element $X$ of $H$ is
 \begin{align*}
-\lambda^{2}z &= r_{3} D'_{3} \\
-&= r_{3}\lambda^{2}[\phi(x),\phi(y)] \\
-z&=r_{3}[\phi(x),\phi(y)]
+X &= \exp{(a_1 \lambda_0 x)}\exp{(b_1 \lambda_0 y)}\exp{(a_2 \lambda_0 x))}\exp{(b_2 \lambda_0 y)} \\
+& \quad \cdots \exp{(a_M \lambda_0 x)}\exp{(b_M \lambda_0 y)}
+\end{align*}
+for integers $a_i$ and $b_i$ and some positive integer $M$. 
+%Is it ok for me to assume that all elements in this subgroup must be of this form- it seems intuitively obvious
+
+For $M=1$
+\begin{align*}
+X&= e^{a_1 \lambda_0 x}e^{b_1 \lambda_0 y)} \\
+&= \exp \big( a_1 \lambda_0 x+b_1 \lambda_0 y+ \frac{a_1 b_1}{2}\lambda_0^2[ x, y]\\
+& \quad \quad + \frac{a_1^2 b_1}{12}\lambda_0^3[x,[x,y]]+\cdots \big) \\
+&\in \left\lbrace \exp \left( \sum\limits_{i=1}^{k} q_{i}\lambda_{0}^{L(C_{i})}C_{i} \right)\bigm| q_i \in \Q \right\rbrace 
 \end{align*}
 
-But this indicates that $D_{3}=[\phi(x),\phi(y)]=(1/r_{3})z \in Z(\g)$. But then $D_{i}=0$ for all $i \geq 4$ since these terms all come from applying the bracket operation to $D_{3}$. So then 
+Suppose for the inductive step that the statement is true for $M=N$. Then for $M=N+1$, 
 \begin{align*}
-\g &= \spn \{ D_{i} \mid i=1\ldots k \} \\
-&= \spn \{ \phi(x), \phi(y), [\phi(x), \phi(y)] \} 
+X &= \exp{(a_1 \lambda_0 x)}\exp{(b_1 \lambda_0 y)}\exp{(a_2 \lambda_0 x)}\exp{(b_2 \lambda_0 y)} \\
+& \quad \cdots \exp{(a_M \lambda_0 x)}\exp{(b_M \lambda_0 y)} \\
+&= \exp \left( \sum\limits_{i=1}^{k} q_{i}\lambda_{0}^{L(C_{i})}C_{i} \right) \exp \left( \sum\limits_{i=1}^{k} p_{i}\lambda_{0}^{L(C_{i})}C_{i} \right),
 \end{align*}
-So $\g$ is only three-dimensional and therefore the result holds since we have already proved this case.
+where all the $p_i$ and $q_i$ are rational numbers. 
+The last line comes from the fact that the statement is true both for $M=1$ and for $M=N$ and splitting the product up into strings of length $1$ and $N$ respectively. Applying the BCH formula again, and expanding the brackets using linearity, it can be seen that there are rational numbers $r_i$ such that 
+\[
+X=\exp \left( \sum\limits_{i=1}^{k} r_{i}\lambda_{0}^{L(C_{i})}C_{i} \right).
+\]
+
+Hence
+\[
+H \subseteq \left\lbrace \exp \left( \sum\limits_{i=1}^{k} q_{i}\lambda_{0}^{L(C_{i})}C_{i} \right) \biggm| q_{i} \in \Q \right\rbrace
+\]
 \end{proof}
 
-\begin{Definition}
-Define an inner product $((, )):\g \longrightarrow \R$ with respect to the basis $\{ D_{j} \}_{j \in J}$ of $\g$. Then let 
-\[
-E = \sum\limits_{j \in J} D_{j}.
-\]
-so that $((g,E))$ is non-zero for all non-zero elements $g$ of $\g$.
-%I may need to prove this little one
-\end{Definition}
 
 
 
 \begin{Proposition}
-The central error term $z$ must be $\vec{0}$. 
+There are rational numbers $r_1,\ldots,r_k$ such that 
+\[
+\lambda_0^2 z= \sum\limits_{i=1}^{k} p_i \lambda_0^{L(D_{i})}D_i
+\]
 \end{Proposition}
-
 \begin{proof}
-From Proposition \ref{Rational} we have for \emph{any} $\lambda \in \R$, there exist rational numbers $r_{i}$ such that
-\begin{equation}\label{important}
- \sum\limits_{i=1}^{k}r_{i}D'_{i} -\lambda^{2} z  = \vec{0}.
-\end{equation}
-So for any $\lambda \in \R$,
+By Lemma/ Proposition something (preserving group generation) 
+\[
+\Phi(H) =\langle \Phi(e^{\lambda_0 x}), \Phi(e^{\lambda_0 y})\rangle =\langle e^{\lambda_0 \phi(x)}, e^{\lambda_0 \phi(y)} \rangle =H_{\phi}.
+\]
+Consider the element $\pi$ of $H$ given by 
+\[
+\pi = e^{\lambda_{0} x}e^{\lambda_{0} y}e^{-\lambda_{0} x}e^{-\lambda_{0}y}.
+\]
+We now apply the BCH formula to this element. Only the commutators up to length 2 will be explicitly calculated. The main point is to determine the coefficient of $C_3$, as this must not be zero if we are to have a useful result.
 \begin{align*}
-\sum\limits_{i=1}^{k}r_{i}\lambda^{L(D_{i})}(( D_{i}, E))-\lambda^{2}((z,E))
-&= (( \sum\limits_{i=1}^{k}r_{i}\lambda^{L(D_{i})}D_{i}-\lambda^{2}z,E)) \\
-&=((\vec{0}, E))\\
-&=0
+\pi &= e^{\lambda_{0} x}e^{\lambda_{0} y}e^{-\lambda_{0} x}e^{-\lambda_{0}y} \\
+&= \exp \left( \lambda_{0} x+\lambda_{0} y + \frac{1}{2}\lambda_{0}^2[ x, y] + \cdots \right) \exp \left(- \lambda_{0} x-\lambda_{0} y + \frac{1}{2}\lambda_{0}^2[ x, y] + \cdots\right) \\
+&= \exp \bigg(\lambda_0 x-\lambda_0 x +\lambda_0 y-\lambda_0 y+ \frac{1}{2}\lambda_{0}^2[ x, y]+ \frac{1}{2}\lambda_{0}^2[ x, y]+\cdots \\
+& \quad +\frac{1}{2} \big[-\lambda_0^2[x,y]-\lambda_0^2[y,x]+\cdots \big]\\
+& \quad +\frac{1}{12}\big[ -\lambda_0^3[x,[x,y]] +\cdots \big] \\
+& \quad + \\
+& \quad \cdots  \;\;\; \bigg) \\
+&= \exp \left( \lambda_0^2 [x,y] + \cdots + q_k \lambda_0^{L(C_i)} C_i +\cdots + q_i \lambda_0^{L(C_k)} C_k \right)
 \end{align*}
+for rational numbers $q_i$, for $i=1,2,\ldots, k$. Most importantly, $q_3=1$.
 
-Now look at this expression as a polynomial in $\lambda$:
-\[
-P(\lambda)=\sum\limits_{i=1}^{k} a_{i}\lambda^{L(D_{i})}=0
-\]
-where the coefficients are 
-\[
-a_{i}= 
-\left\lbrace
-\begin{array}{ll}
-r_{i}((D_{i},E)) & \text{for $i=1,2,4,5,\ldots k$} \\
-r_{3}((D_{3},E))-((z,E)) & \text{for $i=3$}
-\end{array}
-\right.
-\]
-Note that each $D_{i}$ is fixed, as are $z$ and $E$. Then since $r_{i} \in \Q$, and there are finitely many such coefficients, there must be only countably many sets of coefficients $\{a_{i} \}$, for different choices of $r_{i}$. Also for any individual polynomial, there are only finitely many solutions.
-Now define the set $\zeta$ as follows:
-\[
-\zeta = \{ \lambda \in \R \mid P(\lambda)=0 \text{ for some set of coefficients $a_{i}$} \}
-\]
-From the above reasoning it is seen that by systematically choosing all possible sets of $a_{i}$ such that they are not all zero, and finding all the values of $\lambda$ for which the polynomial is zero will only yield a countable number of values in total. But we know that for \emph{any} real value of $\lambda$ it is possible to find a set of coefficients $a_{i}$ . So $\zeta=\R$, which is uncountable. Hence there must be some values of $\lambda$ for which all the coefficients $a_{i}$ must be zero for the polynomial to have a solution. Hence the only set of rational numbers $r_{i}$ which satisfy equation \ref{important} for all values of $\lambda$ are those for which all the $a_{i}$ are zero. Then since for all $i$ we have $((D_{i},E)) \neq 0$,
+Applying $\Phi$ to $\pi$, and using the fact that $\phi(C_3)=D_3+z$, 
 \begin{align*}
-r_{i}&=0, \;\;\text{for}\;\;i=1,2,4\ldots k \\
-r_{3}((D_{3},E))-((z,E))=0
+\Phi(\pi) &= \Phi \left( \exp \left( \sum\limits_{i=1}^{k}q_i \lambda_0^{L(C_i)}C_i \right)\right) \\
+&= \exp \left(\phi\left(\sum\limits_{i=1}^{k}q_i \lambda_0^{L(C_i)}C_i \right)\right) \\
+&= \exp \left(\sum\limits_{i=1}^{k}q_i \lambda_0^{L(C_i)}\phi(C_i) \right) \\
+&=\exp \left(\lambda_0^2(D_3 + z) +\sum\limits_{i=4}^{k}q_i \lambda_0^{L(D_i)}\phi(D_i) \right) \\
+&= \exp \left(\sum\limits_{i=1}^{k}q_i \lambda_0^{L(D_i)}\phi(D_i)+\lambda_0^2 z \right)
 \end{align*}
-Now suppose $r_{3}$ is not $0$. Then we may apply Proposition \ref{threedim} and see that $\g$ is three-dimensional so the result must hold, indicating that $z=0$, so $r_{3}=0$, which is a contradiction. \newline
-Therefore we must have $r_{i}=0$ for all $i=1 \ldots k $. Hence $z=0$ as required and the map $\phi$ is a Lie algebra isomorphism or anti-isomorphism.
-
+But since $\Phi(\pi) \in \Phi(H)=H_{\phi}$ so $\Phi(\pi)$ can also be expressed in the form of one of the elements of the set 
+\[
+\left\lbrace \exp \left( \sum\limits_{i=1}^{k} p_{i}\lambda_{0}^{L(D_{i})}D_{i} \right) \biggm| p_{i} \in \Q \right\rbrace.
+\]
+Suppose that 
+\[
+\Phi(\pi)=\exp \left( \sum\limits_{i=1}^{k} p_{i}\lambda_{0}^{L(D_{i})}D_{i} \right)
+\]
+for a set of fixed rational numbers $p_1,\ldots,p_k$. Then equating the two expressions for $\Phi(\pi)$ gives 
+\[
+\exp \left(\sum\limits_{i=1}^{k}q_i \lambda_0^{L(D_i)}D_i+\lambda_0^2 z \right) =\exp \left( \sum\limits_{i=1}^{k} p_{i}\lambda_{0}^{L(D_{i})}D_{i} \right).
+\]
+Taking the logarithm of both sides and rearranging gives
+\[
+\sum\limits_{i=1}^{k}(p_i-q_i) \lambda_0^{L(D_i)}D_i-\lambda_0^2 z=0
+\]
+Let $r_i = p_i-q_i$ for each $i=1,\ldots,k$ so that 
+\[
+\sum\limits_{i=1}^{k}r_i \lambda_0^{L(D_i)}D_i-\lambda_0^2 z=0.
+\]
+as required. 
 \end{proof}
+
+
+
+\begin{Proposition}
+The error term is zero.
+\end{Proposition}
+\begin{proof}
+Finally, to obtain a polynomial in one of the sets $P_j$ above, Take the inner product of this expression with each of the $D_j$, for $j=1,\ldots,k$.
+\[
+\sum\limits_{i=1}^{k}r_i \lambda_0^{L(D_i)}((D_i,D_j))-\lambda_0^2 ((z, D_j))=0.
+\]
+By our choice of $\lambda_0$, each of these $k$ equations must have all coefficients of powers of $\lambda_0$ equal to zero. 
+
+Now, from the coefficient of $\lambda^2$, for each $j=1,\ldots,k$ we have
+\[
+r_3 ((D_3,D_j)) -((z, D_j)) =0
+\]
+In other words, 
+\[
+((r_3 D_3 -z,D_j))=0, \forall j \in \{1,\ldots,k\}.
+\]
+
+But now, since by Lemma \ref{generateWithDs} we know that $\{D_j\}_{j=1}^{k}$ is a spanning set for $\g$, we must have 
+\begin{align*}
+r_3 D_3 -z&=0 \\
+r_3 [\phi(x),\phi(y)]&=z
+\end{align*}
+If $r_3 =0$ we're done. 
+
+Suppose $r_3 \neq 0$. Then $D_3 \in Z(\g)$, so that 
+\[
+D_j=0, \forall j \geq 4.
+\] 
+But then 
+\[
+\g = \spn \{ D_1,D_2,D_3 \}
+\]
+So $\g$ is three-dimensional. But we have proved the theorem for three dimensions, so that again, $z=0$.
+\end{proof}
+
 
 \chapter{Discussion}
 
