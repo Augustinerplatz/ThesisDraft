@@ -620,10 +620,17 @@ Construct a map based on the following assumptions. Let $\alpha': \R^{2} \longri
 \end{eqnarray*}
 This map $\alpha'$ is well-defined and unique since bijectivity of $\alpha$ implies $\alpha(1,0) \neq \alpha(0,1)$ so every element of $\R^{2}$ can be written as a linear combination of $\alpha(1,0)$ and $\alpha(0,1)$. 
 Now define a map $\psi: \R^{2} \longrightarrow \R^{2}$ by $\psi= \alpha' \circ \alpha$
-Note that $\psi$ is bijective so sends parallel lines to parallel lines. In particular $\psi$ sends the $x$-axis to itself and also the $y$-axis to itself. Suppose $\psi(x_{1},0)=(x_{1}',0)$ and $\psi(x_{2},0)=(x_{2}',0)$
+Note that $\psi$ is bijective so the image of a pair of parallel lines under $\psi$ is a pair of parallel lines. In particular $\psi$ sends the $x$-axis to itself and also the $y$-axis to itself. For real numbers $x_1$ and $x_2$, suppose $$\psi(x_{1},0)=(x_{1}',0)$$ and $$\psi(x_{2},0)=(x_{2}',0)$$
+
+Let $A$ and $B$ be points on the $x$-axis in $\R^2$ given by 
+\begin{align*}
+A&= (x_1,0) \\
+B&=(x_2,0).
+\end{align*}
+
 A geometrical construction will demonstrate that
 \begin{equation}
-\psi(x_{1}+x_{2},0)=\psi(x_{1},0)+\psi(x_{2},0)
+\psi(x_{1}+x_{2},0)=(x'_{1}+x'_2,0)
 \end{equation}
 
 and 
@@ -632,23 +639,18 @@ and
 \end{equation}
 
 
-where 
-\begin{eqnarray*}
-P: &R^{2}& \longrightarrow \R \\
-&(x,y)& \longmapsto x
-\end{eqnarray*}
-
 Proof of the addition property:
 Consider the diagram.
 
-%\begin{center}
-%\begin{texdraw}
-% \drawdim{cm} \linewd 0.02
-% \move(0 -1) \lvec(0 4)
-%\end{texdraw}
-%\end{center} 
+%insert the picture here.
 
-Let $P=(1,0)$ and $Q=(0,1)$. $A$ is the point $(x_{1},0)$ and $B$ is the point $(x_{2},0)$. Then construct lines $L_{1}$, $L_{2}$, $L_{3}$ and $L_{4}$ as shown so that $$A'=(0,x_{1})$$ $$B'=(x_{2}, x_{1})$$ and $$C=(x_{1}+x_{2},0)$$ Now the map $\psi$ sends the $x$- and $y$- axes to themselves, sends parallel lines to parallel lines and $\psi(P)=P$ and $\psi(Q)=Q$. So the parallelogram $AA'B'C$ is mapped to a new parallelogram $\psi(A)\psi(A')\psi(B')\psi(C)$ where the sloping sides must have gradient $-1$, since they are parallel to $PQ$. So $\psi(A)=(x_{1}',0)$ and $\psi(B)=(x_{2}',0)$. Then by the properties of the parallelogram, 
+
+Let $P=(1,0)$ and $Q=(0,1)$. Then construct lines $L_{1}$, $L_{2}$, $L_{3}$ and $L_{4}$ as shown so that $$A'=(0,x_{1})$$ $$B'=(x_{2}, x_{1})$$ and $$C=(x_{1}+x_{2},0)$$ Now the map $\psi$ sends the $x$- and $y$- axes to themselves, sends parallel lines to parallel lines and by definition, $\psi(P)=P$ and $\psi(Q)=Q$. Here is a diagram showing the images of all the points and lines under $\psi$.
+
+%insert second diagram here
+
+
+So by conservation of parallel lines, the parallelogram $AA'B'C$ is mapped to a new parallelogram $\psi(A)\psi(A')\psi(B')\psi(C)$ where the sloping sides must have gradient $-1$, since they are parallel to $PQ$. So $\psi(A)=(x_{1}',0)$ and $\psi(B)=(x_{2}',0)$. Then using the properties of the parallelogram, 
 \[
 \psi(A')=(0,x_{1}')
 \]
@@ -661,16 +663,30 @@ and
 \]
 Hence 
 \begin{equation}\label{axisaddnmap}
-\psi(x_{1}+x_{2},0)=\psi(x_{1},0)+\psi(x_{2},0). 
+\psi(x_{1}+x_{2},0)=(x'_{1}+x'_2,0)
 \end{equation}
+as required.
 
-Now consider this diagram showing the construction of $C=(x_{1}x_{2},0)$ by starting with $A=(x_{1},0)$ and $B=(x_{2},0)$. Construct the line of gradient $-1$ through $A$ so that $A'=(0,x_{1})$. Then construct a horizontal through $A'$ and a vertical through $P$ to meet in $D=(1,x_{1})$. Construct a line $L$ through $O$ and $C$, $y=x_{1}x$ and a vertical line through $B$ to meet in $E=(x_{2}, x_{1}x_{2})$. Then construct a horizontal line through $E$ to meet the $y$-axis in $B'=(0,x_{1}x_{2})$. Construct a line of gradient $-1$ through $B'$ which meets the $x$-axis at $C$. 
+Now consider a new diagram showing the construction of $C=(x_{1}x_{2},0)$.
 
-Now consider the all these points and lines under the map $\psi$. Let $\psi(A)=(x_{1}',0)$ and $\psi(B)=(x_{2}',0) $. Lines of gradient $-1$ are mapped to lines of gradient $-1$ since $P$ and $Q$ are fixed. So 
+%insert 3rd diagram construction here.
+
+The point $C$ is constructed by starting with $A=(x_{1},0)$ and $B=(x_{2},0)$. Construct the line $L_1$ of gradient $-1$ through $A$ so that $A'=(0,x_{1})$. Then construct a horizontal line through $A'$ and a vertical line through $P$ to meet in $D=(1,x_{1})$. Construct a line $L_2$ through $O$ and $C$, given by 
+$$y=x_{1}x .$$ 
+Construct a vertical line through $B$ to meet $L_2$ in $E=(x_{2}, x_{1}x_{2})$. Then construct a horizontal line through $E$ to meet the $y$-axis in $B'=(0,x_{1}x_{2})$. Construct a line $L_3$ of gradient $-1$ through $B'$ which meets the $x$-axis at $C$. So by construction 
+\[
+C=(x_1 x_2,0).
+\]
+
+Now consider the all these points and lines under the map $\psi$. 
+
+%insert the fourth diagram construction here
+
+Let $\psi(A)=(x_{1}',0)$ and $\psi(B)=(x_{2}',0) $. Once again, the image of a pair of parallel lines must be a pair of parallel lines. Lines of gradient $-1$ are mapped to lines of gradient $-1$ since $P$ and $Q$ are fixed. So 
 \[
 \psi(A')=(0,x_{1}')
 \]
-Horizontal lines are mapped to horizontal lines and vertical lines are mapped to vertical lines so
+Once again, horizontal lines are mapped to horizontal lines and vertical lines are mapped to vertical lines so
 \[
 \psi(D)=(1,x_{1}')
 \]
@@ -680,10 +696,9 @@ E=(x_{2}',x_{1}'x_{2}')
 \]
 and the by the preservation of horizontal lines, 
 \[
-\psi(B)=(0,x_{1}'x_{2}')
+\psi(B)=(0,x_{1}'x_{2}').
 \]
-and by the preservation of lines of gradient $-1$
-
+Finally, by the preservation of lines of gradient $-1$, we have 
 
 \[
 \psi(C)=(x_{1}'x_{2}',0)
@@ -693,10 +708,12 @@ Hence
 \begin{equation}\label{axismultmap}
 \psi(x_{1}x_{2},0)= (x_{1}'x_{2}',0)
 \end{equation}
+as required.
+
 
 Define the projection map
 \begin{eqnarray*}
-P: &R^{2}& \longrightarrow \R \\
+P: &\R^{2}& \longrightarrow \R \\
 &(x,y)& \longmapsto x
 \end{eqnarray*}
 
