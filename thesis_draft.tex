@@ -111,11 +111,13 @@ This thesis is an attempt to demonstrate rigorously the extension of the rigidit
 This chapter outlines the basics of the theory of Lie groups and their relationship to Lie algebras. It gives some examples of matrix Lie groups including the Heisenberg Group, and explains the use of the Baker-Campbell-Hausdorff Formula in comparing operations in a Lie group with the operations in its corresponding Lie algebra. 
 
 \section{Introduction}
-The theory of Lie groups has evolved from the combination of several different disciplines in mathematics. Lie group theory combines the following ingredients: Group Theory from Algebra, Manifold Theory from Differential Geometry, and basic ideas from Topology. This paper will be mainly concerned with matrix Lie groups. That is, matrix groups that are also $C^{\inf}$-manifolds. The idea of a rigidity theory in this context is to use structures that arise from the group law within the manifold to show that a weak similarity of these matrix Lie groups implies a strong similarity between them. This paper will prove the theorem for upper-triangular nilpotent matrix Lie groups (and solvable matrix Lie groups??).
+The theory of Lie groups has evolved from the combination of several different disciplines in mathematics. Lie groups are a special category of topological groups, in which the object, which is simultaneously a topological space and a group, has the topological structure of a manifold. Lie group theory therefore involves many different ingredients from abstract algebra as well as differential geometry. 
+
+This paper is predominantly concerned with matrix Lie groups. That is, matrix groups that are also $C^{\infty}$-manifolds. The idea of a rigidity theorem in this context is to use structures that arise from the group law within the manifold to show that a weak similarity of these matrix Lie groups implies a strong similarity between them. This paper focusses on proving a rigidity theorem for coset-preserving maps on nilpotent Lie groups.
 
 \section{Lie Groups}
 \begin{Definition}\label{Lie Group}
-A Lie group $\G $ is a $\mathrm{C}^{\infty}$ manifold which is also a group, for which the group operations of multiplication and taking inverses are $\mathrm{C}^{\infty}$ maps. ie the maps
+A Lie group $\G $ is a $\mathrm{C}^{\infty}$ manifold which is also a group, for which the group operations of multiplication and taking inverses are $\mathrm{C}^{\infty}$ maps. i.e. the maps
 
 \begin{eqnarray*}
 \sigma : & \G \times \G & \longrightarrow \G  \\
@@ -149,9 +151,10 @@ The group multiplication on $\mathrm{S}^{1}$ is given by
 This map is smooth with respect to the topologies on $\mathrm{S}^{1} \times \mathrm{S}^{1}$ and $\mathrm{S}^{1}$.
 \end{Example}
 
-An important aspect of this particular coordinate patch (even though in this case only one is required), is that it is 
-also the tangent space of the manifold at the identity element of the group. [add picture]. In general this object is 
-very useful for the study of Lie groups and takes on a structure of its own called a Lie algebra. 
+An important fact about this particular coordinate patch (even though in this case only one is required), is that it is 
+also the tangent space of the manifold at the identity element of the group. [add picture]. In general the tangent space at the identity is a
+very useful object for the study of Lie groups and takes on a structure of its own called a Lie algebra. As we can see in the example of the circle and the line tangent to it, there is always a neighbourhood of the identity in the group which is homeomorphic to a neighbourhood of the identity in the tangent space.
+
 
 %\begin{figure}
 %\includegraphics{imagename.eps}
@@ -166,30 +169,46 @@ This is equivalent to $G$ being a closed subset of $\mathrm{GL}(n,\C)$ that is a
 \end{Definition}
 
 \subsection*{Examples}
+Some examples of matrix Lie groups are
 \[\mathrm{SL}(n,\R), \mathrm{O}(n), \mathrm{SO}(n), \mathrm{SU}(2) \]
 
 
-\begin{Example}\label{Heisenberg Group}.
-The Heisenberg group, defined as follows, is a Lie group. This example forms the cornerstone of the result in this thesis.
+\begin{Example}\label{Heisenberg Group}
+The Heisenberg group is a matrix Lie group. This example forms the cornerstone of the result in this thesis.
 \paragraph
 {\noindent}The Heisenberg group is the set of real three-tuples with non-commutative multiplication given by
 \[
-(x,y,z)\cdot(x', y', z') := (x+x', y+y', z+z' + xy').
+[x,y,z]\cdot[x', y', z'] := [x+x', y+y', z+z' + xy'].
 \]
 Inversion is given by 
-\[ (x,y,z)^{-1}= (-x, -y, -z+xy) .\]
+\[ [x,y,z]^{-1}= [-x, -y, -z+xy] .\]
 As a matrix Lie group, the Heisenberg group can be represented as the group of all $ 3\times 3 $ upper triangular real matrices with $1$'s on the diagonal:
 \[
  \G= \left\{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \biggm| x,y, z \in \R \right\} 
 \]
-It is topologically a closed subset of $\mathrm{GL}(n,\C)$ and is clearly closed under the operations of inversion and multiplication. Hence $\G$ is a matrix Lie group.
+It is topologically a closed subset of $\mathrm{GL}(n,\C)$ and is closed under the operations of inversion and multiplication:
+\[
+\begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix}
+\begin{bmatrix} 1 & x' & z' \\ 0 & 1 & y' \\ 0 & 0 & 1 \end{bmatrix}
+= \begin{bmatrix} 1 & x+x' & z+z' \\ 0 & 1 & y+y' \\ 0 & 0 & 1 \end{bmatrix}
+\in \G
+\] 
+
+\[
+\begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix}^{-1}
+= \begin{bmatrix} 1 & -x & -z+xy \\ 0 & 1 & -y \\ 0 & 0 & 1 \end{bmatrix}
+\in \G
+\]
+
+Hence $\G$ is a matrix Lie group.
 \end{Example}
 
 Many of the important examples of matrix Lie groups are noncommutative groups. This makes the study of their structure in many 
-cases fairly complex. However, as with the example of the circle, studying the Lie group can be made simpler by studying what is called its Lie algebra. The structure of the Lie algebra determines the local structure of its Lie group.
+cases fairly complex. However, as with the example of the circle, studying the Lie group can be made simpler by studying what is called its Lie algebra. The Lie algebra is a vector space consisting of the tangent space to the Lie group manifold at the identity. The structure of the Lie algebra determines the local structure of its Lie group.
 
 
 \section{Lie Algebras}
+Lie algebras also exist as abstract algebraic objects, independent of any manifolds they might be associated with.
 \begin{Definition}\label{Lie Algebra}
 A Lie algebra is a vector space $\mathfrak{a}$ endowed with a map
 \[ [\cdotp,\cdotp]:\; \mathfrak{a} \times \mathfrak{a} \longrightarrow \mathfrak{a} \]
@@ -220,7 +239,7 @@ At the identity, $1=e^{0}$,
 so the tangent space $T_{1}\G$ is the real vector space with basis $\{i\}$. 
 In this case the operation $[\cdotp, \cdotp]$ is trivial, as with the Lie algebra of any abelian Lie group.
 Without going into rigorous detail, it can be seen that the group operation on $S^{1}$ corresponds to addition of 
-vectors in $T_{1}\G$. Also, the closer we move towards the identity in $S^{1}$ the more it resembles flat space. Multiplying two elements together becomes almost equivalent to adding their imaginary components.
+vectors in $T_{1}\G$. Also, the closer we move towards the identity in $S^{1}$ the more it resembles flat space. The local topology of a circle is the same as the local topology of a line.
 (picture required)
 
 In the case of matrix Lie groups, the tangent space at the identity takes a very clear form. The relationship between a 
@@ -229,7 +248,7 @@ matrix Lie group and its Lie algebra is determined by the exponential mapping on
 \begin{Definition}\label{Lie Algebra of a Matrix Lie Group}
 The Lie algebra $\g$ of an $n \times n$ matrix Lie group $\G$ is
 \[
-\g = \{ X \in M_{n}(\C) \big| \exp{X} \in \G \}
+\g = \{ X \in M_{n}(\C) \big| \exp{tX} \in \G , \forall t \in \R \}
 \]
 The bracket operation on $\g$, given by $[X,Y]=XY-YX$, satisfies the axioms for $\g$ to be a Lie algebra. 
 \end{Definition}
@@ -238,12 +257,14 @@ The bracket operation on $\g$, given by $[X,Y]=XY-YX$, satisfies the axioms for 
 This definition corresponds to the definition of a Lie algebra as the tangent space to the manifold $\G$ at the identity. [give ref]
 \end{Proposition}
 
+
+%check this information
 Note that the exponential map from $\g$ to $\G$ is injective but not necessarily surjective. The image of $\g$ under the exponential map is precisely the connected component of $\G$ containing the identity $e$. (proof). In the case that $\G$ is connected, the inverse of the map $\exp : \g \longrightarrow \G $ is called the matrix logarithm map, \mbox{$\log : \G \longrightarrow \g $}.
 
 \begin{Proposition}\label{Lie algebra of Heisenberg group}
-The Lie algebra of the Heisenberg group, $$\G = \left\{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \bigg| x,y, z \in \R \right\}$$ is 
+The Lie algebra of the Heisenberg group, $$\G = \left\{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \biggm| x,y, z \in \R \right\}$$ is 
 \[
-\g= \left\{ \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix} \bigg| x,y,z \in \R \right\}
+\g= \left\{ \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix} \biggm| x,y,z \in \R \right\}
 \]
 and the exponential map $\exp$: $\g \longrightarrow \G$ is a bijection. 
 \end{Proposition}
@@ -258,11 +279,11 @@ Let $x$, $y$ and $z$ be real numbers and note the following:
 \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix}^3=\begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}
 \]
 Now,
-\begin{eqnarray*}
- \exp \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix} &=& \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} + \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix}+ \frac{1}{2}\begin{bmatrix} 0 & 0 & xy \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix} \\
-&=& \begin{bmatrix} 1 & x & z+\frac{1}{2}xy \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \\
-&\in & \G
-\end{eqnarray*} so $ \image(\exp) \subseteq \G$.
+\begin{align*}
+ \exp \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix} &= \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} + \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix}+ \frac{1}{2}\begin{bmatrix} 0 & 0 & xy \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix} \\[.7em]
+&= \begin{bmatrix} 1 & x & z+\frac{1}{2}xy \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \\[.7em]
+&\in  \G
+\end{align*} so $ \image(\exp) \subseteq \G$.
 Now suppose $a,b,c \in \R$ so $\begin{bmatrix} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{bmatrix} \in \G$. Then 
 \[ 
 \exp  \begin{bmatrix} 0 & a & c-\frac{1}{2}ab \\ 0 & 0 & b \\ 0 & 0 & 0 \end{bmatrix} = \begin{bmatrix} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{bmatrix}
@@ -289,11 +310,11 @@ so $A=A'$.
 For the purpose of simplifying the notation of matrices in the Heisenberg group and in its Lie algebra, vector notation will sometimes be used. As defined above, an element of the Heisenberg group $\G$ will be denoted either by $ \begin{bmatrix} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{bmatrix} $ or equivalently $[a,b,c]$. Similarly, elements of the Lie algebra of the Heisenberg group will be denoted either by $\begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix}$ or $(x,y,z)$, or in some cases $\begin{bmatrix} x \\ y \\ z \end{bmatrix}$.
 
 In this notation, the bracket operation on two elements of $\g$ is given by 
-\begin{eqnarray*}
-[(x,y,z), (x',y',z')] &=& \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix} \begin{bmatrix} 0 & x' & z' \\ 0 & 0 & y' \\ 0 & 0 & 0 \end{bmatrix} - \begin{bmatrix} 0 & x' & z' \\ 0 & 0 & y' \\ 0 & 0 & 0 \end{bmatrix} \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix} \\
-&=& \begin{bmatrix} 0 & 0 & xy' \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix} -\begin{bmatrix} 0 & 0 & x'y \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix} \\
-&=& (0,0,xy'-x'y)
-\end{eqnarray*}
+\begin{align*}
+[(x,y,z), (x',y',z')] &= \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix} \begin{bmatrix} 0 & x' & z' \\ 0 & 0 & y' \\ 0 & 0 & 0 \end{bmatrix} - \begin{bmatrix} 0 & x' & z' \\ 0 & 0 & y' \\ 0 & 0 & 0 \end{bmatrix} \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix} \\[.7em]
+&= \begin{bmatrix} 0 & 0 & xy' \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix} -\begin{bmatrix} 0 & 0 & x'y \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix} \\[.7em]
+&= (0,0,xy'-x'y)
+\end{align*}
 
 \section{Subgroups and Subalgebras}
 
@@ -374,16 +395,17 @@ If $f$ is also a bijection, then it is called a \emph{Lie group anti-isomorphism
 
 \begin{Definition}\label{Lie algebra anti-homomorphism}
 Let $\g$ and $\mathfrak{h}$ be Lie algebras. A linear transformation $T: \g \longrightarrow \mathfrak{h}$ is a Lie algebra anti-homomorphism if in addition to the linearity properties,  
-\[
-T[A,B] = -[T(A), T(B)] \; \;\;\;\;\;\;\;\; \forall A,B \in \g
-\]
+\begin{align*}
+T[A,B] &= -[T(A), T(B)]  & \forall A,B \in \g \\
+&= [T(B),T(A)]
+\end{align*}
 \end{Definition}
 
 \begin{Theorem}\label{Homomorphisms Correspondence}
 Let $\G$ and $\mathcal{H}$ be matrix Lie groups with corresponding Lie algebras $\g$ and $\mathfrak{h}$ respectively. Suppose that $\Phi: \G \longrightarrow \mathcal{H}$ is a Lie group homomorphism. Then there exists a unique Lie algebra homomorphism $\phi: \g \longrightarrow \mathfrak{h}$ such that 
-\[
-\Phi(e^{X}) = e^{\phi(X)} \;\;\;\;\;\;\; \forall X \in \g
-\]
+\begin{align*}
+\Phi(e^{X}) &= e^{\phi(X)} & \forall X \in \g
+\end{align*}
 
 Now let $\G$ and $\mathcal{H}$ be matrix Lie groups, $\g$ and $\mathfrak{h}$ be their Lie algebras and let $\G$ be simply connected [need to define this somewhere- appendix]. Then if $\phi: \g \longrightarrow \mathfrak{h}$ is a Lie algebra homomorphism, there exists a unique Lie group homomorphism $\Phi: \G \longrightarrow \mathcal{H}$ defined by
 \[
@@ -425,13 +447,16 @@ and
 Hence $\phi$ is a Lie algebra homomorphism.
 \end{Example}
 
+
+
 %Baker Campbell Hausdorff Formula
 \section{The Baker-Campbell-Hausdorff Formula}
 
 Since we wish to simplify the study of Lie group homomorphisms by studying properties of the corresponding Lie algebra homomorphisms, we need a way to relate the operations on these objects directly. In the case of the unit circle $\mathrm{S}^{1}$, the properties of the exponential function on real numbers give the simple correspondence between addition on the real line, and multiplication of elements of the unit circle in the complex plane. For noncommutative groups this simple relationship does not hold. However, there is a more complicated way of relating the structure of Lie algebras to their corresponding Lie groups. 
 
 \paragraph{Heisenberg Group}
-The Lie algebra of the Heisenberg group has noncommutative multiplication, however for any $X$, $Y$ $\in \g$, $X$ and $Y$ each commutes with $[X,Y]$. In other words
+Let $\g$ denote the Lie algebra of the Heisenberg group.
+The Lie algebra of the Heisenberg group has non-commutative multiplication, however for any $X$, $Y$ $\in \g$, $X$ and $Y$ each commute with $[X,Y]$. In other words
 \[
 [X,[X,Y]]=[Y,[X,Y]]=0
 \]
@@ -482,7 +507,7 @@ e^{\mathrm{ad}_{Y}}(X)= \mathrm{id}(X) + \mathrm{ad}_{Y}(X) + \frac{1}{2!}( \mat
 \end{Lemma}
 
 \begin{Theorem}
-Let $\G$ be a matrix Lie group with Lie algebra $\g$. If the commutivity property above holds in $\g$ then for $X$ and $Y$ in $\g$, 
+Let $\G$ be a matrix Lie group with Lie algebra $\g$. If the commutativity property above holds in $\g$ then for $X$ and $Y$ in $\g$, 
 \[
 e^{X}e^{Y}=e^{X+Y+\frac{1}{2}[X,Y]}
 \]
@@ -503,53 +528,64 @@ Let $M$ and $N$ be $n \times n$ matrices. If $M$ commutes with $N$, then $M$ als
  
 
 \begin{proof}
-Suppose $MN^{k}=N^{k}M$ for some positive integer $k$. Then 
-\begin{eqnarray*}
-MN^{k+1} &=& MN^{k}N \\
-&=& N^{k}MN \\
-&=& N^{k}NM \\
-&=& N^{k+1}M
-\end{eqnarray*}
-So since $MN=NM$, the mathematical induction hypothesis indicates that $MN^{K}=N^{K}M$ for all positive integers $K$.
+It will be shown that $MN^{k}=N^{k}M$ for all positive integers $k$.
+
+Since $N$ and $M$ commute, the statement is true for $k=1$. Suppose that the statement is true for some positive integer $K$. Then for $K+1$ we have
+\begin{align*}
+MN^{K+1} &= MN^{K}N \\
+&=N^{K}MN \\
+&=N^{K}NM \\
+&=N^{K+1}M
+\end{align*}
+Hence by induction the statement is true for all positive integers $k$. 
+
 Now, 
-\begin{eqnarray*}
-Me^{N} &=& M(I+N+\frac{N^{2}}{2!}+\frac{N^3}{3!}+\cdots) \\
-&=& M+MN+\frac{1}{2!}MN^{2}+\frac{1}{3!}MN^{3} + \cdots \\
-&=& M+NM+\frac{1}{2!}N^{2}M+\frac{1}{3!}N^{3}M + \cdots \\
-&=& (I+N+\frac{N^{2}}{2!}+\frac{N^3}{3!}+\cdots)M \\
-&=& e^{N}M
-\end{eqnarray*}
+\begin{align*}
+Me^{N} &= M(I+N+\frac{N^{2}}{2!}+\frac{N^3}{3!}+\cdots) \\
+&= M+MN+\frac{1}{2!}MN^{2}+\frac{1}{3!}MN^{3} + \cdots \\
+&= M+NM+\frac{1}{2!}N^{2}M+\frac{1}{3!}N^{3}M + \cdots \\
+&= (I+N+\frac{N^{2}}{2!}+\frac{N^3}{3!}+\cdots)M \\
+&= e^{N}M
+\end{align*}
+as required.
 \end{proof}
+
+
 \begin{Lemma}
+%what are these elements X and Y, really???
+Let $X$ and $Y$ be elements of $\g$ and let $t$ be any real number. Suppose that $e^{tY}$ exists. Then
 \[
-Xe^{tY}=e^{tY}(X+t[X,Y])
+Xe^{tY}=e^{tY}(X+t[X,Y]).
 \]
 \end{Lemma}
+
 \begin{proof}
-\begin{eqnarray*}
-Xe^{tY} &=& e^{tY}e^{-tY}Xe^{tY} \\
-&=& e^{tY}\mathrm{Ad}_{e^{-tY}}(X) \\
-&=& e^{tY}e^{-t\mathrm{ad}_{Y}}(X) \\
-&=& e^{tY}(X-t[Y,X]+\frac{t^{2}}{2}[Y,[Y,X]]-\frac{t^{3}}{3!}[Y,[Y,[Y,X]]]+\cdots \\
-&=& e^{tY}(X - t[Y,X])\\
-&=& e^{tY}(X + t[X,Y])
-\end{eqnarray*}
+\begin{align*}
+Xe^{tY} &= e^{tY}e^{-tY}Xe^{tY} \\
+&= e^{tY}\mathrm{Ad}_{e^{-tY}}(X) \\
+&= e^{tY}e^{-t\mathrm{ad}_{Y}}(X) \\
+&= e^{tY}(X-t[Y,X]+\frac{t^{2}}{2}[Y,[Y,X]]-\frac{t^{3}}{3!}[Y,[Y,[Y,X]]]+\cdots \\
+&= e^{tY}(X - t[Y,X])\\
+&= e^{tY}(X + t[X,Y])
+\end{align*}
 since $[Y,[Y,X]]=0$.
 \end{proof}
 
 $A(t)$ and $B(t)$ are both now differentiated as follows:
 
-\begin{eqnarray*}
-A'(t) &=& e^{tX}Xe^{tY}e^{-\frac{t^2}{2}[X,Y]}+e^{tX}e^{tY}Ye^{-\frac{t^2}{2}[X,Y]}+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(-t[X,Y]) \\
-&=& e^{tX}Xe^{tY}e^{-\frac{t^2}{2}[X,Y]}+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}Y+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(-t[X,Y]) \\
-& & (\text{since $Y$ commutes with $[X,Y]$ and by Lemma 1.5.5})\\
-&=&e^{tX}e^{tY}(X+t[X,Y])e^{-\frac{t^2}{2}[X,Y]}+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}Y+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(-t[X,Y]) \\
-&=& e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(X+t[X,Y])+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}Y+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(-t[X,Y]) \\
-& & (\text{since $X$ and $[X,Y]$ each commute with $[X,Y]$})\\
-&=& e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(X+t[X,Y]+Y-t[X,Y]) \\
-&=& e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(X+Y) \\
-&=& A(t)(X+Y)
-\end{eqnarray*}
+\begin{align*}
+A'(t) &= e^{tX}Xe^{tY}e^{-\frac{t^2}{2}[X,Y]}+e^{tX}e^{tY}Ye^{-\frac{t^2}{2}[X,Y]}+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(-t[X,Y]) \\
+&= e^{tX}Xe^{tY}e^{-\frac{t^2}{2}[X,Y]}+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}Y  +e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(-t[X,Y]) \\
+& (\text{since $Y$ commutes with $[X,Y]$ and by Lemma 1.5.5})\\
+&= e^{tX}e^{tY}(X+t[X,Y])e^{-\frac{t^2}{2}[X,Y]}+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}Y\\
+& \quad \quad \quad +e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(-t[X,Y]) \\
+&= e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(X+t[X,Y])+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}Y\\
+& \quad \quad \quad+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(-t[X,Y]) \\
+&  (\text{since $X$ and $[X,Y]$ each commute with $[X,Y]$})\\
+&= e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(X+t[X,Y]+Y-t[X,Y]) \\
+&= e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(X+Y) \\
+&= A(t)(X+Y)
+\end{align*}
 
 \begin{eqnarray*}
 B'(t) &=& e^{t(X+Y)}(X+Y) \\
@@ -578,6 +614,7 @@ There is a more general formula for any noncommutative Lie group $\G$, however t
 \[
 e^{X}e^{Y}=e^{X+Y+S}
 \]
+For nilpotent Lie groups, which necessarily have nilpotent associated Lie algebras, applying the bracket operation repeatedly eventually gives $0$, in a finite number of steps. So the series of commutator terms in the BCH Formula for nilpotent Lie groups is finite.
 The series formula will be stated but not proved in this thesis. A full proof is given in ...
 %find a proof for general BCH formula
 
@@ -1110,6 +1147,8 @@ A coset of this Lie subgroup is $\mathcal{C}$ given by right translation by $e^{
 &=& \{ \exp(\lambda x, \lambda y, \lambda z +\mu)\exp(p,q,r)\;\;\;|\;\;\; \lambda,\mu \in \R \} 
 \end{eqnarray*}
 Then, applying the BCH Formula:
+
+%fix this up using align and \mid etc. and make sure it's not off the edge
 \begin{eqnarray*}
 \mathcal{C}&=&  \{ \exp((\lambda x, \lambda y, \lambda z +\mu)+(p,q,r)+\frac{1}{2}[(\lambda x, \lambda y, \lambda z +\mu),(p,q,r)])\;\;\;|\;\;\; \lambda,\mu \in \R \} \\
 &=& \{ \exp ((\lambda x+p, \lambda y+q, \lambda z +\mu +r)+ \frac{1}{2}(0,0,\lambda xq -\lambda yp))\;\;\;|\;\;\; \lambda,\mu \in \R \} \\
@@ -1705,6 +1744,9 @@ A Lie Algebra $\mathfrak{a}$ is called \emph{nilpotent} if its lower central ser
 Note that there is a specific $n$ for which $A_{n-1} \neq 0$ but $A_{n} =0$.
 \end{Definition}
 
+It is important here to also note that Lie algebras can be defined entirely by a set of generators and commutator relations between them. There is a theorem that say that every nilpotent Lie algebra defined this way has a representation as s group of upper-triangular matrices, just as we are familiar with in the Heisenberg case. 
+%reference: that paper about finding the representations
+
 \section{The Set-up for the Proof}
 \begin{Theorem}\label{BigTheorem}
 Let $\G$ be an $n$-dimensional nilpotent Lie group, with corresponding Lie algebra $\g$, where $n \geq 3$. Let $\Psi$ be a bijective map from $\G$ to $\G$ that sends any coset of any subgroup of $\G$ to some coset of some subgroups of $\G$.  Define the following maps: 
@@ -2122,6 +2164,7 @@ By the inductive assumption, when $\phi$ is restricted to $\g_{-x}$ or to $\g_{-
 
 \section{The Central Error Term}
 
+%maybe define the centre of lie groups and algebras in chapter 1
 \begin{Definition}
 The \emph{centre} of a Lie algebra $\mathfrak{a}$ is 
 \[
@@ -2142,7 +2185,7 @@ Let $A_{i}$ be the lower central series for the nilpotent Lie algebra $\mathfrak
 Hence 
 \[
 [x,a] =0 \;\;\; \forall a \in \mathfrak{a}
-\] which is the requirement for $x$ to be in the centre of $\mathfrak{a}$. Hence the centre in non-trivial.
+\] which is the requirement for $x$ to be in the centre of $\mathfrak{a}$. Hence the centre is non-trivial.
 \end{proof}
 
 
@@ -2157,8 +2200,66 @@ Let $\phi:\g \longrightarrow \g $ be bijective and linear such that the correspo
 \end{Proposition}
 
 \begin{proof}
+Let $A$ and $B$ be any two elements of $\G$, with corresponding elements $\alpha$ and $\beta$ in $\g$. 
 
-So we have 
+Claim: 
+\[
+\Phi(ab^{-1}a)=\Phi(a)\Phi(b)^{-1}\Phi(a).
+\]
+\begin{proof}
+
+The method is to look at the image of a one-parameter coset in $\G$ containing both $a$ and $b$. 
+Let $c=e^{\gamma}=a^{-1}b$ so that $b$ is an element of the coset $ae^{t\gamma}$, specifically when $t=1$. 
+So we have $b=ae^{\gamma}$.
+% and let $b'=ae^{-c}$.
+
+Define a map $ \Pi:\G \longrightarrow \G $ by 
+\begin{align*}
+&\Pi(m)=\Phi(a)^{-1}\Phi(am) & \forall m \in \G
+\end{align*}
+
+Claim: $\Pi$ is a coset-preserving map.
+
+\begin{proof}
+Let $\mathcal{H}$ be a subgroup of $\G$ and let $y \in \G$. Then there is a subgroup $\mathcal{H}'$ and an element $y' \in \G$ such that 
+\[
+\Phi(ayH) = y'\mathcal{H}'
+\]
+since $\Phi$ preserves cosets. 
+So 
+\begin{align*}
+\Pi(y\mathcal{H}) &= \Phi(a)^{-1} \Phi(ay\mathcal{H}) \\
+&= \Phi(a)^{-1}y'\mathcal{H}' \\
+&= y''\mathcal{H}',\quad \text{letting}\;\; y''=\Phi(a)^{-1}y'
+\end{align*}
+Hence $\Pi$ sends cosets of subgroups in $\G$ to cosets on subgroups in $\G$ 
+\end{proof}
+
+Then this map $\Pi$ is a coset-preserving map which sends $0$ to $0$. Hence the inductive hypothesis can be applied to $\Pi$ and so its corresponding map $\pi: \g \longrightarrow \g$ is linear.
+% If i don't prove linearity, say instead that pi is linear on one-param subgroups because by the inductive hypothesis it must be isom/anti-isom on these.Hence by the inductive hypothesis we know that  
+Most importantly 
+
+\begin{align*}
+\Pi(e^{-\gamma}) &= e^{\pi(-\gamma)} \\
+&= e^{-\pi(\gamma)}
+\end{align*}
+
+Thus 
+\begin{align*}
+\Phi(ab^{-1}a) &= \Phi(a)\Pi(b^{-1}a)\\
+&= \Phi(a)\Pi(c^{-1})\\
+&= \Phi(a) \Pi(e^{-\gamma}) \\
+&= \Phi(a) e^{-\pi(\gamma)} \\
+&= \Phi(a) \Pi(c)^{-1} \\
+&= \Phi(a) \Pi(a^{-1}b)^{-1} \\
+&= \Phi(a) (\Phi(a)^{-1}\Phi(aa^{-1}b))^{-1} \\
+&= \Phi(a) \Phi(b)^{-1} \Phi(a)
+\end{align*}
+as required. 
+
+\end{proof}
+
+So, letting $a=e^{sx}$ and $b=e^{-ty}$, we have 
 \[
 \Phi(e^{sx}e^{ty}e^{sx})= e^{s\phi(x)}e^{t\phi(y)}e^{s\phi(x)}
 \]
