@@ -835,7 +835,7 @@ Since every real number is a limit of a sequence of rational numbers, and $f$ is
 The same properties can be shown for the map $\psi$ on the $y$-axis. And then since every point in the plane is a projection of point on the x and y axes by horizontal and vertical lines, $\psi(x,y)=(x,y)$ for all $(x,y) \in \R^{2}$. Hence $\alpha'_{o}\alpha=\psi=\text{id}$ so $\alpha=\alpha'^{-1}$, which is a linear map since $\alpha'$ is a linear map. 
 \end{proof}
 
-\begin{Proposition}
+\begin{Proposition}\label{linesplanes}
 Let $\varphi: \R^{3} \longrightarrow \R^{3}$ be such that $\varphi$ is bijective, sends lines to lines and vertical planes to vertical planes. Then $\varphi$ is an affine map. 
 \end{Proposition}  
 
@@ -897,7 +897,7 @@ So:
 Hence $\varphi$ is affine on $\R^{3}$.
 \end{proof}
 
-\begin{Proposition}
+\begin{Proposition}\label{affinelinear}
 Let $\varphi$ be an affine map from $\R^{n}$ to $\R^{n}$. So $\varphi$ preserves affine combinations. Then the map $\phi$ defined by 
 \[
 \phi(x)=\varphi(x)-\varphi(0)
@@ -1076,8 +1076,8 @@ Let $\mathcal{C}$ be the coset of $e^{\mathcal{S}}$ given by right translation b
 0 & 0 & 0
 \end{bmatrix} \in \g$. Then 
 \begin{align*}
-\mathcal{C} &= \{e^{\lambda X}e^{P} \mid \lambda \in \R \} \\
-&= \{ \exp( \lambda X + P + \frac{1}{2}[\lambda X,P]) \mid \lambda \in \R \} \\[.7em]
+\mathcal{C} &= \{e^{\lambda X}e^{P} \mid \lambda \in \R \} \\[.7em]
+&= \left\lbrace \exp( \lambda X + P + \frac{1}{2}[\lambda X,P]) \bigm| \lambda \in \R \right\rbrace \\[.7em]
 &= \left\lbrace \exp \left( 
 \begin{bmatrix}
 0 & \lambda x & \lambda z \\
@@ -1107,15 +1107,15 @@ Let $\mathcal{C}$ be the coset of $e^{\mathcal{S}}$ given by right translation b
 \end{align*}
 Now let $\mathfrak{c} \subseteq \g$ be the image of $\mathcal{C}$ under the logarithm map.
 
-\begin{eqnarray*}
-\mathfrak{c} &=& \left\lbrace
+\begin{align*}
+\mathfrak{c} &= \left\lbrace
 \begin{bmatrix}
 0 & \lambda x + p & \lambda (z+\frac{1}{2}(xq-yp))+r \\
 0 & 0 & \lambda y +q \\
 0 & 0 & 0
 \end{bmatrix}
-\bigg| \lambda \in \R \right\rbrace \\
-&=& \left\lbrace \lambda
+\bigg| \lambda \in \R \right\rbrace \\[0.7em]
+&= \left\lbrace \lambda
 \begin{bmatrix}
 0 &  x & z+\frac{1}{2}(xq-yp) \\
 0 & 0 & y \\
@@ -1126,9 +1126,9 @@ Now let $\mathfrak{c} \subseteq \g$ be the image of $\mathcal{C}$ under the loga
 0 & 0 & q \\
 0 & 0 & 0
 \end{bmatrix}
-\bigg| \lambda \in \R \right\rbrace \\
-&=& \{ \lambda (x,y,z+\frac{1}{2}(xq-yp))+P | \lambda \in \R \}
-\end{eqnarray*}
+\bigg| \lambda \in \R \right\rbrace \\[.7em]
+&= \left\lbrace \lambda (x,y,z+\frac{1}{2}(xq-yp))+P \bigm| \lambda \in \R \right\rbrace
+\end{align*}
 
 So the one-dimensional coset $\mathcal{C}$ corresponds to a line $\mathfrak{c}$ in $\g$ which is a translate of a one-dimensional subalgebra, $\text{span}\{(x,y,z+\frac{1}{2}(xq-yp))\}$ by the element $P$. Note that this subalgebra is not the same as the subalgebra corresponding to the Lie subgroup in $\G$ from which the coset $\mathcal{C}$ was originally generated. 
 
@@ -1143,46 +1143,47 @@ Then the corresponding Lie subgroup of $\mathbf{\pi}$ is
 \]
 A coset of this Lie subgroup is $\mathcal{C}$ given by right translation by $e^{P}$ as before. Let So 
 \begin{eqnarray*}
-\mathcal{C} &=& \{\exp(\lambda X + \mu \3)\exp (P) \;\;\;|\;\;\; \lambda,\mu \in \R \} \\
-&=& \{ \exp(\lambda x, \lambda y, \lambda z +\mu)\exp(p,q,r)\;\;\;|\;\;\; \lambda,\mu \in \R \} 
+\mathcal{C} &=& \{\exp(\lambda X + \mu \3)\exp (P) \mid \lambda,\mu \in \R \} \\
+&=& \{ \exp(\lambda x, \lambda y, \lambda z +\mu)\exp(p,q,r)\mid \lambda,\mu \in \R \} 
 \end{eqnarray*}
 Then, applying the BCH Formula:
 
 %fix this up using align and \mid etc. and make sure it's not off the edge
-\begin{eqnarray*}
-\mathcal{C}&=&  \{ \exp((\lambda x, \lambda y, \lambda z +\mu)+(p,q,r)+\frac{1}{2}[(\lambda x, \lambda y, \lambda z +\mu),(p,q,r)])\;\;\;|\;\;\; \lambda,\mu \in \R \} \\
-&=& \{ \exp ((\lambda x+p, \lambda y+q, \lambda z +\mu +r)+ \frac{1}{2}(0,0,\lambda xq -\lambda yp))\;\;\;|\;\;\; \lambda,\mu \in \R \} \\
-&=& \{ \exp (\lambda x+p, \lambda y+q, \lambda (z+\frac{1}{2}(xq-yp)) +\mu +r)\;\;\;|\;\;\; \lambda,\mu \in \R \} \\
-&=& \{ \exp [\lambda( x, y, z+\frac{1}{2}(xq-yp))+\mu(0,0,1)+(p,q,r)]\;\;\;|\;\;\; \lambda,\mu \in \R \}
-\end{eqnarray*}
+\begin{align*}
+\mathcal{C}&=  \left\lbrace \exp((\lambda x, \lambda y, \lambda z +\mu)+(p,q,r)+\frac{1}{2}[(\lambda x, \lambda y, \lambda z +\mu),(p,q,r)]) \bigm| \lambda,\mu \in \R \right\rbrace \\[0.7em]
+&= \left\lbrace \exp ((\lambda x+p, \lambda y+q, \lambda z +\mu +r)+ \frac{1}{2}(0,0,\lambda xq -\lambda yp))\bigm| \lambda,\mu \in \R \right\rbrace \\[0.7em]
+&= \left\lbrace \exp (\lambda x+p, \lambda y+q, \lambda (z+\frac{1}{2}(xq-yp)) +\mu +r) \bigm| \lambda,\mu \in \R \right\rbrace \\[0.7em]
+&= \left\lbrace \exp [\lambda( x, y, z+\frac{1}{2}(xq-yp))+\mu(0,0,1)+(p,q,r)]\bigm| \lambda,\mu \in \R \right\rbrace
+\end{align*}
 
 Now suppose that $\pi'$ is the image of this coset $\mathcal{C}$ under the logarithm. So 
 
-\begin{eqnarray*}
-\pi' &=& \{ \lambda( x, y, z+\frac{1}{2}(xq-yp))+\mu(0,0,1)+(p,q,r) \;\;\;|\;\;\; \lambda,\mu \in \R \} \\
-&=& P+\text{span}\{Y,\3 \}
-\end{eqnarray*}
-where $Y=X+[X,P]=( x, y, z+\frac{1}{2}(xq-yp))$. \\
+\begin{align*}
+\pi' &= \left\lbrace \lambda( x, y, z+\frac{1}{2}(xq-yp))+\mu(0,0,1)+(p,q,r) \bigm| \lambda,\mu \in \R \right\rbrace \\[.7em]
+&= P+\text{span}\{Y,\3 \}
+\end{align*}
+where $$Y=X+[X,P]=( x, y, z+\frac{1}{2}(xq-yp)).$$ 
+
 So $\pi'$ is yet another vertical plane in $\g$. Note however that unless $[X,P]=0$, $\pi'$ is not the same as $\pi$. Most importantly, if a bijective map from $\G$ to $\G$ preserves cosets, then the corresponding map from $\g$ to $\g$ preserves lines and vertical planes (translates of subalgebras).
 \end{proof}
 
 % may have to alter this to suit the real assumptions of the problem, ie that may need to get rid of translation bit in the group before moving to the algebra.
 \subsection{Preserving Connected Cosets}
-The cosets in $\g$ are either lines or vertical planes. Hence the bijective map $\phi$ sends lines to lines and vertical planes to vertical planes. Therefore by Proposition [?] $\phi$ is an affine map on the vector space $\g$, and because $\phi$ maps the identity to the identity, Proposition 2.2.4 indicates it must be linear.
+The cosets in $\g$ are either lines or vertical planes. Hence the bijective map $\phi$ sends lines to lines and vertical planes to vertical planes. Therefore, by Proposition \ref{linesplanes}, $\phi$ is an affine map on the vector space $\g$, and because $\phi$ maps the identity to the identity, Proposition \ref{affinelinear} indicates it must be linear.
 
 
 %-use preservation of vertical planes to show that the linear portion of the %map takes on that slightly restricted form
 Now, suppose $S$ and $T$ are distinct vertical planes through the origin in $\g$. So by bijectivity $\phi(S) \neq \phi(T)$ and $\phi(S \cup T)=\phi(S) \cup \phi(T)$. Hence 
 \[
-\phi(Z)=Z
+\phi(\mathfrak{Z})=\mathfrak{Z}
 \]
 If $\phi$ is given by the matrix 
-$\begin{bmatrix}
+$$\begin{bmatrix}
 a & b & h \\
 c & d & i \\
 e & f & g
 \end{bmatrix}
-$, with $\det(\phi) \neq 0$ then 
+$$ with $\det(\phi) \neq 0$ then 
 
 \[
 \begin{bmatrix}
@@ -1196,7 +1197,7 @@ e & f & g
 \begin{bmatrix}
 h \\ i \\ g
 \end{bmatrix} 
-\in Z
+\in \mathfrak{Z}.
 \]
 Hence $h=i=0$ and 
 \[
@@ -1205,7 +1206,7 @@ Hence $h=i=0$ and
 a & b & 0 \\
 c & d & 0 \\
 e & f & g
-\end{bmatrix}
+\end{bmatrix}.
 \]
 
 \end{proof}
@@ -1215,13 +1216,21 @@ e & f & g
 % Now to the integer lattice:
 
 \section{Restriction obtained from preservation of discrete cosets}
-Without assuming that the map preserves discrete cosets of $G$, this restriction may be the strongest one that can be ascertained. However, by assuming the map $\Phi$ also sends cosets of discrete subgroups to cosets of discrete subgroups, stronger restrictions may be obtained. Note that discrete subgroups are not Lie groups. They are not locally homeomorphic to $\R^{n}$. 
+Without assuming that the map preserves discrete cosets of $G$, this restriction is the strongest one we can place on the map $\phi$. 
+In other words, if $\phi$ takes on the matrix form given about, we know from the nature of the subgroups of the Heisenberg group that $\Phi$ must be a coset-preserving map. 
+However, by assuming the map $\Phi$ also sends cosets of discrete subgroups to cosets of discrete subgroups, stronger restrictions may be obtained. Note that discrete subgroups are not Lie groups, as they are not locally homeomorphic to $\R^{n}$. 
 
 \begin{Theorem}
-Suppose that $\Psi: \G \longrightarrow \G$ is bijective and sends every coset of \emph{any} subgroup of $\G$ to some coset of some subgroup of $\G$. Then $\Psi=L \circ \Phi$ where $\Phi:\G \longrightarrow \G$ is either an isomorphism or an anti-isomorphism and $L: \G \longrightarrow \G$ is a translation. Specifically, for any $x \in \G$
+Suppose that $\Psi: \G \longrightarrow \G$ is bijective and sends every coset of \emph{any} subgroup of $\G$ to some coset of some subgroup of $\G$. Then the map $\Phi: \G \longrightarrow \G$, defined by 
 \[
-L(x)=\Psi(0)^{-1}x
+\Phi(x) = \Psi(I)^{-1}\Psi(x)
 \]
+is either an isomorphism or an anti-isomorphism. 
+
+%Then $\Psi=L \circ \Phi$ where $\Phi:\G \longrightarrow \G$ is either an isomorphism or an anti-isomorphism and $L: \G \longrightarrow \G$ is a translation. Specifically, for any $x \in \G$
+%\[
+%L(x)=\Psi(0)^{-1}x
+%\]
 
 \end{Theorem}
 
@@ -1295,8 +1304,8 @@ e & f & \Delta
 \end{bmatrix}
 \]
 Let $x=(x_{1},x_{2},x_{3})$ and $y=(y_{1},y_{2},y_{3})$ be any two elements of $\g$. Then $[x,y]=(0,0,x_{1}y_{2}-x_{2}y_{1})$. 
-\begin{eqnarray*}
-[\phi(x),\phi(y)] &=& \left[
+\begin{align*}
+[\phi(x),\phi(y)] &= \left[
 \begin{bmatrix}
 a & b & 0 \\
 c & d & 0 \\
@@ -1314,8 +1323,8 @@ e & f & \Delta
 \begin{bmatrix}
 y_{1} \\ y_{2} \\ y_{3}
 \end{bmatrix}
-\right] \\
-&=& \left[
+\right] \\[.7em]
+&= \left[
 \begin{bmatrix}
 ax_{1}+bx_{2} \\ cx_{1}+dx_{2} \\ ex_{1}+fx_{2} + \Delta x_{3}
 \end{bmatrix}
@@ -1323,16 +1332,17 @@ ax_{1}+bx_{2} \\ cx_{1}+dx_{2} \\ ex_{1}+fx_{2} + \Delta x_{3}
 \begin{bmatrix}
 ay_{1}+by_{2} \\ cy_{1}+dy_{2} \\ ey_{1}+fy_{2} + \Delta y_{3}
 \end{bmatrix}
-\right] \\
-&=& (0,0,(ax_{1}+bx_{2})(cy_{1}+dy_{2})-(ay_{1}+by_{2})(cx_{1}+dx_{2})) \\
-&=& (0,0,acx_{1}y_{1} - acx_{1}y_{1} + bdx_{2}y_{2} - bdx_{2}y_{2} + adx_{1}y_{2} + bcx_{2}y_{1} -adx_{2}y_{1} -bcx_{1}y_{2} ) \\
-&=& (0,0, adx_{1}y_{2}  -adx_{2}y_{1}+ bcx_{2}y_{1} -bcx_{1}y_{2} ) \\
-&=& (0,0,ad(x_{1}y_{2}  -x_{2}y_{1})+ bc(x_{2}y_{1} -x_{1}y_{2})) \\
-&=& (0,0,(ad-bc)(x_{1}y_{2}  -x_{2}y_{1})) \\
-&=& (0,0,\Delta(x_{1}y_{2}-x_{2}y_{1})) \\
-&=& \phi(0,0,x_{1}y_{2}-x_{2}y_{1}) \\
-&=& \phi[x,y] 
-\end{eqnarray*}
+\right] \\[.7em]
+&= (0,0,(ax_{1}+bx_{2})(cy_{1}+dy_{2})-(ay_{1}+by_{2})(cx_{1}+dx_{2})) \\
+&= (0,0,acx_{1}y_{1} - acx_{1}y_{1} + bdx_{2}y_{2} - bdx_{2}y_{2}  \\ 
+&\quad \quad+adx_{1}y_{2} + bcx_{2}y_{1} -adx_{2}y_{1} -bcx_{1}y_{2} ) \\
+&= (0,0, adx_{1}y_{2}  -adx_{2}y_{1}+ bcx_{2}y_{1} -bcx_{1}y_{2} ) \\
+&= (0,0,ad(x_{1}y_{2}  -x_{2}y_{1})+ bc(x_{2}y_{1} -x_{1}y_{2})) \\
+&= (0,0,(ad-bc)(x_{1}y_{2}  -x_{2}y_{1})) \\
+&= (0,0,\Delta(x_{1}y_{2}-x_{2}y_{1})) \\
+&= \phi(0,0,x_{1}y_{2}-x_{2}y_{1}) \\
+&= \phi[x,y] 
+\end{align*}
 \end{proof}
 
 \begin{Proposition}
@@ -1682,9 +1692,9 @@ for some $x_{ij}$ and $y_{ij}$ in $\mathfrak{a}$.
 
 Suppose $m=0$, so that $x$ is just any element of $\mathfrak{a}$. Then 
 \[
-[x,y]=\sum\limits_{i}[x,V_{i}]=\sum\limits_{i}W_{i}
+[x,y]=\sum\limits_{i}[x,V_{i}]=\sum\limits_{i}W_{i},
 \]
-where $W_{i} \in A_{n+1}=A_{m+n+1}$ as required. So the statement is true for $m=0$. \newline
+where $W_{i} \in A_{n+1}=A_{m+n+1}$ as required. So the statement is true for $m=0$. 
 
 Now suppose the statement is true for $m = k$, for some integer $k \geq 0$. 
 
@@ -1760,7 +1770,6 @@ and
 x & \longrightarrow \log(\Phi(e^{x}))
 \end{align*}
 In other words, 
-
 \[
 \Phi(\exp{x})=\exp{\phi(x)} \;\;\; \forall x \in \g.
 \]
@@ -1907,7 +1916,8 @@ v &=a'x+b'y+c'[x,y].
 Then
 \begin{align*}
 \varphi[u,v] &= \varphi [ax+by+c[x,y],a'x+b'y+c'[x,y]] \\
-&=\varphi(aa'[x,x]+ab'[x,y]+ac'[x,[x,y]]+ba'[y,x]+bb'[y,y]+bc'[y,[x,y]]+ca'[[x,y],x]+cb'[[x,y],y]+cc'[[x,y],[x,y]])\\
+&=\varphi(aa'[x,x]+ab'[x,y]+ac'[x,[x,y]]+ba'[y,x]+bb'[y,y] \\
+&\quad \quad+bc'[y,[x,y]]+ca'[[x,y],x]+cb'[[x,y],y]+cc'[[x,y],[x,y]])\\
 &=\varphi(ab'[x,y]+ba'[y,x]) \\
 &=(ab'-a'b)\varphi[x,y] \\
 &=(0,0,ab'-a'b).
@@ -1977,9 +1987,14 @@ Therefore, applying the inductive assumption, $\phi$ is either an isomorphism or
 \end{proof}
 
 \section{Reducing the Dimension of an Algebra}
-Let $x$ and $y$ be elements of $\g$. If $\dim(\alg(x,y)) < \dim(\g)$, then by Corollary \ref{CorReduceDim}, \; $\phi|_{\alg(x,y)}$ is either an isomorphism or anti-isomorphism, so $\phi[x,y]= \pm [\phi(x),\phi(y)]$. 
-
-Whereas if $\alg(x,y)=\g$, the inductive assumption cannot be directly applied. Therefore we attempt to reduce the dimension of the algebra $\alg(x,y)$ and look at the restrictions obtained by using the inductive assumption on the smaller algebra. \newline 
+Let $x$ and $y$ be elements of $\g$. If $\dim(\alg(x,y)) < \dim(\g)$, then by Corollary \ref{CorReduceDim}, 
+\[\phi|_{\alg(x,y)}
+\]
+is either an isomorphism or anti-isomorphism, so 
+\[
+\phi[x,y]= \pm [\phi(x),\phi(y)].
+\] 
+On the other hand, if $\alg(x,y)=\g$, the inductive assumption cannot be directly applied. Therefore we attempt to reduce the dimension of the algebra $\alg(x,y)$ and look at the restrictions obtained by using the inductive assumption on the smaller algebra. \newline 
 
 Suppose that $\g=\alg(x,y)$.
 
@@ -2120,7 +2135,7 @@ Then,
 &=\gamma_{d(1)} C_{d(1)} +\gamma_{d(2)} C_{d(2)}+ \cdots \gamma_{d(P)} C_{d(P)}
 \end{align*}
 % give better explanation of where this expression comes from in terms of the new version of the previous lemma
-Where each $\gamma_{j} \in \R$ and $d(i) \geq 4$ for all $1 \leq i \leq P$, by Lemma \ref{gohigher}. Hence 
+Where each $\gamma_{j} \in \R$ and $d(i) \geq 4$ for all $1 \leq i \leq P$, by Lemma \ref{adddim}. Hence 
 $$[u,v] \in \spn \{ C_{3}, \ldots C_{k} = \g_{-x-y}\}$$
  and so $\g_{-x-y}$ is closed under the bracket operation, making it a Lie subalgebra.
 
@@ -2161,6 +2176,45 @@ Hence all the terms $C_{i}$ with $i$ from $4$ to $p$ are zero so $C_{3}=[x,y]=0$
 
 \paragraph*{Consequence}
 By the inductive assumption, when $\phi$ is restricted to $\g_{-x}$ or to $\g_{-y}$, it is an isomorphism or anti-isomorphism.
+
+\begin{Proposition}
+Let $\theta$ be a real number. The subspace $\g_{\theta}$ of $\g$ given by 
+\[
+\g_{\theta}= \spn\{(\cos \theta)x+(\sin \theta)y \} \oplus \g_{-x-y}
+\]
+is a proper subalgebra of $\g$. 
+\end{Proposition}
+
+\begin{proof}
+It has already been shown that $\g_{-x-y}$ is closed under the bracket operation so it suffices to show that 
+\[
+[(\cos \theta)x + (\sin\theta)y,C_j] \in \g_{\theta}
+\]
+for all $j=3,4,\ldots,k$.
+
+We have 
+\begin{align*}
+[(\cos \theta)x + (\sin\theta)y,C_j] 
+&= \cos \theta [x,C_j]+\sin\theta[y,C_j] \\
+&= (\cos \theta) C_p + (\sin\theta )C_q
+\end{align*}
+where $p$ and $q$ are between $4$ and $k$. Hence 
+\[
+(\cos \theta) C_p + (\sin\theta )C_q \in \g_{\theta}
+\]
+as required.
+
+Now $\g_{\theta}$ is a proper subalgebra of $\g$ because:
+\begin{enumerate}
+\item If $\sin \theta \neq 0$ then the fact that $x$ and $y$ are linearly independent means that 
+\[
+x \notin \spn\{ (\cos \theta)x+(\sin \theta)y \}
+\]
+and it has already been shown that $x \notin \g_{-x-y}$. 
+
+\item If $\sin\theta =0$ then $\g_{\theta}=\g_{-x}$ which we already know to be a strict subalgebra.
+\end{enumerate}
+\end{proof}
 
 \section{The Central Error Term}
 
@@ -2307,8 +2361,9 @@ Now bringing the map $\varphi$ inside the exponential map in the usual way, and 
 \end{align*}
 Since the exponential map $\exp: \g \longrightarrow \G$ is injective, equating the left and right hand sides above gives
 \begin{align*}
-&2s\phi(x)+t\phi(y)-\frac{1}{6}s^{2}t\phi[x,[x,y]] -\frac{1}{6}st^{2}\phi[y,[x,y]]+\sum\limits_{\substack{n,m \geq 1  \\ n+m \geq 4}}s^{n}t^{m}\phi(\chi_{nm}) \\
-&=2s\phi(x)+t\phi(y)-\frac{1}{6}s^{2}t[\phi(x),[\phi(x),\phi(y)]] -\frac{1}{6}st^{2}[\phi(y),[\phi(x),\phi(y)]]+\sum\limits_{\substack{n,m \geq 1  \\ n+m \geq 4}}s^{n}t^{m}\zeta_{nm} \\
+&2s\phi(x)+t\phi(y)-\frac{1}{6}s^{2}t\phi[x,[x,y]] -\frac{1}{6}st^{2}\phi[y,[x,y]]+\sum\limits_{\substack{n,m \geq 1  \\ n+m \geq 4}}s^{n}t^{m}\phi(\chi_{nm}) \\[.7em]
+&=2s\phi(x)+t\phi(y)-\frac{1}{6}s^{2}t[\phi(x),[\phi(x),\phi(y)]]\\[.7em]
+&\quad \quad \quad -\frac{1}{6}st^{2}[\phi(y),[\phi(x),\phi(y)]]+\sum\limits_{\substack{n,m \geq 1  \\ n+m \geq 4}}s^{n}t^{m}\zeta_{nm} \\
 \end{align*}
 Cancelling and multiplying by $-6$ gives:
 \begin{align*}
@@ -2457,7 +2512,10 @@ So the bracket of any two commutators in $\g_{-x}$ involves at least two $y$'s a
 \item Suppose that neither $C_4$ nor $C_5$ is zero. (It will be shown that this gives a contradiction so that one of them must indeed by zero). 
 
 For each real number $\theta \in [0,\pi/2]$, consider the subalgebra 
-$$\g_\theta= \R((\cos{\theta})x + (\sin{\theta})y) \oplus \g_{-x-y}.$$
+\[
+\g_\theta= \R((\cos{\theta})x + (\sin{\theta})y) \oplus \g_{-x-y}.
+\]
+%Have I even shown that this is a subalgebra?
 Since this is a strict subalgebra, $\phi$ is either an isomorphism or anti-isomorphism when restricted to it. 
 
 %New version for this written out on paper, taking into account the fact that the pm sign does depend on theta.
@@ -2560,7 +2618,8 @@ So
 &=[a,\phi(C_{3})]-[a,[\phi(C_{1}),\phi(C_{2})]] \\
 &=\left[\sum\limits_{i=1}^{k} a_{i}\phi(C_{i}),\phi(C_{3}) \right]-\left[ \sum\limits_{i=1}^{k} a_{i}\phi(C_{i}),[\phi(C_{1}),\phi(C_{2})]\right] \\
 &=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]-\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),[\phi(C_{1}),\phi(C_{2})]] \\
-&=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]+ \sum\limits_{i=1}^{k} a_{i}\big(\; [\phi(C_{1}),[\phi(C_{2}),\phi(C_{i})]]+[\phi(C_{2}),[\phi(C_{i}),\phi(C_{1})]]\;\big) \\
+&=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]\\
+&\quad \quad \quad+ \sum\limits_{i=1}^{k} a_{i}\big(\; [\phi(C_{1}),[\phi(C_{2}),\phi(C_{i})]]+[\phi(C_{2}),[\phi(C_{i}),\phi(C_{1})]]\;\big) \\
 &=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]+a_{1}[\phi(C_{1}),[\phi(C_{2}),\phi(C_{1})]]+a_{2}[\phi(C_{2}),[\phi(C_{2}),\phi(C_{1})]] \\
 &\quad+ \sum\limits_{i=3}^{k} a_{i}\big(\; [\phi(C_{1}),[\phi(C_{2}),\phi(C_{i})]]+[\phi(C_{2}),[\phi(C_{i}),\phi(C_{1})]] \;\big) \\
 &=\sum\limits_{i=1}^{k} a_{i}\phi[C_{i},C_{3}]+a_{1}\phi[C_{1},[C_{2},C_{1}]]+a_{2}\phi[C_{2},[C_{2},C_{1}]] \\
@@ -2593,7 +2652,8 @@ So
 &=[a,\phi(C_{3})]+[a,[\phi(C_{1}),\phi(C_{2})]] \\
 &=\left[\sum\limits_{i=1}^{k} a_{i}\phi(C_{i}),\phi(C_{3}) \right]+\left[ \sum\limits_{i=1}^{k} a_{i}\phi(C_{i}),[\phi(C_{1}),\phi(C_{2})]\right] \\
 &=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]+\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),[\phi(C_{1}),\phi(C_{2})]] \\
-&=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]- \sum\limits_{i=1}^{k} a_{i}\big(\; [\phi(C_{1}),[\phi(C_{2}),\phi(C_{i})]]+[\phi(C_{2}),[\phi(C_{i}),\phi(C_{1})]]\;\big) \\
+&=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]\\
+&\quad \quad \quad- \sum\limits_{i=1}^{k} a_{i}\big(\; [\phi(C_{1}),[\phi(C_{2}),\phi(C_{i})]]+[\phi(C_{2}),[\phi(C_{i}),\phi(C_{1})]]\;\big) \\
 &=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]-a_{1}[\phi(C_{1}),[\phi(C_{2}),\phi(C_{1})]]-a_{2}[\phi(C_{2}),[\phi(C_{2}),\phi(C_{1})]] \\
 &\quad- \sum\limits_{i=3}^{k} a_{i}\big(\; [\phi(C_{1}),[\phi(C_{2}),\phi(C_{i})]]+[\phi(C_{2}),[\phi(C_{i}),\phi(C_{1})]] \;\big) \\
 &= \sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]-a_{1}\phi[C_{1},[C_{2},C_{1}]]-a_{2}\phi[C_{2},[C_{2},C_{1}]] \\
