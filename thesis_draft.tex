@@ -629,9 +629,11 @@ $$\G=\text{the Heisenberg group}$$
 $$\g=\text{the Lie algebra of the Heisenberg group}$$
 
 \section{Aim}
-The aim of this chapter is to prove a rigidity theorem for coset-preserving bijective maps on the Heisenberg group. The ideas and methods used in this theorem are foundational for the proof of the theorem for higher dimensional Lie groups. The first theorem will show that coset-preserving maps on the Heisenberg group have corresponding maps on the Lie algebra that are affine, and take on a particular form.\
-The second theorem shows the stronger result if the map also preserves cosets of discrete subgroups of the Heisenberg group.
+The aim of this chapter is to prove a rigidity theorem for coset-preserving bijective maps on the Heisenberg group. The ideas and methods used in this theorem are foundational for the proof of the theorem for higher dimensional Lie groups. 
 
+The theorem is split into two parts. The first theorem demonstrates the constraints on a map that preserves only cosets of Lie subgroups, whereas the second theorem is about the stronger constraint obtained when cosets of \emph{any} subgroups are preserved. 
+
+This first thing that needs to be established is that a coset-preserving map on the Heisenberg group is affine. This involves a geometric construction. 
 
 
 
@@ -646,7 +648,7 @@ A map $\varphi: \R^{n} \longrightarrow \R^{n}$ is \emph{affine} if for all $\mat
 \end{Definition}
 
 \begin{Lemma}
-Suppose $\alpha: \R^{2} \longrightarrow \R^{2}$ sends $\vec{0}$ to $\vec{0}$, sends lines to lines and is bijective. Then $\alpha$ is linear. 
+Suppose $\alpha: \R^{2} \longrightarrow \R^{2}$ sends $\mathbf{0}$ to $\mathbf{0}$, sends lines to lines and is bijective. Then $\alpha$ is linear. 
 \end{Lemma}
 
 \begin{proof}
@@ -838,31 +840,29 @@ Let $\varphi: \R^{3} \longrightarrow \R^{3}$ be such that $\varphi$ is bijective
 \end{Proposition}  
 
 \begin{proof}
-Let $\mathbf{v_{1}}$ and $\mathbf{v_{2}} $ be vectors in $\R^{3}$.[[ such that $\mathbf{v_{1}}-\mathbf{v_{2}} \notin \text{span} \{ \mathbf{{\bf e}_{3}} \}$.]] Define a line $L$ in $\R^{3}$ by 
+Let $\mathbf{v_{1}}$ and $\mathbf{v_{2}} $ be vectors in $\R^{3}$.
+%[[ such that $\mathbf{v_{1}}-\mathbf{v_{2}} \notin \text{span} \{ \mathbf{{\bf e}_{3}} \}$.]] 
+Define a line $L$ in $\R^{3}$ by 
 $$ L:=\{ \lambda \mathbf{v_{1}} + (1-\lambda) \mathbf{v_{2}} \mid \lambda \in \R \}.$$
 
-If $\mathbf{v_{1}}-\mathbf{v_{2}} \notin \text{span} \{ (0,0,1) \}$, then let $\mathbf{v_{3}}=(0,0,1)$. Whereas if $\mathbf{v_{1}}-\mathbf{v_{2}} \in \text{span} \{ (0,0,1) \}$ let $\mathbf{v_{3}}=(0,0,1)$. 
+If $\mathbf{v_{1}}-\mathbf{v_{2}} \notin \text{span} \{ (0,0,1) \}$, then let $\mathbf{v_{3}}=(0,0,1)$. Whereas if $\mathbf{v_{1}}-\mathbf{v_{2}} \in \text{span} \{ (0,0,1) \}$ let $\mathbf{v_{3}}=(1,0,0)$. 
   
-In either case it is possible to define a vertical plane $\Pi: \lambda \mathbf{v_{1}} + (1-\lambda) \mathbf{v_{2}} + \mu\mathbf{v_{3}}$. $\varphi$ sends vertical planes to vertical planes so define the plane $\Sigma = \varphi(\Pi)$. Then 
-\[
-\mathbf{v_{1}} \in \Pi
-\]
-\[
-\mathbf{v_{2}} \in \Pi
-\]
-so 
-\[
-\varphi(\mathbf{v_{1}}) \in \Sigma
-\]
-and 
-\[
-\varphi(\mathbf{v_{2}}) \in \Sigma.
-\]
+In either case it is possible to define a vertical plane 
+$$\Pi=\{ \lambda \mathbf{v_{1}} + (1-\lambda) \mathbf{v_{2}} + \mu\mathbf{v_{3}} \mid \lambda,\mu \in \R \}.$$ 
+
+Now $\varphi$ sends vertical planes to vertical planes so let $\Sigma$ be the image of $\Pi$ under $\varphi$. Then 
+\begin{align*}
+&\mathbf{v_{1}}, \mathbf{v_{2}} \in \Pi  \quad  \implies\\
+&\varphi(\mathbf{v_{1}}),\varphi(\mathbf{v_{2}}) \in \Sigma.
+\end{align*}
+
 Hence the line joining these to points is also in $\Sigma$, in other words
 \[
-\gamma \varphi(\mathbf{v_{1}}) + (1-\gamma)\varphi(\mathbf{v_{2}}) \in \Sigma
+\{ \gamma \varphi(\mathbf{v_{1}}) + (1-\gamma)\varphi(\mathbf{v_{2}}) \mid \gamma \in \R \} \subset \Sigma
 \]
-Also $\Sigma$ is vertical, and since $\mathbf{v_{1}}-\mathbf{v_{2}} \notin \text{span}\{ \mathbf{v_{3}}\}$, the plane $\Sigma$ is defined by 
+
+%Here, need to be careful to treat the case of v1-v2 being vertical. Haven't yet done it properly.
+Also we know $\Sigma$ is a vertical plane, and since $\mathbf{v_{1}}-\mathbf{v_{2}} \notin \text{span}\{ \mathbf{v_{3}}\}$, the plane $\Sigma$ is defined by 
 \[
 \Sigma = \{ \gamma \varphi(\mathbf{v_{1}}) + (1-\gamma)\varphi(\mathbf{v_{2}}) + \delta \varphi(\mathbf{v_{3}}) \; \;|\;\; \gamma,\delta \in \R \}
 \]
@@ -997,12 +997,12 @@ Hence every one-dimensional subspace of $S$ is closed under the Lie bracket and 
 \subsection{Two-dimensional Subalgebras}
 Let $\mathfrak{Z}=\text{span}(0,0,1)$ denote the $z$-axis.
 The question is now whether all two-dimensional subspaces of $\g$ are also subalgebras. Two-dimensional subspaces of $\g$ are planes through the origin. So any subspace is the span of two linearly independent vectors in $\g$.
-Let $\mathfrak{T}= \text{span}(X ,Y)$ where $X=(x_{1},x_{2},x_{3})$ and $Y=(y_{1},y_{2},y_{3})$ are distinct elements of $\g$.
+Let $\mathfrak{h}= \text{span}(X ,Y)$ where $X=(x_{1},x_{2},x_{3})$ and $Y=(y_{1},y_{2},y_{3})$ are distinct elements of $\g$.
 
 Then  
 \begin{eqnarray*}
-  [X,Y] & \in \mathfrak{T} \\
-\text{i.e.}\;\;\;\;\;(0,0, x_{1}y_{2}-x_{2}y_{1}) & \in \mathfrak{T}
+  [X,Y] & \in \mathfrak{h} \\
+\text{i.e.}\;\;\;\;\;(0,0, x_{1}y_{2}-x_{2}y_{1}) & \in \mathfrak{h}
 \end{eqnarray*}
    
 This restriction can be analysed in the following two distinct cases:
@@ -1022,9 +1022,9 @@ x_{2} = ky_{2}
 \]
 So 
 \[
-X-kY=(0,0,x_{3}-ky_{3}) \in \mathfrak{T}
+X-kY=(0,0,x_{3}-ky_{3}) \in \mathfrak{h}
 \]
-Note that $X-kY \neq 0$ since otherwise $X$ and $Y$ would be linearly dependent. So $\mathfrak{T}$ contains $\text{span}(0,0,x_{3}-ky_{3})=\mathfrak{Z}$, and hence $\mathfrak{T}$ is a vertical plane. 
+Note that $X-kY \neq 0$ since otherwise $X$ and $Y$ would be linearly dependent. So $\mathfrak{h}$ contains $\text{span}(0,0,x_{3}-ky_{3})=\mathfrak{Z}$, and hence $\mathfrak{h}$ is a vertical plane. 
 
 Now suppose at least one of $x_{1}$ and $y_{1}$ is non-zero. Without loss of generality suppose $y_{1} \neq 0$.
 Then there exists some $\lambda \in \R$ such that $x_{1} = \lambda y_{1}$. So
@@ -1043,12 +1043,12 @@ Hence
 since $X$ and $Y$ are linearly independent. 
 Therefore 
 \[
-\mathfrak{Z}=\text{span}(0,0,1)=\text{span}(0,0,x_{3}-\lambda y_{3}) \in \mathfrak{T}
+\mathfrak{Z}=\text{span}(0,0,1)=\text{span}(0,0,x_{3}-\lambda y_{3}) \in \mathfrak{h}
 \]
 
 In the second case, $x_{1}y_{2}\neq x_{2}y_{1}$ so 
 \[
-\text{span}(0,0, x_{1}y_{2}- x_{2}y_{1})= \mathfrak{Z} \in \mathfrak{T}
+\text{span}(0,0, x_{1}y_{2}- x_{2}y_{1})= \mathfrak{Z} \in \mathfrak{h}
 \]
 
 Hence any plane through the origin in $\g$ which is closed under the Lie bracket must contain the $z$-axis. In other words, all two-dimensional subalgebras of $\g$ are vertical planes through the origin.
@@ -1061,24 +1061,24 @@ Let $\mathcal{C}$ be a coset of some subgroup $\mathcal{S}$ of $\G$. Then $\math
 \end{Proposition}
 
 \begin{proof}
-Let $X=(x,y,z) \in \g$ and so that $\mathcal{S}=\{ \lambda X | \lambda \in \R \}$ is a one-dimensional subalgebra of $\g$. $e^{\mathcal{S}}$ is the corresponding Lie subgroup of $\G$. i.e.
-\begin{eqnarray*}
-e^{\mathcal{S}} &=& \{ e^{\lambda X}| \lambda \in \R \} \\
-&=& \left\lbrace \begin{bmatrix}
+Let $X=(x,y,z) \in \g$ and so that $\mathcal{S}=\{ \lambda X | \lambda \in \R \}$ is a one-dimensional subalgebra of $\g$. Then $e^{\mathcal{S}}$ is the corresponding Lie subgroup of $\G$. We have
+\begin{align*}
+e^{\mathcal{S}} &= \{ e^{\lambda X}| \lambda \in \R \} \\[.7em]
+&= \left\lbrace \begin{bmatrix}
 1 & \lambda x & \lambda z + \frac{1}{2} \lambda^{2}xy \\
 0 & 1 & \lambda y \\
 0 & 0 & 1
-\end{bmatrix} \bigg| \lambda \in \R \right\rbrace
-\end{eqnarray*}
+\end{bmatrix} \biggm| \lambda \in \R \right\rbrace
+\end{align*}
 Let $\mathcal{C}$ be the coset of $e^{\mathcal{S}}$ given by right translation by $e^{P}$, for a fixed element $P = \begin{bmatrix}
 0 & p & r \\
 0 & 0 & q \\
 0 & 0 & 0
 \end{bmatrix} \in \g$. Then 
-\begin{eqnarray*}
-\mathcal{C} &=& \{e^{\lambda X}e^{P}|\lambda \in \R \} \\
-&=& \{ \exp( \lambda X + P + \frac{1}{2}[\lambda X,P]) | \lambda \in \R \} \\
-&=& \left\lbrace \exp \left( 
+\begin{align*}
+\mathcal{C} &= \{e^{\lambda X}e^{P} \mid \lambda \in \R \} \\
+&= \{ \exp( \lambda X + P + \frac{1}{2}[\lambda X,P]) \mid \lambda \in \R \} \\[.7em]
+&= \left\lbrace \exp \left( 
 \begin{bmatrix}
 0 & \lambda x & \lambda z \\
 0 & 0 & \lambda y \\
@@ -1096,19 +1096,19 @@ Let $\mathcal{C}$ be the coset of $e^{\mathcal{S}}$ given by right translation b
 0 & 0 & 0
 \end{bmatrix}
 \right)
- \bigg| \lambda \in \R \right\rbrace \\
-&=& \left\lbrace \exp
+ \biggm| \lambda \in \R \right\rbrace \\[.7em]
+&= \left\lbrace \exp
 \begin{bmatrix}
-0 & \lambda x + p & \lambda (z+\frac{1}{2}(xq-yp))+r \\
+0 & \lambda x + p & \lambda [z+\frac{1}{2}(xq-yp)]+r \\
 0 & 0 & \lambda y +q \\
 0 & 0 & 0
 \end{bmatrix}
-\bigg| \lambda \in \R \right\rbrace
-\end{eqnarray*}
-Now let $L \subseteq \g$ be the image of $\mathcal{C}$ under the logarithm map.
+\biggm| \lambda \in \R \right\rbrace
+\end{align*}
+Now let $\mathfrak{c} \subseteq \g$ be the image of $\mathcal{C}$ under the logarithm map.
 
 \begin{eqnarray*}
-L &=& \left\lbrace
+\mathfrak{c} &=& \left\lbrace
 \begin{bmatrix}
 0 & \lambda x + p & \lambda (z+\frac{1}{2}(xq-yp))+r \\
 0 & 0 & \lambda y +q \\
@@ -1130,7 +1130,7 @@ L &=& \left\lbrace
 &=& \{ \lambda (x,y,z+\frac{1}{2}(xq-yp))+P | \lambda \in \R \}
 \end{eqnarray*}
 
-So the one-dimensional coset $\mathcal{C}$ corresponds to a line $L$ in $\g$ which is a translate of a one-dimensional subalgebra, $\text{span}\{(x,y,z+\frac{1}{2}(xq-yp))\}$ by the element $P$. Note that this subalgebra is not the same as the subalgebra corresponding to the Lie subgroup in $\G$ from which the coset $\mathcal{C}$ was originally generated. 
+So the one-dimensional coset $\mathcal{C}$ corresponds to a line $\mathfrak{c}$ in $\g$ which is a translate of a one-dimensional subalgebra, $\text{span}\{(x,y,z+\frac{1}{2}(xq-yp))\}$ by the element $P$. Note that this subalgebra is not the same as the subalgebra corresponding to the Lie subgroup in $\G$ from which the coset $\mathcal{C}$ was originally generated. 
 
 A similar argument will now demonstrate that two-dimensional cosets in $\G$ do indeed correspond to vertical planes in $\g$.
 Suppose $X=(x,y,z) \in \g$ is not vertical. So there is a vertical plane $\mathbf{\pi}$ given by 
@@ -2378,8 +2378,8 @@ So
 \begin{align*}
 h_{k+1} &=[y,[x,\underbrace{[y,\ldots[y,}_{k}[x,y]]\ldots]]] \\
 &= [y,h_k] \\
-&=[y,\vec{0}] \\
-&= \vec{0}
+&=[y,\mathbf{0}] \\
+&= \mathbf{0}
 \end{align*}
 as required.
 \end{proof}
@@ -2905,6 +2905,6 @@ So $\g$ is three-dimensional. But we have proved the theorem for three dimension
 
 \chapter{Discussion}
 
-\bibliography{bibliography.bib}
+\bibliography{bibliography}
 
 \end{document}
