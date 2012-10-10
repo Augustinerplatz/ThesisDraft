@@ -1,0 +1,3081 @@
+\documentclass[honours]{UNSWthesis}
+\linespread{1}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{latexsym,amsmath}
+\usepackage{graphicx}
+\usepackage{texdraw}
+
+%% define some macros
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\G}{\mathcal{G}}
+%\newcommand{\H}{\mathcal{H}}
+\newcommand{\g}{\mathfrak{g}}
+\newcommand{\1}{\mathbf{e}_{1}}
+\newcommand{\2}{\mathbf{e}_{3}}
+\newcommand{\3}{\mathbf{e}_{3}}
+
+\DeclareMathOperator{\image}{image}
+\DeclareMathOperator{\alg}{Alg}
+\DeclareMathOperator{\spn}{span}
+
+
+%% new environments
+
+\newcounter{Item}[section]
+%\newenvironment{proof}{\noindent {\bf Proof.}\ }{\qed}
+\newenvironment{Definition}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Definition \thesection.\theItem.}\ }
+                           {\medskip}
+\newenvironment{Notation}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Notation \thesection.\theItem.}\ }
+                           {\medskip}
+\newenvironment{Theorem}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Theorem \thesection.\theItem.}\ %
+                            \begingroup \sl}
+                           {\endgroup\medskip}
+\newenvironment{Proposition}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Proposition \thesection.\theItem.}\ %
+                            \begingroup \sl}
+                           {\endgroup\medskip}
+\newenvironment{Corollary}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Corollary \thesection.\theItem.}\ %
+                            \begingroup \sl}
+                           {\endgroup\medskip}
+\newenvironment{Lemma}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Lemma \thesection.\theItem.}\ %
+                            \begingroup \sl}
+                           {\endgroup\medskip}
+\newenvironment{Conjecture}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Conjecture \thesection.\theItem.}\ %
+                            \begingroup \sl}
+                           {\endgroup\medskip}
+\newenvironment{Example}{\medskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Example \thesection.\theItem.}\ }
+                           {\qed}
+\newenvironment{Remark}{\smallskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Remark \thesection.\theItem.}\ }
+                           {\qed}
+\newenvironment{Question}{\smallskip
+                            \refstepcounter{Item}
+                            \noindent
+                           {\bf Question \thesection.\theItem.}\ }
+                           {\par}
+\newenvironment{theoremlist}{\begin{list}{}
+                        {\setlength{\parsep}{0pt}
+                        \setlength{\topsep}{\smallskipamount}} }
+                        {\end{list}}
+
+\title{Rigidity of Coset-Preserving Maps on Nilpotent Lie Groups}
+
+\authornameonly{Richard Tierney}
+
+\author{\Authornameonly\\{\bigskip}Supervisor: Professor Michael Cowling}
+
+\begin{document}
+\maketitle
+
+\prefacesection{Acknowledgements}
+{\noindent}Many thanks go to Michael Cowling, Georgia Tsambos, Andrew Ardill...
+
+\prefacesection{Introduction}
+
+Lie groups are to be found in many different applications of mathematics as well as being central to many of the ideas in quantum physics. It is therefore very useful to know whether different Lie groups linked by a certain map are similar in structure, or whether a particular map identifies two Lie groups in a useful or sensible way. This is the idea of a rigidity theorem. If there is a map between two nilpotent Lie groups that preserves the cosets of subgroups (structures arising from the group law on a Lie group), just how much structure of the respective Lie groups does the map preserve? In this paper, the extra assumption of bijectivity will help to show the kind of similarity that exists. If a map is bijective then no information is `lost' about the structures of the domain and codomain, when either the map or its inverse is applied. 
+This thesis is an attempt to demonstrate rigorously the extension of the rigidity theorem for the Heisenberg Group to all the nilpotent Lie groups. The proof involves arguments from a geometrical as well as algebraic perspective. 
+
+
+%begin chapter 1
+\chapter{Lie Groups, Lie Algebras and Homomorphisms}
+This chapter outlines the basics of the theory of Lie groups and their relationship to Lie algebras. It gives some examples of matrix Lie groups including the Heisenberg Group, and explains the use of the Baker-Campbell-Hausdorff Formula in comparing operations in a Lie group with the operations in its corresponding Lie algebra. 
+
+\section{Introduction}
+The theory of Lie groups has evolved from the combination of several different disciplines in mathematics. Lie groups are a special category of topological groups, in which the object, which is simultaneously a topological space and a group, has the topological structure of a manifold. Lie group theory therefore involves many different ingredients from abstract algebra as well as differential geometry. 
+
+This paper is predominantly concerned with matrix Lie groups. That is, matrix groups that are also $C^{\infty}$-manifolds. The idea of a rigidity theorem in this context is to use structures that arise from the group law within the manifold to show that a weak similarity of these matrix Lie groups implies a strong similarity between them. This paper focusses on proving a rigidity theorem for coset-preserving maps on nilpotent Lie groups.
+
+\section{Lie Groups}
+\begin{Definition}\label{Lie Group}
+A Lie group $\G $ is a $\mathrm{C}^{\infty}$ manifold which is also a group, for which the group operations of multiplication and taking inverses are $\mathrm{C}^{\infty}$ maps. i.e. the maps
+
+\begin{eqnarray*}
+\sigma : & \G \times \G & \longrightarrow \G  \\
+& (g,h) & \longmapsto gh
+\end{eqnarray*}
+and
+
+\begin{eqnarray*}
+\tau : & \G  & \longrightarrow \G  \\
+& g & \longmapsto g^{-1}
+\end{eqnarray*}
+
+are smooth with respect to the topology on $\G$.
+\end{Definition}
+
+\begin{Example}\label{Rn}
+$(\R^{n}, +)$ is a Lie group with one single coordinate patch defined by the identity map on $\R^{n}$. The usual addition, and inversion given by multiplication by $(-1)$ are smooth maps.
+
+\end{Example}
+
+\begin{Example}\label{Circle}
+The circle $\mathrm{S}^{1} = \{ e^{i\theta} \mid 0 \leq \theta < 2\pi \}$ is a Lie group. As a manifold, $\mathrm{S}^{1}$ has a single coordinate patch given by:
+
+\begin{eqnarray*}
+p_{1} : & \mathrm{S}^{1}  & \longrightarrow \R  \\
+& e^{i\theta} & \longmapsto \theta .
+\end{eqnarray*}
+
+The group multiplication on $\mathrm{S}^{1}$ is given by 
+\[ (e^{i\theta}, e^{i\phi}) \longmapsto e^{i\theta}e^{i\phi} = e^{i(\theta + \phi)} .\] 
+This map is smooth with respect to the topologies on $\mathrm{S}^{1} \times \mathrm{S}^{1}$ and $\mathrm{S}^{1}$.
+\end{Example}
+
+An important fact about this particular coordinate patch (even though in this case only one is required), is that it is 
+also the tangent space of the manifold at the identity element of the group. [add picture]. In general the tangent space at the identity is a
+very useful object for the study of Lie groups and takes on a structure of its own called a Lie algebra. As we can see in the example of the circle and the line tangent to it, there is always a neighbourhood of the identity in the group which is homeomorphic to a neighbourhood of the identity in the tangent space.
+
+
+%\begin{figure}
+%\includegraphics{imagename.eps}
+%\caption{Lovely caption}
+%\label{fig:somethin-you-will-remember}
+%\end{figure}
+
+\begin{Definition}\label{Matrix Lie Group}
+A matrix Lie group is any subgroup $\G$ of $\mathrm{GL}(n,\C)$ with the property that if there is a sequence $A_{m}$ of
+matrices in $\G$ that converges to some matrix $A \in \mathrm{M}(n,\C)$ then either $A \in \G $ or $A$ is not invertible.
+This is equivalent to $G$ being a closed subset of $\mathrm{GL}(n,\C)$ that is also a subgroup.
+\end{Definition}
+
+\subsection*{Examples}
+Some examples of matrix Lie groups are
+\[\mathrm{SL}(n,\R), \mathrm{O}(n), \mathrm{SO}(n), \mathrm{SU}(2) \]
+
+
+\begin{Example}\label{Heisenberg Group}
+The Heisenberg group is a matrix Lie group. This example forms the cornerstone of the result in this thesis.
+\paragraph
+{\noindent}The Heisenberg group is the set of real three-tuples with non-commutative multiplication given by
+\[
+[x,y,z]\cdot[x', y', z'] := [x+x', y+y', z+z' + xy'].
+\]
+Inversion is given by 
+\[ [x,y,z]^{-1}= [-x, -y, -z+xy] .\]
+As a matrix Lie group, the Heisenberg group can be represented as the group of all $ 3\times 3 $ upper triangular real matrices with $1$'s on the diagonal:
+\[
+ \G= \left\{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \biggm| x,y, z \in \R \right\} 
+\]
+It is topologically a closed subset of $\mathrm{GL}(n,\C)$ and is closed under the operations of inversion and multiplication:
+\[
+\begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix}
+\begin{bmatrix} 1 & x' & z' \\ 0 & 1 & y' \\ 0 & 0 & 1 \end{bmatrix}
+= \begin{bmatrix} 1 & x+x' & z+z' \\ 0 & 1 & y+y' \\ 0 & 0 & 1 \end{bmatrix}
+\in \G
+\] 
+
+\[
+\begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix}^{-1}
+= \begin{bmatrix} 1 & -x & -z+xy \\ 0 & 1 & -y \\ 0 & 0 & 1 \end{bmatrix}
+\in \G
+\]
+
+Hence $\G$ is a matrix Lie group.
+\end{Example}
+
+Many of the important examples of matrix Lie groups are non-commutative groups. This makes the study of their structure in many 
+cases fairly complex. However, as with the example of the circle, studying the Lie group can be made simpler by studying what is called its Lie algebra. The Lie algebra is a vector space consisting of the tangent space to the Lie group manifold at the identity. The structure of the Lie algebra determines the local structure of its Lie group.
+
+
+\section{Lie Algebras}
+Lie algebras also exist as abstract algebraic objects, independent of any manifolds they might be associated with.
+\begin{Definition}\label{Lie Algebra}
+A Lie algebra is a vector space $\mathfrak{a}$ endowed with a map
+\[ [\cdotp,\cdotp]:\; \mathfrak{a} \times \mathfrak{a} \longrightarrow \mathfrak{a} \]
+with the following properties:
+\begin{enumerate}
+ \item $[\cdotp, \cdotp]$ is bilinear
+ \item $[X,Y]=-[Y,X]$ for all $X$, $Y$ $\in \mathfrak{a}$
+ \item $[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$ for all $X$, $Y$, $Z$ $\in \mathfrak{a}$
+\end{enumerate}
+This map is often called the \emph{Lie bracket} or the \emph{bracket operation}.
+
+The third property is called the Jacobi identity and can also be written as
+\[
+[X,[Y,Z]]=[[X,Y],Z]+[Y,[X,Z]]
+\]
+Both forms of the Jacobi identity are used in this thesis for manipulating commutators.
+\end{Definition}
+
+
+The Lie algebra $\g$ of a Lie group $\G$ is the tangent space to $G$ at the identity $e$. This can be seen clearly in 
+the example of the circle. The circle is parametrised as before by a the curve
+\[ g: [0,2\pi) \longrightarrow \C \]
+\[ g(\theta)= e^{i\theta}.\]
+Differentiating gives
+\[g' (\theta)= ie^{i\theta}.\]
+At the identity, $1=e^{0}$,
+\[ g' (0) = i \]
+so the tangent space $T_{1}\G$ is the real vector space with basis $\{i\}$. 
+In this case the operation $[\cdotp, \cdotp]$ is trivial.
+
+Without going into rigorous detail, it can be seen that the group operation on $S^{1}$ corresponds to addition of 
+vectors in $T_{1}\G$. Also, the closer we move towards the identity in $S^{1}$ the more it resembles flat space. The local topology of a circle is the same as the local topology of a line.
+(picture required)
+
+In the case of matrix Lie groups, the tangent space at the identity takes a very clear form. The relationship between a 
+matrix Lie group and its Lie algebra is determined by the exponential mapping on matrices. 
+
+\begin{Definition}\label{Lie Algebra of a Matrix Lie Group}
+The Lie algebra $\g$ of an $n \times n$ matrix Lie group $\G$ is
+\[
+\g = \{ X \in M_{n}(\C) \big| \exp{tX} \in \G , \forall t \in \R \}
+\]
+The bracket operation on $\g$, given by $[X,Y]=XY-YX$, satisfies the axioms for $\g$ to be a Lie algebra. 
+\end{Definition}
+
+\begin{Proposition}
+This definition corresponds to the definition of a Lie algebra as the tangent space to the manifold $\G$ at the identity. [give ref]
+\end{Proposition}
+
+
+%give these notes titles.
+Note that the dimension of a manifold is the same as the dimension of any of its tangent spaces. So in general when referring to the dimension of a Lie group, this is just the same as the dimension of its associated Lie algebra, as a vector space.
+
+%check this information
+Note that the exponential map from $\g$ to $\G$ is injective but not necessarily surjective. The image of $\g$ under the exponential map is precisely the connected component of $\G$ containing the identity $e$. (proof). In the case that $\G$ is connected, the inverse of the map $\exp : \g \longrightarrow \G $ is called the matrix logarithm map, \mbox{$\log : \G \longrightarrow \g $}.
+
+
+
+
+\begin{Proposition}\label{Lie algebra of Heisenberg group}
+The Lie algebra of the Heisenberg group, $$\G = \left\{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \biggm| x,y, z \in \R \right\}$$ is 
+\[
+\g= \left\{ \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix} \biggm| x,y,z \in \R \right\}
+\]
+and the exponential map $\exp$: $\g \longrightarrow \G$ is a bijection. 
+\end{Proposition}
+
+\begin{proof}
+It will be shown that $\image(\exp) \subseteq \G$, $\G \subseteq \image(\exp)$ and that $\exp$ is injective. 
+Let $x$, $y$ and $z$ be real numbers and note the following: 
+\[
+\begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix}^2=\begin{bmatrix} 0 & 0 & xy \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}
+\]
+\[
+\begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix}^3=\begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}
+\]
+Now,
+\begin{align*}
+ \exp \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix} &= \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} + \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix}+ \frac{1}{2}\begin{bmatrix} 0 & 0 & xy \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix} \\[.7em]
+&= \begin{bmatrix} 1 & x & z+\frac{1}{2}xy \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \\[.7em]
+&\in  \G
+\end{align*} so $ \image(\exp) \subseteq \G$.
+Now suppose $a,b,c \in \R$ so $\begin{bmatrix} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{bmatrix} \in \G$. Then 
+\[ 
+\exp  \begin{bmatrix} 0 & a & c-\frac{1}{2}ab \\ 0 & 0 & b \\ 0 & 0 & 0 \end{bmatrix} = \begin{bmatrix} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{bmatrix}
+\]
+so $\G \subseteq \image(\exp)$.
+
+Suppose that $A=\begin{bmatrix} 0 & a & c \\ 0 & 0 & b \\ 0 & 0 & 0 \end{bmatrix}$ and $A'=\begin{bmatrix} 0 & a' & c' \\ 0 & 0 & b' \\ 0 & 0 & 0 \end{bmatrix}$ are in $\g$ and that $\exp{A}=\exp{A'}$. Then 
+\[
+\begin{bmatrix} 0 & a & c+\frac{1}{2}ab \\ 0 & 0 & b \\ 0 & 0 & 0 \end{bmatrix} =\begin{bmatrix} 0 & a' & c' +\frac{1}{2}a' b' \\ 0 & 0 & b' \\ 0 & 0 & 0 \end{bmatrix}
+\] 
+and hence
+\begin{align*}
+a &= a' \\
+b &= b' \\
+c &= c'
+\end{align*}
+so $A=A'$.
+\end{proof}
+
+
+
+
+\subsection*{Notation}
+For the purpose of simplifying the notation of matrices in the Heisenberg group and in its Lie algebra, vector notation will sometimes be used. As defined above, an element of the Heisenberg group $\G$ will be denoted either by $ \begin{bmatrix} 1 & a & c \\ 0 & 1 & b \\ 0 & 0 & 1 \end{bmatrix} $ or equivalently $[a,b,c]$. Similarly, elements of the Lie algebra of the Heisenberg group will be denoted either by $\begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix}$ or $(x,y,z)$, or in some cases $\begin{bmatrix} x \\ y \\ z \end{bmatrix}$.
+
+In this notation, the bracket operation on two elements of $\g$ is given by 
+\begin{align*}
+[(x,y,z), (x',y',z')] &= \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix} \begin{bmatrix} 0 & x' & z' \\ 0 & 0 & y' \\ 0 & 0 & 0 \end{bmatrix} - \begin{bmatrix} 0 & x' & z' \\ 0 & 0 & y' \\ 0 & 0 & 0 \end{bmatrix} \begin{bmatrix} 0 & x & z \\ 0 & 0 & y \\ 0 & 0 & 0 \end{bmatrix} \\[.7em]
+&= \begin{bmatrix} 0 & 0 & xy' \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix} -\begin{bmatrix} 0 & 0 & x'y \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix} \\[.7em]
+&= (0,0,xy'-x'y)
+\end{align*}
+
+\section{Subgroups and Subalgebras}
+
+\begin{Definition}\label{Lie subgroup}
+Let $\G$ be a Lie group. A subset $\mathcal{H}$ of $\G$ is called a Lie subgroup if it is a subgroup and also a Lie group. So topologically $\mathcal{H}$ must be a closed subset of $\mathrm{GL}(n,\C)$, and algebraically $\mathcal{H}$ must be closed under the operations of multiplication and taking inverses. 
+\end{Definition}
+
+\begin{Definition}\label{Lie subalgebra}
+Let $\g$ be a Lie algebra. Then a vector subspace $\mathfrak{h}$ of $\g$ is called a Lie subalgebra of $\g$ if it is also closed under the Lie bracket, so if $X$ and $Y$ are in $\mathfrak{h}$, then
+\[
+[X,Y] \in \mathfrak{h}.
+\]
+
+N.B. In this paper, the term ``subalgebra" will be interchangeable with ``Lie subalgebra" since no other types of algebras will be mentioned.
+\end{Definition}
+
+\begin{Definition}\label{Nilpotent Group}
+Every group $G$ has an \emph{upper central series} $Z_{0},Z_{1}, Z_{2} \ldots$  constructed in the following way:
+\begin{itemize}
+\item $Z_{0}={e}$
+\item $Z_{1}=$the centre of the group $G$
+\item For $n \geq 2$,  $Z_{n}$ is the unique subgroup of $G$ such that $Z_{n}/Z_{n-1}$ is the centre of $G/Z_{n-1}$.
+
+A group $G$ is called nilpotent if its \emph{upper central series} $Z_{n}$ vanishes for some integer $n$.
+\end{itemize}
+
+\end{Definition}
+
+
+\begin{Definition}\label{Nilpotent Lie Algebra}
+In a similar way, every Lie algebra $\mathfrak{a}$ has a \emph{lower central series} constructed by applying the bracket operation to the Lie algebra repeatedly:
+ The Lie algebra of the Heisenberg group is a three dimensional nilpotent Lie algebra.
+\end{Definition}
+
+\section{Homomorphisms}
+
+\begin{Definition}\label{Lie Group Homomorphism}
+Let $\G$ and $\mathcal{H}$ be Lie groups and $f:\G \longrightarrow \mathcal{H} $ be a function. Then $f$ is called a \emph{Lie group homomorphism} if 
+\[ f(xy)=f(x)f(y) \; \; \; \text{(i.e. $f$ is a group homomorphism)} \]
+and $f$ is continuous with respect to the topologies on $\G$ and $\mathcal{H}$. 
+If moreover, $f$ is a bijection, $f$ is called a \emph{Lie group isomorphism}
+\end{Definition}
+
+\begin{Example}\label{canonical quotient of centre}
+Let $\G$ be the Heisenberg group. Let 
+\begin{eqnarray*}
+\pi : &\G& \longrightarrow (\R^{2},+) \\
+&[a,b,c]& \longmapsto (a,b)
+\end{eqnarray*}
+
+Then 
+
+\begin{eqnarray*}
+\pi([a,b,c][a',b',c']) &=& \pi[a+a',b+b',c+c'+ab'] \\
+&=&(a+a',b+b') \\
+&=& (a,b)+(a',b') \\
+&=& \pi[a,b,c] + \pi[a',b',c']
+\end{eqnarray*}
+
+So $\pi$ is a group homomorphism. Also, since the topology on $\G$ is inherited from the topology on $\R^{3}$, $\pi$ acts topologically as a projection from $\R^{3}$ onto $\R^{2}$ so is continuous. Hence $\pi$ is a Lie group homomorphism.
+\end{Example}
+
+\begin{Definition}\label{Lie Algebra Homomorphism}
+Let $\g$ and $\mathfrak{h}$ be Lie algebras. A linear transformation $T: \g \longrightarrow \mathfrak{h}$ is a Lie algebra homomorphism if in addition to the linearity properties, $T$ preserves the Lie bracket, i.e. 
+\[
+T[A,B] = [T(A), T(B)] \; \;\;\;\;\;\;\;\; \forall A,B \in \g
+\]
+\end{Definition}
+
+
+\begin{Definition}\label{Lie group anti-homomorphism}
+Let $\G$ and $\mathcal{H}$ be Lie groups. Then a function $f: \G \longrightarrow \mathcal{H}$ is called a \emph{Lie group anti-homomorphism} if it is continuous with respect to the topologies on $\G$ and $\mathcal{H}$ and
+\[
+f(xy)=f(y)f(x) \;\;\;\;\; \forall x,y \in \G
+\]
+If $f$ is also a bijection, then it is called a \emph{Lie group anti-isomorphism}.
+\end{Definition}
+
+\begin{Definition}\label{Lie algebra anti-homomorphism}
+Let $\g$ and $\mathfrak{h}$ be Lie algebras. A linear transformation $T: \g \longrightarrow \mathfrak{h}$ is a Lie algebra anti-homomorphism if in addition to the linearity properties,  
+\begin{align*}
+T[A,B] &= -[T(A), T(B)]  & \forall A,B \in \g \\
+&= [T(B),T(A)]
+\end{align*}
+\end{Definition}
+
+\begin{Theorem}\label{Homomorphisms Correspondence}
+Let $\G$ and $\mathcal{H}$ be matrix Lie groups with corresponding Lie algebras $\g$ and $\mathfrak{h}$ respectively. Suppose that $\Phi: \G \longrightarrow \mathcal{H}$ is a Lie group homomorphism. Then there exists a unique Lie algebra homomorphism $\phi: \g \longrightarrow \mathfrak{h}$ such that 
+\begin{align*}
+\Phi(e^{X}) &= e^{\phi(X)} & \forall X \in \g
+\end{align*}
+
+Now let $\G$ and $\mathcal{H}$ be matrix Lie groups, $\g$ and $\mathfrak{h}$ be their Lie algebras and let $\G$ be simply connected [need to define this somewhere- appendix]. Then if $\phi: \g \longrightarrow \mathfrak{h}$ is a Lie algebra homomorphism, there exists a unique Lie group homomorphism $\Phi: \G \longrightarrow \mathcal{H}$ defined by
+\[
+\Phi(A) = e^{\phi(\log{A})} \;\;\;\;\;\;\; \forall A \in \G
+\]
+\end{Theorem}
+
+\begin{Example}
+Let $\G$ be the Heisenberg group and let $\g$ be its Lie algebra. Let $\mathcal{H}=\mathrm{GL}(1,\R)$. The Lie algebra of $\mathcal{H}$ is $\mathfrak{h}=\mathrm{M}_{1}(\R)$. Define 
+\begin{eqnarray*}
+\Phi :& \G &\longrightarrow  \mathcal{H} \\
+&[x,y,z] &\longmapsto  e^{x}
+\end{eqnarray*}
+This is a Lie group homomorphism. It is continuous since the map $x \mapsto e^{x}$ is continuous and 
+
+\begin{eqnarray*}
+\Phi ([x,y,z][x',y',z']) &=& \Phi [x+x',y+y', z+z'+xy'] \\
+&=& e^{x+x'} \\
+&=& e^{x}e^{x'} \\
+&=& \Phi [x,y,z] \Phi [x',y',z']
+\end{eqnarray*}
+
+Now
+\[
+\Phi [x,y,z] = \Phi (\exp{(x,y,z-\frac{1}{2}xy))}=e^{x}
+\]
+So there is a unique map $\phi: \g \longrightarrow \mathfrak{h}$ defined by $\phi(x,y,z)=x$ such that
+\[
+\Phi(e^{X}) = e^{\phi(X)} \;\;\;\;\;\;\;\; \forall X \in \g
+\]
+ It is a linear map of vector spaces since it projects onto one of the dimensions. Also for $(x,y,z)$ and $(x',y',z')$ in $\g$, 
+\[ \phi [(x,y,z), (x',y',z')]=\phi (0,0,xy'-x'y)=0
+\]
+and
+\begin{eqnarray*}
+[\phi(x,y,z),\phi(x',y',z')]=[x,x']=xx'-x'x &=& 0 \\
+&=&  \phi [(x,y,z), (x',y',z')]
+\end{eqnarray*}
+Hence $\phi$ is a Lie algebra homomorphism.
+\end{Example}
+
+
+
+%Baker Campbell Hausdorff Formula
+\section{The Baker-Campbell-Hausdorff Formula}
+
+Since we wish to simplify the study of Lie group homomorphisms by studying properties of the corresponding Lie algebra homomorphisms, we need a way to relate the operations on these objects directly. In the case of the unit circle $\mathrm{S}^{1}$, the properties of the exponential function on real numbers give the simple correspondence between addition on the real line, and multiplication of elements of the unit circle in the complex plane. For noncommutative groups this simple relationship does not hold. However, there is a more complicated way of relating the structure of Lie algebras to their corresponding Lie groups. 
+
+\paragraph{Heisenberg Group}
+Let $\g$ denote the Lie algebra of the Heisenberg group.
+The Lie algebra of the Heisenberg group has non-commutative multiplication, however for any $X$, $Y$ $\in \g$, $X$ and $Y$ each commute with $[X,Y]$. In other words
+\[
+[X,[X,Y]]=[Y,[X,Y]]=0
+\]
+\begin{proof}
+Let $X=(x,y,z)$ and $Y=(x',y',z')$ be elements of $\g$. 
+\begin{eqnarray*}
+[X,[X,Y]] &=& [X, (0,0,xy'-x'y)] \\
+&=&[(x,y,z),(0,0,xy'-x'y)] \\
+&=& 0
+\end{eqnarray*}
+
+and
+\begin{eqnarray*}
+[Y,[X,Y]] &=& [Y, (0,0,xy'-x'y)] \\
+&=&[(x',y',z'),(0,0,xy'-x'y)] \\
+&=& 0
+\end{eqnarray*}
+\end{proof}
+
+We require some tools in order to explain the formula for the Heisenberg group. 
+
+\begin{Definition}\label{Two Adjoint Mappings}
+Let $X$ and $Y$ be elements of $\mathrm{M}_{n}(\C)$. Define the following maps: 
+\begin{eqnarray*}
+\mathrm{Ad}_{Y}:& \mathrm{M}_{n}(\C) & \longrightarrow \mathrm{M}_{n}(\C) \\
+&X& \longmapsto YXY^{-1}
+\end{eqnarray*}
+
+and
+\begin{eqnarray*}
+\mathrm{ad}_{Y}:& \mathrm{M}_{n}(\C) & \longrightarrow \mathrm{M}_{n}(\C) \\
+&X& \longmapsto [Y,X]=YX - XY
+\end{eqnarray*}
+
+\end{Definition}
+
+\begin{Definition}
+Define also the operator $e^{\mathrm{ad}_{Y}}$ given by the following power series:
+\[
+e^{\mathrm{ad}_{Y}}(X)= \mathrm{id}(X) + \mathrm{ad}_{Y}(X) + \frac{1}{2!}( \mathrm{ad}_{Y}^{2})(X) + \frac{1}{3!}( \mathrm{ad}_{Y}^{3})(X) + \cdots
+\]
+\end{Definition}
+
+\begin{Lemma}
+\[
+\mathrm{Ad}_{e^{Y}}(X)=e^{\mathrm{ad}_{Y}}(X)
+\]
+\end{Lemma}
+
+\begin{Theorem}
+Let $\G$ be a matrix Lie group with Lie algebra $\g$. If the commutativity property above holds in $\g$ then for $X$ and $Y$ in $\g$, 
+\[
+e^{X}e^{Y}=e^{X+Y+\frac{1}{2}[X,Y]}
+\]
+This is a special case of the Baker-Campbell-Hausdorff Formula (which will sometimes be referred to as the BCH Formula in this project)
+\end{Theorem}
+
+\begin{proof}
+To prove the formula, it will be shown that two apparently different functions are both the unique solution to a particular differential equation, and therefore must be identical. 
+Let $X$ and $Y$ be elements of $\g$. Consider the differential equations in the real variable $t$ defined by 
+\begin{eqnarray*}
+A(t)&=& e^{tX}e^{tY}e^{-\frac{t^{2}}{2}[X,Y]} \\
+B(t) &=& e^{t(X+Y)}
+\end{eqnarray*}
+
+\begin{Lemma}\label{commute matrices}
+Let $M$ and $N$ be $n \times n$ matrices. If $M$ commutes with $N$, then $M$ also commutes with $e^{N}$. 
+\end{Lemma}
+ 
+
+\begin{proof}
+It will be shown that $MN^{k}=N^{k}M$ for all positive integers $k$.
+
+Since $N$ and $M$ commute, the statement is true for $k=1$. Suppose that the statement is true for some positive integer $K$. Then for $K+1$ we have
+\begin{align*}
+MN^{K+1} &= MN^{K}N \\
+&=N^{K}MN \\
+&=N^{K}NM \\
+&=N^{K+1}M
+\end{align*}
+Hence by induction the statement is true for all positive integers $k$. 
+
+Now, 
+\begin{align*}
+Me^{N} &= M(I+N+\frac{N^{2}}{2!}+\frac{N^3}{3!}+\cdots) \\
+&= M+MN+\frac{1}{2!}MN^{2}+\frac{1}{3!}MN^{3} + \cdots \\
+&= M+NM+\frac{1}{2!}N^{2}M+\frac{1}{3!}N^{3}M + \cdots \\
+&= (I+N+\frac{N^{2}}{2!}+\frac{N^3}{3!}+\cdots)M \\
+&= e^{N}M
+\end{align*}
+as required.
+\end{proof}
+
+
+\begin{Lemma}
+%what are these elements X and Y, really???
+Let $X$ and $Y$ be elements of $\g$ and let $t$ be any real number. Suppose that $e^{tY}$ exists. Then
+\[
+Xe^{tY}=e^{tY}(X+t[X,Y]).
+\]
+\end{Lemma}
+
+\begin{proof}
+\begin{align*}
+Xe^{tY} &= e^{tY}e^{-tY}Xe^{tY} \\
+&= e^{tY}\mathrm{Ad}_{e^{-tY}}(X) \\
+&= e^{tY}e^{-t\mathrm{ad}_{Y}}(X) \\
+&= e^{tY}(X-t[Y,X]+\frac{t^{2}}{2}[Y,[Y,X]]-\frac{t^{3}}{3!}[Y,[Y,[Y,X]]]+\cdots \\
+&= e^{tY}(X - t[Y,X])\\
+&= e^{tY}(X + t[X,Y])
+\end{align*}
+since $[Y,[Y,X]]=0$.
+\end{proof}
+
+$A(t)$ and $B(t)$ are both now differentiated as follows:
+
+\begin{align*}
+A'(t) &= e^{tX}Xe^{tY}e^{-\frac{t^2}{2}[X,Y]}+e^{tX}e^{tY}Ye^{-\frac{t^2}{2}[X,Y]}+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(-t[X,Y]) \\
+&= e^{tX}Xe^{tY}e^{-\frac{t^2}{2}[X,Y]}+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}Y  +e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(-t[X,Y]) \\
+& (\text{since $Y$ commutes with $[X,Y]$ and by Lemma 1.5.5})\\
+&= e^{tX}e^{tY}(X+t[X,Y])e^{-\frac{t^2}{2}[X,Y]}+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}Y\\
+& \quad \quad \quad +e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(-t[X,Y]) \\
+&= e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(X+t[X,Y])+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}Y\\
+& \quad \quad \quad+e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(-t[X,Y]) \\
+&  (\text{since $X$ and $[X,Y]$ each commute with $[X,Y]$})\\
+&= e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(X+t[X,Y]+Y-t[X,Y]) \\
+&= e^{tX}e^{tY}e^{-\frac{t^2}{2}[X,Y]}(X+Y) \\
+&= A(t)(X+Y)
+\end{align*}
+
+\begin{eqnarray*}
+B'(t) &=& e^{t(X+Y)}(X+Y) \\
+&=& B(t)(X+Y)
+\end{eqnarray*}
+
+It is also necessary for the above differential equations to have the same initial conditions if the uniqueness theorem is to be applied. 
+\[
+A(0)=e^{0}e^{0}e^{0}=I^{3}=I
+\]
+and 
+\[
+B(0)=e^{0}=I
+\]
+So $A(t)$ and $B(t)$ satisfy the same differential equation with the same initial conditions. By the basic uniqueness theorems for differential equations this implies $A(t)=B(t), \forall t \in \R$. Substituting the value $t=1$ gives 
+\begin{eqnarray*}
+e^{X}e^{Y}e^{-\frac{1}{2}[X,Y]} &=&e^{X+Y} \\
+e^{X}e^{Y} &=& e^{X+Y}e^{\frac{1}{2}[X,Y]} \\
+&=& e^{X+Y+\frac{1}{2}[X,Y]} \\
+& & (\text{since $(X+Y)$ commutes with $\frac{1}{2}[X,Y]$})
+\end{eqnarray*}
+This completes the proof of the Baker-Campbell-Hausdorff Formula for the Heisenberg group. 
+\end{proof}
+
+There is a more general formula for any noncommutative Lie group $\G$, however there is an infinite series of commutator terms, say $S$, such that for all $X$ and $Y$ in $\G$,
+\[
+e^{X}e^{Y}=e^{X+Y+S}
+\]
+For nilpotent Lie groups, which necessarily have nilpotent associated Lie algebras, applying the bracket operation repeatedly eventually gives $0$, in a finite number of steps. So the series of commutator terms in the BCH Formula for nilpotent Lie groups is finite.
+The series formula will be stated but not proved in this thesis. A full proof is given in ...
+%find a proof for general BCH formula
+
+\begin{Definition}
+An \emph{abelian Lie algebra} is one in which that bracket operation always gives $0$. From the Baker-Campbell-Hausdorff Formula, it is clear that an abelian Lie Group always has a corresponding abelian Lie algebra, since all commutators in the BCH Formula must be zero in order for the group operation to be commutative. 
+\end{Definition}
+
+
+%Begin chapter 2
+\chapter{Case of the Heisenberg Group}
+For this chapter the following notation will be used:
+
+$$\G=\text{the Heisenberg group}$$
+$$\g=\text{the Lie algebra of the Heisenberg group}$$
+
+\section{Aim}
+The aim of this chapter is to prove a rigidity theorem for coset-preserving bijective maps on the Heisenberg group. The ideas and methods used in this theorem are foundational for the proof of the theorem for higher dimensional Lie groups. 
+
+The theorem is split into two parts. The first theorem demonstrates the constraints on a map that preserves only cosets of Lie subgroups, whereas the second theorem is about the stronger constraint obtained when cosets of \emph{any} subgroups are preserved. 
+
+This first thing that needs to be established is that a coset-preserving map on the Heisenberg group is affine. This involves a geometric construction. 
+
+
+
+
+\section{Proof that coset-preserving maps are affine}
+
+\begin{Definition}\label{affine map}
+A map $\varphi: \R^{n} \longrightarrow \R^{n}$ is \emph{affine} if for all $\mathbf{v_{1}},\mathbf{v_{2}} \in \R^{n}$ and all $\lambda \in \R$ 
+\[
+\varphi [ \lambda \mathbf{v_{1}}+(1-\lambda) \mathbf{v_{2}}]= \lambda \varphi (\mathbf{v_{1}})+(1-\lambda) \varphi(\mathbf{v_{2}})
+\]
+\end{Definition}
+
+\begin{Lemma}
+Suppose $\alpha: \R^{2} \longrightarrow \R^{2}$ sends $\mathbf{0}$ to $\mathbf{0}$, sends lines to lines and is bijective. Then $\alpha$ is linear. 
+\end{Lemma}
+
+\begin{proof}
+Construct a map based on the following assumptions. Let $\alpha': \R^{2} \longrightarrow \R^{2}$ be linear and
+\begin{eqnarray*}
+\alpha'(\alpha(1,0))&=& (1,0)\\
+\alpha'(\alpha(0,1)) &=& (0,1)
+\end{eqnarray*}
+This map $\alpha'$ is well-defined and unique since bijectivity of $\alpha$ implies $\alpha(1,0) \neq \alpha(0,1)$ so every element of $\R^{2}$ can be written as a linear combination of $\alpha(1,0)$ and $\alpha(0,1)$. 
+Now define a map $\psi: \R^{2} \longrightarrow \R^{2}$ by $\psi= \alpha' \circ \alpha$
+Note that $\psi$ is bijective so the image of a pair of parallel lines under $\psi$ is a pair of parallel lines. In particular $\psi$ sends the $x$-axis to itself and also the $y$-axis to itself. For real numbers $x_1$ and $x_2$, suppose $$\psi(x_{1},0)=(x_{1}',0)$$ and $$\psi(x_{2},0)=(x_{2}',0)$$
+
+Let $A$ and $B$ be points on the $x$-axis in $\R^2$ given by 
+\begin{align*}
+A&= (x_1,0) \\
+B&=(x_2,0).
+\end{align*}
+
+A geometrical construction will demonstrate that
+\begin{equation}
+\psi(x_{1}+x_{2},0)=(x'_{1}+x'_2,0)
+\end{equation}
+
+and 
+\begin{equation}
+\psi(x_{1}x_{2},0)=(x_{1}'x_{2}',0)
+\end{equation}
+
+
+Proof of the addition property:
+Consider the diagram.
+
+%insert the picture here.
+
+
+Let $P=(1,0)$ and $Q=(0,1)$. Then construct lines $L_{1}$, $L_{2}$, $L_{3}$ and $L_{4}$ as shown so that $$A'=(0,x_{1})$$ $$B'=(x_{2}, x_{1})$$ and $$C=(x_{1}+x_{2},0)$$ Now the map $\psi$ sends the $x$- and $y$- axes to themselves, sends parallel lines to parallel lines and by definition, $\psi(P)=P$ and $\psi(Q)=Q$. Here is a diagram showing the images of all the points and lines under $\psi$.
+
+%insert second diagram here
+
+
+So by conservation of parallel lines, the parallelogram $AA'B'C$ is mapped to a new parallelogram $\psi(A)\psi(A')\psi(B')\psi(C)$ where the sloping sides must have gradient $-1$, since they are parallel to $PQ$. So $\psi(A)=(x_{1}',0)$ and $\psi(B)=(x_{2}',0)$. Then using the properties of the parallelogram, 
+\[
+\psi(A')=(0,x_{1}')
+\]
+\[
+\psi(B')=(x_{2}',x_{1}')
+\]
+and 
+\[
+\psi(C)=(x_{1}'+x_{2}',0)
+\]
+Hence 
+\begin{equation}\label{axisaddnmap}
+\psi(x_{1}+x_{2},0)=(x'_{1}+x'_2,0)
+\end{equation}
+as required.
+
+Now consider a new diagram showing the construction of $C=(x_{1}x_{2},0)$.
+
+%insert 3rd diagram construction here.
+
+The point $C$ is constructed by starting with $A=(x_{1},0)$ and $B=(x_{2},0)$. Construct the line $L_1$ of gradient $-1$ through $A$ so that $A'=(0,x_{1})$. Then construct a horizontal line through $A'$ and a vertical line through $P$ to meet in $D=(1,x_{1})$. Construct a line $L_2$ through $O$ and $C$, given by 
+$$y=x_{1}x .$$ 
+Construct a vertical line through $B$ to meet $L_2$ in $E=(x_{2}, x_{1}x_{2})$. Then construct a horizontal line through $E$ to meet the $y$-axis in $B'=(0,x_{1}x_{2})$. Construct a line $L_3$ of gradient $-1$ through $B'$ which meets the $x$-axis at $C$. So by construction 
+\[
+C=(x_1 x_2,0).
+\]
+
+Now consider the all these points and lines under the map $\psi$. 
+
+%insert the fourth diagram construction here
+
+Let $\psi(A)=(x_{1}',0)$ and $\psi(B)=(x_{2}',0) $. Once again, the image of a pair of parallel lines must be a pair of parallel lines. Lines of gradient $-1$ are mapped to lines of gradient $-1$ since $P$ and $Q$ are fixed. So 
+\[
+\psi(A')=(0,x_{1}')
+\]
+Once again, horizontal lines are mapped to horizontal lines and vertical lines are mapped to vertical lines so
+\[
+\psi(D)=(1,x_{1}')
+\]
+Hence the line $L$ is mapped to the line $\psi(L)$ which is given by $y=x_{1}'x$. Again, the vertical line through $B$ is mapped to a vertical line through $\psi(B)$ so 
+\[
+E=(x_{2}',x_{1}'x_{2}')
+\]
+and the by the preservation of horizontal lines, 
+\[
+\psi(B)=(0,x_{1}'x_{2}').
+\]
+Finally, by the preservation of lines of gradient $-1$, we have 
+
+\[
+\psi(C)=(x_{1}'x_{2}',0)
+\]
+
+Hence 
+\begin{equation}\label{axismultmap}
+\psi(x_{1}x_{2},0)= (x_{1}'x_{2}',0)
+\end{equation}
+as required.
+
+
+Define the projection map
+\begin{eqnarray*}
+P: &\R^{2}& \longrightarrow \R \\
+&(x,y)& \longmapsto x
+\end{eqnarray*}
+
+Consider the induced map $f:\R \longrightarrow \R$ defined by
+\[
+f(x)=P_{x}(\psi(x,0))
+\]
+Then by the equations \ref{axisaddnmap} and \ref{axismultmap} above, $f$ is bijective and has the following properties:
+\begin{eqnarray*}
+f(0) &=& 0 \\
+f(1) &=& 1 \\
+f(x+y)&=& f(x)+f(y) \\
+f(xy) &=& f(x)f(y)
+\end{eqnarray*} 
+Now let $n \in \Z$. Then 
+\begin{eqnarray*}
+f(n) &=& f(1+1+ \cdots +1) \\
+&=&f(1)+f(1) + \cdots +f(1) \\
+&=& 1+1+ \cdots +1 \\
+&=& n
+\end{eqnarray*}
+Also 
+\begin{eqnarray*}
+1 &=&f(1) \\
+ &=& f\left( n \cdot \frac{1}{n} \right) \\
+&=& f(n)f\left( \frac{1}{n} \right) \\
+&=& nf\left( \frac{1}{n} \right)
+\end{eqnarray*}
+Hence 
+\[
+f \left( \frac{1}{n} \right)=\frac{1}{n}
+\]
+Now let $m$ and $n$ be integers. So 
+\begin{eqnarray*}
+f \left(\frac{m}{n}\right)&=&f\left(m \cdot \frac{1}{n}\right)\\
+&=& f(m)f\left(\frac{1}{n}\right) \\
+&=& m\cdot \frac{1}{n} \\
+&=& \frac{m}{n}
+\end{eqnarray*}
+So $f$ restricted to $\Q$ is the identity. \
+Further, $f$ is continuous.
+\begin{proof}
+$f$ sends positive numbers to positive numbers and negative numbers to negative numbers since if $a>0$,
+\[
+f(a)=f(\sqrt{a}\sqrt{a})=f(\sqrt{a})f(\sqrt{a})=f(\sqrt{a})^{2}>0
+\]
+and by bijectivity if $b<0$ then $f(b)<0$.\
+Let $\epsilon >0$ and fix an element $y \in \R$. Suppose $|x-y|<\epsilon$. Now if $x<y$ then $0<x-y<\epsilon$. Insert a rational number $z$ between $x-y$ and $\epsilon$ so that
+\[
+0<x-y<z<\epsilon
+\]
+Now
+\[
+f(z-(x-y))=f(z)-f(x-y)=z-f(x-y)>0
+\]
+since $z-(x-y)>0$ and $f(z)=z$. Also
+\[
+f(x-y)>0
+\]
+since $x-y>0$. So $0<f(x-y)<z<\epsilon$, so
+\[
+0<f(x)-f(y)<\epsilon
+\]
+On the other hand, if $x \geq y $ then $-\epsilon<x-y \leq 0$. Insert a rational number $z$ between $-\epsilon$ and $x-y$ so that $-\epsilon<z<x-y \leq 0$. Then 
+\[
+f(z-(x-y))=f(z)-f(x-y)=z-f(x-y)<0
+\]
+since $z-(x-y)<0$ and $f(z)=z$. Also
+\[
+f(x-y)\leq 0
+\]
+since $x-y \leq 0$. So $-\epsilon<z<f(x-y)\leq 0$, so
+\[
+-\epsilon < f(x)-f(y) \leq 0
+\]
+In both cases $|f(x)-f(y)|<\epsilon$. Hence the function $f$ is continuous
+\end{proof}
+Since every real number is a limit of a sequence of rational numbers, and $f$ is continuous, $f$ must be the identity map $\R \longrightarrow \R$. 
+
+The same properties can be shown for the map $\psi$ on the $y$-axis. And then since every point in the plane is a projection of point on the x and y axes by horizontal and vertical lines, $\psi(x,y)=(x,y)$ for all $(x,y) \in \R^{2}$. Hence $\alpha'_{o}\alpha=\psi=\text{id}$ so $\alpha=\alpha'^{-1}$, which is a linear map since $\alpha'$ is a linear map. 
+\end{proof}
+
+\begin{Proposition}\label{linesplanes}
+Let $\varphi: \R^{3} \longrightarrow \R^{3}$ be such that $\varphi$ is bijective, sends lines to lines and vertical planes to vertical planes. Then $\varphi$ is an affine map. 
+\end{Proposition}  
+
+\begin{proof}
+Let $\mathbf{v_{1}}$ and $\mathbf{v_{2}} $ be vectors in $\R^{3}$.
+%[[ such that $\mathbf{v_{1}}-\mathbf{v_{2}} \notin \text{span} \{ \mathbf{{\bf e}_{3}} \}$.]] 
+Define a line $L$ in $\R^{3}$ by 
+$$ L:=\{ \lambda \mathbf{v_{1}} + (1-\lambda) \mathbf{v_{2}} \mid \lambda \in \R \}.$$
+
+If $\mathbf{v_{1}}-\mathbf{v_{2}} \notin \text{span} \{ (0,0,1) \}$, then let $\mathbf{v_{3}}=(0,0,1)$. Whereas if $\mathbf{v_{1}}-\mathbf{v_{2}} \in \text{span} \{ (0,0,1) \}$ let $\mathbf{v_{3}}=(1,0,0)$. 
+  
+In either case it is possible to define a vertical plane 
+$$\Pi=\{ \lambda \mathbf{v_{1}} + (1-\lambda) \mathbf{v_{2}} + \mu\mathbf{v_{3}} \mid \lambda,\mu \in \R \}.$$ 
+
+Now $\varphi$ sends vertical planes to vertical planes so let $\Sigma$ be the image of $\Pi$ under $\varphi$. Then 
+\begin{align*}
+&\mathbf{v_{1}}, \mathbf{v_{2}} \in \Pi  \quad  \implies\\
+&\varphi(\mathbf{v_{1}}),\varphi(\mathbf{v_{2}}) \in \Sigma.
+\end{align*}
+
+Hence the line joining these to points is also in $\Sigma$, in other words
+\[
+\{ \gamma \varphi(\mathbf{v_{1}}) + (1-\gamma)\varphi(\mathbf{v_{2}}) \mid \gamma \in \R \} \subset \Sigma
+\]
+
+%Here, need to be careful to treat the case of v1-v2 being vertical. Haven't yet done it properly.
+Also we know $\Sigma$ is a vertical plane, and since $\mathbf{v_{1}}-\mathbf{v_{2}} \notin \text{span}\{ \mathbf{v_{3}}\}$, the plane $\Sigma$ is defined by 
+\[
+\Sigma = \{ \gamma \varphi(\mathbf{v_{1}}) + (1-\gamma)\varphi(\mathbf{v_{2}}) + \delta \varphi(\mathbf{v_{3}}) \; \;|\;\; \gamma,\delta \in \R \}
+\]
+Now each plane $\Pi$ and $\Sigma$ can be given the structure of a two dimensional vector space in the following sense:
+Let $O_{\Pi}=\mathbf{v_{2}}$ and $O_{\Sigma}= \varphi(\mathbf{v_{2}})$. Then elements of $\Pi$ can all be expressed as 
+\[
+(\alpha_{1}, \alpha_{2})_{\Pi}:= \alpha_{1}\mathbf{v_{1}}+(1-\alpha_{1})\mathbf{v_{2}} + \alpha_{2}\mathbf{v_{3}}
+\]
+so that $O_{\Pi}=(0,0)$. 
+Elements of $\Sigma$ can similarly be expressed as
+\[
+(\beta_{1}, \beta_{2})_{\Sigma}= \beta_{1}\varphi(\mathbf{v_{1}})+(1-\beta_{1})\varphi(\mathbf{v_{2}}) + \beta_{2} \varphi (\mathbf{v_{3}})
+\]
+Thus $\Pi$ and $\Sigma$ have the structure of two-dimensional vector spaces, isomorphic to $\R^2$. Then by the Lemma 2.2.1, since $\varphi(O_{\Pi}=O_{\Sigma}$, and $\varphi$ is bijective and sends lines to lines, $\varphi:\Pi \longrightarrow \Sigma$ is linear. In other words, 
+\[
+\varphi[(\alpha_{1},\alpha_{2})_{\Pi}+\lambda(\alpha_{1}',\alpha_{2}')_{\Pi}]=\varphi(\alpha_{1},\alpha_{2})_{\Pi} + \lambda \varphi(\alpha_{1}',\alpha_{2}')_{\Pi}
+\]
+Note also that 
+\begin{eqnarray*}
+\varphi(1,0)_{\Pi}&=&\varphi(\mathbf{v_{1}}) \\
+&=& (1,0)_{\Sigma}
+\end{eqnarray*}
+So:
+\begin{eqnarray*}
+\varphi[\lambda(\mathbf{v_{1}})+(1-\lambda)(\mathbf{v_{2}})] &=& \varphi(\lambda,0)_{\Pi} \\
+&=& \varphi[\lambda(1,0)_{\Pi}] \\
+&=& \lambda\varphi(1,0)_{\Pi} \\
+&=& \lambda(1,0)_{\Sigma} \\
+&=&(\lambda,0)_{\Sigma} \\
+&=& \lambda\varphi(\mathbf{v_{1}})+(1-\lambda)\varphi(\mathbf{v_{2}})
+\end{eqnarray*}
+Hence $\varphi$ is affine on $\R^{3}$.
+\end{proof}
+
+\begin{Proposition}\label{affinelinear}
+Let $\varphi$ be an affine map from $\R^{n}$ to $\R^{n}$. So $\varphi$ preserves affine combinations. Then the map $\phi$ defined by 
+\[
+\phi(x)=\varphi(x)-\varphi(0)
+\]
+is a linear map.
+\end{Proposition}
+
+\begin{proof}
+Let $\lambda \in \R$ and $x$ and $y \in \R^{n}$. Then 
+\begin{eqnarray*}
+\phi(\lambda x) &=& \varphi(\lambda x) - \varphi(0) \\
+&=& \varphi(\lambda x +(1-\lambda)0)-\varphi(0) \\
+&=& \lambda \varphi(x)+(1-\lambda)\varphi(0) -\varphi(0) \\
+&=& \lambda \varphi(x)-\lambda\varphi(0) \\
+&=& \lambda (\varphi(x)-\varphi(0)) \\
+&=& \lambda \phi(x) 
+\end{eqnarray*}
+
+and
+
+\begin{eqnarray*}
+\phi(x+y) &=& \varphi(x+y)-\varphi(0) \\
+&=& \varphi(\lambda x' + (1-\lambda)y') -\varphi(0) \\
+&=& \lambda \varphi( x') + (1-\lambda)\varphi(y') -\varphi(0) \\
+&=& \lambda \varphi(\frac{1}{\lambda} x) + (1-\lambda)\varphi(\frac{1}{1-\lambda} y') -\varphi(0) \\
+&=& \lambda (\varphi(\frac{1}{\lambda} x) -\varphi(0)) + (1-\lambda)(\varphi(\frac{1}{1-\lambda} y')-\varphi(0))  \\
+&=& \lambda (\phi(\frac{1}{\lambda} x) ) + (1-\lambda)(\phi(\frac{1}{1-\lambda} y'))  \\
+&=& \lambda \frac{1}{\lambda} \phi( x)  + (1-\lambda)\frac{1}{1-\lambda} \phi( y')  \\
+&=& \phi(x)+\phi(y)
+\end{eqnarray*}
+Hence $\phi$ is a linear map.
+\end{proof} 
+
+
+
+\section{Restriction obtained from preservation of connected cosets}
+
+\begin{Theorem}\label{preserve closed cosets}
+Suppose that $\Psi: \G \longrightarrow \G$ is bijective and sends every coset of any Lie subgroup of $\G$ to some coset of some Lie subgroup of $\G$. Then $\Phi:\G \longrightarrow \G$ defined by $\Phi(X)=\Psi(0)^{-1}\Psi(X)$ also preserves these cosets and the induced map $\phi: \g \longrightarrow \g$ defined by $\phi(x)=\log \Phi(\exp(x))$ is a linear map of $\g$ given by a matrix of the form
+
+$\phi =\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & g
+\end{bmatrix}$, where
+$ \det(\phi) \neq 0 $. In other words
+\[
+\phi \begin{bmatrix}
+x \\y \\z 
+\end{bmatrix}= \begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & g
+\end{bmatrix}
+\begin{bmatrix}
+x \\y \\z 
+\end{bmatrix}
+\]
+
+\end{Theorem}
+
+
+\begin{proof}
+Observe that 
+\begin{eqnarray*}
+\phi(0_{\g})&=&\log \Phi (\exp(0)) \\
+&=& \log \Phi(0) \\
+&=& \log \Psi(0)^{-1}\Psi(0) \\
+&=& \log 0_{\G} \\
+&=& 0_{\g}.
+\end{eqnarray*}
+
+Then since $\phi(0_{\g})=0_{\g}$, $\phi$ must send subalgebras of $\g$ to subalgebras of $\g$ bijectively (since every subalgebra contains $0_{\g}$). What are these subalgebras?
+
+
+%What are the subalgebras and Subgroups and Cosets?
+\subsection{One-dimensional Subalgebras}
+\begin{Proposition}
+All one-dimensional subspaces of $\g$ are subalgebras.
+\end{Proposition}
+
+\begin{proof}
+All one-dimensional subspaces are lines through the origin. Let $S$ be a one-dimensional subspace of $\g$. Then 
+\[
+S= \text{span}(X)
+\]
+for some $X=(x,y,z) \in \g$. Let $\lambda X$ and $\mu X$ be elements of $S$. Then 
+\begin{eqnarray*}
+[\lambda X,\mu X] &=& [(\lambda x, \lambda y, \lambda z), (\mu x, \mu y, \mu z)] \\
+&=& (0,0, \lambda x \mu y - \lambda y \mu x) \\
+&=& (0,0, \lambda  \mu xy - \lambda \mu xy) \\
+&=& (0,0,0) \in S
+\end{eqnarray*}
+Hence every one-dimensional subspace of $S$ is closed under the Lie bracket and is thus also a one-dimensional subalgebra. 
+\end{proof}
+
+\subsection{Two-dimensional Subalgebras}
+Let $\mathfrak{Z}=\text{span}(0,0,1)$ denote the $z$-axis.
+The question is now whether all two-dimensional subspaces of $\g$ are also subalgebras. Two-dimensional subspaces of $\g$ are planes through the origin. So any subspace is the span of two linearly independent vectors in $\g$.
+Let $\mathfrak{h}= \text{span}(X ,Y)$ where $X=(x_{1},x_{2},x_{3})$ and $Y=(y_{1},y_{2},y_{3})$ are distinct elements of $\g$.
+
+Then  
+\begin{eqnarray*}
+  [X,Y] & \in \mathfrak{h} \\
+\text{i.e.}\;\;\;\;\;(0,0, x_{1}y_{2}-x_{2}y_{1}) & \in \mathfrak{h}
+\end{eqnarray*}
+   
+This restriction can be analysed in the following two distinct cases:
+
+\begin{enumerate}
+ \item $x_{1}y_{2}=x_{2}y_{1}$
+ \item $x_{1}y_{2}\neq x_{2}y_{1}$
+\end{enumerate}
+
+In case (1), 
+\[
+x_{1}y_{2}=x_{2}y_{1}
+\]
+First consider the sub-case in which $x_{1}=x_{2}=0$ Then it is not possible to have both $x_{2}=0$ and $y_{2}=0$ since this would make $X$ and $Y$ linearly dependent. So without loss of generality select $y_{2} \neq 0$. Then there exists $k \in \R$ such that 
+\[
+x_{2} = ky_{2}
+\]
+So 
+\[
+X-kY=(0,0,x_{3}-ky_{3}) \in \mathfrak{h}
+\]
+Note that $X-kY \neq 0$ since otherwise $X$ and $Y$ would be linearly dependent. So $\mathfrak{h}$ contains $\text{span}(0,0,x_{3}-ky_{3})=\mathfrak{Z}$, and hence $\mathfrak{h}$ is a vertical plane. 
+
+Now suppose at least one of $x_{1}$ and $y_{1}$ is non-zero. Without loss of generality suppose $y_{1} \neq 0$.
+Then there exists some $\lambda \in \R$ such that $x_{1} = \lambda y_{1}$. So
+
+\begin{eqnarray*}
+ \lambda y_{1}y_{2} &=& x_{2} y_{1}\\
+ \lambda y_{2} &=& x_{2}
+\end{eqnarray*}
+
+Hence
+\begin{eqnarray*}
+ X-\lambda Y & = & (x_{1},x_{2},x_{3})-(\lambda y_{1},\lambda y_{2},\lambda y_{3}) \\
+	     & = & (0,0,x_{3}-\lambda y_{3}) \\
+	     & \neq & 0
+\end{eqnarray*}
+since $X$ and $Y$ are linearly independent. 
+Therefore 
+\[
+\mathfrak{Z}=\text{span}(0,0,1)=\text{span}(0,0,x_{3}-\lambda y_{3}) \in \mathfrak{h}
+\]
+
+In the second case, $x_{1}y_{2}\neq x_{2}y_{1}$ so 
+\[
+\text{span}(0,0, x_{1}y_{2}- x_{2}y_{1})= \mathfrak{Z} \in \mathfrak{h}
+\]
+
+Hence any plane through the origin in $\g$ which is closed under the Lie bracket must contain the $z$-axis. In other words, all two-dimensional subalgebras of $\g$ are vertical planes through the origin.
+
+
+%Using this propostion will mean changing the way the rest of this result is argued
+%Need to explain why preservation of cosets in $\G$ implies preservation of cosets in $\g$.
+\begin{Proposition}
+Let $\mathcal{C}$ be a coset of some subgroup $\mathcal{S}$ of $\G$. Then $\mathcal{C}$ is the image of a translate of a subalgebra of $\g$ under the exponential map. In other words, preserving cosets of Lie subgroups in $\G$ corresponds to preserving translates of subalgebras of $\g$.
+\end{Proposition}
+
+\begin{proof}
+Let $X=(x,y,z) \in \g$ and so that $\mathcal{S}=\{ \lambda X | \lambda \in \R \}$ is a one-dimensional subalgebra of $\g$. Then $e^{\mathcal{S}}$ is the corresponding Lie subgroup of $\G$. We have
+\begin{align*}
+e^{\mathcal{S}} &= \{ e^{\lambda X}| \lambda \in \R \} \\[.7em]
+&= \left\lbrace \begin{bmatrix}
+1 & \lambda x & \lambda z + \frac{1}{2} \lambda^{2}xy \\
+0 & 1 & \lambda y \\
+0 & 0 & 1
+\end{bmatrix} \biggm| \lambda \in \R \right\rbrace
+\end{align*}
+Let $\mathcal{C}$ be the coset of $e^{\mathcal{S}}$ given by right translation by $e^{P}$, for a fixed element $P = \begin{bmatrix}
+0 & p & r \\
+0 & 0 & q \\
+0 & 0 & 0
+\end{bmatrix} \in \g$. Then 
+\begin{align*}
+\mathcal{C} &= \{e^{\lambda X}e^{P} \mid \lambda \in \R \} \\[.7em]
+&= \left\lbrace \exp( \lambda X + P + \frac{1}{2}[\lambda X,P]) \bigm| \lambda \in \R \right\rbrace \\[.7em]
+&= \left\lbrace \exp \left( 
+\begin{bmatrix}
+0 & \lambda x & \lambda z \\
+0 & 0 & \lambda y \\
+0 & 0 & 0
+\end{bmatrix} + 
+\begin{bmatrix}
+0 & p & r \\
+0 & 0 & q \\
+0 & 0 & 0
+\end{bmatrix} + 
+\frac{1}{2}
+\begin{bmatrix}
+0 & 0 & \lambda xq - \lambda yp \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{bmatrix}
+\right)
+ \biggm| \lambda \in \R \right\rbrace \\[.7em]
+&= \left\lbrace \exp
+\begin{bmatrix}
+0 & \lambda x + p & \lambda [z+\frac{1}{2}(xq-yp)]+r \\
+0 & 0 & \lambda y +q \\
+0 & 0 & 0
+\end{bmatrix}
+\biggm| \lambda \in \R \right\rbrace
+\end{align*}
+Now let $\mathfrak{c} \subseteq \g$ be the image of $\mathcal{C}$ under the logarithm map.
+
+\begin{align*}
+\mathfrak{c} &= \left\lbrace
+\begin{bmatrix}
+0 & \lambda x + p & \lambda (z+\frac{1}{2}(xq-yp))+r \\
+0 & 0 & \lambda y +q \\
+0 & 0 & 0
+\end{bmatrix}
+\bigg| \lambda \in \R \right\rbrace \\[0.7em]
+&= \left\lbrace \lambda
+\begin{bmatrix}
+0 &  x & z+\frac{1}{2}(xq-yp) \\
+0 & 0 & y \\
+0 & 0 & 0
+\end{bmatrix} +
+\begin{bmatrix}
+0 & p & r \\
+0 & 0 & q \\
+0 & 0 & 0
+\end{bmatrix}
+\bigg| \lambda \in \R \right\rbrace \\[.7em]
+&= \left\lbrace \lambda (x,y,z+\frac{1}{2}(xq-yp))+P \bigm| \lambda \in \R \right\rbrace
+\end{align*}
+
+So the one-dimensional coset $\mathcal{C}$ corresponds to a line $\mathfrak{c}$ in $\g$ which is a translate of a one-dimensional subalgebra, $\text{span}\{(x,y,z+\frac{1}{2}(xq-yp))\}$ by the element $P$. Note that this subalgebra is not the same as the subalgebra corresponding to the Lie subgroup in $\G$ from which the coset $\mathcal{C}$ was originally generated. 
+
+A similar argument will now demonstrate that two-dimensional cosets in $\G$ do indeed correspond to vertical planes in $\g$.
+Suppose $X=(x,y,z) \in \g$ is not vertical. So there is a vertical plane $\mathbf{\pi}$ given by 
+\[
+\mathbf{\pi} = \{\lambda X + \mu \3 \;\;\;|\;\;\; \lambda,\mu \in \R \}
+\]
+Then the corresponding Lie subgroup of $\mathbf{\pi}$ is 
+\[
+\Pi = \{\exp(\lambda X + \mu \3) \;\;\;|\;\;\; \lambda,\mu \in \R \}
+\]
+A coset of this Lie subgroup is $\mathcal{C}$ given by right translation by $e^{P}$ as before. Let So 
+\begin{eqnarray*}
+\mathcal{C} &=& \{\exp(\lambda X + \mu \3)\exp (P) \mid \lambda,\mu \in \R \} \\
+&=& \{ \exp(\lambda x, \lambda y, \lambda z +\mu)\exp(p,q,r)\mid \lambda,\mu \in \R \} 
+\end{eqnarray*}
+Then, applying the BCH Formula:
+
+%fix this up using align and \mid etc. and make sure it's not off the edge
+\begin{align*}
+\mathcal{C}&=  \left\lbrace \exp((\lambda x, \lambda y, \lambda z +\mu)+(p,q,r)+\frac{1}{2}[(\lambda x, \lambda y, \lambda z +\mu),(p,q,r)]) \bigm| \lambda,\mu \in \R \right\rbrace \\[0.7em]
+&= \left\lbrace \exp ((\lambda x+p, \lambda y+q, \lambda z +\mu +r)+ \frac{1}{2}(0,0,\lambda xq -\lambda yp))\bigm| \lambda,\mu \in \R \right\rbrace \\[0.7em]
+&= \left\lbrace \exp (\lambda x+p, \lambda y+q, \lambda (z+\frac{1}{2}(xq-yp)) +\mu +r) \bigm| \lambda,\mu \in \R \right\rbrace \\[0.7em]
+&= \left\lbrace \exp [\lambda( x, y, z+\frac{1}{2}(xq-yp))+\mu(0,0,1)+(p,q,r)]\bigm| \lambda,\mu \in \R \right\rbrace
+\end{align*}
+
+Now suppose that $\pi'$ is the image of this coset $\mathcal{C}$ under the logarithm. So 
+
+\begin{align*}
+\pi' &= \left\lbrace \lambda( x, y, z+\frac{1}{2}(xq-yp))+\mu(0,0,1)+(p,q,r) \bigm| \lambda,\mu \in \R \right\rbrace \\[.7em]
+&= P+\text{span}\{Y,\3 \}
+\end{align*}
+where $$Y=X+[X,P]=( x, y, z+\frac{1}{2}(xq-yp)).$$ 
+
+So $\pi'$ is yet another vertical plane in $\g$. Note however that unless $[X,P]=0$, $\pi'$ is not the same as $\pi$. Most importantly, if a bijective map from $\G$ to $\G$ preserves cosets, then the corresponding map from $\g$ to $\g$ preserves lines and vertical planes (translates of subalgebras).
+\end{proof}
+
+% may have to alter this to suit the real assumptions of the problem, ie that may need to get rid of translation bit in the group before moving to the algebra.
+\subsection{Preserving Connected Cosets}
+The cosets in $\g$ are either lines or vertical planes. Hence the bijective map $\phi$ sends lines to lines and vertical planes to vertical planes. Therefore, by Proposition \ref{linesplanes}, $\phi$ is an affine map on the vector space $\g$, and because $\phi$ maps the identity to the identity, Proposition \ref{affinelinear} indicates it must be linear.
+
+
+%-use preservation of vertical planes to show that the linear portion of the %map takes on that slightly restricted form
+Now, suppose $S$ and $T$ are distinct vertical planes through the origin in $\g$. So by bijectivity $\phi(S) \neq \phi(T)$ and $\phi(S \cup T)=\phi(S) \cup \phi(T)$. Hence 
+\[
+\phi(\mathfrak{Z})=\mathfrak{Z}
+\]
+If $\phi$ is given by the matrix 
+$$\begin{bmatrix}
+a & b & h \\
+c & d & i \\
+e & f & g
+\end{bmatrix}
+$$ with $\det(\phi) \neq 0$ then 
+
+\[
+\begin{bmatrix}
+a & b & h \\
+c & d & i \\
+e & f & g
+\end{bmatrix} 
+\begin{bmatrix}
+0 \\ 0 \\ 1
+\end{bmatrix} =
+\begin{bmatrix}
+h \\ i \\ g
+\end{bmatrix} 
+\in \mathfrak{Z}.
+\]
+Hence $h=i=0$ and 
+\[
+\phi=
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & g
+\end{bmatrix}.
+\]
+
+\end{proof}
+
+
+
+% Now to the integer lattice:
+
+\section{Restriction obtained from preservation of discrete cosets}
+Without assuming that the map preserves discrete cosets of $G$, this restriction is the strongest one we can place on the map $\phi$. 
+In other words, if $\phi$ takes on the matrix form given about, we know from the nature of the subgroups of the Heisenberg group that $\Phi$ must be a coset-preserving map. 
+However, by assuming the map $\Phi$ also sends cosets of discrete subgroups to cosets of discrete subgroups, stronger restrictions may be obtained. Note that discrete subgroups are not Lie groups, as they are not locally homeomorphic to $\R^{n}$. 
+
+\begin{Theorem}
+Suppose that $\Psi: \G \longrightarrow \G$ is bijective and sends every coset of \emph{any} subgroup of $\G$ to some coset of some subgroup of $\G$. Then the map $\Phi: \G \longrightarrow \G$, defined by 
+\[
+\Phi(x) = \Psi(I)^{-1}\Psi(x)
+\]
+is either an isomorphism or an anti-isomorphism. 
+
+%Then $\Psi=L \circ \Phi$ where $\Phi:\G \longrightarrow \G$ is either an isomorphism or an anti-isomorphism and $L: \G \longrightarrow \G$ is a translation. Specifically, for any $x \in \G$
+%\[
+%L(x)=\Psi(0)^{-1}x
+%\]
+
+\end{Theorem}
+
+Consider the elements $E_{1}=[1,0,0]$, $E_{2}=[0,1,0]$ and $E_{3}=[0,0,1]$ of $\G$. Their images under the logarithm map are ${\bf e}_{1}=(1,0,0)$, ${\bf e}_{2}=(0,1,0)$ and ${\bf e}_{3}=(0,0,1)$ in $\g$.\
+Now with $\phi$ given in the matrix form above,
+\begin{eqnarray*}
+\phi {\bf e}_{1} &=& (a,c,e) \\
+\phi {\bf e}_{2} &=& (b,d,f) \\
+\phi {\bf e}_{3} &=& (0,0,g)
+\end{eqnarray*}
+Since ${\bf e}_{1}$ and ${\bf e}_{2}$ lie in different two-dimensional subalgebras of $\g$, their images under $\phi$ must lie in different two-dimensional subalgebras. [picture]This means that the projected vectors $(a,c)$ and $(b,d)$ are linearly independent in $\R^{2}$ so 
+\begin{eqnarray*}
+\frac{a}{b} &\neq & \frac{c}{d} \\
+ad &\neq & bc\\
+ad-bc &\neq & 0 
+\end{eqnarray*} Let $\Delta = ad-bc$.
+Now consider the linear map $\beta:\g \longrightarrow \g$ given in matrix form by 
+\begin{eqnarray*}
+\beta &=& \begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & \Delta
+\end{bmatrix}^{-1} \\
+&=& \frac{1}{\Delta}\begin{bmatrix}
+d & -b & 0 \\
+-c & a & 0 \\
+(cf-ed)/\Delta & (eb-af)/\Delta & 1
+\end{bmatrix}
+\end{eqnarray*}
+
+Now define a new map $\tau: \g \longrightarrow \g$ as the composition of $\phi$ and $\beta$. So 
+\begin{eqnarray*}
+\tau &=& \beta \circ  \phi \\
+&=& \frac{1}{\Delta}\begin{bmatrix}
+d & -b & 0 \\
+-c & a & 0 \\
+(cf-ed)/\Delta & (eb-af)/\Delta & 1
+\end{bmatrix}
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & g
+\end{bmatrix} \\
+&=& 
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & g/\Delta
+\end{bmatrix}.
+\end{eqnarray*}
+
+Let the corresponding bijective maps, $B$ and $T$ from $\G$ to $\G$ be given by
+\begin{eqnarray*}
+B(e^{x}) &=& e^{\beta(x)} \\
+T(e^{x}) &=& e^{\tau (x)} \\
+& & \forall x \in \g
+\end{eqnarray*}
+
+
+\begin{Proposition}
+If $g=\Delta$, then $\phi$ is a Lie algebra homomorphism.
+\end{Proposition}
+
+\begin{proof}
+\[
+\phi = 
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & \Delta
+\end{bmatrix}
+\]
+Let $x=(x_{1},x_{2},x_{3})$ and $y=(y_{1},y_{2},y_{3})$ be any two elements of $\g$. Then $[x,y]=(0,0,x_{1}y_{2}-x_{2}y_{1})$. 
+\begin{align*}
+[\phi(x),\phi(y)] &= \left[
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & \Delta
+\end{bmatrix} 
+\begin{bmatrix}
+x_{1} \\ x_{2} \\ x_{3}
+\end{bmatrix}
+,
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & \Delta
+\end{bmatrix} 
+\begin{bmatrix}
+y_{1} \\ y_{2} \\ y_{3}
+\end{bmatrix}
+\right] \\[.7em]
+&= \left[
+\begin{bmatrix}
+ax_{1}+bx_{2} \\ cx_{1}+dx_{2} \\ ex_{1}+fx_{2} + \Delta x_{3}
+\end{bmatrix}
+,
+\begin{bmatrix}
+ay_{1}+by_{2} \\ cy_{1}+dy_{2} \\ ey_{1}+fy_{2} + \Delta y_{3}
+\end{bmatrix}
+\right] \\[.7em]
+&= (0,0,(ax_{1}+bx_{2})(cy_{1}+dy_{2})-(ay_{1}+by_{2})(cx_{1}+dx_{2})) \\
+&= (0,0,acx_{1}y_{1} - acx_{1}y_{1} + bdx_{2}y_{2} - bdx_{2}y_{2}  \\ 
+&\quad \quad+adx_{1}y_{2} + bcx_{2}y_{1} -adx_{2}y_{1} -bcx_{1}y_{2} ) \\
+&= (0,0, adx_{1}y_{2}  -adx_{2}y_{1}+ bcx_{2}y_{1} -bcx_{1}y_{2} ) \\
+&= (0,0,ad(x_{1}y_{2}  -x_{2}y_{1})+ bc(x_{2}y_{1} -x_{1}y_{2})) \\
+&= (0,0,(ad-bc)(x_{1}y_{2}  -x_{2}y_{1})) \\
+&= (0,0,\Delta(x_{1}y_{2}-x_{2}y_{1})) \\
+&= \phi(0,0,x_{1}y_{2}-x_{2}y_{1}) \\
+&= \phi[x,y] 
+\end{align*}
+\end{proof}
+
+\begin{Proposition}
+If $g=-\Delta$, then $\phi$ is a Lie algebra anti-homomorphism.
+\end{Proposition}
+
+\begin{proof}
+\[
+\phi = 
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & -\Delta
+\end{bmatrix}
+\]
+Let $x=(x_{1},x_{2},x_{3})$ and $y=(y_{1},y_{2},y_{3})$ be any two elements of $\g$. Then $[x,y]=(0,0,x_{1}y_{2}-x_{2}y_{1})$. 
+\begin{eqnarray*}
+[\phi(x),\phi(y)] &=& \left[
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & -\Delta
+\end{bmatrix} 
+\begin{bmatrix}
+x_{1} \\ x_{2} \\ x_{3}
+\end{bmatrix}
+,
+\begin{bmatrix}
+a & b & 0 \\
+c & d & 0 \\
+e & f & -\Delta
+\end{bmatrix} 
+\begin{bmatrix}
+y_{1} \\ y_{2} \\ y_{3}
+\end{bmatrix}
+\right] \\
+&=& \left[
+\begin{bmatrix}
+ax_{1}+bx_{2} \\ cx_{1}+dx_{2} \\ ex_{1}+fx_{2} - \Delta x_{3}
+\end{bmatrix}
+,
+\begin{bmatrix}
+ay_{1}+by_{2} \\ cy_{1}+dy_{2} \\ ey_{1}+fy_{2} - \Delta y_{3}
+\end{bmatrix}
+\right] \\
+&=& (0,0,(ax_{1}+bx_{2})(cy_{1}+dy_{2})-(ay_{1}+by_{2})(cx_{1}+dx_{2})) \\
+%&=& (0,0,acx_{1}y_{1} - acx_{1}y_{1} + bdx_{2}y_{2} - bdx_{2}y_{2} + adx_{1}y_{2} + bcx_{2}y_{1} -adx_{2}y_{1} -bcx_{1}y_{2} ) \\
+&=& (0,0, adx_{1}y_{2}  -adx_{2}y_{1}+ bcx_{2}y_{1} -bcx_{1}y_{2} ) \\
+%&=& (0,0,ad(x_{1}y_{2}  -x_{2}y_{1})+ bc(x_{2}y_{1} -x_{1}y_{2})) \\
+&=& (0,0,(ad-bc)(x_{1}y_{2}  -x_{2}y_{1})) \\
+&=& (0,0,\Delta(x_{1}y_{2}-x_{2}y_{1})) \\
+&=& -\phi(0,0,x_{1}y_{2}-x_{2}y_{1}) \\
+&=& -\phi[x,y] 
+\end{eqnarray*}
+\end{proof}
+
+\begin{Proposition}
+$\Phi$ is a Lie group homomorphism $\iff$ $\phi$ is a Lie algebra homomorphism, and $\Phi$ is a Lie group anti-homomorphism $\iff$ $\phi$ is a Lie algebra anti-homomorphism
+\end{Proposition}
+
+\begin{proof}
+Suppose $\phi$ is a Lie algebra homomorphism. So $\phi [x,y]=[\phi(x),\phi(y)]$ for all $x$ and $y$ in $\g$. Suppose $X=\exp(x)$ and $Y=\exp(y)$. Then
+\begin{eqnarray*}
+\Phi(XY) &=& \Phi( \exp (x+y+\frac{1}{2}[x,y])) \\
+&=& \exp( \phi(x+y+\frac{1}{2}[x,y])) \\
+&=& \exp( \phi(x)+\phi(y) +\frac{1}{2} \phi[x,y])\;\;\; \text{(since $\phi$ is linear)} \\
+&=& \exp ( \phi(x)+\phi(y) +\frac{1}{2} [\phi(x),\phi(y)]) \\
+&=& \exp( \phi (x))\exp(\phi(y))\\
+&=& \Phi(\exp(x))\Phi(\exp(y))\\
+&=& \Phi(X)\Phi(Y)
+\end{eqnarray*}
+
+On the other hand, suppose $\phi$ is a Lie algebra anti-homomorphism. So $\phi [x,y]=-[\phi(x),\phi(y)]$. Then
+\begin{eqnarray*}
+\Phi(XY) &=& \Phi( \exp (x+y+\frac{1}{2}[x,y])) \\
+&=& \exp( \phi(x+y+\frac{1}{2}[x,y])) \\
+&=& \exp( \phi(x)+\phi(y) +\frac{1}{2} \phi[x,y])\;\;\; \text{(since $\phi$ is linear)} \\
+&=& \exp ( \phi(x)+\phi(y) -\frac{1}{2} [\phi(x),\phi(y)]) \\
+&=& \exp ( \phi(y)+\phi(x) +\frac{1}{2} [\phi(y),\phi(x)]) \\
+&=& \exp( \phi (y))\exp(\phi(x))\\
+&=& \Phi(\exp(y))\Phi(\exp(x))\\
+&=& \Phi(Y)\Phi(X)
+\end{eqnarray*}
+\end{proof}
+
+%Need to change order of the proof so that g=Delta -> isomorphism is done first. Then it can be shown that T maps subgroups to subgroups
+\begin{Proposition}
+$T$ maps subgroups of $\G$ to subgroups of $\G$.
+\end{Proposition}
+\begin{proof}
+Since $\beta^{-1}$ is in the same form as $\phi$ but with $g=\Delta$, the previous two propositions show that $\beta^{-1}$ is a Lie algebra homomorphism. Since it is also bijective, it is a Lie algebra isomorphism. Therefore $\beta$ must also be a Lie algebra isomorphism. 
+
+\begin{Lemma}
+$B$ preserves subgroups. 
+\end{Lemma}
+\begin{proof}
+Let $S$ be any subgroup of $\G$ and $\mathfrak{s}$ be its image under the logarithmic map. Let $Y_{1}$ and $Y_{2}$ be elements of $B(S)$. So there exist $X_{1}=\exp(x_{1})$ and $X_{2}=\exp(x_{2})$ in $S$ such that $Y_{1}=B(X_{1})$ and $Y_{2}=B(X_{2})$. Then 
+\begin{align*}
+Y_{1}Y_{2} &= B(X_{1})B(X_{2}) \\
+&= B(X_{1}X_{2}) 
+\end{align*}
+which is in $B(S)$ because $S$ is a subgroup so $X_{1}X_{2} \in S$. Hence $B(S)$ is closed under the group operation. Moreover, $X_{1}^{-1} \in S$ so
+\begin{align*}
+Y_{1}^{-1} &=B(X_{1})^{-1} \\
+&= B(X_{1}^{-1}) \\
+&= \in B(S)
+\end{align*}
+Also,
+$0_{\G} \in S$ so $B(0_{\G})=0_{\G} \in B(S)$. Hence $B(S)$ is a subgroup.
+
+%&= B(\exp(x_{1}))B(\exp(x_{2})) \\
+%&= \exp(\beta(x_{1}))\exp(\beta(x_{2}))\\
+%&= \exp(\beta(x_{1})+\beta(x_{2})+\frac{1}{2}[\beta(x_{1}),\beta(x_{2})])\\
+%&= \exp(\beta(x_{1})+\beta(x_{2})+\frac{1}{2}\beta[x_{1},x_{2}])\\
+%&= \exp(\beta(x_{1}+x_{2}+\frac{1}{2}[x_{1},x_{2}]))\\
+%&= B(\exp(x_{1}+x_{2}+\frac{1}{2}[x_{1},x_{2}]))\\
+%&= B(\exp(x_{1})\exp(x_{2}))\\
+\end{proof}
+
+Now since $T$ is composed of $B$ and $\Phi$, which both preserve subgroups, $T$ must also preserve subgroups.
+\end{proof}
+
+\begin{Proposition}
+If $\langle E_{1},E_{2} \rangle$ denotes the smallest subgroup of $\G$ containing the elements $E_{1}$ and $E_{2}$, then 
+\[
+\langle E_{1},E_{2} \rangle = 
+\left\lbrace
+\begin{bmatrix}
+1 & x & z \\
+0 & 1 & y \\
+0 & 0 & 1
+\end{bmatrix} \bigg|x,y,z \in \Z
+\right\rbrace .
+\]
+Denote this set $\G_{\Z}$.
+\end{Proposition}
+
+\begin{proof}
+Note that 
+\begin{eqnarray*}
+E_{3}=[0,0,1]&=&
+\begin{bmatrix}
+1 & 1 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 1 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 & -1 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & -1 \\
+0 & 0 & 1
+\end{bmatrix}
+ \\
+&=& E_{1}E_{2}E_{1}^{-1}E_{2}^{-1}
+\end{eqnarray*}
+Take an element from $\G_{\Z}$, $[x,y,z]$, where $x$, $y$ and $z$ are integers. Then 
+\begin{eqnarray*}
+[x,y,z] &=&[x,y,0][0,0,z-xy] \\
+&=& [x,0,0][0,y,0][0,0,z-xy] \\
+&=& E_{1}^{x}E_{2}^{y}E_{3}^{z-xy}
+\end{eqnarray*}
+So $\G_{\Z} \in \langle E_{1},E_{2} \rangle $. Conversely any element of $\langle E_{1},E_{2} \rangle$ contains only integer entries since adding and multiplying integers or taking their negatives produces only integers. So $\langle E_{1},E_{2} \rangle \in \G_{\Z}$. Hence $\langle E_{1},E_{2} \rangle=\G_{\Z}$.
+\end{proof}
+
+\begin{Lemma}\label{Groupimage1}
+$T(\G_{\Z})=\G_{\Z}$. 
+\end{Lemma}
+
+\begin{proof}
+Note the following:
+\begin{eqnarray*}
+T(E_{1})= e^{\tau ({\bf e}_{1})} &=& e^{{\bf e}_{1}} = E_{1} \\
+T(E_{2})= e^{\tau ({\bf e}_{2})} &=& e^{{\bf e}_{2}} = E_{2} \\
+T^{-1}(E_{1})= e^{\tau^{-1} ({\bf e}_{1})} &=& e^{{\bf e}_{1}} = E_{1} \\
+T^{-1}(E_{2})= e^{\tau^{-1} ({\bf e}_{2})} &=& e^{{\bf e}_{2}} = E_{2} 
+\end{eqnarray*}
+
+Consider also the following fact. For $X$ and $Y$ in $\G$, $T( \langle X,Y \rangle )$ is a subgroup, which contains $T(X)$ and $T(Y)$ so by minimality, $\langle T(X),T(Y) \rangle \subseteq T( \langle X,Y \rangle )$
+Hence
+\begin{eqnarray*}
+\langle E_{1},E_{2} \rangle = \langle T(E_{1}),T(E_{2}) \rangle &\subseteq & T( \langle E_{1},E_{2} \rangle) \\
+\langle E_{1},E_{2} \rangle = \langle T^{-1}(E_{1}),T^{-1}(E_{2}) \rangle & \subseteq & T^{-1}( \langle E_{1},E_{2} \rangle) \\
+\implies T( \langle E_{1},E_{2} \rangle) & \subseteq & T(T^{-1}( \langle E_{1},E_{2} \rangle))\\
+&=&\langle E_{1},E_{2} \rangle
+\end{eqnarray*}
+and hence 
+\[
+T( \langle E_{1},E_{2} \rangle)= \langle E_{1},E_{2}\rangle
+\]
+giving the result.
+\end{proof}
+
+We now need to consider what happens to the unit vector $(0,0,1)={\bf e}_{3}$ in $\g$ by considering what happens to $[0,0,1]=E_{3}=\exp({\bf e}_{3})$ in the group.
+
+\[
+T(E_{3})= \exp(\tau ({\bf e}_{3}))=\exp(0,0,\frac{g}{\Delta})=[0,0,\frac{g}{\Delta}].
+\]
+Now $T$ maps the centre of $\G$, $Z$ to itself (as do $B$ and $\Phi$) since 
+\[
+T[0,0,z]= \exp(\tau(0,0,z))= \exp(0,0,\frac{gz}{\Delta})=[0,0,\frac{gz}{\Delta}] \in Z
+.\] So combining this result with the previous Lemma,
+\[
+T( Z \cap \G_{\Z})=Z \cap \G_{\Z}
+.\]
+Hence 
+\begin{eqnarray*}
+T(E_{3}) &\in & Z \cap \G_{\Z} \\
+\left[ 0,0,\frac{g}{\Delta} \right] &\in & Z \cap \G_{\Z} \\
+\implies \frac{g}{\Delta} &\in & \Z
+\end{eqnarray*}
+
+Now we move into the Lie algebra to use the linearity properties of $\tau$.
+Let 
+\begin{eqnarray*}
+D &=& \left\lbrace (0,0,m)\; \big| \;\; m \in \Z \right\rbrace \subseteq \g \\
+\exp (D) &=& \left\lbrace [0,0,m] \; \big| \;\; m \in \Z \right\rbrace \subseteq \G \\
+&=& Z \cap \G_{int}
+\end{eqnarray*}
+
+Now consider the image of this set of integer points on the $z$-axis under $\tau$:
+\begin{eqnarray*}
+\tau(D)&=& \log(\exp (\tau(D))) \\
+&=& \log T(\exp (D)) \\
+&=& \log T(Z \cap \G_{int}) \\
+&=& \log (Z \cap \G_{int}) \\
+&=& \log \exp (D) \\
+&=& D
+\end{eqnarray*}
+So $\tau$ is a bijection when restricted to $D$. Linearity of $\tau$ gives the following for any integer $n$.
+\begin{eqnarray*}
+\tau (0,0,n) &=& n \tau (0,0,1) \\
+&=& n\left(0,0, \frac{g}{\Delta}\right) \\
+&=& \left(0,0, n \frac{g}{\Delta}\right)
+\end{eqnarray*}
+so $g/\Delta \in \Z$. But then considering the surjectivity of $\tau$ on $D$, ${\bf e}_{1}$ must be the image of some element of $D$ under $\tau$. In other words $(0,0,1)=\tau(0,0,n)$ for some $n \in \Z$ but from the previous result this gives 
+\[
+(0,0,1)=\left(0,0, n\left(\frac{g}{\Delta}\right)\right)
+\]
+where $n$ and $g/\Delta$ are both integers. Hence $n \left( \frac{g}{\Delta}\right)=1$ so 
+\[
+\frac{g}{\Delta}= \pm 1
+\]
+which gives
+\[
+g=\pm \Delta.
+\]
+Hence $\phi$ and $\Phi$ are either a pair of isomorphisms or anti-isomorphims and $\Psi$ is a composition of a translation and either an isomorphism or an anti-isomorphism.
+
+\section{Summary}
+The weaker assumption that $\Psi$ preserves cosets of Lie subgroups ensures $\phi$ is a linear map which sends the $z$-axis to itself. The stronger assumption that $\Psi$ preserves cosets of any subgroups ensures that $\Phi$ is either a Lie group isomorphism or a Lie group anti-isomorphism.
+
+
+The second part of the thesis will prove similar rigidity properties for coset-preserving maps on all nilpotent Lie groups. 
+
+
+\chapter{Extending the Theorem by Induction}
+
+Now that we have seen how this rigidity theorem is proved from first principles for a coset-preserving map from the Heisenberg group to itself, we wish to extend the theorem by induction. We wish to show that a bijective coset-preserving map from \emph{any} nilpotent Lie group to another nilpotent Lie group is close to being either an isomorphism or anti-isomorphism 
+
+
+\begin{Theorem}\label{BigTheorem}
+Let $\G$ be an $n$-dimensional nilpotent Lie group, with corresponding Lie algebra $\g$, where $n \in \mathbb{N}$. Let $\Psi$ be a bijective map from $\G$ to $\G$ that sends any coset of any subgroup of $\G$ to some coset of some subgroups of $\G$ such that the associated map $\phi:\g \longrightarrow \g$, defined as follows, is \emph{linear}. Firstly define, 
+\begin{align*}
+\Phi: \G &\longrightarrow \G \\
+X & \longrightarrow \Psi(I)^{-1} \Psi(X)
+\end{align*}
+and then
+\begin{align*}
+\phi: \g &\longrightarrow \g \\
+x & \longrightarrow \log(\Phi(e^{x}))
+\end{align*}
+In other words,
+\[
+\Phi(\exp{x})=\exp{\phi(x)} \;\;\; \forall x \in \g.
+\]
+Thus the maps $\Phi$ and $\phi$ preserve the identity element of the group and the zero-vector in the algebra respectively. 
+
+Then either $\phi$ is either a Lie algebra isomorphism or anti-isomorphism. In other words, 
+\[
+\phi[x,y]= [\phi(x),\phi(y)], \;\;\forall x,y \in \g
+\]
+or
+\[
+\phi[x,y]= -[\phi(x),\phi(y)], \;\;\forall x,y \in \g
+\]
+\end{Theorem}
+
+For the the proof of the inductive step, which occupies the next chapter, we need to know that the theorem is true for one- two- and three-dimensional nilpotent Lie groups. 
+
+\section{The One- and Two- Dimensional Case}
+\begin{Proposition}\label{abelian}
+If $\g$ is abelian, then the theorem holds. 
+\end{Proposition}
+
+\begin{proof}
+Suppose $\g$, described in the statement of the theorem, is an abelian Lie algebra. Then let $e^X$ and $e^Y$ be elements of $\G$. 
+
+\begin{align*}
+\Phi(e^Xe^Y) &= \Phi(e^{X+Y}) \\
+&= \exp(\phi(X+Y)) \\
+&= \exp(\phi(X))\exp(\phi(Y)) \\
+&= \Phi(e^X)\Phi(e^Y)
+\end{align*}
+So the map $\Phi$ is a Lie group isomorphism as required. 
+
+Note that $\Phi$ is also an anti-isomorphism because $\Phi(e^X)\Phi(e^Y)=\Phi(e^Y)\Phi(e^X)$.
+\end{proof}
+
+\begin{Proposition}
+All one- and two-dimensional nilpotent Lie algebras are abelian.
+\end{Proposition}
+
+\begin{proof}
+For one-dimensional algebras it is obvious. Every element is in $\spn\{X\}$ for some $X$. So 
+\begin{align*}
+[X_1,X_2] &= [\lambda_1 X, \lambda_2 X] \\
+&= \lambda_1 \lambda_2 [X,X] \\
+&= 0
+\end{align*}
+
+For two dimensional algebras, suppose for a contradiction that $X$ and $Y$ are linearly independent elements of $\g$ and that $[X,Y] \neq 0$. Then since $\g$ is two-dimensional, $\{X,Y\}$ forms a basis so that 
+\[
+[X,Y] = \alpha X+\beta Y
+\]
+for some real numbers $\alpha$ and $\beta$. Suppose without loss of generality that $\alpha \neq 0$. Then 
+\[
+X = \frac{1}{\alpha}([X,Y]-Y).
+\]
+But, substituting this expression for $X$ into the right hand side iteratively, 
+\begin{align*}
+X&= \frac{1}{\alpha}([X,Y]-Y) \\
+&=  \frac{1}{\alpha}( [\frac{1}{\alpha}([X,Y]-Y), Y]-Y) \\
+&= \frac{1}{\alpha}( [\frac{1}{\alpha}[X,Y], Y]-Y) \\ 
+&= \frac{1}{\alpha^2} [[X,Y], Y]-\frac{1}{\alpha} Y \\ 
+& \vdots \\
+&= \frac{1}{\alpha^N}[\cdots[[X,\overbrace{Y],Y]\cdots ,Y]}^{N}-\frac{1}{\alpha} Y \\
+& \quad \quad \text{(for arbitrarily high $N$} \\
+&= -\frac{1}{\alpha} Y
+\end{align*}
+This is a contradiction since $X$ and $Y$ are linearly independent. 
+ 
+\end{proof}
+
+Therefore since all one- and  two-dimensional nilpotent Lie algebras are abelian, Proposition \ref{abelian} tells us that Theorem \ref{BigTheorem} holds for $n=1$ and $n=2$. 
+
+\section{The Three-Dimensional Case}
+Suppose that $\g$ is three-dimensional ($n=3$).
+
+The group $(\R^3, +)$ is a Lie group with Lie algebra $\R^3$. The group $(\R^3, +)$ can be represented as the matrix Lie group consisting of diagonal matrices with strictly positive entries via,
+
+\[
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix} \mapsto
+\begin{bmatrix}
+e^x & 0 & 0 \\
+0 & e^y & 0 \\
+0 & 0 & e^z
+\end{bmatrix}
+\]
+By representing the Lie algebra $\R^3$ as the set of real diagonal matrices, it can be seen that the exponential map is indeed a bijection between the algebra and the group.
+
+\[
+\exp 
+\begin{bmatrix}
+x & 0 & 0 \\
+0 & y & 0 \\
+0 & 0 & z
+\end{bmatrix} =
+\begin{bmatrix}
+e^x & 0 & 0 \\
+0 & e^y & 0 \\
+0 & 0 & e^z
+\end{bmatrix}.
+\]
+
+
+\begin{Proposition}\label{Three-dim}
+Up to isomorphism, the only three-dimensional nilpotent Lie groups are the Heisenberg group, and $(\R^{3},+)$. 
+\end{Proposition}
+
+The following two lemmas will be necessary in proving this proposition. 
+%For the two lemmas and for the final proof of the proposition, let $\mathfrak{a}$ be any three-dimensional nilpotent Lie algebra. 
+
+We start by considering how Lie algebras could be built by starting with a basic three-dimensional vector space. The algebras then differ only in the definitions of their bracket operation, and the corresponding Lie groups are given their structures by the BCH Formula:
+\begin{align*}
+e^{x}e^{y} &= \exp\big( x+y+\frac{1}{2}[x,y]+\frac{1}{12}[x,[x,y]]-\frac{1}{12}[y,[x,y]] \\
+&-\frac{1}{24}[y,[x,[x,y]]]+\cdots (\text{longer commutators}) \big)
+\end{align*}
+
+
+\begin{Lemma}
+Suppose $x$ and $y$ are elements of $\g$ and that $[x,y] \neq 0$. Then $\{x,y,[x,y]\}$ forms a basis for $\g$.
+\end{Lemma}
+
+%I'll try a new shorter proof based on the thing I've already shown:
+
+\begin{proof}
+From previous we know that if $x$ and $y$ are linearly independent \emph{and} $[x,y]$ can be written as a linear combination of $x$ and $y$, we get the contradiction that $x$ is a scalar multiple of $y$. Hence, in the case that our algebra is three-dimensional and we have assumed $[x,y] \neq 0$ the contradiction implies that $\{x,y,[x,y]\}$ is indeed a linearly independent set. It must be a basis for $\g$
+%that sentence too long and not well explained.
+\end{proof}
+
+
+
+\begin{Lemma}
+All the terms with commutators of length three or more in the BCH Formula for two elements of a three-dimensional nilpotent Lie algebra $\g$ are zero.
+\end{Lemma}
+
+
+\begin{proof} 
+Let $\g$ have lower central series $A_{n}$. Since $\mathfrak{a}$ is nilpotent, there is some integer $k$ such that $A_{k}=0$.
+
+Let $x$ and $y$ be elements of $\g$.
+Higher terms in the Baker-Campbell-Hausdorff Formula all contain either $[x,[x,y]]$ or $[y,[x,y]]$, for $x$, $y \in \g$. If $[x,y]=0$ then $[x,[x,y]]$ and $[y,[x,y]]$ are both zero and the result holds. So suppose that $[x,y] \neq 0$. Then $\{x,y,[x,y]\}$ forms a basis for $\g$ and so
+\[
+[x,[x,y]]=ax+by+c[x,y], \;\;\;\;\; \text{some $a$, $b$, $c \in \R$}
+\]
+By repeatedly taking commutators with $x$, we obtain
+\[
+[x,[x,[x,y]]]=b[x,y]+c[x,[x,y]]
+\]
+Further, let $D(n)=\underbrace{[x,[x,\ldots[x}_{n},y]] \ldots ]$, then for $n \geq 3$,
+\begin{equation}\label{recurrence}
+D(n)=bD(n-2)+cD(n-1).
+\end{equation}
+
+Since $\g$ is nilpotent, there must exist some $k \geq 2$ such that $D(k)=0$ but $D(k-1) \neq 0$. If $k=2$ the result holds. If $k \geq 3$ then from equation \ref{recurrence}, substituting $n=k+1$ gives,
+\[
+bD(k-1)=0
+.\] Hence $b=0$.
+Then substituting $n=k$,
+\[
+bD(k-2)+cD(k-1)=0
+.\] So
+\[
+cD(k-1)=0
+\] and so
+\[
+c=0.
+\]
+
+This leaves us with 
+\[
+[x,[x,y]]=ax.
+\]
+If $a=0$ then the result holds. Suppose that $a \neq 0$. Then $$x=\frac{1}{a}[x,[x,y]].$$ So
+
+\begin{align*}
+x &= \frac{1}{a}[x,[x,y]] \\
+&= \frac{1}{a^{2}}[x,[[x,[x,y]],y]] \\
+&=\frac{1}{a^{3}}[x,[[x,[[x,[x,y]],y]],y]] \\
+&=\frac{1}{a^{n}}\underbrace{[x,[[x,[[x,}_{n}[x,\underbrace{y]],y]],y]]}_{n}\\
+&=\frac{(-1)^{n}}{a^{n}}[[\ldots[x,\underbrace{y],x],y],x]\ldots,y],x]}_{2n\; \text{brackets}} .
+\end{align*}
+
+By continuing this argument it can be seen that $x \in A_{2n}$ for arbitrarily large $n$. Thus, making sure $n$ is sufficiently large, the nilpotent property of $\g$ gives $x=0$, which is a contradiction. Hence $a=0$.
+
+So $[x,[x,y]]=0$ and by symmetry $[y,[y,x]]=0$ so $[y,[x,y]]=0$ as required.
+\end{proof}
+
+\begin{proof} We now continue the final proof of Proposition \ref{Three-dim}.
+
+There are two cases. Either there exist linearly independent elements $x$ and $y$ of $\g$ such that $[x,y] \neq 0$, in which case $\{x,y,[x,y]\}$ is a basis for $\g$, or no such pair of elements exists. 
+
+Let $\mathfrak{h}$ denote the Lie algebra of the Heisenberg group.
+
+\paragraph*{Case 1} In the first case, $\g$ is isomorphic to $\mathfrak{h}$ via the linear transformation $\varphi$, defined by:
+\begin{align*}
+\varphi(x)&=\begin{bmatrix}
+0 & 1 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 0 
+\end{bmatrix}\\
+\varphi(y)&=\begin{bmatrix}
+0 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 0 & 0 
+\end{bmatrix}\\
+\varphi([x,y])&=\begin{bmatrix}
+0 & 0 & 1 \\
+0 & 0 & 0 \\
+0 & 0 & 0 
+\end{bmatrix}\\
+\end{align*}
+
+
+The map $\varphi$ is linear by definition so it suffices to prove that it preserves the bracket operation.
+
+Let $u$ and $v$ be elements of $\g$. These can each be written as linear combinations of the basis elements $x$, $y$ and $[x,y]$. So suppose
+\begin{align*}
+u &=ax+by+c[x,y] \\
+v &=a'x+b'y+c'[x,y].
+\end{align*}
+Then
+\begin{align*}
+\varphi[u,v] &= \varphi [ax+by+c[x,y],a'x+b'y+c'[x,y]] \\
+&=\varphi(aa'[x,x]+ab'[x,y]+ac'[x,[x,y]]+ba'[y,x]+bb'[y,y] \\
+&\quad \quad+bc'[y,[x,y]]+ca'[[x,y],x]+cb'[[x,y],y]+cc'[[x,y],[x,y]])\\
+&=\varphi(ab'[x,y]+ba'[y,x]) \\
+&=(ab'-a'b)\varphi[x,y] \\
+&=(0,0,ab'-a'b).
+\end{align*}
+And,
+\begin{align*}
+[\varphi(u),\varphi(v)] &=[a\varphi(x)+b\varphi(y)+c\varphi[x,y],a'\varphi(x)+b'\varphi(y)+c'\varphi[x,y]]\\
+&=[(a,b,c),(a',b',c')]\\
+&=(0,0,ab'-ba')\\
+&=\varphi[u,v] 
+\end{align*}
+%Could add subscripts to the bracket operations to distinguish between bracket in g and h!
+Hence $\varphi$ is a Lie algebra homomorphism. Since $\varphi$ sends each of the basis vectors in $\g$ to each of the basis vectors in $\mathfrak{h}$, it is the identity transformation with respect to these bases and so is a bijection. Hence $\varphi$ is a Lie algebra isomorphism.
+
+
+\paragraph*{Case 2} In the second case, $\g$ has no non-zero commutators and is isomorphic to $\R^{3}$. 
+
+Let $\varphi$ be the identity transformation with respect to any two bases of $\g$ and $\mathfrak{h}$. So $\varphi$ is a bijective linear transformation and 
+\[
+\varphi[x,y]=0=[\varphi(x),\varphi(y)], \;\;\;\; \forall x,y \in \g
+\]
+Hence $\varphi$ is a Lie algebra isomorphism.
+
+Hence there are only two three-dimensional nilpotent Lie algebras up to isomorphism: $\R^{3}$ and the Lie algebra of the Heisenberg group.
+\end{proof}
+
+\begin{Proposition}
+A bijective map from the Heisenberg Group to $(\R^{3},+)$ cannot preserve the cosets.
+\end{Proposition}
+
+\begin{proof}
+This is obvious. Two-dimensional cosets in $\R^{3}$ are all the planes, whereas two-dimensional cosets in the Heisenberg group are only the vertical planes. So the set of two-dimensional cosets in $\R^{3}$ strictly contains the set of two-dimensional cosets in the Heisenberg group and there cannot be a bijection between them.
+\end{proof}
+%explain now how this works as a basis for induction
+
+Now from Proposition \ref{abelian}, if $\G$ is $(\R^{3},+)$ it is abelian, so the theorem holds. 
+
+Therefore a bijective coset-preserving map between \emph{any} pair of three-dimensional Lie groups is composed of a translation and either an isomorphism or anti-isomorphism.
+
+
+
+
+
+
+
+
+\chapter{Case of all Nilpotent Lie Groups}
+The aim now is to extend the two theorems proved in the previous section by induction to all $n$-dimensional nilpotent Lie group. It will be shown that a bijective map between two nilpotent Lie algebras of any degree, for which the corresponding mapping between Lie groups is coset-preserving, is either a Lie algebra isomorphism or anti-isomorphism. We need to consider preserving all cosets of all subgroups (including the discrete or dense subgroups that are not Lie subgroups). 
+
+
+
+\section{Theory of Nilpotent Lie Groups and Lie Algebras}
+%include all the background information for the proof and general ideas about the basic structure of these groups and algebras
+
+\begin{Definition}
+Let $\mathfrak{a}$ be a Lie algebra and let $S$ and $T$ be subspaces. Then a new subspace is defined by 
+\[
+[S,T]=\spn \left\lbrace \;[s,t] \mid s \in S,\;\; t \in T \right\rbrace
+\]
+\end{Definition}
+
+\begin{Definition}
+The \emph{lower central series} $\{A_{i}\}$ of a Lie algebra $\mathfrak{a}$ is 
+\begin{align*}
+A_{0} &=\mathfrak{a} \\
+A_{1} &=[\mathfrak{a},\mathfrak{a}] \\
+A_{2} &=[\mathfrak{a},A_{1}] \\
+&\vdots \\
+A_{n} &=[\mathfrak{a},A_{n-1}]\;\;\;\text{for all} \;\;n \geq 3 
+\end{align*}
+\end{Definition}
+
+\begin{Definition}
+An expression of the form 
+\[
+[x_{k},[x_{k-1},[\ldots [x_{2},x_{1}]\ldots ]]
+\]
+is called a \emph{commutator}, and the \emph{length} of such a commutator is $k$ (the total number of elements which the bracket operation has been applied to).
+ 
+\end{Definition}
+
+\begin{Proposition}
+Let $k$ be a positive integer. Let $\mathfrak{a}$ be a Lie algebra with lower central series $A_i$. If $x \in \mathfrak{a}$ and $x$ can be expressed as a commutator of length $k$, 
+\[
+x \in A_{k-1}
+\]
+
+%For any $k+1$ elements $x_{i}$ of $\mathfrak{a}$, 
+%\[
+%[x_{k},[x_{k-1},[\ldots [x_{1},x_{0}]\ldots ]] \in A_{k}.
+%\]
+\end{Proposition}
+\begin{proof}
+Suppose that 
+\[
+x=[x_{k},[x_{k-1},[\ldots [x_{2},x_{1}]\ldots ]]
+\]
+for $x_i \in \mathfrak{a}$.
+
+For $k=1$, the statement is true since $x_{1} \in \mathfrak{a}=A_{0}$. 
+
+Suppose that the statement is true for $k=j$. Now let $k=j+1$. Then let $x_{i} \in \mathfrak{a}$ for $1 \leq i \leq k$. So 
+\begin{align*}
+[x_{k},[x_{k-1},[\ldots [x_{2},x_{1}]\ldots ]] &= [x_{k},[x_{j},[x_{j-1},[\ldots [x_{2},x_{1}]\ldots ]]\\
+&=[x_{k},y]
+\end{align*}
+where $y \in A_{j-1}=A_{k-2}$. Hence
+\[
+[x_{k},[x_{k-1},[\ldots [x_{1},x_{0}]\ldots ]] \in A_{k-1}.
+\]
+\end{proof}
+
+\begin{Lemma}\label{adddim}
+Let $\mathfrak{a}$ be any Lie algebra and let $ A_{0},A_{1},A_{2}\ldots$ be its lower central series. If $x \in A_{m}$ and $y \in A_{n}$, then $[x,y] \in A_{m+n+1}$.
+\end{Lemma}
+
+\begin{proof}
+The proof is by induction on $m$, with arbitrary $n$. Suppose $x=\sum\limits_{i} U_{i}$ and $y=\sum\limits_{i} V_{i}$, with 
+\[
+U_{i}=[x_{i0},[x_{i1},[x_{i2},\ldots [x_{i(m-1)},x_{im}]\ldots]]]
+\]
+and 
+\[
+V_{i}=[y_{i0},[y_{i1},[y_{i2},\ldots [y_{i(n-1)},y_{in}]\ldots]]]
+\]
+for some $x_{ij}$ and $y_{ij}$ in $\mathfrak{a}$.
+
+Suppose $m=0$, so that $x$ is just any element of $\mathfrak{a}$. Then 
+\[
+[x,y]=\sum\limits_{i}[x,V_{i}]=\sum\limits_{i}W_{i},
+\]
+where $W_{i} \in A_{n+1}=A_{m+n+1}$ as required. So the statement is true for $m=0$. 
+
+Now suppose the statement is true for $m = k$, for some integer $k \geq 0$. 
+
+Let $m=k+1$. Each $U_{i}$ can be written as $[x_{im},T_{i}]$, where $T_{i} \in A_{k}$. Then
+\begin{align*}
+[x,y] &=\sum\limits_{i}[[x_{im},T_{i1}],y] \\
+&= \sum\limits_{i}\big( \; [x_{im},[T_{i},y]]-[T_{i},[x_{im},y]]\; \big).
+\end{align*}
+
+Now $T_{i}$ is in $A_{k}$ so $[T_{i},y]$ is in $A_{k+n+1}$ by the inductive hypothesis, and since $x_{im}$ is any element of $\mathfrak{a}$, $[x_{im},[T_{i},y]]$ must be in $A_{k+n+2}=A_{m+n+1}$. 
+
+Also, $[x_{im},y] \in A_{n+1}$ since $x_{im}$ is any element of $\mathfrak{a}$, and then by the inductive hypothesis $[T_{i},[x_{im},y]]$ must be in $A_{k+n+1+1}=A_{m+n+1}$. 
+
+Hence 
+$$\sum\limits_{i}([x_{im},[T_{i},y]]-[T_{i},[x_{i1},y]])\;\in A_{m+n+1}$$
+and hence
+$$[x,y] \;\in A_{m+n+1} $$
+as required. 
+
+By induction the statement is true for all integers $m \geq 0$.
+\end{proof}
+
+\begin{Proposition}
+The entries $A_{i}$ in the lower central series for a Lie algebra $\mathfrak{a}$ are nested in the following way:
+\[
+A_{0}\supset A_{1} \supset A_{2} \supset \cdots \supset A_{j} \supset A_{j+1} \supset \cdots
+\]
+\end{Proposition}
+ 
+\begin{proof}
+We prove that $x \in A_{k}$ whenever $x \in A_{k+1}$. For $k=0$ this is trivial since $A_{0}$ is the whole Lie algebra. Suppose this statement is true for all $k \leq N$ for some positive integer $N$. Now let $k=N+1$.
+Let $x \in A_{k+1}$. So 
+\[
+x= \sum\limits_{i}[g_{i},h_{i}]
+\]
+where $g_{i} \in \mathfrak{a}$ and $h_{i} \in A_{k}$. But then $h_{i} \in A_{N+1}$ and by the inductive hypothesis, $h_{i} \in A_{N}=A_{k-1}$. Hence 
+\[
+[g_{i},h_{i}] \in A_{k}
+\]
+and therefore
+\[
+x=\sum\limits_{i}[g_{i},h_{i}] \in A_{k}.
+\]
+\end{proof}
+
+\begin{Proposition}
+If $\mathfrak{a}$ is a Lie algebra with lower central series $A_{i}$, then each of the $A_{i}$ is a Lie subalgebra. 
+\end{Proposition}
+
+\begin{proof}
+The $A_{i}$ are vector subspaces so it suffices to prove that $A_{i}$ is closed under the Lie bracket. Let $x$ and $y$ be elements of $A_{i}$. Then $y \in A_{i-1}$ and $x \in \mathfrak{a}$ so $[x,y] \in A_{i}$. Hence $A_{i}$ is a Lie subalgebra of $\mathfrak{a}$.
+\end{proof}
+
+\begin{Definition}\label{nilp lie alg}
+
+A Lie Algebra $\mathfrak{a}$ is called \emph{nilpotent} if its lower central series $A_{n}$ vanishes for some $n$. \newline
+Note that there is a specific $n$ for which $A_{n-1} \neq 0$ but $A_{n} =0$.
+\end{Definition}
+
+It is important here to also note that Lie algebras can be defined entirely by a set of generators and commutator relations between them. There is a theorem that say that every nilpotent Lie algebra defined this way has a representation as s group of upper-triangular matrices, just as we are familiar with in the Heisenberg case. 
+%reference: that paper about finding the representations
+
+\section{The Set-up for the Proof}
+
+
+The idea behind the proof is to take any two elements $x$ and $y$ of a nilpotent Lie algebra and see what kind of subalgebra they \emph{generate}. 
+%don't know if I've defined generation of algebras yet
+If they do not generate the whole algebra, then $\phi$ can be restricted to this generated subalgebra, and by the inductive assumption, will act as either an isomorphism or anti-isomorphism on this subalgebra. So $\phi[x,y]=\pm[\phi(x),\phi(y)]$ will hold. Some pairs of elements may however generate the whole algebra, in which case the inductive assumption cannot be directly applied. These pairs of elements will require special attention and it is this part of the proof that occupies the bulk of this chapter. 
+
+\section{Basis of the Induction}
+%could include this section in the previous chapter
+
+%explain now how this works as a basis for induction
+
+
+
+
+When considering nilpotent Lie groups and Lie algebras of higher dimension, the essential structure can be studied mainly by looking at the bracket operation and the lower central series.
+
+
+
+
+\section{The Inductive Assumption}
+For the induction, suppose that $n > 3$ and that if $\mathfrak{a}$ is a nilpotent Lie algebra of dimension $d$ such that
+\[
+3 \leq d \leq n-1
+\]
+then Theorem \ref{BigTheorem} holds. 
+
+\begin{Corollary}\label{CorReduceDim}
+If $\mathfrak{h}$ is a strict subalgebra of $\g$, then Theorem \ref{BigTheorem} holds for $\mathfrak{h}$. 
+\end{Corollary}
+
+\begin{proof}
+Any strict subalgebra $\mathfrak{h}$ of $\g$ must have dimension less than or equal to $n-1$. Let $A_{i}$ denote the lower central series of $\g$ and $B_{i}$ denote the lower central series of $\mathfrak{h}$. Suppose that $A_{N}$ is the last non-trivial term in the the series $A_{i}$. 
+
+Let $b \in B_{N+1}$. Then $b$ is a linear combination of some elements $U_{i}$ of $\mathfrak{h}$, where 
+\[
+U_{i}=[b_{i1},[b_{i2},[\ldots[b_{iN}, b_{i(N+1)}]\ldots]]]
+\]
+But then $U_{i} \in A_{N+1}$ so each $U_{i}$ is the zero vector. Hence $b=0$ and hence $\mathfrak{a}$ is a nilpotent Lie algebra. 
+
+Therefore, applying the inductive assumption, $\phi$ is either an isomorphism or anti-isomorphism when restricted to $\mathfrak{h}$.
+  
+\end{proof}
+
+\section{Reducing the Dimension of an Algebra}
+Let $x$ and $y$ be elements of $\g$. If $\dim(\alg(x,y)) < \dim(\g)$, then by Corollary \ref{CorReduceDim}, 
+\[\phi|_{\alg(x,y)}
+\]
+is either an isomorphism or anti-isomorphism, so 
+\[
+\phi[x,y]= \pm [\phi(x),\phi(y)].
+\] 
+On the other hand, if $\alg(x,y)=\g$, the inductive assumption cannot be directly applied. Therefore we attempt to reduce the dimension of the algebra $\alg(x,y)$ and look at the restrictions obtained by using the inductive assumption on the smaller algebra. \newline 
+
+Suppose that $\g=\alg(x,y)$.
+
+
+
+\begin{Definition}
+Let $L(C_{i})$ denote the length of a term in the sequence $C_{i}$. So, for example,
+\begin{align*}
+L(C_{1}) &= L(x)=1, \\
+L(C_{3}) &= L(\;[x,y]\;)=2, \\
+L(C_{6}) &= L(\;[x,[x,[x,y]]]\;)=4.
+\end{align*}
+\end{Definition}
+
+\begin{Definition}
+Label the terms in the BCH Formula for $x$ and $y$ by an ordered sequence $C_{i}$. So, ordering the first few terms,
+\begin{align*}
+C_1 &= x \\
+C_2 &= y \\
+C_3 &= [x,y] \\
+C_4 &= [x,[x,y]] \\
+C_5 &= [y,[x,y]] \\
+& \text{etc.}
+\end{align*}
+Let $C_{k}$ be the last non-zero term in the sequence.
+\end{Definition}
+
+\begin{Definition}
+We will also be considering the image of these sets under $\phi$ so define the sequence $D_1,\ldots D_k$ by replacing $x$ with $\phi(x)$ and $y$ with $\phi(y)$ in each of the terms of the sequence $C_i$. So for example,
+
+\begin{align*}
+D_1 &= \phi(x) \\
+D_2 &= \phi(y) \\
+D_3 &= [\phi(x),\phi(y)] \\
+D_4 &= [\phi(x),[\phi(x),\phi(y)]] \\
+D_5 &= [\phi(y),[\phi(x),\phi(y)]] \\
+& \text{etc.}
+\end{align*}
+\[
+\{ D_{i}\}= \{\phi(x),\phi(y), [\phi(x),\phi(y)], [\phi(x),[\phi(x),[\phi(y)]]], \ldots  \}
+\]
+\end{Definition}
+
+%Could include here the fact that the D's span g, which I don't mention until right near the end.
+
+\begin{Proposition}
+Using the notation for the commutators in Definition above, $\spn\{C_{1},\ldots,C_{k}\}=\alg(x,y)$.
+\end{Proposition}
+
+\begin{proof}
+
+Clearly $\{ C_{1},\ldots,C_{k} \}$ is a spanning set for $\alg(x,y)$ since the $C_{j}$ are all the non-zero commutators involving $x$ and $y$, and by definition $\alg(x,y)$ is anything in the linear span of this set.
+
+\end{proof}
+Now that we have this spanning set for $\g=\alg(x,y)$ it is possible to reduce its dimension by deleting particular elements. We will consider the subspaces of $\g$ that arise by deleting $x$ (that is, $C_{1}$) or $y$ (that is, $C_{2}$) from the span. 
+
+Let 
+\[
+\g_{-x}=\spn \{ C_{2},C_{3},\ldots,C_{k} \}
+\]
+and
+\[
+\g_{-y}=\spn \{C_{1},C_{3},C_{4},\ldots,C_{k} \}
+\]
+
+
+
+
+%this lemma may not be in the right place.
+\begin{Lemma}\label{generateWithDs}
+The subalgebra $\alg(\phi(x),\phi(y))$ generated by $\phi(x)$ and $\phi(y)$ is all of $\g$. (Just as $\alg(x,y)=\g$.) Thus $\g =\spn \{ D_{i} \mid i=1 \dots k  \} $ so a subset of these $D_{i}$ may be selected to form a basis $\{D_{j} \}_{j \in J}$ of $\g$, where $J \subseteq \{ 1,2,\ldots ,k \}$.
+\end{Lemma}
+
+\begin{proof}
+The map $\phi$ has the property that it maps subalgebras to subalgebras bijectively. So there is a subalgebra $\mathfrak{h}$ of $\g$ such that 
+\[
+\alg(\phi(x),\phi(y))= \phi(\mathfrak{h}).
+\]
+This implies that $\phi(x)\in  \phi(\mathfrak{h})$ and $\phi(x)\in  \phi(\mathfrak{h})$. Then since $\phi$ is injective it follows that $x \in \mathfrak{h}$ and $y \in \mathfrak{h}$. So by minimality, 
+\[
+\alg(x,y) \subseteq \mathfrak{h}
+\]
+Hence 
+\[
+\g\subseteq \mathfrak{h} 
+\]
+so using the fact that $\phi$ is surjective,
+\[
+\g=\mathfrak{h} =\phi(\g)=\phi(\mathfrak{h})=\alg(\phi(x),\phi(y)).
+\]
+
+\end{proof}
+
+\begin{Proposition} The subspaces $\g_{-x}$ and $\g_{-y}$ are Lie subalgebras.
+
+%Here, also need to prove that \g_-x-y and \g_\theta are subalgebras. These facts should all follow the same proof and are required later on.
+\end{Proposition} 
+\begin{proof}
+Let $u$ and $v$ be elements of $\g_{-x}$. Then there are real numbers $a_{2}\ldots a_{k}$ and $b_{2} \ldots b_{k}$ such that 
+\begin{align*}
+u &= a_{2}C_{2}+ a_{3}C_{3} + \ldots +a_{k}C_{k}, \\
+v &= b_{2}C_{2}+ b_{3}C_{3} + \ldots +b_{k}C_{k}.
+\end{align*}
+
+Then,
+\begin{align*}
+[u,v]&=[\;a_{2}C_{2}+ a_{3}C_{3} + \ldots a_{k}C_{k} \;,\;b_{2}C_{2}+ b_{3}C_{3} + \ldots b_{k}C_{k}\;] \\
+&=a_{2}b_{3}[C_{2},C_{3}]+a_{2}b_{4}[C_{2},C_{4}]+\ldots a_{k}b_{k-1}[C_{k},C_{k-1}]\\
+&=\gamma_{d(1)} C_{d(1)} +\gamma_{d(2)} C_{d(2)}+ \cdots \gamma_{d(P)} C_{d(P)}
+\end{align*}
+% give better explanation of where this expression comes from in terms of the new version of the previous lemma
+Where $d(i) \geq 3$ for all $1 \leq i \leq P$, by Lemma \ref{adddim}. Hence 
+$$[u,v] \in \spn \{ C_{2},C_{3}, \ldots C_{k} = \g_{-x}\}$$
+ and so $\g_{-x}$ is closed under the bracket operation, making it a Lie subalgebra. By symmetry it can be seen that $\g_{-y}$ is also a Lie subalgebra.
+\end{proof}
+
+\begin{Proposition}\label{minus both}
+The subspace of $\g$ defined by 
+\[
+\g_{-x-y} = \spn \{C_3,C_4,\ldots, C_n\}
+\]
+is a proper subalgebra of $\g$. 
+\end{Proposition}
+
+\begin{proof}
+First, it can be seen that $\g_{-x-y}$ is a proper subspace since it is contained in $\g_{-x}$. So it suffices to prove that it is closed under the bracket operation. 
+
+Let $u$ and $v$ be elements of $\g_{-x-y}$. Then there are real numbers $a_{3}\ldots a_{k}$ and $b_{3} \ldots b_{k}$ such that 
+\begin{align*}
+u &= a_{3}C_{3}+ a_{4}C_{4} + \ldots +a_{k}C_{k}, \\
+v &= b_{3}C_{3}+ b_{4}C_{4} + \ldots +b_{k}C_{k}.
+\end{align*}
+
+Then,
+\begin{align*}
+[u,v]&=[ \;a_{3}C_{3} + \ldots a_{k}C_{k}\;,\; b_{3}C_{3} + \ldots b_{k}C_{k}\;] \\
+&=a_{3}b_{4}[C_{3},C_{4}]+a_{3}b_{5}[C_{3},C_{5}]+\ldots a_{k}b_{k-1}[C_{k},C_{k-1}]\\
+&=\gamma_{d(1)} C_{d(1)} +\gamma_{d(2)} C_{d(2)}+ \cdots \gamma_{d(P)} C_{d(P)}
+\end{align*}
+% give better explanation of where this expression comes from in terms of the new version of the previous lemma
+Where each $\gamma_{j} \in \R$ and $d(i) \geq 4$ for all $1 \leq i \leq P$, by Lemma \ref{adddim}. Hence 
+$$[u,v] \in \spn \{ C_{3}, \ldots C_{k} = \g_{-x-y}\}$$
+ and so $\g_{-x-y}$ is closed under the bracket operation, making it a Lie subalgebra.
+
+\end{proof}
+
+\begin{Proposition}
+The subalgebras $\g_{-x}$ and $\g_{-y}$ are proper subalgebras of $\g$. 
+\end{Proposition}
+
+\begin{proof}
+The result will be proved for $\g_{-x}$ since by symmetry it is the same for $\g_{-y}$. Suppose the converse, i.e., $\g_{-x}=\g$. Then $x \in \g_{-x}$ so there are real numbers $x_{2},\ldots,x_{k}$ such that
+\begin{align*}
+x&= x_{2}y +x_{3}C_{3}+ x_{4}C_{4}+\cdots x_{k}C_{k}\\
+[y,x]&= [C_{2},x]=x_{3}[C_{2},C_{3}]+x_{4}[C_{2},C_{4}]+\cdots x_{p}[C_{2},C_{p}]
+\end{align*}
+where $p < k$, because $[y,C_{k}]=0$ since it is a commutator term further down the series and so by assumption must be zero. Then in fact $[y,C_{i}]=C_{j}$ with $j >i$ for every $i$ from $3$ to $k$. So the coefficients can be relabelled starting from $C_{4}$ as follows (also multiplying by $-1$):
+\begin{equation}\label{Iterate}
+[x,y]=x'_{4}C_{4}+x'_{5}C_{5}+\cdots x'_{p}C_{p}.
+\end{equation}
+
+But now each $C_{i}$ in the above expression is of the form 
+\[
+C_{i}=[y,[u_{1},[\ldots[u_{r},[x,y]\ldots]
+\]
+where $u_{i} \in \{x,y\}$. So then by substituting the left hand side of \ref{Iterate} into the right hand side repeatedly each individual term $C_{i}$ can grow to an arbitrarily long commutator. Take one such term: 
+ 
+\begin{align*}
+C_{i} &=[y,[u_{1}^{i},[u_{2}^{i},[\ldots[u_{r_{i}}^{i},[x,y]]\ldots]  \\
+ &=[y,[u_{1}^{i},[u_{2}^{i},[\ldots [u_{r_{i}}^{i},x'_{4}C_{4}+x'_{5}C_{5}+\cdots x'_{p}C_{p}]\ldots]\\
+ &=\sum\limits_{j=4}^{p}[y,[u_{1}^{i},[u_{2}^{i},[\ldots [u_{r_{i}}^{i},x'_{j}C_{j}]\ldots]\\
+ &=\sum\limits_{j=4}^{p}x'_{j}[y,[u_{1}^{i},[u_{2}^{i},[\ldots,[u_{r_{i}}^{i},[y,[u_{1}^{j},[u_{2}^{j},[\ldots[u_{r_{j}}^{j},[x,y]]\ldots]]\ldots]\\
+ &=\\
+ &\vdots \;\;\; \text{(repeatedly substituting the long expression for $[x,y]$)}\\
+ &=0
+\end{align*}
+Hence all the terms $C_{i}$ with $i$ from $4$ to $p$ are zero so $C_{3}=[x,y]=0$ which is a contradiction. Hence $x \notin \g_{-x}$ and so $\g_{-x}$ is a proper subalgebra of $\g$.
+\end{proof}
+
+\paragraph*{Consequence}
+By the inductive assumption, when $\phi$ is restricted to $\g_{-x}$ or to $\g_{-y}$, it is an isomorphism or anti-isomorphism.
+
+\begin{Proposition}
+Let $\theta$ be a real number. The subspace $\g_{\theta}$ of $\g$ given by 
+\[
+\g_{\theta}= \spn\{(\cos \theta)x+(\sin \theta)y \} \oplus \g_{-x-y}
+\]
+is a proper subalgebra of $\g$. 
+\end{Proposition}
+
+\begin{proof}
+It has already been shown that $\g_{-x-y}$ is closed under the bracket operation so it suffices to show that 
+\[
+[(\cos \theta)x + (\sin\theta)y,C_j] \in \g_{\theta}
+\]
+for all $j=3,4,\ldots,k$.
+
+We have 
+\begin{align*}
+[(\cos \theta)x + (\sin\theta)y,C_j] 
+&= \cos \theta [x,C_j]+\sin\theta[y,C_j] \\
+&= (\cos \theta) C_p + (\sin\theta )C_q
+\end{align*}
+where $p$ and $q$ are between $4$ and $k$. Hence 
+\[
+(\cos \theta) C_p + (\sin\theta )C_q \in \g_{\theta}
+\]
+as required.
+
+Now $\g_{\theta}$ is a proper subalgebra of $\g$ because:
+\begin{enumerate}
+\item If $\sin \theta \neq 0$ then the fact that $x$ and $y$ are linearly independent means that 
+\[
+x \notin \spn\{ (\cos \theta)x+(\sin \theta)y \}
+\]
+and it has already been shown that $x \notin \g_{-x-y}$. 
+
+\item If $\sin\theta =0$ then $\g_{\theta}=\g_{-x}$ which we already know to be a strict subalgebra.
+\end{enumerate}
+\end{proof}
+
+\section{The Central Error Term}
+
+%maybe define the centre of lie groups and algebras in chapter 1
+\begin{Definition}
+The \emph{centre} of a Lie algebra $\mathfrak{a}$ is 
+\[
+Z(\mathfrak{a})=\{x \in \mathfrak{a} \mid [x,a]=0, \;\; \forall a \in \mathfrak{a}\}.
+\]
+Note that the centre of the corresponding Lie group is the image of $Z(\mathfrak{a})$ under the exponential map.
+\end{Definition}
+
+\begin{Lemma}
+If $\mathfrak{a}$ is a nilpotent Lie algebra, then it has a non-trivial centre. 
+\end{Lemma}
+
+\begin{proof}
+Let $A_{i}$ be the lower central series for the nilpotent Lie algebra $\mathfrak{a}$, and suppose that $A_{n}$ is the last non-trivial term in the series. So there is some non-trivial element $x \in A_{n}$. But 
+\[
+[x,a] \in A_{n+1} \;\;\; \forall a \in \mathfrak{a} 
+\]
+Hence 
+\[
+[x,a] =0 \;\;\; \forall a \in \mathfrak{a}
+\] which is the requirement for $x$ to be in the centre of $\mathfrak{a}$. Hence the centre is non-trivial.
+\end{proof}
+
+
+
+\begin{Proposition}\label{miracle}
+Let $\phi:\g \longrightarrow \g $ be bijective and linear such that the corresponding map $\varphi: \G \longrightarrow \G$ preserves subgroups.
+%which type of subgroups?
+ Then 
+\[
+\phi[x,[x,y]]=[\phi(x),[\phi(x),\phi(y)]]
+\]
+\end{Proposition}
+
+\begin{proof}
+Let $A$ and $B$ be any two elements of $\G$, with corresponding elements $\alpha$ and $\beta$ in $\g$. 
+
+Claim: 
+\[
+\Phi(ab^{-1}a)=\Phi(a)\Phi(b)^{-1}\Phi(a).
+\]
+\begin{proof}
+
+The method is to look at the image of a one-parameter coset in $\G$ containing both $a$ and $b$. 
+Let $c=e^{\gamma}=a^{-1}b$ so that $b$ is an element of the coset $ae^{t\gamma}$, specifically when $t=1$. 
+So we have $b=ae^{\gamma}$.
+% and let $b'=ae^{-c}$.
+
+Define a map $ \Pi:\G \longrightarrow \G $ by 
+\begin{align*}
+&\Pi(m)=\Phi(a)^{-1}\Phi(am) & \forall m \in \G
+\end{align*}
+
+Claim: $\Pi$ is a coset-preserving map.
+
+\begin{proof}
+Let $\mathcal{H}$ be a subgroup of $\G$ and let $y \in \G$. Then there is a subgroup $\mathcal{H}'$ and an element $y' \in \G$ such that 
+\[
+\Phi(ayH) = y'\mathcal{H}'
+\]
+since $\Phi$ preserves cosets. 
+So 
+\begin{align*}
+\Pi(y\mathcal{H}) &= \Phi(a)^{-1} \Phi(ay\mathcal{H}) \\
+&= \Phi(a)^{-1}y'\mathcal{H}' \\
+&= y''\mathcal{H}',\quad \text{letting}\;\; y''=\Phi(a)^{-1}y'
+\end{align*}
+Hence $\Pi$ sends cosets of subgroups in $\G$ to cosets on subgroups in $\G$ 
+\end{proof}
+
+Then this map $\Pi$ is a coset-preserving map which sends $0$ to $0$. Hence the inductive hypothesis can be applied to $\Pi$ and so its corresponding map $\pi: \g \longrightarrow \g$ is linear.
+% If i don't prove linearity, say instead that pi is linear on one-param subgroups because by the inductive hypothesis it must be isom/anti-isom on these.Hence by the inductive hypothesis we know that  
+Most importantly 
+
+\begin{align*}
+\Pi(e^{-\gamma}) &= e^{\pi(-\gamma)} \\
+&= e^{-\pi(\gamma)}
+\end{align*}
+
+Thus 
+\begin{align*}
+\Phi(ab^{-1}a) &= \Phi(a)\Pi(b^{-1}a)\\
+&= \Phi(a)\Pi(c^{-1})\\
+&= \Phi(a) \Pi(e^{-\gamma}) \\
+&= \Phi(a) e^{-\pi(\gamma)} \\
+&= \Phi(a) \Pi(c)^{-1} \\
+&= \Phi(a) \Pi(a^{-1}b)^{-1} \\
+&= \Phi(a) (\Phi(a)^{-1}\Phi(aa^{-1}b))^{-1} \\
+&= \Phi(a) \Phi(b)^{-1} \Phi(a)
+\end{align*}
+as required. 
+
+\end{proof}
+
+So, letting $a=e^{sx}$ and $b=e^{-ty}$, we have 
+\[
+\Phi(e^{sx}e^{ty}e^{sx})= e^{s\phi(x)}e^{t\phi(y)}e^{s\phi(x)}
+\]
+We now apply the BCH formula to the left hand side twice. Note that when the parameters $s$ and $t$ are factored outside the commutator terms, the sum of the indices of $s$ and $t$ in each commutator term must be equal to the length of the commutator. 
+\begin{align*}
+\text{LHS} &= \varphi \left( \exp \left( 
+sx+ty+\frac{1}{2}st[x, y]+\frac{1}{12}s^{2}t[x,[x,y]] -\frac{1}{12}st^{2}[y,[x,y]] \right. \right.\\
+&\;\;\; \left. \left. +\sum\limits_{n,m \geq 1 ,\; n+m \geq 4} s^{n}t^{m}C_{nm}
+\right) \exp (sx) \right) 
+\end{align*}
+where the $C_{nm}$ represent the commutators of length $4$ or more in the series where $x$ appears $n$ times and $y$ appears $m$ times. These take into account the fractions out the front and all the different permutations for each $n$ and $m$. Now using the BCH Formula again:
+
+\begin{align*}
+\text{LHS} &= \varphi \bigg( \exp \bigg( 
+2sx+ty+\frac{1}{2}st[x, y]+\frac{1}{12}s^{2}t[x,[x,y]] -\frac{1}{12}st^{2}[y,[x,y]] \\
+&\;\;\;  +(\text{commutators of length $\geq 4$}) \\
+&\;\;\; + \frac{1}{2}\left( st[y,x] + \frac{1}{2}s^{2}t[[x,y],x] +(\text{commutators of length $\geq 4$}) \right) \\
+&\;\;\;+\frac{1}{12}\left( s^{2}t[x,[y,x]]+st^{2}[y,[y,x]] + (\text{commutators of length $\geq 4$}) \right) \\
+&\;\;\;-\frac{1}{12}\left( s^{2}t[x,[y,x]] + (\text{commutators of length $\geq 4$}) \right) \\
+&\;\;\;+ \text{more commutators of length $\geq 4$} \bigg) \bigg) \\
+&\\
+&= \varphi \bigg( \exp \bigg( 
+2sx+ty-\frac{1}{6}s^{2}t[x,[x,y]] -\frac{1}{6}st^{2}[y,[x,y]] \\
+&\;\;\;\;\;\;\;\;\;  +(\text{commutators of length $\geq 4$}) \bigg) \bigg)
+\end{align*}
+Now the terms in the series with commutators of length greater than or equal to four all have factors of $s$ and $t$ with total multiplicity greater than or equal to four. Since later on the powers of $s$ and $t$ in these terms will be important for differentiation they will be included with abbreviated notation $s^{n}t^{m}\chi_{nm}$, where $\chi_{nm}$ incorporates a sum of all the terms with commutators in which $x$ appears $n$ times and $y$ appears $m$ times, as well as the rational coefficients that arise from the BCH formula. So 
+\begin{align*}
+\text{LHS} &= \varphi \bigg( \exp \bigg( 
+2sx+ty-\frac{1}{6}s^{2}t[x,[x,y]] -\frac{1}{6}st^{2}[y,[x,y]] \\
+&\;\;\;\;\;\;\;\;\;  +\sum\limits_{\substack{n,m \geq 1  \\ n+m \geq 4}}s^{n}t^{m}\chi_{nm} \bigg) \bigg)
+\end{align*}
+Now the right hand side will be given by almost the same expression, just replacing each $x$ in the above with $\phi(x)$ and each $y$ with $\phi(y)$ as well as omitting the $\varphi$ at the beginning. We will use $\zeta$ instead of $\chi$ to denote the higher length commutators as before. So 
+\begin{align*}
+\text{RHS} &=  \exp \bigg( 
+2s\phi(x)+t\phi(y)-\frac{1}{6}s^{2}t[\phi(x),[\phi(x),\phi(y)]] -\frac{1}{6}st^{2}[\phi(y),[\phi(x),\phi(y)]] \\
+&\;\;\;\;\;\;\;\;\;  +\sum\limits_{\substack{n,m \geq 1  \\ n+m \geq 4}}s^{n}t^{m}\zeta_{nm} \bigg) 
+\end{align*}
+
+Now bringing the map $\varphi$ inside the exponential map in the usual way, and applying linearity of $\phi$ we obtain for the left hand side:
+
+\begin{align*}
+\text{LHS} &=  \exp \bigg( 
+2s\phi(x)+t\phi(y)-\frac{1}{6}s^{2}t\phi[x,[x,y]] -\frac{1}{6}st^{2}\phi[y,[x,y]] \\
+&\;\;\;\;\;\;\;\;\;  +\sum\limits_{\substack{n,m \geq 1  \\ n+m \geq 4}} s^{n}t^{m}\phi(\chi_{nm}) \bigg)
+\end{align*}
+Since the exponential map $\exp: \g \longrightarrow \G$ is injective, equating the left and right hand sides above gives
+\begin{align*}
+&2s\phi(x)+t\phi(y)-\frac{1}{6}s^{2}t\phi[x,[x,y]] -\frac{1}{6}st^{2}\phi[y,[x,y]]+\sum\limits_{\substack{n,m \geq 1  \\ n+m \geq 4}}s^{n}t^{m}\phi(\chi_{nm}) \\[.7em]
+&=2s\phi(x)+t\phi(y)-\frac{1}{6}s^{2}t[\phi(x),[\phi(x),\phi(y)]]\\[.7em]
+&\quad \quad \quad -\frac{1}{6}st^{2}[\phi(y),[\phi(x),\phi(y)]]+\sum\limits_{\substack{n,m \geq 1  \\ n+m \geq 4}}s^{n}t^{m}\zeta_{nm} \\
+\end{align*}
+Cancelling and multiplying by $-6$ gives:
+\begin{align*}
+&s^{2}t\phi[x,[x,y]]+st^{2}\phi[y,[x,y]]-s^{2}t[\phi(x),[\phi(x),\phi(y)]]-st^{2}[\phi(y),[\phi(x),\phi(y)]] \\
+&+\sum\limits_{\substack{n,m \geq 1\\ n+m \geq 4}}s^{n}t^{m}(\phi(\chi_{nm})- \zeta_{nm})=0
+\end{align*}
+Factoring this:
+\begin{align*}
+&s^{2}t\big(\phi[x,[x,y]]-[\phi(x),[\phi(x),\phi(y)]]\big)+st^{2}\big(\phi[y,[x,y]]-[\phi(y),[\phi(x),\phi(y)]]\big) \\
+&+\sum\limits_{\substack{n,m \geq 1\\ n+m \geq 4}}s^{n}t^{m}(\phi(\chi_{nm})- \zeta_{nm})=0
+\end{align*}
+Now taking $d/dt$ gives
+\begin{align*}
+&s^{2}\big(\phi[x,[x,y]]-[\phi(x),[\phi(x),\phi(y)]]\big)+2st\big(\phi[y,[x,y]]-[\phi(y),[\phi(x),\phi(y)]]\big) \\
+&+\sum\limits_{\substack{n,m \geq 1\\ n+m \geq 4}}m s^{n}t^{m-1}(\phi(\chi_{nm})- \zeta_{nm})=0
+\end{align*}
+Then substituting $t=0$, 
+\begin{align*}
+s^{2}\big(\phi[x,[x,y]]-[\phi(x),[\phi(x),\phi(y)]]\big)+\sum\limits_{\substack{m=1\\ n \geq 3}}m s^{n}t^{m-1}(\phi(\chi_{nm})- \zeta_{nm})&=0 \\
+s^{2}\big(\phi[x,[x,y]]-[\phi(x),[\phi(x),\phi(y)]]\big)+\sum\limits_{n \geq 3} s^{n}(\phi(\chi_{nm})- \zeta_{nm})&=0
+\end{align*}
+Now taking $d^{2}/ds^{2}$, 
+\[
+2\big(\phi[x,[x,y]]-[\phi(x),[\phi(x),\phi(y)]]\big)+\sum\limits_{n \geq 3} n(n-1)s^{n-2}(\phi(\chi_{nm})- \zeta_{nm})=0
+\]
+Setting $s=0$ gives
+\begin{align*}
+2\big(\phi[x,[x,y]]-[\phi(x),[\phi(x),\phi(y)]]\big)&=0 \\
+\phi[x,[x,y]] &= [\phi(x),[\phi(x),\phi(y)]]
+\end{align*}
+
+\end{proof}
+
+\begin{Lemma}\label{Two x's}
+If $[x,[x,y]]=0 $ then all commutators of $x$ and $y$, in which $x$ appears at least twice, are zero.
+
+Similarly, if $[y,[x,y]]=0$ then all all commutators of $x$ and $y$, in which $y$ appears at least twice, are zero.
+\end{Lemma}
+
+\begin{proof}
+The first statement will be proved. The second statement then follows by symmetry.
+
+For each non-negative integer $n$, let 
+\[
+h_n = [x,\underbrace{[y,[y,[\ldots[y,}_{n}[x,y]]\ldots]]]].
+\]
+Every commutator of $x$ and $y$, in which $x$ appears at least twice, contains one of these $h_n$, so it suffices to prove by induction that $h_n=0$ for all $n \geq 0$. 
+
+For $n=0$, 
+\[
+h_n=[x,[x,y]]
+\]
+which is zero by assumption. Hence the statement is true for $n=0$.
+
+We suppose the statement to be true for $n=k$ and prove that it is also true for $n=k+1$. 
+
+Applying the Jacobi identity,
+\begin{align*}
+h_{k+1} &= [x,\underbrace{[y,\ldots[y,}_{k+1}[x,y]]\ldots]] \\
+&= [[x,y],[y,\ldots[y,[x,y]]\ldots ]] + [y,[x,\underbrace{[y,\ldots[y,}_{k}[x,y]]\ldots]]].
+\end{align*}
+But now $[x,y]$ and $[y,\ldots[y,[x,y]]\ldots ]$ are in $\g_{-x-y}$, so taking their commutator gives zero (since $\g_{-x-y}$ is abelian). In other words 
+\[
+[[x,y],[y,\ldots[y,[x,y]]\ldots ]]=0.
+\]
+So  
+\begin{align*}
+h_{k+1} &=[y,[x,\underbrace{[y,\ldots[y,}_{k}[x,y]]\ldots]]] \\
+&= [y,h_k] \\
+&=[y,\mathbf{0}] \\
+&= \mathbf{0}
+\end{align*}
+as required.
+\end{proof}
+
+\begin{Lemma}
+For every real number $\theta$ define a subspace of $\g$ by
+\[
+\g_{\theta} = \spn\{ (\cos{\theta})x + (\sin{\theta})y, C_3,C_4,\ldots C_k \}.
+\]
+Each of these subspaces is a proper subalgebra of $\g$.
+\end{Lemma}
+
+
+%fill this bit in
+\begin{proof}
+
+\end{proof}
+
+
+\begin{Proposition}\label{consistency}
+The map $\phi$ is either an isomorphism on both $\g_{-x}$ and $\g_{-y}$ or and anti-isomorphism on $\g_{-x}$ and $\g_{-y}$. 
+%If $\phi$ is either an isomorphism or anti-isomorphism when restricted to $\g_{-x}$ or $\g_{-y}$, then $\phi$ is either an isomorphism on both of these subalgebras, or an anti-isomorphism on both of them.  
+\end{Proposition}
+
+\begin{proof}
+We already know that $\phi$ is either an isomorphism or an anti-isomorphism on each of $\g_{-x}$ and $\g_{-y}$. 
+
+Note that $\phi$ is both an isomorphism and an anti-isomorphism on a subalgebra $\mathfrak{h}$ of $\g$ if and only if 
+\[
+\phi[h_1,h_2]=-\phi[h_1,h_2],\;\; \forall h_1,h_2 \in \mathfrak{h}.
+\]
+In other words, $\phi[h_1,h_2]=0$, meaning also that $[h_1,h_2]=0$ for all $h_1,h_2 \in \mathfrak{h}$. 
+
+Hence $\phi$ is both an isomorphism and an anti-isomorphism on a subalgebra $\mathfrak{h}$ of $\g$ if and only if $\mathfrak{h}$ is abelian.
+
+So it suffices to prove the following.
+\begin{enumerate}
+\item If $\phi$ is an isomorphism on $\g_{-x}$ and an anti-isomorphism on $\g_{-y}$, then $\g_{-x}$ is abelian or $\g_{-y}$ is abelian. 
+\item If $\phi$ is an anti-isomorphism on $\g_{-x}$ and an isomorphism on $\g_{-y}$, then $\g_{-x}$ is abelian or $\g_{-y}$ is abelian.
+\end{enumerate}
+
+Only the first statement will be proved since the second follows by symmetry.
+
+Suppose that $\phi$ is an isomorphism on $\g_{-x}$ and an anti-isomorphism on $\g_{-y}$.
+
+Since elements of the subalgebras $\g_{-x}$, $\g_{-y}$ and $\g_{-x-y}$ can all be written as linear combinations of the commutator terms that define them, it always suffices to show that the bracket applied to all pairs of the commutator terms is zero, when proving that one of these algebras is abelian. 
+
+\paragraph{Claim}
+The subalgebra $\g_{-x-y}$ is abelian. This is true because
+\[
+\g_{-x-y} \subset \g_{-x}
+\]
+and 
+\[
+\g_{-x-y} \subset \g_{-y}
+\]
+so that $\phi$ must be both and isomorphism and an anti-isomorphism when restricted to $\g_{-x-y}$. 
+
+The proof now splits into cases depending on whether $C_{4}$ and $C_{5}$ are zero. (Recall that $C_4=[x,[x,y]]$ and $C_5 = [y,[x,y]]$.
+
+
+\begin{enumerate}
+\item Suppose that $C_4=0$. Then $[x,[x,y]]=0$ and Lemma \ref{Two x's} applies. Now note that 
+\[
+\g_{-y} = \spn \{ x, [x,y], \text{higher length commutators}\}.
+\]
+So the bracket of any two commutators in $\g_{-y}$ involves at least two $x$'s and hence by Lemma \ref{Two x's} must be zero. Hence $g_{-y}$ is abelian. 
+
+\item Suppose that $C_5=0$. Then $[y,[x,y]]=0$ and Lemma \ref{Two x's} applies. Now note that 
+\[
+\g_{-x} = \spn \{ y, [x,y], \text{higher length commutators}\}.
+\]
+So the bracket of any two commutators in $\g_{-x}$ involves at least two $y$'s and hence by Lemma \ref{Two x's} must be zero. Hence in this case, $g_{-x}$ is abelian.
+
+\item Suppose that neither $C_4$ nor $C_5$ is zero. (It will be shown that this gives a contradiction so that one of them must indeed by zero). 
+
+For each real number $\theta \in [0,\pi/2]$, consider the subalgebra 
+\[
+\g_\theta= \R((\cos{\theta})x + (\sin{\theta})y) \oplus \g_{-x-y}.
+\]
+%Have I even shown that this is a subalgebra?
+Since this is a strict subalgebra, $\phi$ is either an isomorphism or anti-isomorphism when restricted to it. 
+
+%New version for this written out on paper, taking into account the fact that the pm sign does depend on theta.
+Note that since $\phi$ is an isomorphism on $\g_{-x}$ and an anti-isomorphism on $\g_{-y}$, we have
+\begin{equation}\label{anti}
+\phi[x,[x,[y]]= -[\phi(x),\phi[x,y]]
+\end{equation}
+and similarly,
+\begin{equation}\label{iso}
+\phi[y,[x,[y]]= [\phi(y),\phi[x,y]]
+\end{equation}
+\begin{enumerate}
+\item If for some $\theta \in [0,\pi/2]$, the map $\phi$ acts as an isomorphism on $\g_{\theta}$, then
+\begin{align*}
+\phi[(\cos{\theta})x + (\sin{\theta})y,[x,y]] &=
+\phi\big( \cos{\theta}[x,[x,y]]+ \sin{\theta}[y,[x,y]] \big) \\
+&= \cos{\theta}\phi[x,[x,y]]+ \sin{\theta}\phi[y,[x,y]] \\
+&= \cos{\theta}[\phi(x),\phi[x,y]]+ \sin{\theta}[\phi(y),\phi[x,y]] \\
+&= -\cos{\theta}[\phi(x),\phi[x,y]]+ \sin{\theta}[\phi(y),\phi[x,y]] \\ 
+& \quad \quad  \text{using equation \ref{anti}}
+\end{align*}
+But this indicates that 
+\[
+\cos{\theta}[\phi(x),\phi[x,y]]=0.
+\]
+However, we have assumed that $C_4 \neq 0 $ and 
+\[
+[\phi(x),\phi[x,y]]= -\phi(C_4)
+\]
+so since $\phi$ is bijective and sends zero to zero, 
+\[
+[\phi(x),\phi[x,y]]=0 \iff C_4=0.
+\]
+Hence we conclude that in this case, the only possible value for $\theta$ is $\pi/2$. 
+
+
+\item If for some $\theta \in [0,\pi/2]$, the map $\phi$ acts as an anti-isomorphism on $\g_{\theta}$, then
+\begin{align*}
+\phi[(\cos{\theta})x + (\sin{\theta})y,[x,y]] 
+&= \cos{\theta}\phi[x,[x,y]]+ \sin{\theta}\phi[y,[x,y]] \\
+&= -\cos{\theta}[\phi(x),\phi[x,y]]- \sin{\theta}[\phi(y),\phi[x,y]] \\
+&= -\cos{\theta}[\phi(x),\phi[x,y]]+ \sin{\theta}[\phi(y),\phi[x,y]]\\ 
+& \quad \quad \text{using equation \ref{iso}}
+\end{align*}
+But this indicates that 
+\[
+\sin{\theta}[\phi(y),\phi[x,y]]=0.
+\]
+However, we have assumed that $C_5 \neq 0 $ and 
+so by a similar argument to the one in the previous case, we must have $\sin{\theta}=0$. So the only possible value for $\theta$ in this case is $\theta = 0$.
+\end{enumerate}
+
+But these two statements are contradictory, since $\phi$ must be either an isomorphism or anti-isomorphism on $\g_{\theta}$ for \emph{every} possible value of $\theta \in [0, \pi/2]$.
+
+Hence it is not possible that $C_4$ and $C_5$ are both non-zero under the assumption that $\phi$ is an isomorphism on $\g_{-x}$ and an anti-isomorphism on $\g_{-y}$. 
+
+So all cases have been covered.
+
+\end{enumerate}
+Hence in any of the possible cases, either $\g_{-x}$ or $\g_{-y}$ is abelian, completing the proof. 
+
+\end{proof}
+
+
+We wish to show that $\phi[x,y]= \pm[\phi(x),\phi(y)]$. So we will define an element of $\g$ which is the difference between these two elements and aim to prove that it is zero.
+
+\begin{Proposition}
+ Let $z$ be the `error' term as follows: If $\phi$ is an isomorphism on $\g_{-x}$ and $\g_{-y}$ then define
+\[
+z = \phi [x,y] -[\phi(x),\phi(y)].
+\]
+Whereas if $\phi$ is an anti-isomorphism on $\g_{-x}$ and $\g_{-y}$ then define
+\[
+z = \phi [x,y] +[\phi(x),\phi(y)].
+\]
+In either case $z \in Z(\g)$.
+\end{Proposition}
+
+\begin{proof}
+For the first case, suppose that $\phi$ is an isomorphism on $\g_{-x}$ and $\g_{-y}$. \newline
+Let $a$ be any element of $\g$. Recall that $\g = \alg(x,y)$ and that it is spanned by $C_{i}$, the commutator terms in the BCH Formula for $x$ and $y$. We have 
+\begin{align*}
+x&=C_{1}\\
+y&=C_{2}\\
+[x,y]&=C_{3}
+\end{align*}
+and by the inductive assumption on $\g_{-x}$ and $\g_{-y}$, we know that 
+\[
+[\phi(C_{i}),\phi(C_{j})]=\phi[C_{i},C_{j}],\;\;\text{whenever}\;\; (i,j) \notin \{(1,2),(2,1)\}.
+\]
+Since $\phi$ is bijective, $a$ is the image of some element of $\g$ under $\phi$. So we can write 
+\begin{align*}
+a &=\phi\left(\sum\limits_{i=1}^{k}a_{i}C_{i}\right)\\
+&=\sum\limits_{i=1}^{k} a_{i}\phi(C_{i})
+\end{align*}
+for some real numbers $a_{i}$.\newline
+So
+\begin{align*}
+[a,z] &= [a,\phi(C_{3})-[\phi(C_{1}),\phi(C_{2})]] \\
+&=[a,\phi(C_{3})]-[a,[\phi(C_{1}),\phi(C_{2})]] \\
+&=\left[\sum\limits_{i=1}^{k} a_{i}\phi(C_{i}),\phi(C_{3}) \right]-\left[ \sum\limits_{i=1}^{k} a_{i}\phi(C_{i}),[\phi(C_{1}),\phi(C_{2})]\right] \\
+&=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]-\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),[\phi(C_{1}),\phi(C_{2})]] \\
+&=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]\\
+&\quad \quad \quad+ \sum\limits_{i=1}^{k} a_{i}\big(\; [\phi(C_{1}),[\phi(C_{2}),\phi(C_{i})]]+[\phi(C_{2}),[\phi(C_{i}),\phi(C_{1})]]\;\big) \\
+&=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]+a_{1}[\phi(C_{1}),[\phi(C_{2}),\phi(C_{1})]]+a_{2}[\phi(C_{2}),[\phi(C_{2}),\phi(C_{1})]] \\
+&\quad+ \sum\limits_{i=3}^{k} a_{i}\big(\; [\phi(C_{1}),[\phi(C_{2}),\phi(C_{i})]]+[\phi(C_{2}),[\phi(C_{i}),\phi(C_{1})]] \;\big) \\
+&=\sum\limits_{i=1}^{k} a_{i}\phi[C_{i},C_{3}]+a_{1}\phi[C_{1},[C_{2},C_{1}]]+a_{2}\phi[C_{2},[C_{2},C_{1}]] \\
+&\quad+ \sum\limits_{i=3}^{k} a_{i}\big(\; \phi[C_{1},[C_{2},C_{i}]]+\phi[C_{2},[C_{i},C_{1}]] \;\big) \\
+& \quad \quad \text{(using Proposition \ref{miracle} and the inductive assumption) } \\
+&=\sum\limits_{i=1}^{k} a_{i}\phi[C_{i},C_{3}]+ \sum\limits_{i=1}^{k} a_{i}\big(\; \phi[C_{1},[C_{2},C_{i}]]+\phi[C_{2},[C_{i},C_{1}]] \;\big) \\
+&=\sum\limits_{i=1}^{k} \big( a_{i}\phi[C_{i},C_{3}]+ a_{i}\phi\big(\; [C_{1},[C_{2},C_{i}]]+[C_{2},[C_{i},C_{1}]] \;\big)\big) \\
+&=\sum\limits_{i=1}^{k} a_{i}\big(\phi[C_{i},C_{3}]- \phi\big(\; [C_{i},[C_{1},C_{2}]] \;\big)\big) \\
+&=\sum\limits_{i=1}^{k} a_{i}\big(\phi[C_{i},C_{3}]- \phi[C_{i},C_{3}] \big) \\
+&=0
+\end{align*}
+
+For the second case, suppose that $\phi$ is an anti-isomorphism on $\g_{-x}$ and $\g_{-y}$. So in this case
+\[
+z=\phi[C_{1},C_{2}]+[\phi(C_{1}),\phi(C_{2})].
+\]
+\newline
+Once again let $a$ be any element of $\g$ which is given by 
+\[
+a=\sum\limits_{i=1}^{k} a_{i}\phi(C_{i})
+\] as before.
+This time, the inductive assumption tells us that 
+\[
+[\phi(C_{i}),\phi(C_{j})]=-\phi[C_{i},C_{j}],\;\;\text{whenever}\;\; (i,j) \notin \{(1,2),(2,1)\}.
+\]
+\newline
+So
+\begin{align*}
+[a,z] &= [a,\phi(C_{3})+[\phi(C_{1}),\phi(C_{2})]] \\
+&=[a,\phi(C_{3})]+[a,[\phi(C_{1}),\phi(C_{2})]] \\
+&=\left[\sum\limits_{i=1}^{k} a_{i}\phi(C_{i}),\phi(C_{3}) \right]+\left[ \sum\limits_{i=1}^{k} a_{i}\phi(C_{i}),[\phi(C_{1}),\phi(C_{2})]\right] \\
+&=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]+\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),[\phi(C_{1}),\phi(C_{2})]] \\
+&=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]\\
+&\quad \quad \quad- \sum\limits_{i=1}^{k} a_{i}\big(\; [\phi(C_{1}),[\phi(C_{2}),\phi(C_{i})]]+[\phi(C_{2}),[\phi(C_{i}),\phi(C_{1})]]\;\big) \\
+&=\sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]-a_{1}[\phi(C_{1}),[\phi(C_{2}),\phi(C_{1})]]-a_{2}[\phi(C_{2}),[\phi(C_{2}),\phi(C_{1})]] \\
+&\quad- \sum\limits_{i=3}^{k} a_{i}\big(\; [\phi(C_{1}),[\phi(C_{2}),\phi(C_{i})]]+[\phi(C_{2}),[\phi(C_{i}),\phi(C_{1})]] \;\big) \\
+&= \sum\limits_{i=1}^{k} a_{i}[\phi(C_{i}),\phi(C_{3})]-a_{1}\phi[C_{1},[C_{2},C_{1}]]-a_{2}\phi[C_{2},[C_{2},C_{1}]] \\
+&\quad- \sum\limits_{i=3}^{k} a_{i}\big(\; [\phi(C_{1}),-\phi[C_{2},C_{i}]]+[\phi(C_{2}),-\phi[C_{i},C_{1}]] \;\big) \\
+&=-\sum\limits_{i=1}^{k} a_{i}\phi[C_{i},C_{3}]-a_{1}\phi[C_{1},[C_{2},C_{1}]]-a_{2}\phi[C_{2},[C_{2},C_{1}]] \\
+&\quad- \sum\limits_{i=3}^{k} a_{i}\big(\; \phi[C_{1},[C_{2},C_{i}]]+\phi[C_{2},[C_{i},C_{1}]] \;\big) \\
+& \quad \quad \text{(using Proposition \ref{miracle} and the inductive assumption) } \\
+&=-\sum\limits_{i=1}^{k} a_{i}\phi[C_{i},C_{3}]- \sum\limits_{i=1}^{k} a_{i}\big(\; \phi[C_{1},[C_{2},C_{i}]]+\phi[C_{2},[C_{i},C_{1}]] \;\big) \\
+&=-\sum\limits_{i=1}^{k} \big( a_{i}\phi[C_{i},C_{3}]+ a_{i}\phi\big(\; [C_{1},[C_{2},C_{i}]]+[C_{2},[C_{i},C_{1}]] \;\big)\big) \\
+&=-\sum\limits_{i=1}^{k} a_{i}\big(\phi[C_{i},C_{3}]- \phi\big(\; [C_{i},[C_{1},C_{2}]] \;\big)\big) \\
+&=-\sum\limits_{i=1}^{k} a_{i}\big(\phi[C_{i},C_{3}]- \phi[C_{i},C_{3}] \big) \\
+&=0
+\end{align*}
+\end{proof}
+
+\section{Proof that the Error Term is Zero}
+
+A subgroup will now be constructed in two different ways. By observing how the map $\phi$ acts on each of these expressions for the subgroup it will be shown that the error term $z$ must be zero.
+
+
+
+
+
+\begin{Definition}
+To simplify manipulations of terms in the sequence $C_{i}$, define a new related sequence $C'_{i}$ by taking the BCH Formula for $\lambda x$ and $\lambda y$ rather than for $x$ and $y$. So, for example,
+
+\begin{align*}
+C'_{1} &= \lambda x, \\
+C'_{2} &= \lambda y, \\
+C'_{3} &= [\lambda x, \lambda y].
+\end{align*} 
+etc. And note the following: 
+\[
+C'_{i}=\lambda^{L(C_{i})}C_{i}
+\]
+simply by taking the multiples $\lambda$ outside the brackets.
+
+Also for the sequence $D_i$, define the related sequence $D'_i$ by 
+\begin{align*}
+D'_{i} &= \{\phi(\lambda x),\phi(\lambda y), [\phi(\lambda x),\phi(\lambda y)], [\phi(\lambda x),[\phi(\lambda x),[\phi(\lambda y)]]], \ldots  \}\\
+&=  \{\lambda\phi(x),\lambda\phi(y), [\lambda\phi(x),\lambda\phi(y)], [\lambda\phi(x),[\lambda\phi(x),[\lambda\phi(y)]]], \ldots  \}
+\end{align*}
+
+For $1 \leq i \leq k$ we have
+\[
+D'_{i}= \lambda^{L(D_{i})}D_{i}.
+\]
+\end{Definition}
+
+\begin{Proposition}
+For $i=4,5\ldots k$, we have $\phi(C_{i})=D_{i}$. 
+\end{Proposition}
+
+\begin{proof}
+The proof is by induction on $l=L(C_{i})$. For $l=2$ there are two terms in the sequence and the statement is 
+\begin{align*}
+\phi[x,[x,y]]&=[\phi(x),[\phi(x),\phi(y)]] \\
+\phi[y,[x,y]]&=[\phi(y),[\phi(x),\phi(y)]]
+\end{align*}
+But these are both true by Proposition \ref{miracle}. \newline
+Now suppose that the statement is true for $l=M$ for some $M \geq 2$. Then suppose that $L(C_{i})=M+1$. There are two possibilities:
+\[
+C_{i}=[C_{1},C_{j}]
+\]
+or 
+\[
+C_{i}=[C_{2},C_{j}]
+\]
+where $L(C_{j})=M$. But then in either case we know $j\geq 4$ so
+
+\[
+\phi[C_{1},C_{j}]=[\phi C_{1},\phi C_{j}]
+\]
+and
+\[
+\phi[C_{2},C_{j}]=[\phi C_{2},\phi C_{j}]
+\]
+since $[C_{1},C_{j}] \in \g_{-y}$ and $[C_{2},C_{j}] \in \g_{-x}$. 
+Without loss of generality suppose $C_{i}=[C_{1},C_{j}]$. Then 
+\begin{align*}
+\phi[C_{1},C_{j}] &=[\phi C_{1},\phi C_{j}] \\
+&=[\phi(x),D_{j}]\\
+&=D_{i}
+\end{align*}
+ as required. 
+Hence for $l\geq 2$, $\phi(C_{i})=D_{i}$. The first term in the sequence with length $2$ is $C_{4}$ so the result holds. 
+\end{proof}
+
+\begin{Lemma}\label{Groupimage}
+Let $v_{1}$ and $v_{2}$ be elements of $\g$. Then 
+\begin{align*}
+\Phi \langle e^{v_{1}},e^{v_{2}} \rangle &=  \langle \Phi(e^{v_{1}}), \Phi(e^{v_{2}}) \rangle \\ 
+&= \langle e^{\phi(v_{1})}, e^{\phi(v_{2})} \rangle
+\end{align*}
+
+\end{Lemma}
+
+\begin{proof}
+
+The proof is similar to the proof of Lemma \ref{Groupimage1}.
+
+Since $\Phi$ sends subgroups of $\G$ to subgroups of $\G$, $\Phi \langle e^{v_{1}},e^{v_{2}} \rangle$ is a subgroup. So the fact that $\Phi(e^{v_{1}})$ and $\Phi(e^{v_{2}})$ are elements of $\Phi \langle e^{v_{1}},e^{v_{2}} \rangle$ along with minimality give
+
+\[
+\langle \Phi(e^{v_{1}}), \Phi(e^{v_{2}}) \rangle \subseteq \Phi \langle e^{v_{1}},e^{v_{2}} \rangle  
+\]
+Now $\Phi^{-1}$ is also bijective and preserves subgroups of $\G$ so
+
+\begin{align*}
+\langle \Phi^{-1}(e^{v_{1}}), \Phi^{-1}(e^{v_{2}}) \rangle &\subseteq \Phi^{-1} \langle e^{v_{1}},e^{v_{2}} \rangle  \\
+\Phi \langle \Phi^{-1}(e^{v_{1}}), \Phi^{-1}(e^{v_{2}}) \rangle &\subseteq \Phi\Phi^{-1} \langle e^{v_{1}},e^{v_{2}} \rangle  \\
+\Phi \langle \Phi^{-1}(e^{v_{1}}), \Phi^{-1}(e^{v_{2}}) \rangle &\subseteq  \langle e^{v_{1}},e^{v_{2}} \rangle  
+\end{align*}
+But since this is true for any pair of elements $e^{v_{1}}$ and $e^{v_{2}}$, and since $\Phi$ is bijective, it also applies to $\Phi(e^{v_{1}})$, $\Phi(e^{v_{2}})$. Substituting these elements into the last relation:
+\begin{align*}
+\Phi \langle \Phi^{-1}(\Phi(e^{v_{1}})), \Phi^{-1}(\Phi(e^{v_{2}})) \rangle &\subseteq  \langle \Phi(e^{v_{1}}),\Phi(e^{v_{2}}) \rangle \\
+\Phi \langle e^{v_{1}}, e^{v_{2}} \rangle &\subseteq  \langle \Phi(e^{v_{1}}),\Phi(e^{v_{2}}) \rangle
+\end{align*}
+
+\end{proof}
+
+%From now is the new version of the final section
+\begin{Proposition}\label{Polysets}
+Define an inner product $((,))$ on $ \g$, with respect to some basis (it doesn't matter which). There exists a real number $\lambda_0$ which is not a root of any of the following polynomials. 
+
+For $j=1,\ldots,k$ define a set of polynomials
+\[
+P_j(\lambda)= \left\lbrace \sum\limits_{i=1}^{k} \lambda^{L(D_i)} q_{ij} ((D_i,D_j)) - \lambda^2 ((z,D_j)) \bigm| q_{ij} \in \Q \right\rbrace \setminus \bigg\{ 0 \bigg\}
+\]
+\end{Proposition}
+
+\begin{proof}
+For each set of polynomials $P_j(\lambda)$ there are countably many choices of $q_{ij}$ for each $i$, and there are only finitely many (precisely $k$) coefficients $q_{ij}$ to be chosen. Hence each set $P_j(\lambda)$ is countable. 
+
+Let $S(P_j)$ be the set of all real roots to any of the polynomials in $P_j (\lambda)$, for each $j$. We have excluded the zero polynomial from each set so there are only finitely many solutions to each polynomial in $P_j (\lambda)$. They are all polynomials of finite degree.) Hence $S(P_j)$ is a countable set. 
+
+Consider the set $\mathcal{S} \subseteq \R$ defined by
+\begin{align*}
+\mathcal{S} &= \{ \lambda \in \R \mid \lambda \in S(P_j) \; \text{for some} \; j \in \{1,\ldots,k\}\} \\
+&= \bigcup_{j=1}^{k} S(P_j) 
+\end{align*}
+So $\mathcal{S}$ is a finite union of countable sets and so is countable. Hence
+\[
+\mathcal{S} \neq \R
+\]
+so there exists some a real number $\lambda_0$ which is not a solution to any polynomial in any of the sets $P_j(\lambda)$, as required.
+\end{proof}
+
+\paragraph*{Method}
+The purpose of Proposition \ref{Polysets} was to fix this number $\lambda_0$. Then for the following proposition, the method is to come up with a polynomial in one of the sets $P_j(\lambda)$ above. Then by definition, $\lambda_0$ will not be a solution to such a polynomial unless all the coefficients are zero. Equating the coefficients with zero will give us the desired relation.
+
+\begin{Proposition}
+Let $H$ be the subgroup of $\G$ generated by $\exp(\lambda_0 x)$ and $\exp(\lambda_0 y)$ and similarly let $H_{\phi}$ be the subgroup of $\G$ generated by $\exp(\lambda_0 \phi(x))$ and $\exp(\lambda_0 \phi(y))$. So 
+\begin{align*}
+H &=\langle e^{\lambda_0 x}, e^{\lambda_0 y} \rangle \\
+H_{\phi} &= \langle e^{\lambda_0\phi(x)}, e^{\lambda_0 \phi(y)} \rangle.
+\end{align*}
+Then 
+\[
+H \subseteq \left\lbrace \exp \left( \sum\limits_{i=1}^{k} q_{i}\lambda_{0}^{L(C_{i})}C_{i} \right) \biggm| q_{i} \in \Q \right\rbrace
+\]
+and similarly
+\[
+H_{\phi} \subseteq \left\lbrace \exp \left( \sum\limits_{i=1}^{k} q_{i}\lambda_{0}^{L(D_{i})}D_{i} \right) \biggm| q_{i} \in \Q \right\rbrace
+\]
+\end{Proposition}
+
+\begin{proof}
+I will prove the proposition for the set $H$ since the proof for $H_{\phi}$ is exactly the same, replacing $x$ with $\phi(x)$, $y$ with $\phi(y)$ and $C_i$ with $D_i$.
+
+Any element of $H$ is a product of any number of copies of the two generating elements. Use BCH Formula to express as one exponent (i.e. work out its corresponding element in the Lie algebra). This involves commutators of $x$ and $x$ with all sorts of rational coefficients.
+
+I will prove this formally by induction
+The general form for an element $X$ of $H$ is
+\begin{align*}
+X &= \exp{(a_1 \lambda_0 x)}\exp{(b_1 \lambda_0 y)}\exp{(a_2 \lambda_0 x))}\exp{(b_2 \lambda_0 y)} \\
+& \quad \cdots \exp{(a_M \lambda_0 x)}\exp{(b_M \lambda_0 y)}
+\end{align*}
+for integers $a_i$ and $b_i$ and some positive integer $M$. 
+%Is it ok for me to assume that all elements in this subgroup must be of this form- it seems intuitively obvious
+
+For $M=1$
+\begin{align*}
+X&= e^{a_1 \lambda_0 x}e^{b_1 \lambda_0 y)} \\
+&= \exp \big( a_1 \lambda_0 x+b_1 \lambda_0 y+ \frac{a_1 b_1}{2}\lambda_0^2[ x, y]\\
+& \quad \quad + \frac{a_1^2 b_1}{12}\lambda_0^3[x,[x,y]]+\cdots \big) \\
+&\in \left\lbrace \exp \left( \sum\limits_{i=1}^{k} q_{i}\lambda_{0}^{L(C_{i})}C_{i} \right)\bigm| q_i \in \Q \right\rbrace 
+\end{align*}
+
+Suppose for the inductive step that the statement is true for $M=N$. Then for $M=N+1$, 
+\begin{align*}
+X &= \exp{(a_1 \lambda_0 x)}\exp{(b_1 \lambda_0 y)}\exp{(a_2 \lambda_0 x)}\exp{(b_2 \lambda_0 y)} \\
+& \quad \cdots \exp{(a_M \lambda_0 x)}\exp{(b_M \lambda_0 y)} \\
+&= \exp \left( \sum\limits_{i=1}^{k} q_{i}\lambda_{0}^{L(C_{i})}C_{i} \right) \exp \left( \sum\limits_{i=1}^{k} p_{i}\lambda_{0}^{L(C_{i})}C_{i} \right),
+\end{align*}
+where all the $p_i$ and $q_i$ are rational numbers. 
+The last line comes from the fact that the statement is true both for $M=1$ and for $M=N$ and splitting the product up into strings of length $1$ and $N$ respectively. Applying the BCH formula again, and expanding the brackets using linearity, it can be seen that there are rational numbers $r_i$ such that 
+\[
+X=\exp \left( \sum\limits_{i=1}^{k} r_{i}\lambda_{0}^{L(C_{i})}C_{i} \right).
+\]
+
+Hence
+\[
+H \subseteq \left\lbrace \exp \left( \sum\limits_{i=1}^{k} q_{i}\lambda_{0}^{L(C_{i})}C_{i} \right) \biggm| q_{i} \in \Q \right\rbrace
+\]
+\end{proof}
+
+
+
+
+\begin{Proposition}
+There are rational numbers $r_1,\ldots,r_k$ such that 
+\[
+\lambda_0^2 z= \sum\limits_{i=1}^{k} p_i \lambda_0^{L(D_{i})}D_i
+\]
+\end{Proposition}
+\begin{proof}
+By Lemma/ Proposition something (preserving group generation) 
+\[
+\Phi(H) =\langle \Phi(e^{\lambda_0 x}), \Phi(e^{\lambda_0 y})\rangle =\langle e^{\lambda_0 \phi(x)}, e^{\lambda_0 \phi(y)} \rangle =H_{\phi}.
+\]
+Consider the element $\pi$ of $H$ given by 
+\[
+\pi = e^{\lambda_{0} x}e^{\lambda_{0} y}e^{-\lambda_{0} x}e^{-\lambda_{0}y}.
+\]
+We now apply the BCH formula to this element. Only the commutators up to length 2 will be explicitly calculated. The main point is to determine the coefficient of $C_3$, as this must not be zero if we are to have a useful result.
+\begin{align*}
+\pi &= e^{\lambda_{0} x}e^{\lambda_{0} y}e^{-\lambda_{0} x}e^{-\lambda_{0}y} \\
+&= \exp \left( \lambda_{0} x+\lambda_{0} y + \frac{1}{2}\lambda_{0}^2[ x, y] + \cdots \right) \exp \left(- \lambda_{0} x-\lambda_{0} y + \frac{1}{2}\lambda_{0}^2[ x, y] + \cdots\right) \\
+&= \exp \bigg(\lambda_0 x-\lambda_0 x +\lambda_0 y-\lambda_0 y+ \frac{1}{2}\lambda_{0}^2[ x, y]+ \frac{1}{2}\lambda_{0}^2[ x, y]+\cdots \\
+& \quad +\frac{1}{2} \big[-\lambda_0^2[x,y]-\lambda_0^2[y,x]+\cdots \big]\\
+& \quad +\frac{1}{12}\big[ -\lambda_0^3[x,[x,y]] +\cdots \big] \\
+& \quad + \\
+& \quad \cdots  \;\;\; \bigg) \\
+&= \exp \left( \lambda_0^2 [x,y] + \cdots + q_k \lambda_0^{L(C_i)} C_i +\cdots + q_i \lambda_0^{L(C_k)} C_k \right)
+\end{align*}
+for rational numbers $q_i$, for $i=1,2,\ldots, k$. Most importantly, $q_3=1$.
+
+Applying $\Phi$ to $\pi$, and using the fact that $\phi(C_3)=D_3+z$, 
+\begin{align*}
+\Phi(\pi) &= \Phi \left( \exp \left( \sum\limits_{i=1}^{k}q_i \lambda_0^{L(C_i)}C_i \right)\right) \\
+&= \exp \left(\phi\left(\sum\limits_{i=1}^{k}q_i \lambda_0^{L(C_i)}C_i \right)\right) \\
+&= \exp \left(\sum\limits_{i=1}^{k}q_i \lambda_0^{L(C_i)}\phi(C_i) \right) \\
+&=\exp \left(\lambda_0^2(D_3 + z) +\sum\limits_{i=4}^{k}q_i \lambda_0^{L(D_i)}\phi(D_i) \right) \\
+&= \exp \left(\sum\limits_{i=1}^{k}q_i \lambda_0^{L(D_i)}\phi(D_i)+\lambda_0^2 z \right)
+\end{align*}
+But since $\Phi(\pi) \in \Phi(H)=H_{\phi}$ so $\Phi(\pi)$ can also be expressed in the form of one of the elements of the set 
+\[
+\left\lbrace \exp \left( \sum\limits_{i=1}^{k} p_{i}\lambda_{0}^{L(D_{i})}D_{i} \right) \biggm| p_{i} \in \Q \right\rbrace.
+\]
+Suppose that 
+\[
+\Phi(\pi)=\exp \left( \sum\limits_{i=1}^{k} p_{i}\lambda_{0}^{L(D_{i})}D_{i} \right)
+\]
+for a set of fixed rational numbers $p_1,\ldots,p_k$. Then equating the two expressions for $\Phi(\pi)$ gives 
+\[
+\exp \left(\sum\limits_{i=1}^{k}q_i \lambda_0^{L(D_i)}D_i+\lambda_0^2 z \right) =\exp \left( \sum\limits_{i=1}^{k} p_{i}\lambda_{0}^{L(D_{i})}D_{i} \right).
+\]
+Taking the logarithm of both sides and rearranging gives
+\[
+\sum\limits_{i=1}^{k}(p_i-q_i) \lambda_0^{L(D_i)}D_i-\lambda_0^2 z=0
+\]
+Let $r_i = p_i-q_i$ for each $i=1,\ldots,k$ so that 
+\[
+\sum\limits_{i=1}^{k}r_i \lambda_0^{L(D_i)}D_i-\lambda_0^2 z=0.
+\]
+as required. 
+\end{proof}
+
+
+
+\begin{Proposition}
+The error term is zero.
+\end{Proposition}
+\begin{proof}
+Finally, to obtain a polynomial in one of the sets $P_j$ above, Take the inner product of this expression with each of the $D_j$, for $j=1,\ldots,k$.
+\[
+\sum\limits_{i=1}^{k}r_i \lambda_0^{L(D_i)}((D_i,D_j))-\lambda_0^2 ((z, D_j))=0.
+\]
+By our choice of $\lambda_0$, each of these $k$ equations must have all coefficients of powers of $\lambda_0$ equal to zero. 
+
+Now, from the coefficient of $\lambda^2$, for each $j=1,\ldots,k$ we have
+\[
+r_3 ((D_3,D_j)) -((z, D_j)) =0
+\]
+In other words, 
+\[
+((r_3 D_3 -z,D_j))=0, \forall j \in \{1,\ldots,k\}.
+\]
+
+But now, since by Lemma \ref{generateWithDs} we know that $\{D_j\}_{j=1}^{k}$ is a spanning set for $\g$, we must have 
+\begin{align*}
+r_3 D_3 -z&=0 \\
+r_3 [\phi(x),\phi(y)]&=z
+\end{align*}
+If $r_3 =0$ we're done. 
+
+Suppose $r_3 \neq 0$. Then $D_3 \in Z(\g)$, so that 
+\[
+D_j=0, \forall j \geq 4.
+\] 
+But then 
+\[
+\g = \spn \{ D_1,D_2,D_3 \}
+\]
+So $\g$ is three-dimensional. But we have proved the theorem for three dimensions, so that again, $z=0$.
+\end{proof}
+
+
+\chapter{Discussion}
+
+\bibliography{bibliography}
+
+\end{document}
