@@ -96,14 +96,20 @@
 
 \begin{document}
 \maketitle
+\tableofcontents
 
 \prefacesection{Acknowledgements}
-{\noindent}Many thanks go to Michael Cowling, Georgia Tsambos, Andrew Ardill...
+{\noindent}A huge thank you goes to my supervisor, Michael Cowling, for his guidance, support and wisdom throughout the year, general good nature, and particularly for all the work assisting me with intricate aspects of the proof. 
+
+Thank you also to Georgia Tsambos for her initial work on the project during the summer semester of 2011-2012 and for explaining aspects of the project to me. 
+
+Thank you to Andrew Ardill for his technical as well as general advice.
 
 \prefacesection{Introduction}
 
-Lie groups are to be found in many different applications of mathematics as well as being central to many of the ideas in quantum physics. It is therefore very useful to know whether different Lie groups linked by a certain map are similar in structure, or whether a particular map identifies two Lie groups in a useful or sensible way. This is the idea of a rigidity theorem. If there is a map between two nilpotent Lie groups that preserves the cosets of subgroups (structures arising from the group law on a Lie group), just how much structure of the respective Lie groups does the map preserve? In this paper, the extra assumption of bijectivity will help to show the kind of similarity that exists. If a map is bijective then no information is `lost' about the structures of the domain and codomain, when either the map or its inverse is applied. 
-This thesis is an attempt to demonstrate rigorously the extension of the rigidity theorem for the Heisenberg Group to all the nilpotent Lie groups. The proof involves arguments from a geometrical as well as algebraic perspective. 
+
+%Lie groups are to be found in many different applications of mathematics as well as being central to many of the ideas in quantum physics. It is therefore very useful to know whether different Lie groups linked by a certain map are similar in structure, or whether a particular map identifies two Lie groups in a useful or sensible way. This is the idea of a rigidity theorem. If there is a map between two nilpotent Lie groups that preserves the cosets of subgroups (structures arising from the group law on a Lie group), just how much structure of the respective Lie groups does the map preserve? In this paper, the extra assumption of bijectivity will help to show the kind of similarity that exists. If a map is bijective then no information is `lost' about the structures of the domain and codomain, when either the map or its inverse is applied. 
+%This thesis is an attempt to demonstrate rigorously the extension of the rigidity theorem for the Heisenberg Group to all the nilpotent Lie groups. The proof involves arguments from a geometrical as well as algebraic perspective. 
 
 
 %begin chapter 1
@@ -169,12 +175,13 @@ This is equivalent to $G$ being a closed subset of $\mathrm{GL}(n,\C)$ that is a
 \end{Definition}
 
 \subsection*{Examples}
+%Do I really need these? If so, give more explicitly
 Some examples of matrix Lie groups are
 \[\mathrm{SL}(n,\R), \mathrm{O}(n), \mathrm{SO}(n), \mathrm{SU}(2) \]
 
 
 \begin{Example}\label{Heisenberg Group}
-The Heisenberg group is a matrix Lie group. This example forms the cornerstone of the result in this thesis.
+The Heisenberg group is a matrix Lie group. This example forms the cornerstone of the basis of the theorem in this thesis.
 \paragraph
 {\noindent}The Heisenberg group is the set of real three-tuples with non-commutative multiplication given by
 \[
@@ -186,7 +193,8 @@ As a matrix Lie group, the Heisenberg group can be represented as the group of a
 \[
  \G= \left\{ \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix} \biggm| x,y, z \in \R \right\} 
 \]
-It is topologically a closed subset of $\mathrm{GL}(n,\C)$ and is closed under the operations of inversion and multiplication:
+Matrices such as these are called \emph{unipotent}, where a matrix $A$ is called unipotent if $(A-I)^n=0$ for some finite integer $n$.
+Topologically, the Heisenberg group is a closed subset of $\mathrm{GL}(n,\C)$ and is closed under the operations of inversion and multiplication:
 \[
 \begin{bmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{bmatrix}
 \begin{bmatrix} 1 & x' & z' \\ 0 & 1 & y' \\ 0 & 0 & 1 \end{bmatrix}
@@ -209,6 +217,7 @@ cases fairly complex. However, as with the example of the circle, studying the L
 
 \section{Lie Algebras}
 Lie algebras also exist as abstract algebraic objects, independent of any manifolds they might be associated with.
+
 \begin{Definition}\label{Lie Algebra}
 A Lie algebra is a vector space $\mathfrak{a}$ endowed with a map
 \[ [\cdotp,\cdotp]:\; \mathfrak{a} \times \mathfrak{a} \longrightarrow \mathfrak{a} \]
@@ -227,8 +236,10 @@ The third property is called the Jacobi identity and can also be written as
 Both forms of the Jacobi identity are used in this thesis for manipulating commutators.
 \end{Definition}
 
-
-The Lie algebra $\g$ of a Lie group $\G$ is the tangent space to $G$ at the identity $e$. This can be seen clearly in 
+\begin{Definition}
+The Lie algebra $\g$ of a Lie group $\G$ is the tangent space \footnote{See Appendix A} to $G$ at the identity $e$. 
+\end{Definition}
+This can be seen clearly in 
 the example of the circle. The circle is parametrised as before by a the curve
 \[ g: [0,2\pi) \longrightarrow \C \]
 \[ g(\theta)= e^{i\theta}.\]
@@ -236,12 +247,11 @@ Differentiating gives
 \[g' (\theta)= ie^{i\theta}.\]
 At the identity, $1=e^{0}$,
 \[ g' (0) = i \]
-so the tangent space $T_{1}\G$ is the real vector space with basis $\{i\}$. 
+so the tangent space $T_{e}\G$ is the real vector space with basis $\{i\}$. 
 In this case the operation $[\cdotp, \cdotp]$ is trivial.
 
-Without going into rigorous detail, it can be seen that the group operation on $S^{1}$ corresponds to addition of 
+It is clear that the group operation on $S^{1}$ corresponds to addition of 
 vectors in $T_{1}\G$. Also, the closer we move towards the identity in $S^{1}$ the more it resembles flat space. The local topology of a circle is the same as the local topology of a line.
-(picture required)
 
 In the case of matrix Lie groups, the tangent space at the identity takes a very clear form. The relationship between a 
 matrix Lie group and its Lie algebra is determined by the exponential mapping on matrices. 
@@ -251,18 +261,19 @@ The Lie algebra $\g$ of an $n \times n$ matrix Lie group $\G$ is
 \[
 \g = \{ X \in M_{n}(\C) \big| \exp{tX} \in \G , \forall t \in \R \}
 \]
-The bracket operation on $\g$, given by $[X,Y]=XY-YX$, satisfies the axioms for $\g$ to be a Lie algebra. 
+The bracket operation on $\g$, given by $[X,Y]=XY-YX$, satisfies the axioms for $\g$ to be a Lie algebra. (This is easy to check).
 \end{Definition}
 
 \begin{Proposition}
-This definition corresponds to the definition of a Lie algebra as the tangent space to the manifold $\G$ at the identity. [give ref]
+This definition corresponds to the definition of a Lie algebra as the tangent space to the manifold $\G$ at the identity and shown in (((Varadarajan page 91 theorem 2.10.3 (2))))
 \end{Proposition}
 
 
 %give these notes titles.
-Note that the dimension of a manifold is the same as the dimension of any of its tangent spaces. So in general when referring to the dimension of a Lie group, this is just the same as the dimension of its associated Lie algebra, as a vector space.
+Note that the dimension of a manifold is the same as the dimension of any of its tangent spaces. So in general when referring to the dimension of a Lie group, this is just the same as the dimension of its associated Lie algebra, as a vector space. 
 
 %check this information
+% Varadarajan mentions the bijectivity of the exp map for simply connected analytic groups (what's the difference?)
 Note that the exponential map from $\g$ to $\G$ is injective but not necessarily surjective. The image of $\g$ under the exponential map is precisely the connected component of $\G$ containing the identity $e$. (proof). In the case that $\G$ is connected, the inverse of the map $\exp : \g \longrightarrow \G $ is called the matrix logarithm map, \mbox{$\log : \G \longrightarrow \g $}.
 
 
@@ -326,8 +337,10 @@ In this notation, the bracket operation on two elements of $\g$ is given by
 \section{Subgroups and Subalgebras}
 
 \begin{Definition}\label{Lie subgroup}
-Let $\G$ be a Lie group. A subset $\mathcal{H}$ of $\G$ is called a Lie subgroup if it is a subgroup and also a Lie group. So topologically $\mathcal{H}$ must be a closed subset of $\mathrm{GL}(n,\C)$, and algebraically $\mathcal{H}$ must be closed under the operations of multiplication and taking inverses. 
+Let $\G$ be a Lie group. A subset $\mathcal{H}$ of $\G$ is called a Lie subgroup if it is a subgroup and also a Lie group. So topologically, this means $\mathcal{H}$ must be a closed subset of $\mathrm{GL}(n,\C)$, and algebraically $\mathcal{H}$ must be closed under the operations of multiplication and taking inverses. 
 \end{Definition}
+
+In fact, any closed subgroup of a real Lie group is a Lie subgroup, as shown in Varadarajan page 99 theorem 2.12.6. Since all the Lie groups in this thesis are real Lie groups, the terms closed subgroup and Lie subgroup will be used interchangeably.
 
 \begin{Definition}\label{Lie subalgebra}
 Let $\g$ be a Lie algebra. Then a vector subspace $\mathfrak{h}$ of $\g$ is called a Lie subalgebra of $\g$ if it is also closed under the Lie bracket, so if $X$ and $Y$ are in $\mathfrak{h}$, then
@@ -353,7 +366,7 @@ A group $G$ is called nilpotent if its \emph{upper central series} $Z_{n}$ vanis
 
 \begin{Definition}\label{Nilpotent Lie Algebra}
 In a similar way, every Lie algebra $\mathfrak{a}$ has a \emph{lower central series} constructed by applying the bracket operation to the Lie algebra repeatedly:
- The Lie algebra of the Heisenberg group is a three dimensional nilpotent Lie algebra.
+ The Lie algebra of the Heisenberg group is a three dimensional real nilpotent Lie algebra.
 \end{Definition}
 
 \section{Homomorphisms}
@@ -413,12 +426,16 @@ Let $\G$ and $\mathcal{H}$ be matrix Lie groups with corresponding Lie algebras 
 \begin{align*}
 \Phi(e^{X}) &= e^{\phi(X)} & \forall X \in \g
 \end{align*}
+%Theorem 2.21 page 45 Brian Hall
 
 Now let $\G$ and $\mathcal{H}$ be matrix Lie groups, $\g$ and $\mathfrak{h}$ be their Lie algebras and let $\G$ be simply connected [need to define this somewhere- appendix]. Then if $\phi: \g \longrightarrow \mathfrak{h}$ is a Lie algebra homomorphism, there exists a unique Lie group homomorphism $\Phi: \G \longrightarrow \mathcal{H}$ defined by
 \[
 \Phi(A) = e^{\phi(\log{A})} \;\;\;\;\;\;\; \forall A \in \G
 \]
+
+%Theorem 3.7 page 76 Brian Hall
 \end{Theorem}
+
 
 \begin{Example}
 Let $\G$ be the Heisenberg group and let $\g$ be its Lie algebra. Let $\mathcal{H}=\mathrm{GL}(1,\R)$. The Lie algebra of $\mathcal{H}$ is $\mathfrak{h}=\mathrm{M}_{1}(\R)$. Define 
@@ -428,12 +445,12 @@ Let $\G$ be the Heisenberg group and let $\g$ be its Lie algebra. Let $\mathcal{
 \end{eqnarray*}
 This is a Lie group homomorphism. It is continuous since the map $x \mapsto e^{x}$ is continuous and 
 
-\begin{eqnarray*}
-\Phi ([x,y,z][x',y',z']) &=& \Phi [x+x',y+y', z+z'+xy'] \\
-&=& e^{x+x'} \\
-&=& e^{x}e^{x'} \\
-&=& \Phi [x,y,z] \Phi [x',y',z']
-\end{eqnarray*}
+\begin{align*}
+\Phi ([x,y,z][x',y',z']) &= \Phi [x+x',y+y', z+z'+xy'] \\
+&= e^{x+x'} \\
+&= e^{x}e^{x'} \\
+&= \Phi [x,y,z] \Phi [x',y',z']
+\end{align*}
 
 Now
 \[
@@ -447,10 +464,10 @@ So there is a unique map $\phi: \g \longrightarrow \mathfrak{h}$ defined by $\ph
 \[ \phi [(x,y,z), (x',y',z')]=\phi (0,0,xy'-x'y)=0
 \]
 and
-\begin{eqnarray*}
-[\phi(x,y,z),\phi(x',y',z')]=[x,x']=xx'-x'x &=& 0 \\
-&=&  \phi [(x,y,z), (x',y',z')]
-\end{eqnarray*}
+\begin{align*}
+[\phi(x,y,z),\phi(x',y',z')]=[x,x']=xx'-x'x &= 0 \\
+&=  \phi [(x,y,z), (x',y',z')]
+\end{align*}
 Hence $\phi$ is a Lie algebra homomorphism.
 \end{Example}
 
@@ -469,18 +486,18 @@ The Lie algebra of the Heisenberg group has non-commutative multiplication, howe
 \]
 \begin{proof}
 Let $X=(x,y,z)$ and $Y=(x',y',z')$ be elements of $\g$. 
-\begin{eqnarray*}
-[X,[X,Y]] &=& [X, (0,0,xy'-x'y)] \\
-&=&[(x,y,z),(0,0,xy'-x'y)] \\
-&=& 0
-\end{eqnarray*}
+\begin{align*}
+[X,[X,Y]] &= [X, (0,0,xy'-x'y)] \\
+&=[(x,y,z),(0,0,xy'-x'y)] \\
+&= 0
+\end{align*}
 
 and
-\begin{eqnarray*}
-[Y,[X,Y]] &=& [Y, (0,0,xy'-x'y)] \\
-&=&[(x',y',z'),(0,0,xy'-x'y)] \\
-&=& 0
-\end{eqnarray*}
+\begin{align*}
+[Y,[X,Y]] &= [Y, (0,0,xy'-x'y)] \\
+&=[(x',y',z'),(0,0,xy'-x'y)] \\
+&= 0
+\end{align*}
 \end{proof}
 
 We require some tools in order to explain the formula for the Heisenberg group. 
@@ -512,6 +529,8 @@ e^{\mathrm{ad}_{Y}}(X)= \mathrm{id}(X) + \mathrm{ad}_{Y}(X) + \frac{1}{2!}( \mat
 \mathrm{Ad}_{e^{Y}}(X)=e^{\mathrm{ad}_{Y}}(X)
 \]
 \end{Lemma}
+% Varadarajan Theorem 2.13.2. page 104
+
 
 \begin{Theorem}
 Let $\G$ be a matrix Lie group with Lie algebra $\g$. If the commutativity property above holds in $\g$ then for $X$ and $Y$ in $\g$, 
@@ -522,6 +541,7 @@ This is a special case of the Baker-Campbell-Hausdorff Formula (which will somet
 \end{Theorem}
 
 \begin{proof}
+This proof is taken from Brian Hall (((reference needed)))
 To prove the formula, it will be shown that two apparently different functions are both the unique solution to a particular differential equation, and therefore must be identical. 
 Let $X$ and $Y$ be elements of $\g$. Consider the differential equations in the real variable $t$ defined by 
 \begin{eqnarray*}
@@ -560,7 +580,7 @@ as required.
 
 \begin{Lemma}
 %what are these elements X and Y, really???
-Let $X$ and $Y$ be elements of $\g$ and let $t$ be any real number. Suppose that $e^{tY}$ exists. Then
+Let $X$ and $Y$ be elements of $\g$ and let $t$ be any real number. Suppose that $e^{tY}$ converges. Then
 \[
 Xe^{tY}=e^{tY}(X+t[X,Y]).
 \]
@@ -594,10 +614,10 @@ A'(t) &= e^{tX}Xe^{tY}e^{-\frac{t^2}{2}[X,Y]}+e^{tX}e^{tY}Ye^{-\frac{t^2}{2}[X,Y
 &= A(t)(X+Y)
 \end{align*}
 
-\begin{eqnarray*}
-B'(t) &=& e^{t(X+Y)}(X+Y) \\
-&=& B(t)(X+Y)
-\end{eqnarray*}
+\begin{align*}
+B'(t) &= e^{t(X+Y)}(X+Y) \\
+&= B(t)(X+Y)
+\end{align*}
 
 It is also necessary for the above differential equations to have the same initial conditions if the uniqueness theorem is to be applied. 
 \[
@@ -607,7 +627,9 @@ and
 \[
 B(0)=e^{0}=I
 \]
-So $A(t)$ and $B(t)$ satisfy the same differential equation with the same initial conditions. By the basic uniqueness theorems for differential equations this implies $A(t)=B(t), \forall t \in \R$. Substituting the value $t=1$ gives 
+So $A(t)$ and $B(t)$ satisfy the same differential equation with the same initial conditions. 
+%Need a reference for this
+By the basic uniqueness theorems for differential equations this implies $A(t)=B(t), \forall t \in \R$. Substituting the value $t=1$ gives 
 \begin{eqnarray*}
 e^{X}e^{Y}e^{-\frac{1}{2}[X,Y]} &=&e^{X+Y} \\
 e^{X}e^{Y} &=& e^{X+Y}e^{\frac{1}{2}[X,Y]} \\
@@ -626,8 +648,16 @@ The series formula will be stated but not proved in this thesis. A full proof is
 %find a proof for general BCH formula
 
 \begin{Definition}
-An \emph{abelian Lie algebra} is one in which that bracket operation always gives $0$. From the Baker-Campbell-Hausdorff Formula, it is clear that an abelian Lie Group always has a corresponding abelian Lie algebra, since all commutators in the BCH Formula must be zero in order for the group operation to be commutative. 
+An \emph{abelian Lie algebra} is one in which that bracket operation always gives $0$. From the Baker-Campbell-Hausdorff Formula, it is clear that an abelian Lie group always has a corresponding abelian Lie algebra, since all commutators in the BCH Formula must be zero in order for the group operation to be commutative. Conversely, the Baker-Campbell-Hausdorff formula also makes it clear that a simply connected Lie group with an abelian Lie algebra, is itself abelian. For simply connected Lie groups, the exponential map between the algebra and the group is a bijection so elements of the group can always be expressed in terms of single elements of the algebra. We have 
+\[
+e^x e^y = e^{x+y}= e^{y+x} = e^y e^x
+\]
 \end{Definition}
+
+%nb theorem 3 of page 207 of Matsushima explains that it's also true of all connected Lie groups (mention this?)
+
+
+
 
 
 %Begin chapter 2
@@ -688,15 +718,22 @@ and
 
 
 Proof of the addition property:
-Consider the diagram.
+Consider the following diagram.
 
+\begin{figure}[htb]\label{figure1}
+\caption{}
+
+
+\end{figure}
 %insert the picture here.
 
 
 Let $P=(1,0)$ and $Q=(0,1)$. Then construct lines $L_{1}$, $L_{2}$, $L_{3}$ and $L_{4}$ as shown so that $$A'=(0,x_{1})$$ $$B'=(x_{2}, x_{1})$$ and $$C=(x_{1}+x_{2},0)$$ Now the map $\psi$ sends the $x$- and $y$- axes to themselves, sends parallel lines to parallel lines and by definition, $\psi(P)=P$ and $\psi(Q)=Q$. Here is a diagram showing the images of all the points and lines under $\psi$.
-
 %insert second diagram here
+\begin{figure}[htb]\label{figure2}
+\caption{}
 
+\end{figure}
 
 So by conservation of parallel lines, the parallelogram $AA'B'C$ is mapped to a new parallelogram $\psi(A)\psi(A')\psi(B')\psi(C)$ where the sloping sides must have gradient $-1$, since they are parallel to $PQ$. So $\psi(A)=(x_{1}',0)$ and $\psi(B)=(x_{2}',0)$. Then using the properties of the parallelogram, 
 \[
@@ -718,6 +755,10 @@ as required.
 Now consider a new diagram showing the construction of $C=(x_{1}x_{2},0)$.
 
 %insert 3rd diagram construction here.
+\begin{figure}[htb]\label{figure3}
+\caption{}
+
+\end{figure}
 
 The point $C$ is constructed by starting with $A=(x_{1},0)$ and $B=(x_{2},0)$. Construct the line $L_1$ of gradient $-1$ through $A$ so that $A'=(0,x_{1})$. Then construct a horizontal line through $A'$ and a vertical line through $P$ to meet in $D=(1,x_{1})$. Construct a line $L_2$ through $O$ and $C$, given by 
 $$y=x_{1}x .$$ 
@@ -729,6 +770,11 @@ C=(x_1 x_2,0).
 Now consider the all these points and lines under the map $\psi$. 
 
 %insert the fourth diagram construction here
+\begin{figure}[htb]\label{figure4}
+\caption{}
+
+
+\end{figure}
 
 Let $\psi(A)=(x_{1}',0)$ and $\psi(B)=(x_{2}',0) $. Once again, the image of a pair of parallel lines must be a pair of parallel lines. Lines of gradient $-1$ are mapped to lines of gradient $-1$ since $P$ and $Q$ are fixed. So 
 \[
@@ -801,45 +847,41 @@ f \left(\frac{m}{n}\right)&=&f\left(m \cdot \frac{1}{n}\right)\\
 &=& m\cdot \frac{1}{n} \\
 &=& \frac{m}{n}
 \end{eqnarray*}
-So $f$ restricted to $\Q$ is the identity. \
-Further, $f$ is continuous.
-\begin{proof}
-$f$ sends positive numbers to positive numbers and negative numbers to negative numbers since if $a>0$,
+So $f$ restricted to $\Q$ is the identity.
+
+
+%Here is the shorter version:
+\textbf{Claim}
+The function $f$ is strictly increasing. 
+
+Let $\epsilon > 0$, say $\epsilon = \delta^2$. Then 
+\begin{align*}
+f(x+\epsilon) &= f(x)+f(\delta^2) \\
+&= f(x) +f(\delta)^2 \\
+&> f(x)
+\end{align*}
+proving the claim.
+
+Now, given any $x \in \R$, let 
+\begin{align*}
+A(x) &= \{r\in \Q \mid r \leq x\} \\
+B(x) &= \{ r \in \Q \mid r \geq x \}.
+\end{align*}
+Then $x=\sup A(x)$ since otherwise there's a rational number between $x$ and $\sup A(x)$, which is a contradiction. Similarly $x= \inf B(x)$. 
+
+Since $f$ is increasing, 
 \[
-f(a)=f(\sqrt{a}\sqrt{a})=f(\sqrt{a})f(\sqrt{a})=f(\sqrt{a})^{2}>0
+f(x) \geq f(r)=r,\forall r \in A(x)
 \]
-and by bijectivity if $b<0$ then $f(b)<0$.\
-Let $\epsilon >0$ and fix an element $y \in \R$. Suppose $|x-y|<\epsilon$. Now if $x<y$ then $0<x-y<\epsilon$. Insert a rational number $z$ between $x-y$ and $\epsilon$ so that
+and hence $f(x) \geq \sup A(x)=x$. 
+
+Similarly, 
 \[
-0<x-y<z<\epsilon
+f(x) \leq f(r) =r, \forall r \in B(x)
 \]
-Now
-\[
-f(z-(x-y))=f(z)-f(x-y)=z-f(x-y)>0
-\]
-since $z-(x-y)>0$ and $f(z)=z$. Also
-\[
-f(x-y)>0
-\]
-since $x-y>0$. So $0<f(x-y)<z<\epsilon$, so
-\[
-0<f(x)-f(y)<\epsilon
-\]
-On the other hand, if $x \geq y $ then $-\epsilon<x-y \leq 0$. Insert a rational number $z$ between $-\epsilon$ and $x-y$ so that $-\epsilon<z<x-y \leq 0$. Then 
-\[
-f(z-(x-y))=f(z)-f(x-y)=z-f(x-y)<0
-\]
-since $z-(x-y)<0$ and $f(z)=z$. Also
-\[
-f(x-y)\leq 0
-\]
-since $x-y \leq 0$. So $-\epsilon<z<f(x-y)\leq 0$, so
-\[
--\epsilon < f(x)-f(y) \leq 0
-\]
-In both cases $|f(x)-f(y)|<\epsilon$. Hence the function $f$ is continuous
-\end{proof}
-Since every real number is a limit of a sequence of rational numbers, and $f$ is continuous, $f$ must be the identity map $\R \longrightarrow \R$. 
+and hence $f(x) \leq \inf B(x)=x$. Therefore $f(x) =x$ for all real $x$. 
+%what book did this come from?
+
 
 The same properties can be shown for the map $\psi$ on the $y$-axis. And then since every point in the plane is a projection of point on the x and y axes by horizontal and vertical lines, $\psi(x,y)=(x,y)$ for all $(x,y) \in \R^{2}$. Hence $\alpha'_{o}\alpha=\psi=\text{id}$ so $\alpha=\alpha'^{-1}$, which is a linear map since $\alpha'$ is a linear map. 
 \end{proof}
@@ -1159,19 +1201,19 @@ Then, applying the BCH Formula:
 
 %fix this up using align and \mid etc. and make sure it's not off the edge
 \begin{align*}
-\mathcal{C}&=  \left\lbrace \exp((\lambda x, \lambda y, \lambda z +\mu)+(p,q,r)+\frac{1}{2}[(\lambda x, \lambda y, \lambda z +\mu),(p,q,r)]) \bigm| \lambda,\mu \in \R \right\rbrace \\[0.7em]
-&= \left\lbrace \exp ((\lambda x+p, \lambda y+q, \lambda z +\mu +r)+ \frac{1}{2}(0,0,\lambda xq -\lambda yp))\bigm| \lambda,\mu \in \R \right\rbrace \\[0.7em]
-&= \left\lbrace \exp (\lambda x+p, \lambda y+q, \lambda (z+\frac{1}{2}(xq-yp)) +\mu +r) \bigm| \lambda,\mu \in \R \right\rbrace \\[0.7em]
-&= \left\lbrace \exp [\lambda( x, y, z+\frac{1}{2}(xq-yp))+\mu(0,0,1)+(p,q,r)]\bigm| \lambda,\mu \in \R \right\rbrace
+\mathcal{C}&=  \left\lbrace \exp\left((\lambda x, \lambda y, \lambda z +\mu)+(p,q,r)+\frac{1}{2}[(\lambda x, \lambda y, \lambda z +\mu),(p,q,r)]\right) \bigm| \lambda,\mu \in \R \right\rbrace \\[0.7em]
+&= \left\lbrace \exp \left((\lambda x+p, \lambda y+q, \lambda z +\mu +r)+ \frac{1}{2}(0,0,\lambda xq -\lambda yp)\right)\bigm| \lambda,\mu \in \R \right\rbrace \\[0.7em]
+&= \left\lbrace \exp \left(\lambda x+p, \lambda y+q, \lambda \left(z+\frac{1}{2}(xq-yp)\right) +\mu +r\right) \bigm| \lambda,\mu \in \R \right\rbrace \\[0.7em]
+&= \left\lbrace \exp \left(\lambda\left( x, y, z+\frac{1}{2}(xq-yp)\right)+\mu(0,0,1)+(p,q,r)\right)\bigm| \lambda,\mu \in \R \right\rbrace
 \end{align*}
 
 Now suppose that $\pi'$ is the image of this coset $\mathcal{C}$ under the logarithm. So 
 
 \begin{align*}
-\pi' &= \left\lbrace \lambda( x, y, z+\frac{1}{2}(xq-yp))+\mu(0,0,1)+(p,q,r) \bigm| \lambda,\mu \in \R \right\rbrace \\[.7em]
+\pi' &= \left\lbrace \lambda\left( x, y, z+\frac{1}{2}(xq-yp)\right)+\mu(0,0,1)+(p,q,r) \bigm| \lambda,\mu \in \R \right\rbrace \\[.7em]
 &= P+\text{span}\{Y,\3 \}
 \end{align*}
-where $$Y=X+[X,P]=( x, y, z+\frac{1}{2}(xq-yp)).$$ 
+where $$Y=X+[X,P]=\left( x, y, z+\frac{1}{2}(xq-yp)\right).$$ 
 
 So $\pi'$ is yet another vertical plane in $\g$. Note however that unless $[X,P]=0$, $\pi'$ is not the same as $\pi$. Most importantly, if a bijective map from $\G$ to $\G$ preserves cosets, then the corresponding map from $\g$ to $\g$ preserves lines and vertical planes (translates of subalgebras).
 \end{proof}
@@ -1670,7 +1712,7 @@ Note that $\Phi$ is also an anti-isomorphism because $\Phi(e^X)\Phi(e^Y)=\Phi(e^
 \end{proof}
 
 \begin{Proposition}
-All one- and two-dimensional nilpotent Lie algebras are abelian.
+All one- and two-dimensional real nilpotent Lie algebras are abelian.
 \end{Proposition}
 
 \begin{proof}
@@ -1704,7 +1746,7 @@ This is a contradiction since $X$ and $Y$ are linearly independent.
  
 \end{proof}
 
-Therefore since all one- and  two-dimensional nilpotent Lie algebras are abelian, Proposition \ref{abelian} tells us that Theorem \ref{BigTheorem} holds for $n=1$ and $n=2$. 
+Therefore since all one- and  two-dimensional real nilpotent Lie algebras are abelian, Proposition \ref{abelian} tells us that Theorem \ref{BigTheorem} holds for $n=1$ and $n=2$. 
 
 \section{The Three-Dimensional Case}
 Suppose that $\g$ is three-dimensional ($n=3$).
@@ -1743,7 +1785,7 @@ Up to isomorphism, the only three-dimensional nilpotent Lie groups are the Heise
 \end{Proposition}
 
 The following two lemmas will be necessary in proving this proposition. 
-%For the two lemmas and for the final proof of the proposition, let $\mathfrak{a}$ be any three-dimensional nilpotent Lie algebra. 
+%For the two lemmas and for the final proof of the proposition, let $\mathfrak{a}$ be any three-dimensional real nilpotent Lie algebra. 
 
 We start by considering how Lie algebras could be built by starting with a basic three-dimensional vector space. The algebras then differ only in the definitions of their bracket operation, and the corresponding Lie groups are given their structures by the BCH Formula:
 \begin{align*}
@@ -1766,7 +1808,7 @@ From previous we know that if $x$ and $y$ are linearly independent \emph{and} $[
 
 
 \begin{Lemma}
-All the terms with commutators of length three or more in the BCH Formula for two elements of a three-dimensional nilpotent Lie algebra $\g$ are zero.
+All the terms with commutators of length three or more in the BCH Formula for two elements of a three-dimensional real nilpotent Lie algebra $\g$ are zero.
 \end{Lemma}
 
 
@@ -1882,7 +1924,7 @@ Let $\varphi$ be the identity transformation with respect to any two bases of $\
 \]
 Hence $\varphi$ is a Lie algebra isomorphism.
 
-Hence there are only two three-dimensional nilpotent Lie algebras up to isomorphism: $\R^{3}$ and the Lie algebra of the Heisenberg group.
+Hence there are only two three-dimensional  real nilpotent Lie algebras up to isomorphism: $\R^{3}$ and the Lie algebra of the Heisenberg group.
 \end{proof}
 
 \begin{Proposition}
@@ -1901,7 +1943,7 @@ Therefore a bijective coset-preserving map between \emph{any} pair of three-dime
 
 
 \chapter{Case of all Nilpotent Lie Groups}
-The aim now is to extend the two theorems proved in the previous section by induction to all $n$-dimensional nilpotent Lie group. It will be shown that a bijective map between two nilpotent Lie algebras of any degree, for which the corresponding mapping between Lie groups is coset-preserving, is either a Lie algebra isomorphism or anti-isomorphism. We need to consider preserving all cosets of all subgroups (including the discrete or dense subgroups that are not Lie subgroups). 
+The aim now is to extend the two theorems proved in the previous section by induction to all $n$-dimensional nilpotent Lie groups. It will be shown that a bijective map between two real nilpotent Lie algebras of any degree, for which the corresponding mapping between Lie groups is coset-preserving, is either a Lie algebra isomorphism or anti-isomorphism. We need to consider preserving all cosets of all subgroups (including the discrete or dense subgroups that are not Lie subgroups). 
 
 
 
@@ -1915,8 +1957,16 @@ Let $\mathfrak{a}$ be a Lie algebra and let $S$ and $T$ be subspaces. Then a new
 \]
 \end{Definition}
 
+\begin{Definition}\label{ideal}
+An \emph{ideal} of a Lie algebra $\mathfrak{a}$ is a subspace $A$ such that 
+\[
+[A,\mathfrak{a}] \subset A.
+\]
+\end{Definition}
+
+
 \begin{Definition}
-The \emph{lower central series} $\{A_{i}\}$ of a Lie algebra $\mathfrak{a}$ is 
+The \emph{lower central series} $\{A_{i}\}$ of a Lie algebra $\mathfrak{a}$ is the sequence of ideals 
 \begin{align*}
 A_{0} &=\mathfrak{a} \\
 A_{1} &=[\mathfrak{a},\mathfrak{a}] \\
@@ -2045,13 +2095,16 @@ A Lie Algebra $\mathfrak{a}$ is called \emph{nilpotent} if its lower central ser
 Note that there is a specific $n$ for which $A_{n-1} \neq 0$ but $A_{n} =0$.
 \end{Definition}
 
-It is important here to also note that Lie algebras can be defined entirely by a set of generators and commutator relations between them. There is a theorem that say that every nilpotent Lie algebra defined this way has a representation as s group of upper-triangular matrices, just as we are familiar with in the Heisenberg case. 
+We can define Lie algebras entirely by stipulating how the bracket operation acts on linearly independent elements of the vector space, ensuring that they obey the axioms. Varadarajan ((give ref)) states a theorem that says that every real nilpotent Lie group is isomorphic to a closed unipotent subgroup of $\mathrm{GL}(n, \R)$, just as we are familiar with in the Heisenberg case. 
+
+
 %reference: that paper about finding the representations
+%(cf. Theorem 3.6.6 in Varadarajan)- Any simply connected nilpotent analytic group G is isomorphic to a closed unipotent subgroup of GL(V) for some finite-dimensional vector space V.
 
 \section{The Set-up for the Proof}
 
 
-The idea behind the proof is to take any two elements $x$ and $y$ of a nilpotent Lie algebra and see what kind of subalgebra they \emph{generate}. 
+The idea behind the proof is to take any two elements $x$ and $y$ of a real nilpotent Lie algebra and see what kind of subalgebra they \emph{generate}. 
 %don't know if I've defined generation of algebras yet
 If they do not generate the whole algebra, then $\phi$ can be restricted to this generated subalgebra, and by the inductive assumption, will act as either an isomorphism or anti-isomorphism on this subalgebra. So $\phi[x,y]=\pm[\phi(x),\phi(y)]$ will hold. Some pairs of elements may however generate the whole algebra, in which case the inductive assumption cannot be directly applied. These pairs of elements will require special attention and it is this part of the proof that occupies the bulk of this chapter. 
 
@@ -2094,7 +2147,7 @@ so $S_i =0$ for all $i > N$. Hence $\mathfrak{s}$ is indeed nilpotent.
 %\[
 %U_{i}=[b_{i1},[b_{i2},[\ldots[b_{iN}, %b_{i(N+1)}]\ldots]]]
 %\]
-%But then $U_{i} \in A_{N+1}$ so each $U_{i}$ is the zero vector. Hence $b=0$ and hence $\mathfrak{s}$ is a nilpotent Lie algebra. 
+%But then $U_{i} \in A_{N+1}$ so each $U_{i}$ is the zero vector. Hence $b=0$ and hence $\mathfrak{s}$ is a real nilpotent Lie algebra. 
 
 Therefore, applying the inductive assumption, $\phi$ is either an isomorphism or anti-isomorphism when restricted to $\mathfrak{s}$.
   
@@ -2341,11 +2394,12 @@ Note that the centre of the corresponding Lie group is the image of $Z(\mathfrak
 \end{Definition}
 
 \begin{Lemma}
-If $\mathfrak{a}$ is a nilpotent Lie algebra, then it has a non-trivial centre. 
+If $\mathfrak{a}$ is a real nilpotent Lie algebra, then it has a non-trivial centre. 
+%reference Varadarajan pg. 191 Theorem 3.5.4
 \end{Lemma}
 
 \begin{proof}
-Let $A_{i}$ be the lower central series for the nilpotent Lie algebra $\mathfrak{a}$, and suppose that $A_{n}$ is the last non-trivial term in the series. So there is some non-trivial element $x \in A_{n}$. But 
+Let $A_{i}$ be the lower central series for the real nilpotent Lie algebra $\mathfrak{a}$, and suppose that $A_{n}$ is the last non-trivial term in the series. So there is some non-trivial element $x \in A_{n}$. But 
 \[
 [x,a] \in A_{n+1} \;\;\; \forall a \in \mathfrak{a} 
 \]
@@ -2934,7 +2988,9 @@ and similarly
 \begin{proof}
 I will prove the proposition for the set $\mathcal{J}$ since the proof for $\mathcal{K}$ is exactly the same, replacing $x$ with $\phi(x)$, $y$ with $\phi(y)$ and $C_i$ with $D_i$.
 
-Any element of $\mathcal{J}$ is a product of any number of copies of the two generating elements. Use BCH Formula to express as one exponent (i.e. work out its corresponding element in the Lie algebra). This involves commutators of $x$ and $x$ with all sorts of rational coefficients.
+Any element of $\mathcal{J}$ is a product of any finite number of copies of the two generating elements.
+%ref matushima pg 207 Theorem 2
+ Use BCH Formula to express as one exponent (i.e. work out its corresponding element in the Lie algebra). This involves commutators of $x$ and $x$ with all sorts of rational coefficients.
 
 I will prove this formally by induction
 The general form for an element $X$ of $\mathcal{J}$ is
@@ -2996,7 +3052,7 @@ We now apply the BCH formula to this element.
 &= \exp \left( \lambda_{0} x+2\lambda_{0} y + \lambda_{0}^2[ x, y] + \cdots \right) \\
 &= \exp \left( \sum\limits_{i=1}^{k}q_i \lambda_0^{L(C_i)} C_i  \right)
 \end{align*}
-for rational numbers $q_i$, for $i=1,2,\ldots, k$. Most importantly, note that $q_3=1$.
+where the coefficients $q_i$ are the rational coefficients given by the BCH Formula, for $i=1,2,\ldots, k$. Most importantly, note that $q_3=1$.
 
 Applying $\Phi$ to $\pi$, and using the fact that $\phi(C_3)=D_3+z$, 
 \begin{align*}
@@ -3035,13 +3091,13 @@ as required.
 The error term is zero.
 \end{Proposition}
 \begin{proof}
-Finally, to obtain a polynomial in one of the sets $P_j$ above, Take the inner product of this expression with each of the $D_j$, for $j=1,\ldots,k$.
+Finally, to obtain a polynomial in one of the sets $P_j$ above, using the inner product on $\mathfrak{h}$,  $((\cdot,\cdot))$, from above, take the inner product of this expression with each of the $D_j$, for $j=1,\ldots,k$.
 \[
 \sum\limits_{i=1}^{k}r_i \lambda_0^{L(D_i)}((D_i,D_j))-\lambda_0^2 ((z, D_j))=0.
 \]
 By our choice of $\lambda_0$, each of these $k$ equations must have all coefficients of powers of $\lambda_0$ equal to zero. 
 
-Now, from the coefficient of $\lambda^2$, for each $j=1,\ldots,k$ we have
+Now, from the coefficient of $\lambda_0^2$, for each $j=1,\ldots,k$ we have
 \[
 r_3 ((D_3,D_j)) -((z, D_j)) =0
 \]
@@ -3050,7 +3106,7 @@ In other words,
 ((r_3 D_3 -z,D_j))=0, \forall j \in \{1,\ldots,k\}.
 \]
 
-But now, since by Lemma \ref{generateWithDs} we know that $\{D_j\}_{j=1}^{k}$ is a spanning set for $\g$, we must have 
+But now, since by Lemma \ref{generateWithDs} we know that $\{D_j\}_{j=1}^{k}$ is a spanning set for $\mathfrak{h}$, we must have 
 \begin{align*}
 r_3 D_3 -z&=0 \\
 r_3 [\phi(x),\phi(y)]&=z
@@ -3070,6 +3126,122 @@ So $\mathfrak{h}$ is at most three-dimensional, meaning $n \leq 3$. But we have 
 
 
 \chapter{Discussion}
+
+
+
+
+\appendix
+\chapter{Manifolds}
+% Use this very nice Spivak characterisation of manifolds:
+
+\begin{Definition}
+A subset $M$ of $\R^n$ is a $k$-dimensional manifold if and only if for each point $x \in M$ the following "coordinate condition" is satisfied:
+
+\begin{itemize}
+\item[C] There is an open set $U$ containing $x$, an open set $W \subset \R^k$, and a $1-1$ differentiable function $f: W \longrightarrow \R^n$ such that
+	\begin{enumerate}
+	\item $f(W)= M \cap U$,
+	\item $f'(y)$ has rank $k$ for each $y \in W$.
+	\end{enumerate}
+\end{itemize}
+In this case, the function $f$ is called a coordinate system around $x$.
+\end{Definition}
+OR ALTERNATIVELY,
+
+\begin{Definition}
+A subset $M$ of $\R^n$ is called a $k$-dimensional manifold ( in $\R^n$) if for every point $x \in M$ the following condition is satisfied:
+
+\begin{itemize}
+ \item[M] There is an open set $U$ containing $x$, an open set $V \subset \R^n$, and a diffeomorphism $h: U \rightarrow V$ such that
+ \begin{align*}
+ h(U \cap M) &= V \cap (\R^k \times \{ \mathbf{0}\}) \\
+ &= \{ x \in V  : x^{k+1}=\cdots = x^n =0\}.
+ \end{align*}
+\end{itemize}
+
+\end{Definition}
+
+In order to view matrix Lie groups as manifolds, we consider the topology on $\mathrm{M}(n,\R)$ to be the topology inherited from $\R^{n \times n}$ by just mapping each entry in an $n \times n$ matrix to a coordinate in $\R^{n \times n}$. 
+
+\subsection{The Heisenberg Group}
+As a manifold, the Heisenberg group just has a single chart/coordinate system $(\R^3, \varphi)$ on the set $\R^3$, given by
+\[
+\varphi:
+\begin{pmatrix}
+x \\ y \\z
+\end{pmatrix} 
+\longmapsto
+\begin{bmatrix}
+1 & x & z \\
+0 & 1 & y \\
+0 & 0 & 1
+\end{bmatrix}
+\]
+%if using coordinate system definition, need to reverse this map
+
+
+\subsection{ Tangent Spaces}
+%definition taken from Matsushima
+Definition: Tangent vector
+
+Let $M$ be a manifold and $p$ a point on $M$. We consider the set of all real-valued $C^\infty$ functions, each defined on some neighbourhood of $p$, and denote it by $\mathfrak{F}(p)$. If $f$, $g \in \mathfrak{F}(p)$, then $f+g$ and $f \cdot g$ are defined on the intersection of the neighbourhood where $f$ is defined and the neighbourhood where $g$ is defined; $\lambda f$ is defined on the neighbourhood where $f$ is defined. If for all $f , g\in \mathfrak{F}(p)$, and all real numbers $\lambda$ and $\mu$, there corresponds a real number $v (f)$ satisfying
+	\begin{enumerate}
+	\item $v(\lambda f + \mu g)= \lambda v(f) + \mu (g)$
+	\item $v(fg) = v(f)g(p)+f(p)v(g)$
+	\end{enumerate}	 
+then the map $v: \mathfrak{F}(p) \rightarrow \R$ is called a \emph{tangent vector} of $M$ at $p$.
+
+Definitions of addition and scalar multiplication of tangent vectors follow from the addition and scalar multiplication of the function in $\mathfrak{F}(p)$.
+
+\begin{Definition}
+The \emph{tangent vector space} or tangent space of $M$ at $p$ is the set of all tangent vectors at $p$, and is denoted $T_p(M)$.
+\end{Definition}
+
+\begin{Theorem}
+If $M$ is a manifold of dimension $n$, then the tangent space $T_p(M)$ is also of dimension $n$. 
+\end{Theorem}
+The proof is given in Matsushima page 41-42.
+
+% Need to look in Brian Hall for the equivalence of the tangent space definition and the exponential definition of the Lie algebra. 
+
+
+\chapter{The Baker-Campbell-Hausdorff Formula}
+%-use terrence tau's page, giving nice clear description of the Dynkin formula (the one I've been using).
+The Formula for the Heisenberg group was derived in chapter 1. However, for the second and third chapters it was necessary to use the general BCH formula for matrix Lie groups. 
+The following information from Brian Hall:
+The formula is derived using the adjoint operators as in the simpler Heisenberg case and is stated in two different forms, an integral form and a series form. The series form comes from expanding the function in the integral and evaluating it, usually approximating by neglecting high order terms. The integral form of the formula is:
+
+ 
+ \[
+ \log (e^X e^Y) = X + \int_0^1 g(e^{\mathrm{ad}_X} e^{t \mathrm{ad}_y})(Y)dt
+ \]
+ in which 
+ \[
+ g(A) = \sum\limits_{m=0}^{\infty} a_m (A-I)^m  
+ \]
+% need to explain the adjoint thing again
+A full proof of this formula is quite extensive, and is given in Brian Hall pages 68-76.
+
+For an explicit statement of the BCH formula for matrix Lie groups, use the following notation:
+
+\begin{align*}
+[x^{r_1}y^{s_1}\cdots x^{r_n}y^{s_n}] = \underbrace{[x,[x,\ldots[x,}_{r_1} \underbrace{[y,\ldots [y,}_{s_1}[x,\ldots y,\underbrace{[x,\ldots [x,}_{r_n}\underbrace{[y,\ldots[y,y}_{s_n}]\ldots ]]
+\end{align*}
+
+Let $x$ and $y$ be elements of any Lie algebra $\g$. Then 
+
+\begin{align*}
+\log \left( e^x e^y \right) &= \sum\limits_{n>0} \frac{(-1)^{n-1}}{n}\sum\limits_{\substack{r_i+s_i \geq 0  \\ 1 \leq i \leq n}} \frac{\left( \sum\limits_{i=1}^{n}(r_i+s_i) \right)^{-1}}{r_1 ! s_1 ! \cdots r_n ! s_n !} [x^{r_1}y^{s_1}x^{r_2}y^{s_2}\cdots x^{r_n}y^{s_n}] \\
+&= x + y \frac{1}{2}[x,y] + \frac{1}{12}[x,[x,y]] -\frac{1}{12}[y,[x,y]]+ \cdots
+\end{align*}
+It is most important to observe that for each $n$ and $i$ and $r_i$ and $s_i$, the coefficient in front of the commutator term is rational. 
+
+\cite{MR0235065}
+\cite{MR0346831}
+\cite{MR0385004}
+
+\bibliographystyle{amsplain2}
+\bibliography{bibliography}
 
 \bibliography{bibliography}
 
